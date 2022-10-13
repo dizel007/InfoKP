@@ -1,0 +1,21 @@
+.user_menu {
+  display: flex;
+  height: 36px;
+  text-align: left;  
+  background-color: rgb(105, 139, 187); 
+  padding-top: 5px;
+}
+.menu_button {
+  display: block;
+  margin: 2px;
+  min-width: 60px;
+  max-width: 200px;
+  height: 20px;
+  border : 1px solid;
+  border-radius: 3px;
+  background-color: rgb(245, 238, 149);
+  padding:4px;
+  text-align: center; 
+  box-shadow:  0.4em 0.4em 5px rgb(122 122 122 / 50%);
+   
+}

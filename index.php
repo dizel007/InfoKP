@@ -25,9 +25,6 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])) // Проверяем з�
              $user_id_cook = $_COOKIE['id'];
              setcookie("id", $user_id_cook, time() + 60 * 60 * 24, "/");
              setcookie("hash", $hash, time() + 60 * 60 * 24, "/", null, null, true); // httponly !!!
-             $user = $userdata['user_login'];
-             $userType = $userdata['userType'];
-
 
 require 'libs/Smarty.class.php';
 $smarty = new Smarty;
@@ -35,12 +32,33 @@ $smarty->force_compile = true;
 $smarty->debugging =  False; // старт консоли отладчика
 $smarty->caching = true;
 $smarty->cache_lifetime = 120;
+// Находим всех активных пользоватлей и суем их в шаблоны
+include_once 'functions/find_users.php';
+
+// шапка с меню пользователя
+include_once 'parts_site/header.php';
+$smarty->assign('userdata', $userdata);
+$smarty->display('user_menu.tpl');
+
+// Формируем тип перехода (Все переходы должны быть через index.php)
+isset($_GET['transition'])? $transition=$_GET['transition']:$transition=''; // показывает куда переходить
+switch ($transition) {
+    case 1: // уходим на создание нового КП
+        include_once "sub_programs/make_new_kp.php";
+        break;
+    case 2: // уходим на ввод данных по новой компании 
+        echo "i equals 2";
+        break;
+}
+ 
+
 
 echo "<pre>";
 print_r ($userdata);
 echo "</pre>";
 
 Echo "Zaeben'ki zashli na site";
+include_once 'parts_site/footer.php';
     }
 }
 
