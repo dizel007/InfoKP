@@ -1,4 +1,8 @@
 <?php
+/*
+Вычитываем из таблицы всех активных пользователей
+*/
+
 
   $stmt = $pdo->prepare("SELECT * FROM `users` WHERE `user_active` = 1 ");
   $stmt->execute([]);

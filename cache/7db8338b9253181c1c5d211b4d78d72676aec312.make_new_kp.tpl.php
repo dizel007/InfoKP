@@ -1,34 +1,33 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-13 16:32:48
+/* Smarty version 4.1.0, created on 2022-10-14 14:32:07
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63481380dde1b2_68974563',
+  'unifunc' => 'content_634948b7a11093_68182592',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1665667911,
+      1 => 1665737346,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_63481380dde1b2_68974563 (Smarty_Internal_Template $_smarty_tpl) {
+function content_634948b7a11093_68182592 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="zagolovok"> Создание нового КП </div>
   
 <div class="block">
  <p class="zagolovok">Проверка наличия ИНН в Базе</p>
         <form enctype="multipart/form-data" action="?transition=1" method="get">
             <div class="input_form_left zhir">
-              <input type="hidden" name="user_login" value="zeld">
+              <input type="hidden" name="user_login" value="qwe">
               <input type="hidden" name="transition" value="1">   
-                     
-                       ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
+                                           ИНН Заказчика : <input type="number" name="InnCustomer" value ="7727830864">
                                 </div>
             <div class="input_form_left">
               <input type="submit" value="Запросить ИНН">
@@ -37,9 +36,9 @@ function content_63481380dde1b2_68974563 (Smarty_Internal_Template $_smarty_tpl)
     
            <div class="red_string">
               <p>
-            
-               &nbsp
-                                      
+               
+                                      &nbsp
+                                                        
               </p>
             </div>
 
@@ -50,8 +49,7 @@ function content_63481380dde1b2_68974563 (Smarty_Internal_Template $_smarty_tpl)
 
 
     
- 
-    <input type="hidden" name="InnCustomer" value="">  
+    <input type="hidden" name="InnCustomer" value="7727830864">  
      
 <div class="block"> 
 
@@ -113,14 +111,16 @@ function content_63481380dde1b2_68974563 (Smarty_Internal_Template $_smarty_tpl)
 
 <div class="block green_bgc">
   
- <p class="pad5px width15 zhir">Наименование Заказчика : <input required type="text" name="NameCustomer" value ="" size="70"></p>
+ <p class="pad5px width15 zhir">Наименование Заказчика : <input disabled type="text"  value ="ООО ТД «АНМАКС»" size="70">
+ <input hidden type="text" name="NameCustomer" value ="ООО ТД «АНМАКС»" size="70">
+ </p>
 
 
   
-<p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="" size="70" data-phone-pattern></p>
+ <p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="7 (495) 787-24-05, 777-777-7222222222" size="70"></p>
+ 
   
-  <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="email" name="EmailCustomer" value ="" size="70"></p>
-
+  <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="text" name="EmailCustomer" value ="tender@anmaks.ru, 2323452@43dfgh.yi" size="70"></p>
    
    <p class="pad5px width15 zhir">Контактное лицо   : <input type="text" name="ContactCustomer" value ="" size="70"></p>
 </div>
@@ -143,12 +143,13 @@ function content_63481380dde1b2_68974563 (Smarty_Internal_Template $_smarty_tpl)
 
     Ответственный :
         <select style="width:150px;" name="responsible" size="1">
-            <option selected value="zeld">Зелизко</option>
-                                                               <option value="$active_user_logins_arr_smarty[$i]">Горячев</option>
-                                  <option value="$active_user_logins_arr_smarty[$i]">Гуц</option>
-                                  <option value="$active_user_logins_arr_smarty[$i]">Штыбко</option>
-                                  <option value="$active_user_logins_arr_smarty[$i]">Кулиев</option>
-                                  <option value="$active_user_logins_arr_smarty[$i]">Лобов</option>
+            <option selected value="qwe">Кверти</option>
+                                                <option value="zeld">Зелизко</option>
+                                                <option value="gor">Горячев</option>
+                                                <option value="guts">Гуц</option>
+                                                <option value="sti">Штыбко</option>
+                                                <option value="kul">Кулиев</option>
+                                                                             <option value="lobov">Лобов</option>
                                
         </select>
     </div>

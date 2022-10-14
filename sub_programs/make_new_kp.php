@@ -6,17 +6,6 @@ $tempDate = '';
 $smarty->assign("realDate" , $realDate);
 $smarty->assign("tempDate" , $tempDate);
 
-//  Получаем активного пользователя по Логину
-if (isset($_GET['user'])) {
-        if ($_GET['user'] <> '') {
-            $user = $_GET['user'];
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE user_login = :user");
-            $stmt->execute(array('user' => $user));
-            $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $smarty->assign("real_user", $arr[0]['user_name']);
-            $smarty->assign("user", $user);
-        }
-}
 // Если Есть ИНН заходим сюда после проверки ИНН
 if (isset($_GET['InnCustomer'])) {
     $input_inn = $_GET['InnCustomer'];

@@ -8,7 +8,19 @@ require_once ("../connect_db.php");
 $InnCustomer = $_POST['InnCustomer'];
 $KppCustomer = $_POST['KppCustomer'];
 // ******************* делаем запрос, чтобы узнать есть ли у нас в БД этот ИНН ********
-$NameCustomer = $_POST['NameCustomer'];
+$NameCustomer_temp = $_POST['NameCustomer'];
+$NameCustomer = str_replace('"', '«', $NameCustomer_temp, $count);
+
+//  ********** делаем костыль чтобы убрать двойные ковычки из названий компаний ************
+for ($i = 0; $i < mb_strlen($NameCustomer); $i++) {
+    $char = mb_substr($NameCustomer, $i, 1);
+  }
+if ($char == '«') {
+  $NameCustomer = substr($NameCustomer,0,-2);
+  $NameCustomer .="»";
+}
+// *************************************************************************************************
+
 // контактного лица
 $ContactCustomer = $_POST['ContactCustomer'];
 
@@ -17,22 +29,6 @@ $EmailCustomer = $_POST['EmailCustomer'];
 $adress = $_POST['Adress'];
 $date_write = date('Y-m-d');
 $CommentCustomer='';
-
-
-// **************************************************************************************
-
-// echo ':KpNumber=', $KpNumber."<br>";
-// echo ':KpData=', $KpDate."<br>";
-// echo ':InnCustomer=', $InnCustomer."<br>";
-// echo ':NameCustomer=', $NameCustomer."<br>";
-// echo ':idKp=', $idKp."<br>";
-// echo ':KpImportance=', $KpImportance."<br>";
-// echo ':Responsible=', $Responsible."<br>";
-// echo ':KpSum=', $KpSum."<br>";
-// echo ':adress=', $adress."<br>";
-// echo ':date_write=', $date_write."<br>";
-// echo ':LinkKp=', $LinkKp."<br>";
-
 
 // **************** вставляем каждый параметр  данных  *********************
 $stmt  = $pdo->prepare("INSERT INTO `inncompany` 
@@ -58,17 +54,17 @@ if ($stmt ->execute()) {
 }
 
 // Добавляем новый телефонв БД телефонов
-// $stmt  = $pdo->prepare("INSERT INTO `telephone` 
-//                        (inn, telephone, date_write)
-//                        VALUES (:inn, :telephon, :date_write)");
-// $stmt ->bindParam(':inn', $InnCustomer);
-// $stmt ->bindParam(':telefon', $TelCustomer);
-// $stmt ->bindParam(':date_write', $date_write);
-// if ($stmt ->execute()) {
-//     // echo "Запись УДАЧНО добавлена successfully";
-// } else {
-//   die (" ** DIE ** Не получилось добавить телефонный номер в БД");
-// }
+$stmt  = $pdo->prepare("INSERT INTO `telephone` 
+                       (inn, telephone, date_write)
+                       VALUES (:inn, :telephone, :date_write)");
+$stmt ->bindParam(':inn', $InnCustomer);
+$stmt ->bindParam(':telephone', $TelCustomer);
+$stmt ->bindParam(':date_write', $date_write);
+if ($stmt ->execute()) {
+    // echo "Запись УДАЧНО добавлена successfully";
+} else {
+  die (" ** DIE ** Не получилось добавить телефонный номер в БД");
+}
 // Добавляем новый EMAIL БД email
 $stmt  = $pdo->prepare("INSERT INTO `email` 
                        (inn, email, date_write)
@@ -84,8 +80,7 @@ if ($stmt ->execute()) {
 
 
 
-
 // ******************* делаем перенаправление на создание нового КП ********
-header("Location: ../show_comp_by_inn.php?id=0&inn=".$InnCustomer);
+header("Location: ../index.php?transition=1&InnCustomer=".$InnCustomer);
 
 die('Че то померли на инсерте нового  ИНН в БД');

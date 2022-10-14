@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-13 16:32:48
+/* Smarty version 4.1.0, created on 2022-10-14 14:32:07
   from 'C:\xampp\htdocs\InfoKP\templates\user_menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63481380daf3a5_20480428',
+  'unifunc' => 'content_634948b79bb181_45022864',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,10 +18,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_63481380daf3a5_20480428 (Smarty_Internal_Template $_smarty_tpl) {
+function content_634948b79bb181_45022864 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class = "user_menu">
   <div class = "menu_button">
-   <a href="?transition=1&user_login=zeld"> Создать КП </a>
+   <a href="?transition=1&user_login=qwe"> Создать КП </a>
   </div>
 
    <div class = "menu_button">
@@ -29,7 +29,7 @@ function content_63481380daf3a5_20480428 (Smarty_Internal_Template $_smarty_tpl)
   </div>
 
   <div class = "menu_button">
-    Пользователь: Зелизко
+    Пользователь: Кверти
   </div>
 
  

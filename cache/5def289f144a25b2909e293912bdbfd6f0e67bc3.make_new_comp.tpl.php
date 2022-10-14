@@ -1,14 +1,26 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-14 14:32:07
-  from 'C:\xampp\htdocs\InfoKP\templates\footer.tpl' */
+/* Smarty version 4.1.0, created on 2022-10-14 14:27:59
+  from 'C:\xampp\htdocs\InfoKP\templates\make_new_comp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634948b7a575a2_29778519',
+  'unifunc' => 'content_634947bf178f82_62509174',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
+    'a718311828b1e58f9c749451e4f38740ee7956df' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_comp.tpl',
+      1 => 1665739595,
+      2 => 'file',
+    ),
+    '8ba03dffa35f7873a0e7e7c88c161c78dbd4bc92' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\header.tpl',
+      1 => 1665663705,
+      2 => 'file',
+    ),
     '7836b2791c5890d9da14a05c355283473a4630c1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\footer.tpl',
@@ -24,8 +36,111 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_634948b7a575a2_29778519 (Smarty_Internal_Template $_smarty_tpl) {
-?> <!-- модальные окна для правки по ИНН  -->
+function content_634947bf178f82_62509174 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Добавление новой компании по ИНН </title>
+    
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel = "stylesheet" href = "css/bootstrap/css/bootstrap-grid.css">
+    <link rel = "stylesheet" href = "css/style.css">
+    
+    
+    
+    <script type="text/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
+    <!-- скрипт по выбору типа Фильтра в шапке  -->
+    <script type="text/javascript" src="js/shapka_menu.js"></script>
+    <!-- скрипт по выбору типа КП при создании нового КП   -->
+    <script type="text/javascript" src="js/make_new_kp_type_kp.js"></script>
+    <!-- скрипт для телефоной маски -->
+    <script src="jquery-3.3.1.maskedinput.min.js" type="text/javascript"></script> 
+ </head>
+
+<body bgcolor="#ffffff">
+
+<div class="zagolovok"> Добавить Новую компанию по ИНН</div>
+  
+
+
+     <section class="block">
+    <p><strong>Введите наименование компании или ИНН</strong></p>
+    <input id="party" name="party" type="text" value="66840108945">
+    </div>  
+  </section> 
+
+<br><br><br>
+
+<form enctype="multipart/form-data" action="pdo_connect_db/insert_new_comp_in_bd.php" method="post">
+
+
+  
+<div class="block green_bgc">  
+ <p class="pad5px width15 zhir"> ИНН Заказчика :
+    <input required id="inn" type="number" name="InnCustomer" value="">  
+</p>
+ <p class="pad5px width15 zhir"> КПП Заказчика :
+    <input required id="kpp" type="number" name="KppCustomer" value="">  
+</p>
+
+
+
+  
+
+ <p class="pad5px width15 zhir">Краткое наименование : <input required id="name_short" type="text" name="NameCustomer" value ="" size="70"></p>
+
+  
+<p class="pad5px width15 zhir">Телефон Заказчика : <input name="TelCustomer" size="70" data-phone-pattern></p>
+        
+        
+
+
+  
+ <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="email" name="EmailCustomer" value ="" size="70"></p>
+
+  
+   <p class="pad5px width15 zhir">Контактное лицо   : <input type="text" name="ContactCustomer" value ="" size="70"></p>
+
+  
+   <p class="pad5px width15 zhir">Адрес Заказчика   : <input id="address" type="text" name="Adress" value ="" size="70"></p>
+
+
+
+
+  
+ <p><input type="submit" value="Создать"></p>
+
+
+ </div>
+ </form>
+
+
+  <div class="block"> 
+      <a class="zagolovok" href="?transition=1&user=qwe">Вернуться в создание КП</a>
+ </div>
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/css/suggestions.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/js/jquery.suggestions.min.js"></script>
+  
+  <script>
+      $("#party").suggestions({
+          token: "ef0e1d4c5e875f38344a698c7bfae1f02078f7ed",
+          type: "PARTY",
+          /* Вызывается, когда пользователь выбирает одну из подсказок */
+          onSelect: function(suggestion) {
+              console.log(suggestion);
+          }
+      });
+  </script>
+  <script src="dadata/dadate.js"></script>
+
+
+ <!-- модальные окна для правки по ИНН  -->
 
  <!-- модальные окна для вставки телефонов -->
 
@@ -162,5 +277,6 @@ function content_634948b7a575a2_29778519 (Smarty_Internal_Template $_smarty_tpl)
 </html>
 
 
+              
 <?php }
 }

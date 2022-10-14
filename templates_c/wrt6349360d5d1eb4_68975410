@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-14 14:32:07
+/* Smarty version 4.1.0, created on 2022-10-14 13:12:29
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_change_zakup.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634948b7a43d24_54328401',
+  'unifunc' => 'content_6349360d5ce038_83890347',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_634948b7a43d24_54328401 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6349360d5ce038_83890347 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\InfoKP\\libs\\plugins\\function.html_options.php','function'=>'smarty_function_html_options',),));
-$_smarty_tpl->compiled->nocache_hash = '1959849851634948b7a3c025_44474963';
+$_smarty_tpl->compiled->nocache_hash = '1213206976349360d5c6335_18806214';
 ?>
   <div class="dm-overlay js-modal " data-modal = "write_comment">
      <div class="dm-table">

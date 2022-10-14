@@ -19,12 +19,12 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])) // Проверяем з�
         else
         {   
       
-            date_default_timezone_set('Europe/Moscow');
-             // Ставим куки
-             $hash= $_COOKIE['hash'];
-             $user_id_cook = $_COOKIE['id'];
-             setcookie("id", $user_id_cook, time() + 60 * 60 * 24, "/");
-             setcookie("hash", $hash, time() + 60 * 60 * 24, "/", null, null, true); // httponly !!!
+    date_default_timezone_set('Europe/Moscow');
+    // Ставим куки
+    $hash= $_COOKIE['hash'];
+    $user_id_cook = $_COOKIE['id'];
+    setcookie("id", $user_id_cook, time() + 60 * 60 * 24, "/");
+    setcookie("hash", $hash, time() + 60 * 60 * 24, "/", null, null, true); // httponly !!!
 
 require 'libs/Smarty.class.php';
 $smarty = new Smarty;
@@ -35,8 +35,12 @@ $smarty->cache_lifetime = 120;
 // Находим всех активных пользоватлей и суем их в шаблоны
 include_once 'functions/find_users.php';
 
-// шапка с меню пользователя
+
+// **************************************************************************************
+//  HEADER **************************************************************************
 include_once 'parts_site/header.php';
+// шапка с меню пользователя
+
 $smarty->assign('userdata', $userdata);
 $smarty->display('user_menu.tpl');
 
@@ -46,18 +50,19 @@ switch ($transition) {
     case 1: // уходим на создание нового КП
         include_once "sub_programs/make_new_kp.php";
         break;
-    case 2: // уходим на ввод данных по новой компании 
-        echo "i equals 2";
+    case 3: // уходим на ввод данных по новой компании 
+        include_once "sub_programs/make_new_comp.php";
         break;
 }
  
 
 
-echo "<pre>";
-print_r ($userdata);
-echo "</pre>";
+// echo "<pre>";
+// print_r ($userdata);
+// echo "</pre>";
 
-Echo "Zaeben'ki zashli na site";
+// **************************************************************************************
+//  FOOOOOOOTER **************************************************************************
 include_once 'parts_site/footer.php';
     }
 }
