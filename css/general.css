@@ -1,0 +1,26 @@
+.zagolovok{
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-weight:900;
+  padding: 5px;
+}
+.reset_button {
+  position: fixed;
+	right: 25px;
+	top: 25px;
+  background: linear-gradient(rgb(0, 123, 255), red);
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+  text-align: center;
+  margin: 5px 20px;
+  font-size: 15px;
+  padding: 15px;
+  display: flex;
+  height: 12px;
+  width: 40px;
+  color: #fff;
+	opacity: .9;
+  color: rgb(255, 255, 255);
+}

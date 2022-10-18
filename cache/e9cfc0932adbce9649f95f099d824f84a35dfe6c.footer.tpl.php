@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-14 14:32:07
+/* Smarty version 4.1.0, created on 2022-10-18 17:18:52
   from 'C:\xampp\htdocs\InfoKP\templates\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634948b7a575a2_29778519',
+  'unifunc' => 'content_634eb5cce91813_94058741',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_634948b7a575a2_29778519 (Smarty_Internal_Template $_smarty_tpl) {
+function content_634eb5cce91813_94058741 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <!-- модальные окна для правки по ИНН  -->
 
  <!-- модальные окна для вставки телефонов -->
@@ -38,11 +38,7 @@ function content_634948b7a575a2_29778519 (Smarty_Internal_Template $_smarty_tpl)
 
   <div>
     <select id = "js-id" name="id">
-      <option id ="js-new-modal-id" value ="$id"><br />
-<b>Notice</b>:  Undefined index: id in <b>C:\xampp\htdocs\InfoKP\templates_c\f9ac17a4a83153ccdb8bf5bdf021f1c8f8229185_0.file.modal_change_zakup.tpl.cache.php</b> on line <b>37</b><br />
-<br />
-<b>Notice</b>:  Trying to get property 'value' of non-object in <b>C:\xampp\htdocs\InfoKP\templates_c\f9ac17a4a83153ccdb8bf5bdf021f1c8f8229185_0.file.modal_change_zakup.tpl.cache.php</b> on line <b>37</b><br />
-</option>
+      <option id ="js-new-modal-id" value ="$id"></option>
             
     </select>
   </div>

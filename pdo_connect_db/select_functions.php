@@ -20,6 +20,7 @@ function GetSelectedKP($pdo,$sql) {
   $stmt->execute([]);
   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $arr;
+  die('RGGGG');
   }
   
 //  Получаем КП по id

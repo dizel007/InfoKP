@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-14 14:27:59
+/* Smarty version 4.1.0, created on 2022-10-18 15:41:14
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_comp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634947bf178f82_62509174',
+  'unifunc' => 'content_634e9eea6d89a1_94838435',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -36,7 +36,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_634947bf178f82_62509174 (Smarty_Internal_Template $_smarty_tpl) {
+function content_634e9eea6d89a1_94838435 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="ru">
 
@@ -69,7 +69,7 @@ function content_634947bf178f82_62509174 (Smarty_Internal_Template $_smarty_tpl)
 
      <section class="block">
     <p><strong>Введите наименование компании или ИНН</strong></p>
-    <input id="party" name="party" type="text" value="66840108945">
+    <input id="party" name="party" type="text" value="">
     </div>  
   </section> 
 
@@ -120,7 +120,7 @@ function content_634947bf178f82_62509174 (Smarty_Internal_Template $_smarty_tpl)
 
 
   <div class="block"> 
-      <a class="zagolovok" href="?transition=1&user=qwe">Вернуться в создание КП</a>
+      <a class="zagolovok" href="?transition=1&user=zeld">Вернуться в создание КП</a>
  </div>
  
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

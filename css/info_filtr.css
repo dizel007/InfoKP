@@ -1,0 +1,19 @@
+/* прячем все лишние меню */
+#g_dateKPs,#g_dateKPe, #g_inn,#g_id_kp,#g_responsible, 
+#g_name_zakazchik,#g_adres_postavki {
+  display:none
+}
+/* Силизация талицы с фильтрами */
+.up_form_new {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  background-color: rgb(129, 126, 204);
+  min-height: 30px;
+  margin: 0;
+  }
+/* Стилизация внутренних окон в таблицы фильтрво */
+.mobile_web{
+  margin: 5px;
+}

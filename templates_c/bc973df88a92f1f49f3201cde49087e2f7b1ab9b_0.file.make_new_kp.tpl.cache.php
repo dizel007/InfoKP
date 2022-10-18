@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-14 14:32:07
+/* Smarty version 4.1.0, created on 2022-10-18 17:18:31
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634948b79fd814_82202962',
+  'unifunc' => 'content_634eb5b7f3c9b0_84117694',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1665737346,
+      1 => 1666081277,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_634948b79fd814_82202962 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1659416423634948b79e2282_24979574';
+function content_634eb5b7f3c9b0_84117694 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '670313552634eb5b7f2cfa3_68491644';
 ?>
 <div class="zagolovok"> Создание нового КП </div>
   
@@ -213,7 +213,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                 <input type="hidden" name="MAX_FILE_SIZE" value="500000">
                 файл заполненный по шаблону: <input required name="upload_file" type="file">
  
-  <div><a href="new_kp_info/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
+  <div><a href="sample_files/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
  </div>
   <div class="block"> 
  <p><input type="submit" value="Создать"></p>

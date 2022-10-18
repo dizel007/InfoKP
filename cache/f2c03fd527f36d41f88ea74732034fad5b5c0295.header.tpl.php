@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-14 14:32:07
+/* Smarty version 4.1.0, created on 2022-10-18 17:18:52
   from 'C:\xampp\htdocs\InfoKP\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634948b799fbf5_11254698',
+  'unifunc' => 'content_634eb5ccdd2160_99498481',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,18 +18,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_634948b799fbf5_11254698 (Smarty_Internal_Template $_smarty_tpl) {
+function content_634eb5ccdd2160_99498481 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><br />
-<b>Notice</b>:  Undefined index: pageName in <b>C:\xampp\htdocs\InfoKP\templates_c\8ba03dffa35f7873a0e7e7c88c161c78dbd4bc92_0.file.header.tpl.cache.php</b> on line <b>32</b><br />
-<br />
-<b>Notice</b>:  Trying to get property 'value' of non-object in <b>C:\xampp\htdocs\InfoKP\templates_c\8ba03dffa35f7873a0e7e7c88c161c78dbd4bc92_0.file.header.tpl.cache.php</b> on line <b>32</b><br />
-</title>
+    <title>Реестр со всеми КП</title>
     
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel = "stylesheet" href = "css/bootstrap/css/bootstrap-grid.css">

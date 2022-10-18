@@ -1,33 +1,34 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-14 14:32:07
+/* Smarty version 4.1.0, created on 2022-10-18 17:18:32
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634948b7a11093_68182592',
+  'unifunc' => 'content_634eb5b8015b33_00010525',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1665737346,
+      1 => 1666081277,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_634948b7a11093_68182592 (Smarty_Internal_Template $_smarty_tpl) {
+function content_634eb5b8015b33_00010525 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="zagolovok"> Создание нового КП </div>
   
 <div class="block">
  <p class="zagolovok">Проверка наличия ИНН в Базе</p>
         <form enctype="multipart/form-data" action="?transition=1" method="get">
             <div class="input_form_left zhir">
-              <input type="hidden" name="user_login" value="qwe">
+              <input type="hidden" name="user_login" value="zeld">
               <input type="hidden" name="transition" value="1">   
-                                           ИНН Заказчика : <input type="number" name="InnCustomer" value ="7727830864">
+                     
+                       ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
                                 </div>
             <div class="input_form_left">
               <input type="submit" value="Запросить ИНН">
@@ -36,9 +37,9 @@ function content_634948b7a11093_68182592 (Smarty_Internal_Template $_smarty_tpl)
     
            <div class="red_string">
               <p>
-               
-                                      &nbsp
-                                                        
+            
+               &nbsp
+                                      
               </p>
             </div>
 
@@ -49,7 +50,8 @@ function content_634948b7a11093_68182592 (Smarty_Internal_Template $_smarty_tpl)
 
 
     
-    <input type="hidden" name="InnCustomer" value="7727830864">  
+ 
+    <input type="hidden" name="InnCustomer" value="">  
      
 <div class="block"> 
 
@@ -111,16 +113,14 @@ function content_634948b7a11093_68182592 (Smarty_Internal_Template $_smarty_tpl)
 
 <div class="block green_bgc">
   
- <p class="pad5px width15 zhir">Наименование Заказчика : <input disabled type="text"  value ="ООО ТД «АНМАКС»" size="70">
- <input hidden type="text" name="NameCustomer" value ="ООО ТД «АНМАКС»" size="70">
- </p>
+ <p class="pad5px width15 zhir">Наименование Заказчика : <input required type="text" name="NameCustomer" value ="" size="70"></p>
 
 
   
- <p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="7 (495) 787-24-05, 777-777-7222222222" size="70"></p>
- 
+<p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="" size="70" data-phone-pattern></p>
   
-  <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="text" name="EmailCustomer" value ="tender@anmaks.ru, 2323452@43dfgh.yi" size="70"></p>
+  <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="email" name="EmailCustomer" value ="" size="70"></p>
+
    
    <p class="pad5px width15 zhir">Контактное лицо   : <input type="text" name="ContactCustomer" value ="" size="70"></p>
 </div>
@@ -143,13 +143,13 @@ function content_634948b7a11093_68182592 (Smarty_Internal_Template $_smarty_tpl)
 
     Ответственный :
         <select style="width:150px;" name="responsible" size="1">
-            <option selected value="qwe">Кверти</option>
-                                                <option value="zeld">Зелизко</option>
-                                                <option value="gor">Горячев</option>
+            <option selected value="zeld">Зелизко</option>
+                                                                             <option value="gor">Горячев</option>
                                                 <option value="guts">Гуц</option>
                                                 <option value="sti">Штыбко</option>
                                                 <option value="kul">Кулиев</option>
-                                                                             <option value="lobov">Лобов</option>
+                                                <option value="qwe">Кверти</option>
+                                                <option value="lobov">Лобов</option>
                                
         </select>
     </div>
@@ -168,7 +168,7 @@ function content_634948b7a11093_68182592 (Smarty_Internal_Template $_smarty_tpl)
                 <input type="hidden" name="MAX_FILE_SIZE" value="500000">
                 файл заполненный по шаблону: <input required name="upload_file" type="file">
  
-  <div><a href="new_kp_info/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
+  <div><a href="sample_files/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
  </div>
   <div class="block"> 
  <p><input type="submit" value="Создать"></p>

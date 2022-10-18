@@ -171,7 +171,7 @@
                 <input type="hidden" name="MAX_FILE_SIZE" value="500000">
                 файл заполненный по шаблону: <input required name="upload_file" type="file">
  
-  <div><a href="new_kp_info/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
+  <div><a href="sample_files/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
  </div>
  {*  ********************************** Кнопка Создать ***************}
  <div class="block"> 
