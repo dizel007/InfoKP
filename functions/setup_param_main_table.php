@@ -17,9 +17,7 @@ if ($id <> ''){
    }
 }
 
-$kolvo_pages=0; // количество страниц
-$start_item_on_page =0; // начальное КП 
-$end_item_on_page=0;
+
 
 
 $i=0;
@@ -166,6 +164,10 @@ $smarty->assign("array_with_all_kp", $array_with_all_kp);
 } 
 
 function SetPageNumbers ($smarty, $array_with_all_kp, $page_number) {
+$kolvo_pages=0; // количество страниц
+$start_item_on_page =0; // начальное КП 
+$end_item_on_page=0;
+
 // ************* Берем количество элементов нового массива
 isset($array_with_all_kp)?$kpCount = count($array_with_all_kp): $kpCount = 0;
 if ($kpCount <= 0) {
@@ -182,12 +184,15 @@ if ($page_number <= $kolvo_pages) {
   }  
 $start_item_on_page = $page_number * $page_items - $page_items;
 $end_item_on_page = $start_item_on_page +  $kolvo_items;
-}
+
 // *******************   Отправляем в смарти кол-во элементов нового массива **************
-$smarty->assign("kpCount", $kpCount);   // количество элементов
+
 $smarty->assign("kolvo_pages", $kolvo_pages); // количество страниц
 $smarty->assign("start_item_on_page", $start_item_on_page); // начальное КП 
 $smarty->assign("end_item_on_page", $end_item_on_page); // конечноое КП на странице
 
+}
+
+$smarty->assign("kpCount", $kpCount);   // количество элементов
 
 // **************************

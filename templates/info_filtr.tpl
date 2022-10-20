@@ -61,12 +61,12 @@
     <select style="width:150px;" id="get_responsible" class="form-select data-windows" name="get_responsible" size="1">
  
          <option selected value="{$get_responsible}">{$get_responsible}</option>
-         {for  $i=0 to $count_users-2}
+         {for  $i=0 to $count_users-1}
               {* Удаляем повтор активного польвателя*}
              {if $active_user_logins_arr_smarty[$i] == $get_responsible}
                 {$i = $i + 1}
              {/if}
-            <option value="{$active_user_logins_arr_smarty[$i]}">{$active_user_names_arr_smarty[$i]}</option>
+            <option value="{$active_user_names_arr_smarty[$i]}">{$active_user_names_arr_smarty[$i]}</option>
          {/for}
          
      </select>

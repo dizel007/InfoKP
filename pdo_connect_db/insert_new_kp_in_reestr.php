@@ -149,7 +149,7 @@ $stmt->execute(array('KpNumber' => $KpNumber));
 
 
 // header("Location: ../".$LinkKp);
-header("Location: ../index.php?id=".$last_id);
+header("Location: ../index.php?transition=10&id=".$last_id);
 
 echo "ID= ", $last_id,"<br>";
 die('POOOH');

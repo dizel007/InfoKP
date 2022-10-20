@@ -142,15 +142,15 @@
 
     Ответственный :
         <select style="width:150px;" name="responsible" size="1">
-            <option selected value="{$userdata['user_login']}">{$userdata['user_name']}</option>
+            <option selected value="{$userdata['user_name']}">{$userdata['user_name']}</option>
          {for  $i=0 to $count_users-2}
               {* Удаляем повтор активного польвателя*}
              {if $active_user_logins_arr_smarty[$i] == $userdata['user_login']}
                 {$i = $i + 1}
              {/if}
-            <option value="{$active_user_logins_arr_smarty[$i]}">{$active_user_names_arr_smarty[$i]}</option>
+            <option value="{$active_user_names_arr_smarty[$i]}">{$active_user_names_arr_smarty[$i]}</option>
          {/for}
-            {*html_options values=$active_users_arr_smarty output=$active_users_arr_smarty*}
+         
           
         </select>
     </div>

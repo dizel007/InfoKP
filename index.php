@@ -40,6 +40,13 @@ include_once 'functions/find_users.php';
 //  HEADER **************************************************************************
 
 include_once 'pdo_connect_db/select_functions.php';
+// получаем все активные состояния КПП
+$AllKpConditions = GetAllActiveKpCondition($pdo);
+$smarty->assign('AllKpConditions', $AllKpConditions);
+// echo "<pre>";
+// print_r ($AllKpConditions);
+// echo "</pre>";
+
 // шапка с меню пользователя
 
 $smarty->assign('userdata', $userdata);

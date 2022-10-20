@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-18 17:18:52
+/* Smarty version 4.1.0, created on 2022-10-20 15:05:46
   from 'C:\xampp\htdocs\InfoKP\templates\user_menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634eb5ccd5ce52_16552103',
+  'unifunc' => 'content_6351399ae7b509_35091905',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_634eb5ccd5ce52_16552103 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1671141579634eb5ccd31ec8_65954884';
+function content_6351399ae7b509_35091905 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '13127267486351399ae4c6f2_19817453';
 ?>
 <div class = "user_menu">
   <div class = "menu_button">

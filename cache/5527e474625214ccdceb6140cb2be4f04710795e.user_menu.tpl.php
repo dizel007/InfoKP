@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-18 17:18:52
+/* Smarty version 4.1.0, created on 2022-10-20 15:05:46
   from 'C:\xampp\htdocs\InfoKP\templates\user_menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634eb5ccd7c252_83658508',
+  'unifunc' => 'content_6351399ae9a907_01058296',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_634eb5ccd7c252_83658508 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6351399ae9a907_01058296 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class = "user_menu">
   <div class = "menu_button">
    <a href="?transition=0"> РЕЕСТР КП </a>

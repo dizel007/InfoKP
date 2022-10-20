@@ -14,7 +14,7 @@
 {if $get_inn<>'' }
 <i>ИНН :<b>{$get_inn}</b></i>
 {/if}
-{if $get_responsible<>'' }
+{if ($get_responsible <>'') }
 <i>ответственный :<b>{$get_responsible}</b></i>
 {/if}
 {if $get_name_zakazchik <>''}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-18 17:18:52
+/* Smarty version 4.1.0, created on 2022-10-20 15:05:46
   from 'C:\xampp\htdocs\InfoKP\templates\info_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634eb5ccde9870_81579565',
+  'unifunc' => 'content_6351399aed1418_06516308',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '08e4fb399655b78fd3a27bcf8906ffbb3fccec51' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\info_filtr.tpl',
-      1 => 1666092273,
+      1 => 1666258009,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_634eb5ccde9870_81579565 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1339864194634eb5ccde1b70_39828974';
+function content_6351399aed1418_06516308 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '21198270336351399aec5897_73352812';
 ?>
 <div class="reset_button">
   <a href="index.php" title="Вернуться к началу страницы">СБРОС</a>
@@ -89,14 +89,14 @@ $_smarty_tpl->compiled->nocache_hash = '1339864194634eb5ccde1b70_39828974';
 "><?php echo $_smarty_tpl->tpl_vars['get_responsible']->value;?>
 </option>
          <?php
-$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['count_users']->value-2+1 - (0) : 0-($_smarty_tpl->tpl_vars['count_users']->value-2)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['count_users']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['count_users']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
 if ($_smarty_tpl->tpl_vars['i']->total > 0) {
 for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
                            <?php if ($_smarty_tpl->tpl_vars['active_user_logins_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value] == $_smarty_tpl->tpl_vars['get_responsible']->value) {?>
                 <?php $_smarty_tpl->_assignInScope('i', $_smarty_tpl->tpl_vars['i']->value+1);?>
              <?php }?>
-            <option value="<?php echo $_smarty_tpl->tpl_vars['active_user_logins_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+            <option value="<?php echo $_smarty_tpl->tpl_vars['active_user_names_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 "><?php echo $_smarty_tpl->tpl_vars['active_user_names_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 </option>
          <?php }

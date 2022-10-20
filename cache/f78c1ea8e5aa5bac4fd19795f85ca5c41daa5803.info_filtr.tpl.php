@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-18 17:18:52
+/* Smarty version 4.1.0, created on 2022-10-20 15:05:46
   from 'C:\xampp\htdocs\InfoKP\templates\info_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634eb5ccdf1575_77103558',
+  'unifunc' => 'content_6351399aee4c97_34257885',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '08e4fb399655b78fd3a27bcf8906ffbb3fccec51' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\info_filtr.tpl',
-      1 => 1666092273,
+      1 => 1666258009,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_634eb5ccdf1575_77103558 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6351399aee4c97_34257885 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="reset_button">
   <a href="index.php" title="Вернуться к началу страницы">СБРОС</a>
 </div> 
@@ -77,12 +77,13 @@ function content_634eb5ccdf1575_77103558 (Smarty_Internal_Template $_smarty_tpl)
     <select style="width:150px;" id="get_responsible" class="form-select data-windows" name="get_responsible" size="1">
  
          <option selected value=""></option>
-                                                <option value="zeld">Зелизко</option>
-                                                <option value="gor">Горячев</option>
-                                                <option value="guts">Гуц</option>
-                                                <option value="sti">Штыбко</option>
-                                                <option value="kul">Кулиев</option>
-                                                <option value="qwe">Кверти</option>
+                                                <option value="Зелизко">Зелизко</option>
+                                                <option value="Горячев">Горячев</option>
+                                                <option value="Гуц">Гуц</option>
+                                                <option value="Штыбко">Штыбко</option>
+                                                <option value="Кулиев">Кулиев</option>
+                                                <option value="Кверти">Кверти</option>
+                                                <option value="Лобов">Лобов</option>
                   
      </select>
  </div>

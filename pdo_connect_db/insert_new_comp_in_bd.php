@@ -6,9 +6,18 @@ require_once ("../connect_db.php");
 
 // Если задан ИНН то проверим его по БД, если добавляем по инн, то нужно будет его ввести в Базу
 $InnCustomer = $_POST['InnCustomer'];
+// Проверим, чтобы не было уже такого ИНН
+$stmt = $pdo->prepare("SELECT * FROM inncompany WHERE inn = ?");
+$stmt->execute([$InnCustomer]);
+$TempInnComp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// если ИНН существет, то уходим на создание КП
+if ($TempInnComp[0]['inn'] == $InnCustomer) {
+  header("Location: ../index.php?transition=1&InnCustomer=".$InnCustomer);
+}
 $KppCustomer = $_POST['KppCustomer'];
 // ******************* делаем запрос, чтобы узнать есть ли у нас в БД этот ИНН ********
 $NameCustomer_temp = $_POST['NameCustomer'];
+
 $NameCustomer = str_replace('"', '«', $NameCustomer_temp, $count);
 
 //  ********** делаем костыль чтобы убрать двойные ковычки из названий компаний ************

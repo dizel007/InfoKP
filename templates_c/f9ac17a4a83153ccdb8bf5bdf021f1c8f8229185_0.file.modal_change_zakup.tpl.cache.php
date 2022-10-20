@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-18 17:18:52
+/* Smarty version 4.1.0, created on 2022-10-20 15:05:47
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_change_zakup.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634eb5cce7df96_18236121',
+  'unifunc' => 'content_6351399b115a74_16961808',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9ac17a4a83153ccdb8bf5bdf021f1c8f8229185' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\modal\\modal_change_zakup.tpl',
-      1 => 1664879304,
+      1 => 1666257640,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_634eb5cce7df96_18236121 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\InfoKP\\libs\\plugins\\function.html_options.php','function'=>'smarty_function_html_options',),));
-$_smarty_tpl->compiled->nocache_hash = '1500536418634eb5cce76290_67354325';
+function content_6351399b115a74_16961808 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '19587163486351399b10dd78_93990806';
 ?>
   <div class="dm-overlay js-modal " data-modal = "write_comment">
      <div class="dm-table">
@@ -40,15 +39,21 @@ $_smarty_tpl->compiled->nocache_hash = '1500536418634eb5cce76290_67354325';
     </select>
   </div>
 
+<input hidden id="js-modal-user-login" value = <?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_login'];?>
+>
+
  <div><b> Номер КП : <span id="js-new-modal-KpNumber">$KpNumber</span></b></div>
 
-  
- <div>ИНН Заказчика :<span id="js-new-modal-InnCustomer">$InnCustomer</span></div>
+ 
+  <div>ИНН Заказчика :<span id="js-new-modal-InnCustomer">$InnCustomer</span></div>
+
+
  <div><b>Наименование Заказчика :<span id="js-new-modal-NameCustomer">$NameCustomer</span></b></div>
   <hr>
 <div>ID  закупки :<span id="js-new-modal-idKp">$idKp</span></div>
   <hr>
-     
+
+ 
 <div> 
 <p>Важность :
     <select id="KpImportance" size="1" name="KpImportance">
@@ -64,14 +69,21 @@ $_smarty_tpl->compiled->nocache_hash = '1500536418634eb5cce76290_67354325';
   <p>Ответственный
     <select id="Responsible" size="1" name="Responsible">
         <option id="js-new-modal-Responsible" selected value = ""></option>
-           <?php echo smarty_function_html_options(array('values'=>$_smarty_tpl->tpl_vars['active_users_arr_smarty']->value,'output'=>$_smarty_tpl->tpl_vars['active_users_arr_smarty']->value),$_smarty_tpl);?>
-
-
+         <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_smarty_tpl->tpl_vars['count_users']->value-1+1 - (0) : 0-($_smarty_tpl->tpl_vars['count_users']->value-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
+              <option value="<?php echo $_smarty_tpl->tpl_vars['active_user_names_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+"><?php echo $_smarty_tpl->tpl_vars['active_user_names_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+</option>
+         <?php }
+}
+?>
      </select>
   </p>
 </div>
    <hr>
-
 <div> 
     <p>Комментарий :<span id="js-new-modal-Comment">$Comment</span></p>
       <p id="Comment">    
@@ -79,27 +91,36 @@ $_smarty_tpl->compiled->nocache_hash = '1500536418634eb5cce76290_67354325';
       </p>
 </div>
 <hr>
-
 <div> 
     <p >Дата след.Звонка <input id="DateNextCall" type="date" name="DateNextCall" value ="$DateNextCall"></p>
 </div>
-
 
 <div> 
   <p>Состояние КП
     <select id="KpCondition" size="1" name="KpCondition">
         <option id="js-new-modal-KpCondition" selected value = ""></option>
-       <?php echo smarty_function_html_options(array('values'=>$_smarty_tpl->tpl_vars['array_condition_kp']->value,'output'=>$_smarty_tpl->tpl_vars['array_condition_kp']->value),$_smarty_tpl);?>
+          <?php
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? count($_smarty_tpl->tpl_vars['AllKpConditions']->value)-1+1 - (0) : 0-(count($_smarty_tpl->tpl_vars['AllKpConditions']->value)-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?>
+              <option value="<?php echo $_smarty_tpl->tpl_vars['AllKpConditions']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+"><?php echo $_smarty_tpl->tpl_vars['AllKpConditions']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+</option>
+         <?php }
+}
+?>
 
-
+       
 
         </select>
   </p>
 </div>
+
+
 <div><p>Сумма КП  <input type="number" id="KpSum" name="KpSum" value ="$KpSum"></p></div>
 <div><p>НМЦК Тендера КП : <span id="js-new-modal-TenderSum">$TenderSum</span></p></div>
 <hr>
-
 <div> 
     <p>Дата заключения Контакта <input id="dateContract" type="date" name="dateContract" value ="$dateContract">
     Процент выполнения  <input type="number" id="procent_work" name="procent_work" value ="$procent_work"></p>

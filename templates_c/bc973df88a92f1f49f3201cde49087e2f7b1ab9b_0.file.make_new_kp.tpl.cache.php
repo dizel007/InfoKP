@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-18 17:18:31
+/* Smarty version 4.1.0, created on 2022-10-20 12:21:46
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634eb5b7f3c9b0_84117694',
+  'unifunc' => 'content_6351132ab53642_93208171',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1666081277,
+      1 => 1666180493,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_634eb5b7f3c9b0_84117694 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '670313552634eb5b7f2cfa3_68491644';
+function content_6351132ab53642_93208171 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '12301850626351132ab3fdc1_51832860';
 ?>
 <div class="zagolovok"> Создание нового КП </div>
   
@@ -178,7 +178,7 @@ $_smarty_tpl->compiled->nocache_hash = '670313552634eb5b7f2cfa3_68491644';
 
     Ответственный :
         <select style="width:150px;" name="responsible" size="1">
-            <option selected value="<?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_login'];?>
+            <option selected value="<?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_name'];?>
 "><?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_name'];?>
 </option>
          <?php
@@ -189,13 +189,14 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                            <?php if ($_smarty_tpl->tpl_vars['active_user_logins_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value] == $_smarty_tpl->tpl_vars['userdata']->value['user_login']) {?>
                 <?php $_smarty_tpl->_assignInScope('i', $_smarty_tpl->tpl_vars['i']->value+1);?>
              <?php }?>
-            <option value="<?php echo $_smarty_tpl->tpl_vars['active_user_logins_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value];?>
+            <option value="<?php echo $_smarty_tpl->tpl_vars['active_user_names_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 "><?php echo $_smarty_tpl->tpl_vars['active_user_names_arr_smarty']->value[$_smarty_tpl->tpl_vars['i']->value];?>
 </option>
          <?php }
 }
 ?>
-                      
+         
+          
         </select>
     </div>
 

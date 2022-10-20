@@ -64,8 +64,8 @@ if (isset($_GET['get_responsible'])) {
 } else {
   $get_responsible = '';
 }
-$get_responsible = htmlspecialchars($get_responsible);
 $smarty->assign("get_responsible", $get_responsible);
+
 
 // ************* получаем переменную об Наименование Заказчика  **************************************
 if (isset($_GET['get_name_zakazchik'])) {

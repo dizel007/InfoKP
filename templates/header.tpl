@@ -18,7 +18,7 @@
     <!-- скрипт по выбору типа КП при создании нового КП   -->
     <script type="text/javascript" src="js/make_new_kp_type_kp.js"></script>
     <!-- скрипт для телефоной маски -->
-    <script src="jquery-3.3.1.maskedinput.min.js" type="text/javascript"></script> 
+    {*<script src="jquery-3.3.1.maskedinput.min.js" type="text/javascript"></script> *}
  </head>
 
 <body bgcolor="#ffffff">

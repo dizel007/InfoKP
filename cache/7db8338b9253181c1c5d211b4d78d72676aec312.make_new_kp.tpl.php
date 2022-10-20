@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-18 17:18:32
+/* Smarty version 4.1.0, created on 2022-10-20 12:21:46
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_634eb5b8015b33_00010525',
+  'unifunc' => 'content_6351132ab5f1c6_99212717',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1666081277,
+      1 => 1666180493,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_634eb5b8015b33_00010525 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6351132ab5f1c6_99212717 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="zagolovok"> Создание нового КП </div>
   
 <div class="block">
@@ -27,8 +27,7 @@ function content_634eb5b8015b33_00010525 (Smarty_Internal_Template $_smarty_tpl)
             <div class="input_form_left zhir">
               <input type="hidden" name="user_login" value="zeld">
               <input type="hidden" name="transition" value="1">   
-                     
-                       ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
+                                           ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
                                 </div>
             <div class="input_form_left">
               <input type="submit" value="Запросить ИНН">
@@ -37,9 +36,11 @@ function content_634eb5b8015b33_00010525 (Smarty_Internal_Template $_smarty_tpl)
     
            <div class="red_string">
               <p>
-            
-               &nbsp
-                                      
+               
+                            
+                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
+                    <a href="?transition=3&user=zeld&InnCustomer=" > Добавить?</a>
+                                                        
               </p>
             </div>
 
@@ -143,14 +144,15 @@ function content_634eb5b8015b33_00010525 (Smarty_Internal_Template $_smarty_tpl)
 
     Ответственный :
         <select style="width:150px;" name="responsible" size="1">
-            <option selected value="zeld">Зелизко</option>
-                                                                             <option value="gor">Горячев</option>
-                                                <option value="guts">Гуц</option>
-                                                <option value="sti">Штыбко</option>
-                                                <option value="kul">Кулиев</option>
-                                                <option value="qwe">Кверти</option>
-                                                <option value="lobov">Лобов</option>
-                               
+            <option selected value="Зелизко">Зелизко</option>
+                                                                             <option value="Горячев">Горячев</option>
+                                                <option value="Гуц">Гуц</option>
+                                                <option value="Штыбко">Штыбко</option>
+                                                <option value="Кулиев">Кулиев</option>
+                                                <option value="Кверти">Кверти</option>
+                                                <option value="Лобов">Лобов</option>
+                  
+          
         </select>
     </div>
 

@@ -20,7 +20,6 @@ function GetSelectedKP($pdo,$sql) {
   $stmt->execute([]);
   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $arr;
-  die('RGGGG');
   }
   
 //  Получаем КП по id
@@ -30,6 +29,14 @@ function GetKPById($pdo,$id) {
     $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $arr;
   }
+  //  Получаем пользователя по user_login по id
+function GetUserByUser_login($pdo,$user_login) {
+  $stmt = $pdo->prepare("SELECT * FROM users WHERE user_login = ?");
+  $stmt->execute([$user_login]);
+  $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $arr;
+}
+
 //  Получаем КП по ИНН
   function GetKPByInn($pdo,$inn) {
     $stmt = $pdo->prepare("SELECT * FROM reestrkp WHERE InnCustomer = ?");
@@ -61,17 +68,13 @@ function GetEmailByInn($pdo,$inn) {
   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $arr;
 }
-
-
-
-
-
-
-
-
-
-
-
+// ******************* Получаем Все активные состояния КП
+function GetAllActiveKpCondition($pdo) {
+  $stmt = $pdo->prepare("SELECT conditionkp FROM condition_kp WHERE active = 1");
+  $stmt->execute();
+  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
+  return $arr;
+}
 
 function GetAllParametrs($products,$param) {
   foreach ($products as $value) {
