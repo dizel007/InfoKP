@@ -40,14 +40,20 @@ if (isset($_GET['InnCustomer'])) {
         // если нет такого ИНН, то формируем признак
     }
 }
-
+// подтянем данные с сайта контур
+isset($_GET['KonturLink'])?$KonturLink=$_GET['KonturLink']:$KonturLink='';
+if ($KonturLink <> ''){
+       require_once ("parsers/parser_kontur_query.php");
+       $smarty->assign("tender_date" , $tender_date);
+}
 
 
 // require_once "pdo_connect_db/select_functions.php";
 // require_once "smarty_docs/_include_folder_files.php";
 
+
     
-    $smarty->display('make_new_kp.tpl');
+$smarty->display('make_new_obj_kp.tpl');
 
 
 

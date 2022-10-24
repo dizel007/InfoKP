@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
+/* Smarty version 4.1.0, created on 2022-10-24 15:02:07
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6356465ad0f243_32523520',
+  'unifunc' => 'content_63567ebf0b1eb8_29674382',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1666180493,
+      1 => 1666609483,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_6356465ad0f243_32523520 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="zagolovok"> Создание нового КП </div>
   
 <div class="block">
@@ -27,8 +27,7 @@ function content_6356465ad0f243_32523520 (Smarty_Internal_Template $_smarty_tpl)
             <div class="input_form_left zhir">
               <input type="hidden" name="user_login" value="zeld">
               <input type="hidden" name="transition" value="1">   
-                     
-                       ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
+                                           ИНН Заказчика : <input type="number" name="InnCustomer" value ="5503098400">
                                 </div>
             <div class="input_form_left">
               <input type="submit" value="Запросить ИНН">
@@ -37,9 +36,9 @@ function content_6356465ad0f243_32523520 (Smarty_Internal_Template $_smarty_tpl)
     
            <div class="red_string">
               <p>
-            
-               &nbsp
-                                      
+               
+                                      &nbsp
+                                                        
               </p>
             </div>
 
@@ -50,20 +49,18 @@ function content_6356465ad0f243_32523520 (Smarty_Internal_Template $_smarty_tpl)
 
 
     
- 
-    <input type="hidden" name="InnCustomer" value="">  
+    <input type="hidden" name="InnCustomer" value="5503098400">  
      
 <div class="block"> 
 
-<p class = "zhir">Источник КП :
-    <select size="1" name="type_kp" onchange="showhideTypeKP(this.value)">
-      <option selected value="2">почта INFO</option>
-      <option value="3">Входящий звонок</option>
-      <option value="4">Старый клиент</option>
-      <option value="5">Нет данных</option>
-      <option value="6">Объектное</option>
-    </select>
-</p>
+    <p class = "zhir">Источник КП :
+        <select size="1" name="type_kp">
+          <option selected value="2">почта INFO</option>
+          <option value="3">Входящий звонок</option>
+          <option value="4">Старый клиент</option>
+          <option value="5">Нет данных</option>
+        </select>
+    </p>
  </div>
 
   
@@ -77,50 +74,28 @@ function content_6356465ad0f243_32523520 (Smarty_Internal_Template $_smarty_tpl)
       
        <div>
         <p class ="zhir"> Дата КП : <input type="date" name="KpDate" value ="<br />
-<b>Notice</b>:  Undefined index: KpDate in <b>C:\xampp\htdocs\InfoKP\templates_c\bc973df88a92f1f49f3201cde49087e2f7b1ab9b_0.file.make_new_kp.tpl.cache.php</b> on line <b>101</b><br />
+<b>Notice</b>:  Undefined index: KpDate in <b>C:\xampp\htdocs\InfoKP\templates_c\bc973df88a92f1f49f3201cde49087e2f7b1ab9b_0.file.make_new_kp.tpl.cache.php</b> on line <b>100</b><br />
 <br />
-<b>Notice</b>:  Trying to get property 'value' of non-object in <b>C:\xampp\htdocs\InfoKP\templates_c\bc973df88a92f1f49f3201cde49087e2f7b1ab9b_0.file.make_new_kp.tpl.cache.php</b> on line <b>101</b><br />
+<b>Notice</b>:  Trying to get property 'value' of non-object in <b>C:\xampp\htdocs\InfoKP\templates_c\bc973df88a92f1f49f3201cde49087e2f7b1ab9b_0.file.make_new_kp.tpl.cache.php</b> on line <b>100</b><br />
 "></p>
        </div>
          <div> 
         *если окно пустое, то номер будет порядковый
    </div>
 </div>
-
-
-  
-<div id="type_kp_object" class="block" style="display:none; background-color: darkCyan;">
-  <div class="input_form_left">
-    <p class = "zhir">Номер КП : <input type="text" name="KpNumberO" value =""></p>
-  </div>
- 
- 
- 
-      
-       <div>
-        <p class ="zhir"> Дата КП : <input type="date" name="KpDateO" value ="<br />
-<b>Notice</b>:  Undefined index: KpDateO in <b>C:\xampp\htdocs\InfoKP\templates_c\bc973df88a92f1f49f3201cde49087e2f7b1ab9b_0.file.make_new_kp.tpl.cache.php</b> on line <b>120</b><br />
-<br />
-<b>Notice</b>:  Trying to get property 'value' of non-object in <b>C:\xampp\htdocs\InfoKP\templates_c\bc973df88a92f1f49f3201cde49087e2f7b1ab9b_0.file.make_new_kp.tpl.cache.php</b> on line <b>120</b><br />
-"></p>
-       </div>
-         <div> 
-        *если окно пустое, то номер будет порядковый
-   </div>
-</div>
-
-
 
 <div class="block green_bgc">
   
- <p class="pad5px width15 zhir">Наименование Заказчика : <input required type="text" name="NameCustomer" value ="" size="70"></p>
+ <p class="pad5px width15 zhir">Наименование Заказчика : <input disabled type="text"  value ="ООО «ПРОДУКТЫ ДО 22-00»" size="70">
+ <input hidden type="text" name="NameCustomer" value ="ООО «ПРОДУКТЫ ДО 22-00»" size="70">
+ </p>
 
 
   
-<p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="" size="70" data-phone-pattern></p>
+ <p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="" size="70"></p>
+ 
   
-  <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="email" name="EmailCustomer" value ="" size="70"></p>
-
+  <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="text" name="EmailCustomer" value ="" size="70"></p>
    
    <p class="pad5px width15 zhir">Контактное лицо   : <input type="text" name="ContactCustomer" value ="" size="70"></p>
 </div>

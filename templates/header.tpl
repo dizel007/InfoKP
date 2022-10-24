@@ -15,8 +15,6 @@
     <script type="text/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
     <!-- скрипт по выбору типа Фильтра в шапке  -->
     <script type="text/javascript" src="js/shapka_menu.js"></script>
-    <!-- скрипт по выбору типа КП при создании нового КП   -->
-    <script type="text/javascript" src="js/make_new_kp_type_kp.js"></script>
     <!-- скрипт для телефоной маски -->
     {*<script src="jquery-3.3.1.maskedinput.min.js" type="text/javascript"></script> *}
  </head>

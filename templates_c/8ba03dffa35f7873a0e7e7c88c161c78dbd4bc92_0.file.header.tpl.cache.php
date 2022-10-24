@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
+/* Smarty version 4.1.0, created on 2022-10-24 16:02:27
   from 'C:\xampp\htdocs\InfoKP\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6356465acd8735_79257043',
+  'unifunc' => 'content_63568ce3142a90_47380055',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8ba03dffa35f7873a0e7e7c88c161c78dbd4bc92' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\header.tpl',
-      1 => 1666183842,
+      1 => 1666612736,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6356465acd8735_79257043 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '614317296356465acd48b9_53863731';
+function content_63568ce3142a90_47380055 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '14227727963568ce313ec12_72165306';
 ?>
 <html lang="ru">
 
@@ -44,10 +44,6 @@ $_smarty_tpl->compiled->nocache_hash = '614317296356465acd48b9_53863731';
     <!-- скрипт по выбору типа Фильтра в шапке  -->
     <?php echo '<script'; ?>
  type="text/javascript" src="js/shapka_menu.js"><?php echo '</script'; ?>
->
-    <!-- скрипт по выбору типа КП при создании нового КП   -->
-    <?php echo '<script'; ?>
- type="text/javascript" src="js/make_new_kp_type_kp.js"><?php echo '</script'; ?>
 >
     <!-- скрипт для телефоной маски -->
      </head>

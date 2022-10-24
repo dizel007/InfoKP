@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 11:00:58
+/* Smarty version 4.1.0, created on 2022-10-24 14:18:26
   from 'C:\xampp\htdocs\InfoKP\templates\info_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6356463a680057_01410187',
+  'unifunc' => 'content_6356748209eba6_43998120',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_6356463a680057_01410187 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6356748209eba6_43998120 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="reset_button">
   <a href="index.php" title="Вернуться к началу страницы">СБРОС</a>
 </div> 

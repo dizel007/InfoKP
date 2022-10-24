@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 10:58:37
+/* Smarty version 4.1.0, created on 2022-10-24 15:01:59
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_comp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635645ad8e8fd4_98637100',
+  'unifunc' => 'content_63567eb756f0b8_66672431',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a718311828b1e58f9c749451e4f38740ee7956df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_comp.tpl',
-      1 => 1665739595,
+      1 => 1666609927,
       2 => 'file',
     ),
   ),
@@ -22,8 +22,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_635645ad8e8fd4_98637100 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1458906194635645ad8dd456_87921249';
+function content_63567eb756f0b8_66672431 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '84052593963567eb75673b3_39298028';
 ?>
 
 <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
@@ -87,7 +87,8 @@ if ((isset($_prefixVariable1))) {?>
    <p class="pad5px width15 zhir">Адрес Заказчика   : <input id="address" type="text" name="Adress" value ="" size="70"></p>
 
 
-
+<input type="hidden" name="back_transition" value="<?php echo $_smarty_tpl->tpl_vars['back_transition']->value;?>
+"> 
 
   
  <p><input type="submit" value="Создать"></p>
@@ -98,7 +99,8 @@ if ((isset($_prefixVariable1))) {?>
 
 
   <div class="block"> 
-      <a class="zagolovok" href="?transition=1&user=<?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_login'];?>
+      <a class="zagolovok" href="?transition=<?php echo $_smarty_tpl->tpl_vars['back_transition']->value;?>
+&user=<?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_login'];?>
 ">Вернуться в создание КП</a>
  </div>
  

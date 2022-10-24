@@ -23,6 +23,13 @@ switch ($transition) {
         include_once 'parts_site/header.php';
         include_once "sub_programs/make_new_kp.php";
         break;
+    
+    case 2: // уходим на создание нового Объектного КП
+            $pageName = "Создание Объектного КП";
+            $smarty->assign('pageName', $pageName);
+            include_once 'parts_site/header.php';
+            include_once "sub_programs/make_new_obj_kp.php";
+            break;
 
     case 3: // уходим на ввод данных по новой компании 
         $pageName = "Ввод данных новой компании";

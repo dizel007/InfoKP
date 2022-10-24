@@ -58,7 +58,7 @@
    <p class="pad5px width15 zhir">Адрес Заказчика   : <input id="address" type="text" name="Adress" value ="" size="70"></p>
 
 
-
+<input type="hidden" name="back_transition" value="{$back_transition}"> 
 
  {*  ********************************** Кнопка Создать ***************}
  
@@ -70,7 +70,7 @@
 
 
   <div class="block"> 
-      <a class="zagolovok" href="?transition=1&user={$userdata['user_login']}">Вернуться в создание КП</a>
+      <a class="zagolovok" href="?transition={$back_transition}&user={$userdata['user_login']}">Вернуться в создание КП</a>
  </div>
  
  {*  ********************************** Скрипты дл я ДАДАТЫ   ****************************}

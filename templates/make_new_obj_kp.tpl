@@ -1,11 +1,12 @@
-<div class="zagolovok"> Создание нового КП </div>
+<div class="zagolovok"> Создание нового Объектного КП </div>
  {*    ********************** ИНН Заказчика   ********************} 
 <div class="block">
  <p class="zagolovok">Проверка наличия ИНН в Базе</p>
-        <form enctype="multipart/form-data" action="?transition=1" method="get">
+        <form enctype="multipart/form-data" action="?transition=2" method="get">
             <div class="input_form_left zhir">
               <input type="hidden" name="user_login" value="{$userdata['user_login']}">
-              <input type="hidden" name="transition" value="1">   
+              <input type="hidden" name="transition" value="2">
+              <input type="hidden" name="KonturLink" value="{$tender_date['KonturLink']}">    
                     {if isset($input_inn)}
                        ИНН Заказчика : <input type="number" name="InnCustomer" value ="{$input_inn}">
                     {else} 
@@ -22,7 +23,7 @@
            {if isset($input_inn)}    
                   {if !isset($arr_inn_comp.0.inn)}          
                     Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
-                    <a href="?transition=3&back_transition=1&user={$userdata['user_login']}&InnCustomer={$input_inn}" > Добавить?</a>
+                    <a href="?transition=3&back_transition=2&user={$userdata['user_login']}&InnCustomer={$input_inn}" > Добавить?</a>
                   {else}
                     &nbsp
                   {/if}
@@ -34,7 +35,43 @@
 
         </form>
 </div>
+{*    ********************** Ввод Информации из парсера контур ********************} 
+ <div class="block green_object_kp">
+ <p class="zagolovok">Подтянуть данные с сайта контура</p>
+        <form enctype="multipart/form-data" action="" method="get">
+            <div class="input_form_left zhir">
+              <input type="hidden" name="user_login" value="{$userdata['user_login']}">
+              <input type="hidden" name="transition" value="2">
+              <input type="hidden" name="InnCustomer" value="{$InnCustomer}">   
+                    {if isset($tender_date['KonturLink'])}
+                       Ссылка на сайт: <input type="text" name="KonturLink" value ="{$tender_date['KonturLink']}">
+                    {else} 
+                       Ссылка на сайт: <input type="text" name="KonturLink" value ="">
+                    {/if}
+            </div>
+            <div class="input_form_left">
+              <input type="submit" value="Запросить данные">
+            </div>
+   
+    
+           <div class="red_string">
+              <p>
+           {if isset($input_inn)}    
+                  {if !isset($arr_inn_comp.0.inn)}          
+                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
+                    <a href="?transition=3&back_transition=2&user={$userdata['user_login']}&InnCustomer={$input_inn}" > Добавить?</a>
+                  {else}
+                    &nbsp
+                  {/if}
+          {else} 
+               &nbsp
+          {/if}                            
+              </p>
+            </div>
 
+        </form>
+</div>
+{******************************** наша форма ввода данных *********************************************}
 <form enctype="multipart/form-data" action="pdo_connect_db/insert_new_kp_in_reestr.php" method="post">
 
 
@@ -49,15 +86,14 @@
 
     <p class = "zhir">Источник КП :
         <select size="1" name="type_kp">
-          <option selected value="2">почта INFO</option>
-          <option value="3">Входящий звонок</option>
-          <option value="4">Старый клиент</option>
-          <option value="5">Нет данных</option>
+          <option selected value="6">объектное КП</option>
         </select>
     </p>
  </div>
 
  {*    ********************** НОМЕР КП  для КП при ручном вводе ********************} 
+ 
+
 <div id="type_kp_manual" class="block">
   <div class="input_form_left">
     <p class = "zhir">Номер КП из 1С: <input type="text" name="KpNumber" value =""></p>
@@ -70,10 +106,10 @@
         <p class ="zhir"> Дата КП : <input type="date" name="KpDate" value =""></p>
        </div>
          <div> 
-        *если окно пустое, то номер будет порядковый
-   </div>
+             *если окно пустое, то номер будет порядковый
+        </div>
 </div>
-
+{********************************  Данные о компании ********************************************************}
 <div class="block green_bgc">
  {*    ********************** Наименование Заказчика   ********************} 
 {if isset($arr_inn_comp.0.inn)}
@@ -102,6 +138,43 @@
  {*    ********************** Контактное лицо Заказчика   ********************} 
    <p class="pad5px width15 zhir">Контактное лицо   : <input type="text" name="ContactCustomer" value ="" size="70"></p>
 </div>
+
+ 
+{***************************************** Данные с сайта *********************************}
+<div class="block green_object_kp">
+ {*    ********************** Номер тендера   ********************} 
+{if isset($tender_date['tender_number'])}
+ <p class="pad5px width15 zhir">Номер тендера : <input disabled type="text"  value ="{$tender_date['tender_number']}" size="70">
+ <input hidden type="text" name="tender_number" value ="{$tender_date['tender_number']}" size="70">
+ </p>
+{else}
+ <p class="pad5px width15 zhir">Номер тендера : <input required type="text" name="tender_number" value ="" size="70"></p>
+{/if}
+
+
+ {*    ********************** Наименование тендера  ********************} 
+{if isset($tender_date['tender_descr'])}
+ <p class="pad5px width15 zhir">Наименование тендера : <textarea disabled name="tender_descr" value ="{$tender_date['tender_descr']}" cols="100" rows="3">{$tender_date['tender_descr']}</textarea></p>
+ 
+{else}
+<p class="pad5px width15 zhir">Наименование тендера : <input type="text" name="tender_descr" value ="" size="70" data-phone-pattern></p>
+{/if}
+ {*    ********************** НМЦК тендера   ********************} 
+ {if isset($tender_date['tender_begin_price'])}
+ <p class="pad5px width15 zhir">НМЦК тендер : <input disabled type="text" name="tender_begin_price" value ="{$tender_date['tender_begin_price']}" size="70"></p>
+ {else}
+ <p class="pad5px width15 zhir">НМЦК тендер : <input type="text" name="tender_begin_price" value ="" size="70"></p>
+
+ {/if}
+ {*    ********************** Ссылка в ЕИС   ********************} 
+ {if isset($tender_date['tender_link_eis'])}
+  <p class="pad5px width15 zhir">Ссылка в ЕИС : <input disabled type="text" name="tender_link_eis" value ="{$tender_date['tender_link_eis']}" size="70"></p>
+ {else}
+   <p class="pad5px width15 zhir">Ссылка в ЕИС : <input type="text" name="tender_link_eis" value ="" size="70"></p>
+ {/if}
+
+</div>
+
 
 
  {*    ********************** ВАЖНОСТЬ КП   ***************}    

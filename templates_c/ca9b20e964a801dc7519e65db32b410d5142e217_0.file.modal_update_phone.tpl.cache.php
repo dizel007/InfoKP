@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
+/* Smarty version 4.1.0, created on 2022-10-24 16:02:27
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_update_phone.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6356465ad49bd0_62064269',
+  'unifunc' => 'content_63568ce3219843_08950119',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6356465ad49bd0_62064269 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '2845138136356465ad3e043_87253274';
+function content_63568ce3219843_08950119 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '114646536963568ce3205fc2_98604381';
 if (($_smarty_tpl->tpl_vars['typeQuery']->value == 300)) {
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['telephons_company']->value, 'tel_value');
 $_smarty_tpl->tpl_vars['tel_value']->do_else = true;

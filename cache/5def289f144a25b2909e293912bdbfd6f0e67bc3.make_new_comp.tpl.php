@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 10:58:37
+/* Smarty version 4.1.0, created on 2022-10-24 15:01:59
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_comp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635645ad965ff1_72503013',
+  'unifunc' => 'content_63567eb763a2e5_09988346',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a718311828b1e58f9c749451e4f38740ee7956df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_comp.tpl',
-      1 => 1665739595,
+      1 => 1666609927,
       2 => 'file',
     ),
     '8ba03dffa35f7873a0e7e7c88c161c78dbd4bc92' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\header.tpl',
-      1 => 1666183842,
+      1 => 1666612736,
       2 => 'file',
     ),
     '7836b2791c5890d9da14a05c355283473a4630c1' => 
@@ -72,7 +72,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_635645ad965ff1_72503013 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63567eb763a2e5_09988346 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="ru">
 
@@ -91,8 +91,6 @@ function content_635645ad965ff1_72503013 (Smarty_Internal_Template $_smarty_tpl)
     <script type="text/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
     <!-- скрипт по выбору типа Фильтра в шапке  -->
     <script type="text/javascript" src="js/shapka_menu.js"></script>
-    <!-- скрипт по выбору типа КП при создании нового КП   -->
-    <script type="text/javascript" src="js/make_new_kp_type_kp.js"></script>
     <!-- скрипт для телефоной маски -->
      </head>
 
@@ -144,7 +142,7 @@ function content_635645ad965ff1_72503013 (Smarty_Internal_Template $_smarty_tpl)
    <p class="pad5px width15 zhir">Адрес Заказчика   : <input id="address" type="text" name="Adress" value ="" size="70"></p>
 
 
-
+<input type="hidden" name="back_transition" value="1"> 
 
   
  <p><input type="submit" value="Создать"></p>

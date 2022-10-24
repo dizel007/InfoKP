@@ -1,6 +1,9 @@
 <?php
 
 // Если Есть ИНН заходим сюда после проверки ИНН
+
+isset($_GET['back_transition'])?$back_transition=$_GET['back_transition']:$back_transition='';
+$smarty->assign("back_transition" , $back_transition);
 if (isset($_GET['InnCustomer'])) {
   $input_inn = $_GET['InnCustomer'];
   

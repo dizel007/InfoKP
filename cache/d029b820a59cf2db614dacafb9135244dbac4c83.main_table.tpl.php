@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 11:00:58
+/* Smarty version 4.1.0, created on 2022-10-24 14:18:26
   from 'C:\xampp\htdocs\InfoKP\templates\main_table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6356463a6c26e9_10410257',
+  'unifunc' => 'content_6356748210c1b5_89010833',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_6356463a6c26e9_10410257 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6356748210c1b5_89010833 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="">
         <div class="our_table">
@@ -946,10 +946,13 @@ function content_6356463a6c26e9_10410257 (Smarty_Internal_Template $_smarty_tpl)
 
 
 <!-- ***************************  Наименование покупателя  ***************************************** -->
-                          <td width ="150">234234</td>
+            
+                      <td width ="150" ><a href="1" alt="konturLink" target="_blank">234234</a>
+                      </td>
              <!-- ******************************  Icons konturLink   ***************************************************** -->
 
-                          <td><img class="" style = "opacity: 0.2" src="icons/kontur.png" alt="SeeLinkKontur"></td>
+            
+                  <td><a href= "1" alt="konturLink" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/kontur.png" alt="SeeLinkKontur"></a></td>
              
 
 <!-- ******************************  Icons Email  *********************************************** -->

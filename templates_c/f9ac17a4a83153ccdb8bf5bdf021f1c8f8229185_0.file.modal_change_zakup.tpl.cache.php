@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
+/* Smarty version 4.1.0, created on 2022-10-24 16:02:27
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_change_zakup.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6356465ad789d0_39028002',
+  'unifunc' => 'content_63568ce326b8d3_32957571',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6356465ad789d0_39028002 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '20464326926356465ad74b56_80134071';
+function content_63568ce326b8d3_32957571 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '84914519663568ce3263bd1_78906411';
 ?>
   <div class="dm-overlay js-modal " data-modal = "write_comment">
      <div class="dm-table">

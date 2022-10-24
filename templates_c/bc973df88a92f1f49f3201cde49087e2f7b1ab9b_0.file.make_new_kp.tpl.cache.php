@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
+/* Smarty version 4.1.0, created on 2022-10-24 15:02:07
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6356465ad036c0_80196982',
+  'unifunc' => 'content_63567ebf0a24a7_02735814',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1666180493,
+      1 => 1666609483,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6356465ad036c0_80196982 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '18188660106356465ace8135_91814739';
+function content_63567ebf0a24a7_02735814 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '192398979363567ebf08ec25_53234911';
 ?>
 <div class="zagolovok"> Создание нового КП </div>
   
@@ -49,7 +49,7 @@ $_smarty_tpl->compiled->nocache_hash = '18188660106356465ace8135_91814739';
            <?php if ((isset($_smarty_tpl->tpl_vars['input_inn']->value))) {?>    
                   <?php if (!(isset($_smarty_tpl->tpl_vars['arr_inn_comp']->value[0]['inn']))) {?>          
                     Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
-                    <a href="?transition=3&user=<?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_login'];?>
+                    <a href="?transition=3&back_transition=1&user=<?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_login'];?>
 &InnCustomer=<?php echo $_smarty_tpl->tpl_vars['input_inn']->value;?>
 " > Добавить?</a>
                   <?php } else { ?>
@@ -77,15 +77,14 @@ $_smarty_tpl->compiled->nocache_hash = '18188660106356465ace8135_91814739';
      
 <div class="block"> 
 
-<p class = "zhir">Источник КП :
-    <select size="1" name="type_kp" onchange="showhideTypeKP(this.value)">
-      <option selected value="2">почта INFO</option>
-      <option value="3">Входящий звонок</option>
-      <option value="4">Старый клиент</option>
-      <option value="5">Нет данных</option>
-      <option value="6">Объектное</option>
-    </select>
-</p>
+    <p class = "zhir">Источник КП :
+        <select size="1" name="type_kp">
+          <option selected value="2">почта INFO</option>
+          <option value="3">Входящий звонок</option>
+          <option value="4">Старый клиент</option>
+          <option value="5">Нет данных</option>
+        </select>
+    </p>
  </div>
 
   
@@ -105,27 +104,6 @@ $_smarty_tpl->compiled->nocache_hash = '18188660106356465ace8135_91814739';
         *если окно пустое, то номер будет порядковый
    </div>
 </div>
-
-
-  
-<div id="type_kp_object" class="block" style="display:none; background-color: darkCyan;">
-  <div class="input_form_left">
-    <p class = "zhir">Номер КП : <input type="text" name="KpNumberO" value =""></p>
-  </div>
- 
- 
- 
-      
-       <div>
-        <p class ="zhir"> Дата КП : <input type="date" name="KpDateO" value ="<?php echo $_smarty_tpl->tpl_vars['KpDateO']->value;?>
-"></p>
-       </div>
-         <div> 
-        *если окно пустое, то номер будет порядковый
-   </div>
-</div>
-
-
 
 <div class="block green_bgc">
   
