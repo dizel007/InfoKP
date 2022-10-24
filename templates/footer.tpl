@@ -1,4 +1,3 @@
-{*include file="modal_windows_inn_comp.tpl" title=foo*} <!-- модальные окна для правки по ИНН  -->
 
 {include file="_include_modal.tpl" title=foo} <!-- модальные окна для правки данных о компании -->
 

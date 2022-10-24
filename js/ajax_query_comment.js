@@ -2,10 +2,6 @@
 $('document').ready(function(){
   $('.btncommentClass').click(function(){   
 // Выгребаем все данные из таблицы
-
-    
-    var user_login = document.getElementById('js-modal-user-login').value;
-
         sel = document.getElementById("js-id");
     var id = sel.options[sel.selectedIndex].value;
         sel = document.getElementById("KpImportance");
@@ -29,14 +25,12 @@ $('document').ready(function(){
    var procent_work = sel.value;
    sel = document.getElementById("dateFinishContract");
    var dateFinishContract = sel.value;
-   var zeld = "ddddd";
 //    alert ('00 = ' + procent_work);
    $.ajax({  // отправляем запрос на обновление БД
-      url: "pdo_connect_db/update_all_zakup.php",
+      url: "changedb/update_all_zakup.php",
       method: 'POST',             /* Метод передачи (post или get) */
       dataType: 'html',
       data: {id:id,
-        user_login:user_login,
         KpImportance:KpImportance,
         Responsible:Responsible,
         Comment:Comment,
@@ -50,7 +44,7 @@ $('document').ready(function(){
         dateFinishContract:dateFinishContract,
       },
       success: function(data){
-        //    alert ('ОБНОВЛЕНИЕ ПРОШЛО УСПЕШНО  ' + data);
+           // alert ('ОБНОВЛЕНИЕ ПРОШЛО УСПЕШНО  ' + data);
         getParent('.is-show', '.js-modal');
         
         var obj = jQuery.parseJSON( data ); // парсим объем на переменные
@@ -119,21 +113,21 @@ $('document').ready(function(){
         sel.innerHTML = Adress;
         sel.style.color="blue";
 
-        // find= 'js-procent_work' + id;
-        // sel = document.getElementById(find);
-        // sel.innerHTML = procent_work;
-        // sel.style.color="blue";
+        find= 'js-procent_work' + id;
+        sel = document.getElementById(find);
+        sel.innerHTML = procent_work;
+        sel.style.color="blue";
 
 
-        // find= 'js-dateContract' + id;
-        // sel = document.getElementById(find);
-        // sel.innerHTML = dateContract;
-        // sel.style.color="blue";
+        find= 'js-dateContract' + id;
+        sel = document.getElementById(find);
+        sel.innerHTML = dateContract;
+        sel.style.color="blue";
 
-        // find= 'js-dateFinishContract' + id;
-        // sel = document.getElementById(find);
-        // sel.innerHTML = dateFinishContract;
-        // sel.style.color="blue";
+        find= 'js-dateFinishContract' + id;
+        sel = document.getElementById(find);
+        sel.innerHTML = dateFinishContract;
+        sel.style.color="blue";
 
 
       }

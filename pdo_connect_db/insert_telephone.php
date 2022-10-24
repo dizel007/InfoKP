@@ -27,34 +27,34 @@ InsertOurTelephoneInDB ($pdo, $new_telephone_arr);
 
 
 
-$stmt = "SELECT * FROM users WHERE user_hash = '$_COOKIE[hash]'";
+// $stmt = "SELECT * FROM users WHERE user_hash = '$_COOKIE[hash]'";
   
-$stmt = $pdo->prepare("SELECT user_login FROM users WHERE user_hash = '$_COOKIE[hash]'");
-$stmt->execute();
-$user_login_arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
-$user_login = $user_login_arr[0];
+// $stmt = $pdo->prepare("SELECT user_login FROM users WHERE user_hash = '$_COOKIE[hash]'");
+// $stmt->execute();
+// $user_login_arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
+// $user_login = $user_login_arr[0];
 
-$now_date = date('Y-m-d');
+// $now_date = date('Y-m-d');
   
-$db_comment="Нов. тел. :$new_telephone :";
-$db_comment.="контакт :".$contactName.";";
-$db_comment.=" коммент :".$commentPhone.";";
-$db_comment.=" актуал :".$actual.";";
+// $db_comment="Нов. тел. :$new_telephone :";
+// $db_comment.="контакт :".$contactName.";";
+// $db_comment.=" коммент :".$commentPhone.";";
+// $db_comment.=" актуал :".$actual.";";
  
 
-  $date_change = $now_date;
-  $id_item = $inn;
-  $what_change = 4; 
-  $comment_change = $db_comment; 
-  $author = $user_login;
-  //    require "update_reports.php";
+//   $date_change = $now_date;
+//   $id_item = $inn;
+//   $what_change = 4; 
+//   $comment_change = $db_comment; 
+//   $author = $user_login;
+//   //    require "update_reports.php";
     
-  $sql = "INSERT INTO `reports`(`id`, `date_change`, `id_item`, `what_change`, `comment_change`, `author`)
-    VALUES ('', '$date_change', '$id_item', '$what_change', '$comment_change', '$author')";
-  $query = $mysqli->query($sql);
-  if (!$query){
-   die("Соединение не удалось: (Добавление в реестр изменений) ");
-  }
+//   $sql = "INSERT INTO `reports`(`id`, `date_change`, `id_item`, `what_change`, `comment_change`, `author`)
+//     VALUES ('', '$date_change', '$id_item', '$what_change', '$comment_change', '$author')";
+//   $query = $mysqli->query($sql);
+//   if (!$query){
+//    die("Соединение не удалось: (Добавление в реестр изменений) ");
+//   }
 
 
 header ("Location: ../index.php?transition=10&id=".$id."&InnCustomer=".$InnCustomer);  // перенаправление на нужную страницу

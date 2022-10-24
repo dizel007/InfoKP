@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 15:05:46
+/* Smarty version 4.1.0, created on 2022-10-24 11:00:58
   from 'C:\xampp\htdocs\InfoKP\templates\info_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351399aee4c97_34257885',
+  'unifunc' => 'content_6356463a680057_01410187',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '08e4fb399655b78fd3a27bcf8906ffbb3fccec51' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\info_filtr.tpl',
-      1 => 1666258009,
+      1 => 1666358335,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_6351399aee4c97_34257885 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6356463a680057_01410187 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="reset_button">
   <a href="index.php" title="Вернуться к началу страницы">СБРОС</a>
 </div> 
@@ -30,7 +30,7 @@ function content_6351399aee4c97_34257885 (Smarty_Internal_Template $_smarty_tpl)
 <input hidden type="text" name="transition" value="7">
    
         <div class="mobile_web">
-            <select size="1" name="typeQuery" onchange="showhideBlocks(this.value)">
+            <select size="1" id="typeQuery" name="typeQuery" onchange="showhideBlocks(this.value)">
             <option disabled>Выберите параметр поиска</option>
             <option selected value="2">Номер КП</option>
             <option value="3">По Дате</option>
@@ -46,6 +46,7 @@ function content_6351399aee4c97_34257885 (Smarty_Internal_Template $_smarty_tpl)
         <div id="g_nomerKP" class="mobile_web">
             <label for="param"> Введите номер КП : </label>
             <input type="text" id="get_nomerKP" name="get_nomerKP" value = "">
+            <input hidden type="text" id="get_nomerKP_t" name="get_nomerKP" value = "">
         
         </div>
 
@@ -62,6 +63,8 @@ function content_6351399aee4c97_34257885 (Smarty_Internal_Template $_smarty_tpl)
         <div id="g_inn" class="mobile_web">
             <label for="param">Введите ИНН : </label>
             <input type="text" id="get_inn" name="get_inn" value = "">
+            <input hidden type="text" id="get_inn_t" name="get_inn" value = "">
+
         </div>
 
      

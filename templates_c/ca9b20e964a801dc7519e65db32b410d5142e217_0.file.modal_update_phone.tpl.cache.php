@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 15:05:47
+/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_update_phone.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351399b0b0155_97138849',
+  'unifunc' => 'content_6356465ad49bd0_62064269',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca9b20e964a801dc7519e65db32b410d5142e217' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\modal\\modal_update_phone.tpl',
-      1 => 1664864914,
+      1 => 1666271633,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6351399b0b0155_97138849 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '10397985586351399b0a0754_66942382';
+function content_6356465ad49bd0_62064269 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '2845138136356465ad3e043_87253274';
 if (($_smarty_tpl->tpl_vars['typeQuery']->value == 300)) {
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['telephons_company']->value, 'tel_value');
 $_smarty_tpl->tpl_vars['tel_value']->do_else = true;
@@ -35,11 +35,13 @@ if ($_smarty_tpl->tpl_vars['tel_value']->value['id'] == $_smarty_tpl->tpl_vars['
                   <a href="#close" class="close"></a>
       
       <div class ="center">ИЗМЕНЕНИЕ ДАННЫХ ТЕЛЕФОННОГО НОМЕРА<br><br></div>
-                  <form  action="changedb/update_telephone.php?id=<?php echo $_smarty_tpl->tpl_vars['id_phone']->value;?>
+                  <form  action="pdo_connect_db/update_telephone.php?id=<?php echo $_smarty_tpl->tpl_vars['id_phone']->value;?>
 " method="post">
  <table class="modal_tabel" width="100%" cellspacing="0" cellpadding="5">
  <caption>Наименование КОМПАНИИ: <?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['name'];?>
 </caption>
+ <input type="hidden" name="InnCustomer" value ="<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
+">
  <caption><b>Телефон: <?php echo $_smarty_tpl->tpl_vars['tel_value']->value['telephone'];?>
 </b></caption>
 

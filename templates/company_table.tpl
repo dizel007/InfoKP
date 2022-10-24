@@ -12,11 +12,11 @@
            
              </td>
              <td width="32">
-             <a href="?transition=10&id={$id}&inn={$company_arr[0]['inn']}&typeQuery=309#win309"><img src ="icons/table/plus.png"></a>
+             <a href="?transition=10&id={$id}&InnCustomer={$company_arr[0]['inn']}&typeQuery=309#win309"><img src ="icons/table/plus.png"></a>
              </td>
              <td>Емайл</td>
              <td width="32">
-             <a href="?transition=10&id={$id}&inn={$company_arr[0]['inn']}&typeQuery=409#win409"><img src ="icons/table/plus.png"></a>
+             <a href="?transition=10&id={$id}&InnCustomer={$company_arr[0]['inn']}&typeQuery=409#win409"><img src ="icons/table/plus.png"></a>
              </td>
              <td>Контактное лицо</td>
              <td width = "160">Адрес</td>
@@ -148,7 +148,7 @@
 
 <!-- *********************  Корректировка данных компании ********************* -->
              <td width="20">
-             <a href="?id={$id}&inn={$inn}&typeQuery=200#win8" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png" alt="formatZakup"></a>
+             <a href="?transition=10&id={$id}&InnCustomer={$company_arr[0]['inn']}&typeQuery=200#win8" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png" alt="formatZakup"></a>
              </td>
           </tr>
 

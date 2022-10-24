@@ -10,7 +10,7 @@
 <input hidden type="text" name="transition" value="7">
 {* *******************  Меня Выбора параметр поиска       ************************** *}   
         <div class="mobile_web">
-            <select size="1" name="typeQuery" onchange="showhideBlocks(this.value)">
+            <select size="1" id="typeQuery" name="typeQuery" onchange="showhideBlocks(this.value)">
             <option disabled>Выберите параметр поиска</option>
             <option selected value="2">Номер КП</option>
             <option value="3">По Дате</option>
@@ -27,6 +27,7 @@
         <div id="g_nomerKP" class="mobile_web">
             <label for="param"> Введите номер КП : </label>
             <input type="text" id="get_nomerKP" name="get_nomerKP" value = "{$get_nomerKP}">
+            <input hidden type="text" id="get_nomerKP_t" name="get_nomerKP" value = "{$get_nomerKP}">
         
         </div>
 
@@ -45,6 +46,8 @@
         <div id="g_inn" class="mobile_web">
             <label for="param">Введите ИНН : </label>
             <input type="text" id="get_inn" name="get_inn" value = "{$get_inn}">
+            <input hidden type="text" id="get_inn_t" name="get_inn" value = "{$get_inn}">
+
         </div>
 
  {* *******************  Меня ввода ID КП     ************************** *}

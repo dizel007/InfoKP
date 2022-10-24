@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 15:05:46
+/* Smarty version 4.1.0, created on 2022-10-24 11:00:58
   from 'C:\xampp\htdocs\InfoKP\templates\info_setup_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351399af1f628_43573275',
+  'unifunc' => 'content_6356463a69b5d8_52649623',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,11 +18,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_6351399af1f628_43573275 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6356463a69b5d8_52649623 (Smarty_Internal_Template $_smarty_tpl) {
 ?> 
 
 <div class = "filter_p">
-ФИЛЬТР: <b>1</b> КП:
+ФИЛЬТР: <b>17</b> КП:
 
 </div><?php }
 }

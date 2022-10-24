@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 15:05:47
+/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
   from 'C:\xampp\htdocs\InfoKP\templates\_include_modal.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351399b0757c8_58923050',
+  'unifunc' => 'content_6356465ad2a7c9_73663800',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -25,8 +25,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:modal/modal_update_infocomp.tpl' => 1,
   ),
 ),false)) {
-function content_6351399b0757c8_58923050 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '20022151566351399b071945_99355686';
+function content_6356465ad2a7c9_73663800 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '18519427636356465ad26944_19016809';
 $_smarty_tpl->_subTemplateRender("file:modal/modal_insert_phone.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);
 ?> <!-- модальные окна для вставки телефонов -->
 <?php $_smarty_tpl->_subTemplateRender("file:modal/modal_update_phone.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array('title'=>'foo'), 0, false);

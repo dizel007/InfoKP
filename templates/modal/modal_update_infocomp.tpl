@@ -6,14 +6,14 @@
           <div class="dm-cell">
               <div class="dm-modal">
                   <a href="#close" class="close"></a>
-      <form  action="changedb/update_inn_company.php?id={$id}&typeQuery=200" method="post">
+      <form  action="pdo_connect_db/update_info_company.php?id={$id}&typeQuery=200" method="post">
  <table class="modal_tabel" width="100%" cellspacing="0" cellpadding="5">
 
        <tr> 
           <td width="200" valign="top">ИНН КОМПАНИИ</td>
           <td valign="top">{$company_arr[0]['inn']}</td>
           <td> 
-             <input type="hidden" name="inn" value="{$company_arr[0]['inn']}">
+             <input type="hidden" name="InnCustomer" value="{$company_arr[0]['inn']}">
           </td>
       </tr>
       <tr> 

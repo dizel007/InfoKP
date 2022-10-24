@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 15:05:47
+/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_update_email.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351399b0e2de5_56690424',
+  'unifunc' => 'content_6356465ad612d9_05786085',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '64f60af789294901fb808271dbe3930a5c3996a9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\modal\\modal_update_email.tpl',
-      1 => 1664865086,
+      1 => 1666344026,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6351399b0e2de5_56690424 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '7283561826351399b0db0e8_98048399';
+function content_6356465ad612d9_05786085 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '3374922426356465ad5d456_08853491';
 ?>
  <?php if ($_smarty_tpl->tpl_vars['typeQuery']->value == 400) {?>
 
@@ -39,12 +39,13 @@ $_smarty_tpl->tpl_vars['email_value']->do_else = false;
                   <a href="#close" class="close"></a>
       
       <div class ="center">ИЗМЕНЕНИЕ ДАННЫХ EMAIL<br><br></div>
-                  <form  action="changedb/update_email.php?id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+                  <form  action="pdo_connect_db/update_email.php?id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 " method="post">
  <table class="modal_tabel" width="100%" cellspacing="0" cellpadding="5">
  <caption>Наименование КОМПАНИИ: <?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['name'];?>
 </caption>
- 
+  <input type="hidden" name="InnCustomer" value ="<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
+">
  <caption><b>Email: <?php echo $_smarty_tpl->tpl_vars['email_value']->value['email'];?>
 </b></caption>
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 15:05:47
+/* Smarty version 4.1.0, created on 2022-10-24 10:59:53
   from 'C:\xampp\htdocs\InfoKP\templates\company_table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351399b0563c7_10110294',
+  'unifunc' => 'content_635645f9ef1672_90404215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ce1cf0ac012a181703be25134719845597c5462b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\company_table.tpl',
-      1 => 1666262310,
+      1 => 1666344454,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6351399b0563c7_10110294 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1277839846351399b02b431_81059377';
+function content_635645f9ef1672_90404215 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '328917866635645f9ece3e9_11453473';
 ?>
 <div class="zagolovok">
         <?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['name'];?>
@@ -39,13 +39,13 @@ $_smarty_tpl->compiled->nocache_hash = '1277839846351399b02b431_81059377';
              </td>
              <td width="32">
              <a href="?transition=10&id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
-&inn=<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
+&InnCustomer=<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
 &typeQuery=309#win309"><img src ="icons/table/plus.png"></a>
              </td>
              <td>Емайл</td>
              <td width="32">
              <a href="?transition=10&id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
-&inn=<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
+&InnCustomer=<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
 &typeQuery=409#win409"><img src ="icons/table/plus.png"></a>
              </td>
              <td>Контактное лицо</td>
@@ -215,8 +215,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 <!-- *********************  Корректировка данных компании ********************* -->
              <td width="20">
-             <a href="?id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
-&inn=<?php echo $_smarty_tpl->tpl_vars['inn']->value;?>
+             <a href="?transition=10&id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+&InnCustomer=<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
 &typeQuery=200#win8" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png" alt="formatZakup"></a>
              </td>
           </tr>

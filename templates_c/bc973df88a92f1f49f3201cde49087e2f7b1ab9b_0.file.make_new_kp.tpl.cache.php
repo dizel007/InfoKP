@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 12:21:46
+/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351132ab53642_93208171',
+  'unifunc' => 'content_6356465ad036c0_80196982',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6351132ab53642_93208171 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '12301850626351132ab3fdc1_51832860';
+function content_6356465ad036c0_80196982 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '18188660106356465ace8135_91814739';
 ?>
 <div class="zagolovok"> Создание нового КП </div>
   

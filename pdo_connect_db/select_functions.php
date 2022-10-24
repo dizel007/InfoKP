@@ -37,9 +37,9 @@ function GetUserByUser_login($pdo,$user_login) {
   return $arr;
 }
 
-//  Получаем КП по ИНН
+//  ********************************* Получаем КП по ИНН *******************************
   function GetKPByInn($pdo,$inn) {
-    $stmt = $pdo->prepare("SELECT * FROM reestrkp WHERE InnCustomer = ?");
+    $stmt = $pdo->prepare("SELECT * FROM reestrkp WHERE InnCustomer = ? ORDER BY KpData DESC , CHAR_LENGTH(`KpNumber`) DESC, KpNumber DESC");
     $stmt->execute([$inn]);
     $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $arr;
@@ -103,42 +103,17 @@ function GetOneItem($pdo,$id) {
 }
 
 // Получаем все активные состояния КП из БД
-function GetAll_Condition_kp($pdo) {
-  $stmt = $pdo->prepare("SELECT * FROM condition_kp WHERE `active` = ?");
-  $stmt->execute([
-    1,
-      ]);
-  $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// echo "<pre>";
-// print_r($arr);
-// echo "<pre>";
-//   die('CONDIOIM');
-  return $arr;
-}
+// function GetAll_Condition_kp($pdo) {
+//   $stmt = $pdo->prepare("SELECT * FROM condition_kp WHERE `active` = ?");
+//   $stmt->execute([
+//     1,
+//       ]);
+//   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//   return $arr;
+// }
 
 
 
-
-
-
-// ОБРАЗЕЦ ЗАПРОСА 
-  function GetAll22222Products($pdo) {
-    try {  
-      $pdo = new PDO('mysql:host=localhost;dbname=drain_prices;charset=utf8mb4', 'root', '');
-      
-      } catch (PDOException $e) {
-        print "Has errors: " . $e->getMessage();  die();
-      }
-      
-      $article = "";
-      $stmt = $pdo->prepare("SELECT * FROM catalog WHERE `article` = ?");
-      $stmt->execute([
-          $article,
-      ]);
-      $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-     
-    return $arr;
-  }
 
 
 

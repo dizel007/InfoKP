@@ -49,24 +49,6 @@ if (!$stmt) {
 
 }
 
-function InsertOurEmailInDB ($mysqli,$inn, $new_email){
-  // Вычитываем все телефоны с таким ИНН
-   
-  $commentEmail="";
-  $today = date("Y-m-d H:i:s"); 
-  $actual_email="";
-
-  $sql_insert_email  = "INSERT INTO `email`(`id`, `inn`, `email`, `comment`,`date_write`, `actual`)
-  VALUES ('','$inn','$new_email','$commentEmail','$today','$actual_email')";
-$query = $mysqli->query($sql_insert_email);
-if (!$query) {
-echo "WE ARE DIE <br>";
-die(mysqli_error($mysqli));
-printf("Соединение не удалось: ");
-}
- 
-}
-
 function telephoneMake($value) {
   $value = preg_replace('/[^0-9]/', '', $value);
   $value = preg_replace('/[D]/', '', $value);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 15:05:47
+/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
   from 'C:\xampp\htdocs\InfoKP\templates\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351399b138cf6_21809794',
+  'unifunc' => 'content_6356465ad806d0_01832326',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7836b2791c5890d9da14a05c355283473a4630c1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\footer.tpl',
-      1 => 1666258902,
+      1 => 1666334975,
       2 => 'file',
     ),
     'e1f9b87fbfd6a394bc0d9bf780ab3e6139aa7c20' => 
@@ -30,25 +30,25 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'ca9b20e964a801dc7519e65db32b410d5142e217' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\modal\\modal_update_phone.tpl',
-      1 => 1664864914,
+      1 => 1666271633,
       2 => 'file',
     ),
     'f5ed88b1e15f7fb9ba237f055fbfef5952244119' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\modal\\modal_insert_email.tpl',
-      1 => 1664865026,
+      1 => 1666342347,
       2 => 'file',
     ),
     '64f60af789294901fb808271dbe3930a5c3996a9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\modal\\modal_update_email.tpl',
-      1 => 1664865086,
+      1 => 1666344026,
       2 => 'file',
     ),
     'b034db4e8284d7f4a40539939a13d42f9f1b2680' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\modal\\modal_update_infocomp.tpl',
-      1 => 1664865156,
+      1 => 1666346222,
       2 => 'file',
     ),
     'f9ac17a4a83153ccdb8bf5bdf021f1c8f8229185' => 
@@ -60,95 +60,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_6351399b138cf6_21809794 (Smarty_Internal_Template $_smarty_tpl) {
-?> <!-- модальные окна для правки по ИНН  -->
-
+function content_6356465ad806d0_01832326 (Smarty_Internal_Template $_smarty_tpl) {
+?>
    <!-- модальные окна для вставки телефонов -->
-  <div class="dm-overlay" id="win300">
-      <div class="dm-table">
-          <div class="dm-cell">
-              <div class="dm-modal">
-                  <a href="#close" class="close"></a>
-      
-      <div class ="center">ИЗМЕНЕНИЕ ДАННЫХ ТЕЛЕФОННОГО НОМЕРА<br><br></div>
-                  <form  action="changedb/update_telephone.php?id=4694" method="post">
- <table class="modal_tabel" width="100%" cellspacing="0" cellpadding="5">
- <caption>Наименование КОМПАНИИ: ООО «ТД «АНМАКС»</caption>
- <caption><b>Телефон: +7(234) 245-34-53</b></caption>
-
-      <tr> 
-        <td> 
-             <input type="hidden" name="id_phone_cor" value="4694">
-        </td>
-        <td> 
-          <!-- передаем id  чтобы знать куда вернуться -->
-             <input type="hidden" name="id" value="3649">   
-        </td>
-      </tr>
-      
-      <tr>           
-        <td valign="top">WhatsApp</td>
-        <td valign="top"></td>
-        <td> 
-                  <select size="1" name="whatsapp">
-                      <option selected value = ""></option>
-                      <option value="1">есть</option>
-                      <option value="0">нет</option>
-                  </select>
-            
-          </td>
-    </tr>
-
-    <tr >           
-        <td valign="top">Актуальность номера</td>
-
-
-
-        <td valign="top"></td>
-         <td> 
-            
-                  <select id="js-phone-num" size="1" name="actual_phone">
-                      <option id="js-new-modal-" selected value = ""></option>
-                      <option value="Актуальный">Актуальный</option>
-                      <option value="Неактуальный">Неактуальный</option>
-                      <option value="Не звонить">Не звонить</option>
-                      <option value="Новый">Новый</option>
-                      <option value=""></option>
-                </select>
-            
-          </td>
-    </tr>
-
-     <tr> 
-          <td width="200" valign="top">Контактное Лицо</td>
-          <td valign="top"></td>
-          <td>   
-              <textarea name="contactName" rows="1" cols="30"></textarea>
-         </td>
-     </tr>
-  
-     <tr> 
-          <td width="200" valign="top">Коментарий</td>
-          <td valign="top"></td>
-          <td>   
-              <p>    
-                <textarea name="commentPhone" rows="3" cols="30"></textarea>
-              </p>
-         </td>
-      </tr>
-
-
-                           
- 
-           </table>
-                                    
-       <p><input type="submit" value="Отправить"></p>
-      </form>
-     </div>
-       </div>
-   </div>
-  </div>
-  <!-- модальные окна для изменения телефонов -->
+ <!-- модальные окна для изменения телефонов -->
  <!-- модальные окна для вставки email -->
   <!-- модальные окна для изменения email -->
 <!-- Корректировка данных о Компании -->
@@ -166,7 +81,11 @@ function content_6351399b138cf6_21809794 (Smarty_Internal_Template $_smarty_tpl)
 
   <div>
     <select id = "js-id" name="id">
-      <option id ="js-new-modal-id" value ="$id">3649</option>
+      <option id ="js-new-modal-id" value ="$id"><br />
+<b>Notice</b>:  Undefined index: id in <b>C:\xampp\htdocs\InfoKP\templates_c\f9ac17a4a83153ccdb8bf5bdf021f1c8f8229185_0.file.modal_change_zakup.tpl.cache.php</b> on line <b>36</b><br />
+<br />
+<b>Notice</b>:  Trying to get property 'value' of non-object in <b>C:\xampp\htdocs\InfoKP\templates_c\f9ac17a4a83153ccdb8bf5bdf021f1c8f8229185_0.file.modal_change_zakup.tpl.cache.php</b> on line <b>36</b><br />
+</option>
             
     </select>
   </div>

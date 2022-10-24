@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 15:05:47
+/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_update_infocomp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351399b0fa4e1_92589260',
+  'unifunc' => 'content_6356465ad6ce57_62225374',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b034db4e8284d7f4a40539939a13d42f9f1b2680' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\modal\\modal_update_infocomp.tpl',
-      1 => 1664865156,
+      1 => 1666346222,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6351399b0fa4e1_92589260 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '3628169696351399b0f6665_44974568';
+function content_6356465ad6ce57_62225374 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '13193419946356465ad68fd9_32231359';
 ?>
 <!-- Корректировка данных о Компании -->
 <?php if (($_smarty_tpl->tpl_vars['typeQuery']->value == 200)) {?>
@@ -31,7 +31,7 @@ $_smarty_tpl->compiled->nocache_hash = '3628169696351399b0f6665_44974568';
           <div class="dm-cell">
               <div class="dm-modal">
                   <a href="#close" class="close"></a>
-      <form  action="changedb/update_inn_company.php?id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+      <form  action="pdo_connect_db/update_info_company.php?id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 &typeQuery=200" method="post">
  <table class="modal_tabel" width="100%" cellspacing="0" cellpadding="5">
 
@@ -40,7 +40,7 @@ $_smarty_tpl->compiled->nocache_hash = '3628169696351399b0f6665_44974568';
           <td valign="top"><?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
 </td>
           <td> 
-             <input type="hidden" name="inn" value="<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
+             <input type="hidden" name="InnCustomer" value="<?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['inn'];?>
 ">
           </td>
       </tr>

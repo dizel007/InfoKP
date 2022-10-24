@@ -19,9 +19,24 @@ $smarty->assign("telephons_company",$telephons_company);
 
 $emails_company = GetEmailByInn($pdo,$InnCustomer); //Получили все email о компании с таким ИНН
 $smarty->assign("emails_company",$emails_company);
-// echo "<pre>";
-// print_r ($company_arr);
-// echo "<pre>";
-// отображает информацию о компании только если есть ИНН
-isset($company_arr[0])?$smarty->display('company_table.tpl'):$zzz=1; // 
 
+// отображает информацию о компании только если есть ИНН
+if (isset($company_arr[0])) {
+  $smarty->display('company_table.tpl'); 
+
+// ***** Если есть ИНН ,Получаем остальные КП по ИНН и убирааем ранее выведенное 
+  $KpByInn_temp = GetKPByInn($pdo,$InnCustomer);
+  foreach ($KpByInn_temp as $value) {
+    if ($value['id'] != $id) {
+      $KpByInn[] = $value;
+    }
+  }
+
+    if (isset($KpByInn)) {
+      SetParametrsTable($smarty, $KpByInn);
+      $KpCount = count($KpByInn); // количество выводимых КП
+      $end_item_on_page =   $KpCount-1; // вывод неачинается с 0 
+      $smarty->assign("end_item_on_page", $end_item_on_page);
+      $smarty->display('main_table.tpl'); // выводим данные о выбранном КП
+    }
+}

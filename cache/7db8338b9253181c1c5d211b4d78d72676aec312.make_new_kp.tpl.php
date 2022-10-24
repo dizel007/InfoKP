@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-20 12:21:46
+/* Smarty version 4.1.0, created on 2022-10-24 11:01:30
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6351132ab5f1c6_99212717',
+  'unifunc' => 'content_6356465ad0f243_32523520',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_6351132ab5f1c6_99212717 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6356465ad0f243_32523520 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="zagolovok"> Создание нового КП </div>
   
 <div class="block">
@@ -27,7 +27,8 @@ function content_6351132ab5f1c6_99212717 (Smarty_Internal_Template $_smarty_tpl)
             <div class="input_form_left zhir">
               <input type="hidden" name="user_login" value="zeld">
               <input type="hidden" name="transition" value="1">   
-                                           ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
+                     
+                       ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
                                 </div>
             <div class="input_form_left">
               <input type="submit" value="Запросить ИНН">
@@ -36,11 +37,9 @@ function content_6351132ab5f1c6_99212717 (Smarty_Internal_Template $_smarty_tpl)
     
            <div class="red_string">
               <p>
-               
-                            
-                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
-                    <a href="?transition=3&user=zeld&InnCustomer=" > Добавить?</a>
-                                                        
+            
+               &nbsp
+                                      
               </p>
             </div>
 

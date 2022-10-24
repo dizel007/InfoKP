@@ -8,9 +8,10 @@
                   <a href="#close" class="close"></a>
       
       <div class ="center">ИЗМЕНЕНИЕ ДАННЫХ ТЕЛЕФОННОГО НОМЕРА<br><br></div>
-                  <form  action="changedb/update_telephone.php?id={$id_phone}" method="post">
+                  <form  action="pdo_connect_db/update_telephone.php?id={$id_phone}" method="post">
  <table class="modal_tabel" width="100%" cellspacing="0" cellpadding="5">
  <caption>Наименование КОМПАНИИ: {$company_arr[0]['name']}</caption>
+ <input type="hidden" name="InnCustomer" value ="{$company_arr[0]['inn']}">
  <caption><b>Телефон: {$tel_value['telephone']}</b></caption>
 
       <tr> 
