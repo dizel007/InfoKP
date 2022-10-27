@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 16:02:27
+/* Smarty version 4.1.0, created on 2022-10-27 16:11:29
   from 'C:\xampp\htdocs\InfoKP\templates\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63568ce3277457_17388643',
+  'unifunc' => 'content_635a83818456b8_53148173',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -60,7 +60,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_63568ce3277457_17388643 (Smarty_Internal_Template $_smarty_tpl) {
+function content_635a83818456b8_53148173 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
    <!-- модальные окна для вставки телефонов -->
  <!-- модальные окна для изменения телефонов -->
@@ -124,7 +124,6 @@ function content_63568ce3277457_17388643 (Smarty_Internal_Template $_smarty_tpl)
                        <option value="Гуц">Гуц</option>
                        <option value="Штыбко">Штыбко</option>
                        <option value="Кулиев">Кулиев</option>
-                       <option value="Кверти">Кверти</option>
                        <option value="Лобов">Лобов</option>
               </select>
   </p>

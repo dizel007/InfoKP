@@ -11,10 +11,13 @@ if ($id <> ''){
 }
 } else {
 // выбираем все КП по фильтру
+
     $array_with_all_kp_temp = GetSelectedKP($pdo,$sql);
     if (count($array_with_all_kp_temp) == '') {
-       echo (' НЕТ ДАННЫХ ДЛЯ ВЫВОДА ALL KP');
-   }
+      // $smarty->assign('alarm_message', 'Нет КП по выбранным параметрам');
+      // $smarty->assign('back_adress', 'Нет КП по выбранным параметрам');
+      // $smarty->display('alarm_message.tpl');
+    }
 }
 
 

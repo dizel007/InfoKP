@@ -10,15 +10,22 @@ $InnCustomer = $_POST['InnCustomer'];
 $stmt = $pdo->prepare("SELECT * FROM inncompany WHERE inn = ?");
 $stmt->execute([$InnCustomer]);
 $TempInnComp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 // если ИНН существет, то уходим на создание КП
 if ($TempInnComp[0]['inn'] == $InnCustomer) {
-  header("Location: ../index.php?transition=1&InnCustomer=".$InnCustomer);
+  
+  header("Location: ../index.php?transition=$back_transition&&InnCustomer=".$InnCustomer);
+  die('Компания с таким ИНН уже вуществует');
 }
+
 $KppCustomer = $_POST['KppCustomer'];
 // ******************* делаем запрос, чтобы узнать есть ли у нас в БД этот ИНН ********
 $NameCustomer_temp = $_POST['NameCustomer'];
 
 $NameCustomer = str_replace('"', '«', $NameCustomer_temp, $count);
+
 
 //  ********** делаем костыль чтобы убрать двойные ковычки из названий компаний ************
 for ($i = 0; $i < mb_strlen($NameCustomer); $i++) {
@@ -38,6 +45,18 @@ $EmailCustomer = $_POST['EmailCustomer'];
 $adress = $_POST['Adress'];
 $date_write = date('Y-m-d');
 $CommentCustomer='';
+
+
+
+// echo "<pre>";
+// print_r($adress);
+// echo "<br>";
+// print_r($date_write);
+// echo "<pre>";
+
+
+// die('2222222');
+
 
 // **************** вставляем каждый параметр  данных  *********************
 $stmt  = $pdo->prepare("INSERT INTO `inncompany` 
@@ -59,6 +78,9 @@ if ($stmt ->execute()) {
   $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
   // echo "Запись УДАЧНО добавлена successfully";
 } else {
+  // $stmp->errorInfo();
+  echo "fff";
+  $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
   die (" ** DIE ** Не получилось добавить данные о компании, INSERT новой компании по ИНН");
 }
 

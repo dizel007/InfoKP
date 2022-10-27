@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 14:18:26
+/* Smarty version 4.1.0, created on 2022-10-27 14:58:16
   from 'C:\xampp\htdocs\InfoKP\templates\main_table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635674820fc7b9_13164066',
+  'unifunc' => 'content_635a72581b0b15_41987418',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2a3ee42a6e1fe522fa74dfe4cef0de4bea90d699' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\main_table.tpl',
-      1 => 1666099721,
+      1 => 1666854165,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635674820fc7b9_13164066 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1973648307635674820d9525_91661945';
+function content_635a72581b0b15_41987418 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '1736798346635a7258195582_89019848';
 ?>
 
 <div class="">
@@ -37,6 +37,7 @@ $_smarty_tpl->compiled->nocache_hash = '1973648307635674820d9525_91661945';
                <td width ="60" >Дата КП</td>
                <td width ="70" class="hidden_class_column">ИНН</td>
                <td>PDF</td>
+               <td>Тип</td>
                <td>Наименование</td>
                <td>Кон</td>
                <td>EM</td>
@@ -140,13 +141,25 @@ if (($_prefixVariable4 == 1)) {?>
          <?php } else { ?> 
        <td><img style = "opacity: 0.2" src="icons/table/pdf.png" alt="Excel"></td>
         <?php }?> 
-
+<!-- ***************************  Тип Прихода КП  ***************************************** -->
+         <?php ob_start();
+echo $_smarty_tpl->tpl_vars['array_with_all_kp']->value[$_smarty_tpl->tpl_vars['i']->value]['type_kp'];
+$_prefixVariable5 = ob_get_clean();
+if (($_prefixVariable5 > 0)) {?> 
+            <td>
+            <img class="scale11" style = "opacity: 0.8" src="icons/type_kp/<?php echo $_smarty_tpl->tpl_vars['array_with_all_kp']->value[$_smarty_tpl->tpl_vars['i']->value]['type_kp'];?>
+.png" alt="<?php echo $_smarty_tpl->tpl_vars['array_with_all_kp']->value[$_smarty_tpl->tpl_vars['i']->value]['type_kp'];?>
+">
+             </td>
+           <?php } else { ?>  
+           <td></td>
+          <?php }?>
 
 <!-- ***************************  Наименование покупателя  ***************************************** -->
            <?php ob_start();
 echo $_smarty_tpl->tpl_vars['array_with_all_kp']->value[$_smarty_tpl->tpl_vars['i']->value]['konturLink'];
-$_prefixVariable5 = ob_get_clean();
-if (($_prefixVariable5 <> '')) {?> 
+$_prefixVariable6 = ob_get_clean();
+if (($_prefixVariable6 <> '')) {?> 
                       <td width ="150" ><a href="<?php echo $_smarty_tpl->tpl_vars['array_with_all_kp']->value[$_smarty_tpl->tpl_vars['i']->value]['konturLink'];?>
 " alt="konturLink" target="_blank"><?php echo $_smarty_tpl->tpl_vars['array_with_all_kp']->value[$_smarty_tpl->tpl_vars['i']->value]['NameCustomer'];?>
 </a>
@@ -159,8 +172,8 @@ if (($_prefixVariable5 <> '')) {?>
 
            <?php ob_start();
 echo $_smarty_tpl->tpl_vars['array_with_all_kp']->value[$_smarty_tpl->tpl_vars['i']->value]['konturLink'];
-$_prefixVariable6 = ob_get_clean();
-if (($_prefixVariable6 <> '')) {?> 
+$_prefixVariable7 = ob_get_clean();
+if (($_prefixVariable7 <> '')) {?> 
                   <td><a href= "<?php echo $_smarty_tpl->tpl_vars['array_with_all_kp']->value[$_smarty_tpl->tpl_vars['i']->value]['konturLink'];?>
 " alt="konturLink" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/kontur.png" alt="SeeLinkKontur"></a></td>
              <?php } else { ?>

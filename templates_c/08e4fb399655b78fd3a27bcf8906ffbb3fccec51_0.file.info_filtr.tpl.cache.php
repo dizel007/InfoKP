@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 14:18:26
+/* Smarty version 4.1.0, created on 2022-10-27 14:58:15
   from 'C:\xampp\htdocs\InfoKP\templates\info_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63567482093016_09962575',
+  'unifunc' => 'content_635a7257e668f6_64658768',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '08e4fb399655b78fd3a27bcf8906ffbb3fccec51' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\info_filtr.tpl',
-      1 => 1666358335,
+      1 => 1666863495,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63567482093016_09962575 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '37558008163567482087495_90859393';
+function content_635a7257e668f6_64658768 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '1964195361635a7257e56ef7_63346827';
 ?>
 <div class="reset_button">
   <a href="index.php" title="Вернуться к началу страницы">СБРОС</a>
@@ -51,7 +51,7 @@ $_smarty_tpl->compiled->nocache_hash = '37558008163567482087495_90859393';
             <label for="param"> Введите номер КП : </label>
             <input type="text" id="get_nomerKP" name="get_nomerKP" value = "<?php echo $_smarty_tpl->tpl_vars['get_nomerKP']->value;?>
 ">
-            <input hidden type="text" id="get_nomerKP_t" name="get_nomerKP" value = "<?php echo $_smarty_tpl->tpl_vars['get_nomerKP']->value;?>
+            <input hidden type="text" id="get_nomerKP_t" name="get_nomerKP_t" value = "<?php echo $_smarty_tpl->tpl_vars['get_nomerKP']->value;?>
 ">
         
         </div>
@@ -72,7 +72,7 @@ $_smarty_tpl->compiled->nocache_hash = '37558008163567482087495_90859393';
             <label for="param">Введите ИНН : </label>
             <input type="text" id="get_inn" name="get_inn" value = "<?php echo $_smarty_tpl->tpl_vars['get_inn']->value;?>
 ">
-            <input hidden type="text" id="get_inn_t" name="get_inn" value = "<?php echo $_smarty_tpl->tpl_vars['get_inn']->value;?>
+            <input hidden type="text" id="get_inn_t" name="get_inn_t" value = "<?php echo $_smarty_tpl->tpl_vars['get_inn']->value;?>
 ">
 
         </div>

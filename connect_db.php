@@ -39,7 +39,7 @@ date_default_timezone_set('Europe/Moscow');
 require 'libs/Smarty.class.php';
 $smarty = new Smarty;
 $smarty->force_compile = true;
-$smarty->debugging =  False; // старт консоли отладчика
+$smarty->debugging =  false; // старт консоли отладчика
 $smarty->caching = true;
 $smarty->cache_lifetime = 120;
 // **************************************

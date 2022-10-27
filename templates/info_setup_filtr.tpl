@@ -1,7 +1,14 @@
 {* Настройка строки с отображением ФИЛЬТРа*} 
 
 <div class = "filter_p">
-ФИЛЬТР: <b>{$kpCount}</b> КП:
+ФИЛЬТР : 
+{if isset($kpCount)}
+<b>{$kpCount}</b> КП:</b>
+{else}
+<b>0*</b> КП:</b>
+{/if}
+
+
 {if $get_nomerKP<>''}
 <i>Номер КП :<b>{$get_nomerKP}</b></i>
 {/if}

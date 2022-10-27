@@ -298,7 +298,7 @@ $NameCustomer = str_replace('"', '', $NameCustomer);
 $NameCustomer = str_replace('«', '', $NameCustomer);
 $NameCustomer = str_replace('»', '', $NameCustomer);
 
-$KpFileName= "№".$comparr['KpNumber']." от ".$comparr['KpDate']." ".$NameCustomer." от ООО ТД АНМКАС".".xlsx";
+$KpFileName= "№".$comparr['KpNumber']." от ".$comparr['KpDate']." ".$NameCustomer." от ООО ТД АНМАКС".".xlsx";
 
 $objWriter->save('../EXCEL/'.$KpFileName);
 // $file_name_schet = "../SCHET/"."Счет на оплату № ТО-".$nomer_schet." от ".$schet_date."(".$arr_inn[0]['name'].").xlsx";

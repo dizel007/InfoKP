@@ -6,8 +6,8 @@ require_once "../connect_db.php";
 $id = $_POST['id'];
 $id = htmlspecialchars($id);
 
-$user_login = $_POST['user_login']; // Получаем имя пользователья
-
+// $user_login = $_POST['user_login']; // Получаем имя пользователья
+$user_login = $userdata['user_login'];
 $stmt = $pdo->prepare("SELECT * FROM reestrkp WHERE id = ?");
 $stmt->execute([$id]);
 $my_id_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);

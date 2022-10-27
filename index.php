@@ -42,7 +42,7 @@ switch ($transition) {
         $pageName = "Реестр с фильтром  КП";
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
-        // echo "основная таблица с фильтром  КП <br>";
+        echo "основная таблица с фильтром  КП <br>";
         include_once "sub_programs/main_filtr_table.php";
     break;
     
@@ -50,6 +50,7 @@ switch ($transition) {
         $pageName = "выводим КП по ID";
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
+        echo "выводим КП по ID";
         include_once "sub_programs/one_kp_by_id.php";
     break;
 
@@ -58,6 +59,7 @@ switch ($transition) {
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
         // echo "Основная таблица со всеми КП <br>";
+        echo "FUUUUUUL";
         include_once "sub_programs/main_table.php";
     break;
 

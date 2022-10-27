@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 15:02:07
+/* Smarty version 4.1.0, created on 2022-10-27 16:11:29
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63567ebf0a24a7_02735814',
+  'unifunc' => 'content_635a838170ce63_44795161',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1666609483,
+      1 => 1666876254,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,59 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63567ebf0a24a7_02735814 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '192398979363567ebf08ec25_53234911';
+function content_635a838170ce63_44795161 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '259543725635a83816f5766_80448998';
 ?>
+
+
+  <div class='window'>
+    <div class='overlay'></div> 
+    <div class='content'>
+
+      <div class='input-fields'>
+        <form enctype="multipart/form-data" action="?transition=1" method="get">
+            <div class="subtitle">
+              <input type="hidden" name="user_login" value="<?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_login'];?>
+">
+              <input type="hidden" name="transition" value="1">   
+                    <?php if ((isset($_smarty_tpl->tpl_vars['input_inn']->value))) {?>
+                       ИНН Заказчика : <input class="input-line full-width" type="number" name="InnCustomer" value ="<?php echo $_smarty_tpl->tpl_vars['input_inn']->value;?>
+">
+                    <?php } else { ?> 
+                       ИНН Заказчика : <input class="input-line full-width" type="number" name="InnCustomer" value ="">
+                    <?php }?>
+            </div>
+            <div class="input_form_left">
+              <input class ="ghost-round full-width" type="submit" value="Запросить ИНН">
+            </div>
+   
+    
+           <div class="red_string">
+              <p>
+           <?php if ((isset($_smarty_tpl->tpl_vars['input_inn']->value))) {?>    
+                  <?php if (!(isset($_smarty_tpl->tpl_vars['arr_inn_comp']->value[0]['inn']))) {?>          
+                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
+                    <a href="?transition=3&back_transition=1&user=<?php echo $_smarty_tpl->tpl_vars['userdata']->value['user_login'];?>
+&InnCustomer=<?php echo $_smarty_tpl->tpl_vars['input_inn']->value;?>
+" > Добавить?</a>
+                  <?php } else { ?>
+                    &nbsp
+                  <?php }?>
+          <?php } else { ?> 
+               &nbsp
+          <?php }?>                            
+              </p>
+            </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
 <div class="zagolovok"> Создание нового КП </div>
   
 <div class="block">
@@ -97,8 +147,7 @@ $_smarty_tpl->compiled->nocache_hash = '192398979363567ebf08ec25_53234911';
  
       
        <div>
-        <p class ="zhir"> Дата КП : <input type="date" name="KpDate" value ="<?php echo $_smarty_tpl->tpl_vars['KpDate']->value;?>
-"></p>
+        <p class ="zhir"> Дата КП : <input type="date" name="KpDate" value =""></p>
        </div>
          <div> 
         *если окно пустое, то номер будет порядковый
@@ -195,7 +244,7 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
   <div><a href="sample_files/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
  </div>
   <div class="block"> 
- <p><input type="submit" value="Создать"></p>
+ <input class ="" type="submit" value="Создать">
  </div>
  </form>
 

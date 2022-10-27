@@ -27,7 +27,7 @@ $('document').ready(function(){
    var dateFinishContract = sel.value;
 //    alert ('00 = ' + procent_work);
    $.ajax({  // отправляем запрос на обновление БД
-      url: "changedb/update_all_zakup.php",
+      url: "pdo_connect_db/update_all_zakup.php",
       method: 'POST',             /* Метод передачи (post или get) */
       dataType: 'html',
       data: {id:id,
@@ -44,7 +44,7 @@ $('document').ready(function(){
         dateFinishContract:dateFinishContract,
       },
       success: function(data){
-           // alert ('ОБНОВЛЕНИЕ ПРОШЛО УСПЕШНО  ' + data);
+        //    alert ('ОБНОВЛЕНИЕ ПРОШЛО УСПЕШНО  ' + data);
         getParent('.is-show', '.js-modal');
         
         var obj = jQuery.parseJSON( data ); // парсим объем на переменные

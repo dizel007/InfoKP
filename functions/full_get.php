@@ -9,7 +9,6 @@ if (isset($_GET['typeQuery'])) {
 }
 $smarty->assign("typeQuery", $typeQuery);
 
-
 // ************* получаем переменную о выводе закрытых КП **************************************
 if (isset($_GET['get_FinishContract'])) {
   $get_FinishContract = $_GET['get_FinishContract'];
@@ -26,6 +25,10 @@ if (isset($_GET['get_nomerKP'])) {
  }
 $get_nomerKP = htmlspecialchars($get_nomerKP);
 $smarty->assign("get_nomerKP", $get_nomerKP);
+
+// echo "get_nomerKP=".$get_nomerKP."==<br>";
+
+
 // ************* получаем переменную дата начала и окончания срока **************************************
 if (isset($_GET['get_date_start'])) {
   $get_date_start = $_GET['get_date_start'];

@@ -12,6 +12,7 @@
                <td width ="60" >Дата КП</td>
                <td width ="70" class="hidden_class_column">ИНН</td>
                <td>PDF</td>
+               <td>Тип</td>
                <td>Наименование</td>
                <td>Кон</td>
                <td>EM</td>
@@ -86,7 +87,14 @@
          {else} 
        <td><img style = "opacity: 0.2" src="icons/table/pdf.png" alt="Excel"></td>
         {/if} 
-
+<!-- ***************************  Тип Прихода КП  ***************************************** -->
+         {if ({$array_with_all_kp.$i.type_kp} > 0)  } 
+            <td>
+            <img class="scale11" style = "opacity: 0.8" src="icons/type_kp/{$array_with_all_kp.$i.type_kp}.png" alt="{$array_with_all_kp.$i.type_kp}">
+             </td>
+           {else}  
+           <td></td>
+          {/if}
 
 <!-- ***************************  Наименование покупателя  ***************************************** -->
            {if ({$array_with_all_kp.$i.konturLink} <> '') } 

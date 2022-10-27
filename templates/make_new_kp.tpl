@@ -1,3 +1,49 @@
+
+
+  <div class='window'>
+    <div class='overlay'></div> 
+    <div class='content'>
+
+      <div class='input-fields'>
+        <form enctype="multipart/form-data" action="?transition=1" method="get">
+            <div class="subtitle">
+              <input type="hidden" name="user_login" value="{$userdata['user_login']}">
+              <input type="hidden" name="transition" value="1">   
+                    {if isset($input_inn)}
+                       ИНН Заказчика : <input class="input-line full-width" type="number" name="InnCustomer" value ="{$input_inn}">
+                    {else} 
+                       ИНН Заказчика : <input class="input-line full-width" type="number" name="InnCustomer" value ="">
+                    {/if}
+            </div>
+            <div class="input_form_left">
+              <input class ="ghost-round full-width" type="submit" value="Запросить ИНН">
+            </div>
+   
+    
+           <div class="red_string">
+              <p>
+           {if isset($input_inn)}    
+                  {if !isset($arr_inn_comp.0.inn)}          
+                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
+                    <a href="?transition=3&back_transition=1&user={$userdata['user_login']}&InnCustomer={$input_inn}" > Добавить?</a>
+                  {else}
+                    &nbsp
+                  {/if}
+          {else} 
+               &nbsp
+          {/if}                            
+              </p>
+            </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
 <div class="zagolovok"> Создание нового КП </div>
  {*    ********************** ИНН Заказчика   ********************} 
 <div class="block">
@@ -154,7 +200,7 @@
  </div>
  {*  ********************************** Кнопка Создать ***************}
  <div class="block"> 
- <p><input type="submit" value="Создать"></p>
+ <input class ="" type="submit" value="Создать">
  </div>
  </form>
 

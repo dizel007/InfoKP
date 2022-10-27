@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 14:18:26
+/* Smarty version 4.1.0, created on 2022-10-27 14:58:16
   from 'C:\xampp\htdocs\InfoKP\templates\info_setup_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635674820bdfa2_38088382',
+  'unifunc' => 'content_635a7258162900_01417057',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '37c8e5c1231f569d12ce8bd371f0ed822bcddab6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\info_setup_filtr.tpl',
-      1 => 1666166998,
+      1 => 1666871395,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,21 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635674820bdfa2_38088382 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1628050996635674820b62a5_61211395';
+function content_635a7258162900_01417057 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '737457770635a725815ac03_22755303';
 ?>
  
 
 <div class = "filter_p">
-ФИЛЬТР: <b><?php echo $_smarty_tpl->tpl_vars['kpCount']->value;?>
-</b> КП:
+ФИЛЬТР : 
+<?php if ((isset($_smarty_tpl->tpl_vars['kpCount']->value))) {?>
+<b><?php echo $_smarty_tpl->tpl_vars['kpCount']->value;?>
+</b> КП:</b>
+<?php } else { ?>
+<b>0*</b> КП:</b>
+<?php }?>
+
+
 <?php if ($_smarty_tpl->tpl_vars['get_nomerKP']->value <> '') {?>
 <i>Номер КП :<b><?php echo $_smarty_tpl->tpl_vars['get_nomerKP']->value;?>
 </b></i>

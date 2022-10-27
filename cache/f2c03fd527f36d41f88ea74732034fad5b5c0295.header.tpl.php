@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 16:02:27
+/* Smarty version 4.1.0, created on 2022-10-27 16:11:29
   from 'C:\xampp\htdocs\InfoKP\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63568ce314e613_38328222',
+  'unifunc' => 'content_635a83816d6358_27622527',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,14 +18,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_63568ce314e613_38328222 (Smarty_Internal_Template $_smarty_tpl) {
+function content_635a83816d6358_27622527 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Создание Объектного КП</title>
+    <title>Создание КП</title>
     
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel = "stylesheet" href = "css/bootstrap/css/bootstrap-grid.css">

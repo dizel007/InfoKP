@@ -1,24 +1,24 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 14:18:26
+/* Smarty version 4.1.0, created on 2022-10-27 14:58:15
   from 'C:\xampp\htdocs\InfoKP\templates\info_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6356748209eba6_43998120',
+  'unifunc' => 'content_635a7257e89b86_15147369',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '08e4fb399655b78fd3a27bcf8906ffbb3fccec51' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\info_filtr.tpl',
-      1 => 1666358335,
+      1 => 1666863495,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_6356748209eba6_43998120 (Smarty_Internal_Template $_smarty_tpl) {
+function content_635a7257e89b86_15147369 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="reset_button">
   <a href="index.php" title="Вернуться к началу страницы">СБРОС</a>
 </div> 
@@ -46,7 +46,7 @@ function content_6356748209eba6_43998120 (Smarty_Internal_Template $_smarty_tpl)
         <div id="g_nomerKP" class="mobile_web">
             <label for="param"> Введите номер КП : </label>
             <input type="text" id="get_nomerKP" name="get_nomerKP" value = "">
-            <input hidden type="text" id="get_nomerKP_t" name="get_nomerKP" value = "">
+            <input hidden type="text" id="get_nomerKP_t" name="get_nomerKP_t" value = "">
         
         </div>
 
@@ -63,7 +63,7 @@ function content_6356748209eba6_43998120 (Smarty_Internal_Template $_smarty_tpl)
         <div id="g_inn" class="mobile_web">
             <label for="param">Введите ИНН : </label>
             <input type="text" id="get_inn" name="get_inn" value = "">
-            <input hidden type="text" id="get_inn_t" name="get_inn" value = "">
+            <input hidden type="text" id="get_inn_t" name="get_inn_t" value = "">
 
         </div>
 
@@ -85,7 +85,6 @@ function content_6356748209eba6_43998120 (Smarty_Internal_Template $_smarty_tpl)
                                                 <option value="Гуц">Гуц</option>
                                                 <option value="Штыбко">Штыбко</option>
                                                 <option value="Кулиев">Кулиев</option>
-                                                <option value="Кверти">Кверти</option>
                                                 <option value="Лобов">Лобов</option>
                   
      </select>

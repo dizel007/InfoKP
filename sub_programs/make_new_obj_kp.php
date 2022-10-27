@@ -42,9 +42,24 @@ if (isset($_GET['InnCustomer'])) {
 }
 // подтянем данные с сайта контур
 isset($_GET['KonturLink'])?$KonturLink=$_GET['KonturLink']:$KonturLink='';
+
+// $temp = strpos($KonturLink,'https://zakupki.kontur.ru/');
+// echo $temp;
+// die();
 if ($KonturLink <> ''){
-       require_once ("parsers/parser_kontur_query.php");
-       $smarty->assign("tender_date" , $tender_date);
+       if (strpos($KonturLink,'https://zakupki.kontur.ru/') === false) {
+        $alarm_message = "Поиск работает только на сайте Контура. Данный URL:<br><b>".$KonturLink."<br></b> не валидный!!";
+        $smarty->assign("alarm_message" , $alarm_message);
+        $smarty->assign("back_adress" , $_SERVER['HTTP_REFERER']);
+        $smarty->display('alarm_message.tpl');
+// echo "<pre>"        ;
+// print_r($_SERVER);
+// echo "<pre>"        ;
+        Die();
+       } else {
+                require_once ("parsers/parser_kontur_query.php");
+                $smarty->assign("tender_data" , $tender_data);
+              }
 }
 
 

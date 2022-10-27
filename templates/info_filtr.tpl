@@ -27,7 +27,7 @@
         <div id="g_nomerKP" class="mobile_web">
             <label for="param"> Введите номер КП : </label>
             <input type="text" id="get_nomerKP" name="get_nomerKP" value = "{$get_nomerKP}">
-            <input hidden type="text" id="get_nomerKP_t" name="get_nomerKP" value = "{$get_nomerKP}">
+            <input hidden type="text" id="get_nomerKP_t" name="get_nomerKP_t" value = "{$get_nomerKP}">
         
         </div>
 
@@ -46,7 +46,7 @@
         <div id="g_inn" class="mobile_web">
             <label for="param">Введите ИНН : </label>
             <input type="text" id="get_inn" name="get_inn" value = "{$get_inn}">
-            <input hidden type="text" id="get_inn_t" name="get_inn" value = "{$get_inn}">
+            <input hidden type="text" id="get_inn_t" name="get_inn_t" value = "{$get_inn}">
 
         </div>
 

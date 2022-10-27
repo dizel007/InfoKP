@@ -1,25 +1,62 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-24 15:02:07
+/* Smarty version 4.1.0, created on 2022-10-27 16:11:29
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_kp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63567ebf0b1eb8_29674382',
+  'unifunc' => 'content_635a83817283f9_83352088',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc973df88a92f1f49f3201cde49087e2f7b1ab9b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\make_new_kp.tpl',
-      1 => 1666609483,
+      1 => 1666876254,
       2 => 'file',
     ),
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="zagolovok"> Создание нового КП </div>
+function content_635a83817283f9_83352088 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+  <div class='window'>
+    <div class='overlay'></div> 
+    <div class='content'>
+
+      <div class='input-fields'>
+        <form enctype="multipart/form-data" action="?transition=1" method="get">
+            <div class="subtitle">
+              <input type="hidden" name="user_login" value="zeld">
+              <input type="hidden" name="transition" value="1">   
+                                           ИНН Заказчика : <input class="input-line full-width" type="number" name="InnCustomer" value ="">
+                                </div>
+            <div class="input_form_left">
+              <input class ="ghost-round full-width" type="submit" value="Запросить ИНН">
+            </div>
+   
+    
+           <div class="red_string">
+              <p>
+               
+                            
+                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
+                    <a href="?transition=3&back_transition=1&user=zeld&InnCustomer=" > Добавить?</a>
+                                                        
+              </p>
+            </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div class="zagolovok"> Создание нового КП </div>
   
 <div class="block">
  <p class="zagolovok">Проверка наличия ИНН в Базе</p>
@@ -27,7 +64,7 @@ function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl)
             <div class="input_form_left zhir">
               <input type="hidden" name="user_login" value="zeld">
               <input type="hidden" name="transition" value="1">   
-                                           ИНН Заказчика : <input type="number" name="InnCustomer" value ="5503098400">
+                                           ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
                                 </div>
             <div class="input_form_left">
               <input type="submit" value="Запросить ИНН">
@@ -37,7 +74,9 @@ function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl)
            <div class="red_string">
               <p>
                
-                                      &nbsp
+                            
+                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
+                    <a href="?transition=3&back_transition=1&user=zeld&InnCustomer=" > Добавить?</a>
                                                         
               </p>
             </div>
@@ -49,7 +88,8 @@ function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl)
 
 
     
-    <input type="hidden" name="InnCustomer" value="5503098400">  
+ 
+    <input type="hidden" name="InnCustomer" value="">  
      
 <div class="block"> 
 
@@ -73,11 +113,7 @@ function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl)
  
       
        <div>
-        <p class ="zhir"> Дата КП : <input type="date" name="KpDate" value ="<br />
-<b>Notice</b>:  Undefined index: KpDate in <b>C:\xampp\htdocs\InfoKP\templates_c\bc973df88a92f1f49f3201cde49087e2f7b1ab9b_0.file.make_new_kp.tpl.cache.php</b> on line <b>100</b><br />
-<br />
-<b>Notice</b>:  Trying to get property 'value' of non-object in <b>C:\xampp\htdocs\InfoKP\templates_c\bc973df88a92f1f49f3201cde49087e2f7b1ab9b_0.file.make_new_kp.tpl.cache.php</b> on line <b>100</b><br />
-"></p>
+        <p class ="zhir"> Дата КП : <input type="date" name="KpDate" value =""></p>
        </div>
          <div> 
         *если окно пустое, то номер будет порядковый
@@ -86,16 +122,14 @@ function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl)
 
 <div class="block green_bgc">
   
- <p class="pad5px width15 zhir">Наименование Заказчика : <input disabled type="text"  value ="ООО «ПРОДУКТЫ ДО 22-00»" size="70">
- <input hidden type="text" name="NameCustomer" value ="ООО «ПРОДУКТЫ ДО 22-00»" size="70">
- </p>
+ <p class="pad5px width15 zhir">Наименование Заказчика : <input required type="text" name="NameCustomer" value ="" size="70"></p>
 
 
   
- <p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="" size="70"></p>
- 
+<p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="" size="70" data-phone-pattern></p>
   
-  <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="text" name="EmailCustomer" value ="" size="70"></p>
+  <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="email" name="EmailCustomer" value ="" size="70"></p>
+
    
    <p class="pad5px width15 zhir">Контактное лицо   : <input type="text" name="ContactCustomer" value ="" size="70"></p>
 </div>
@@ -123,7 +157,6 @@ function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl)
                                                 <option value="Гуц">Гуц</option>
                                                 <option value="Штыбко">Штыбко</option>
                                                 <option value="Кулиев">Кулиев</option>
-                                                <option value="Кверти">Кверти</option>
                                                 <option value="Лобов">Лобов</option>
                   
           
@@ -147,7 +180,7 @@ function content_63567ebf0b1eb8_29674382 (Smarty_Internal_Template $_smarty_tpl)
   <div><a href="sample_files/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
  </div>
   <div class="block"> 
- <p><input type="submit" value="Создать"></p>
+ <input class ="" type="submit" value="Создать">
  </div>
  </form>
 

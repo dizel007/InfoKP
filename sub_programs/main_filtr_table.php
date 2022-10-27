@@ -6,5 +6,12 @@ include_once 'functions/form_select.php'; // Настраиваем SQL запр
 $smarty->display('info_filtr.tpl');
 
 include_once 'functions/setup_param_main_table.php'; // настраиваем всек данные для шаблона
+
+
 $smarty->display('info_setup_filtr.tpl');
-($kpCount == 0)? $i=1:$smarty->display('main_table.tpl');
+if ($kpCount == 0) { // Если нет КП по фильтру по выводим ошибку
+  $smarty->assign('alarm_message', 'Нет КП по выбранным параметрам');
+      $smarty->assign('back_adress', 'Нет КП по выбранным параметрам');
+      $smarty->display('alarm_message.tpl');
+} else { // если есть хоть 1 КП, то выводим его
+  $smarty->display('main_table.tpl');}
