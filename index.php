@@ -1,14 +1,20 @@
 <?php
-
 require_once ("connect_db.php"); // подключение к БД
-     
 // Находим всех активных пользоватлей и суем их в шаблоны
 include_once 'functions/find_users.php';
 //  подключение функций 
 include_once 'pdo_connect_db/select_functions.php';
-// получаем все активные состояния КПП
+include_once 'functions/setup_url_for_maintable.php'; // функции для настройки количества вывода страниц и КП на 
+
+// получаем все активные состояния КП
 $AllKpConditions = GetAllActiveKpCondition($pdo);
 $smarty->assign('AllKpConditions', $AllKpConditions);
+// получаем все активные типы КП (объектные , почта звонок ....)
+$AllKptype = GetAllKptype($pdo);
+$smarty->assign('AllKptype', $AllKptype);
+$AllValuesKptype = GetAllValuesKptype($pdo);
+$smarty->assign('AllValuesKptype', $AllValuesKptype);
+
 // *******************  шапка с меню пользователя **********************************
 $smarty->assign('userdata', $userdata);
 $smarty->display('user_menu.tpl');
@@ -53,6 +59,14 @@ switch ($transition) {
         echo "выводим КП по ID";
         include_once "sub_programs/one_kp_by_id.php";
     break;
+    case 13: // выводим Аналитику
+        $pageName = "выводим Аналитику";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        echo "выводим Аналитику";
+        include_once "sub_programs/reports.php";
+    break;
+
 
     case 0: // основная таблица со всеми КП
         $pageName = "Реестр со всеми КП";

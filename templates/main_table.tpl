@@ -90,19 +90,15 @@
 <!-- ***************************  Тип Прихода КП  ***************************************** -->
          {if ({$array_with_all_kp.$i.type_kp} > 0)  } 
             <td>
-            <img class="scale11" style = "opacity: 0.8" src="icons/type_kp/{$array_with_all_kp.$i.type_kp}.png" alt="{$array_with_all_kp.$i.type_kp}">
+            <img class="scale11" style = "opacity:0.6" src="icons/type_kp/{$array_with_all_kp.$i.type_kp}.png" alt="{$array_with_all_kp.$i.type_kp}">
              </td>
            {else}  
            <td></td>
           {/if}
 
 <!-- ***************************  Наименование покупателя  ***************************************** -->
-           {if ({$array_with_all_kp.$i.konturLink} <> '') } 
-                      <td width ="150" ><a href="{$array_with_all_kp.$i.konturLink}" alt="konturLink" target="_blank">{$array_with_all_kp.$i.NameCustomer}</a>
-                      </td>
-             {else}
-               <td width ="150">{$array_with_all_kp.$i.NameCustomer}</td>
-             {/if}
+          <td width ="150">{$array_with_all_kp.$i.NameCustomer}</td>
+          
 <!-- ******************************  Icons konturLink   ***************************************************** -->
 
            {if ({$array_with_all_kp.$i.konturLink} <> '') } 

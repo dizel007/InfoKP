@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-27 11:09:02
+/* Smarty version 4.1.0, created on 2022-11-07 10:46:44
   from 'C:\xampp\htdocs\InfoKP\templates\make_new_comp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635a3c9eb14686_86976940',
+  'unifunc' => 'content_6368b7e46d8536_51572400',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,7 +18,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     '8ba03dffa35f7873a0e7e7c88c161c78dbd4bc92' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\header.tpl',
-      1 => 1666612736,
+      1 => 1667386447,
       2 => 'file',
     ),
     '7836b2791c5890d9da14a05c355283473a4630c1' => 
@@ -72,7 +72,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_635a3c9eb14686_86976940 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6368b7e46d8536_51572400 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html lang="ru">
 
@@ -82,16 +82,13 @@ function content_635a3c9eb14686_86976940 (Smarty_Internal_Template $_smarty_tpl)
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Добавление новой компании по ИНН </title>
     
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel = "stylesheet" href = "css/bootstrap/css/bootstrap-grid.css">
-    <link rel = "stylesheet" href = "css/style.css">
+            <link rel = "stylesheet" href = "css/style.css">
     
     
     
     <script type="text/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
     <!-- скрипт по выбору типа Фильтра в шапке  -->
-    <script type="text/javascript" src="js/shapka_menu.js"></script>
-    <!-- скрипт для телефоной маски -->
+        <!-- скрипт для телефоной маски -->
      </head>
 
 <body bgcolor="#ffffff">
@@ -102,7 +99,7 @@ function content_635a3c9eb14686_86976940 (Smarty_Internal_Template $_smarty_tpl)
 
      <section class="block">
     <p><strong>Введите наименование компании или ИНН</strong></p>
-    <input id="party" name="party" type="text" value="">
+    <input id="party" name="party" type="text" value="501818685">
     </div>  
   </section> 
 
@@ -236,7 +233,6 @@ function content_635a3c9eb14686_86976940 (Smarty_Internal_Template $_smarty_tpl)
                        <option value="Гуц">Гуц</option>
                        <option value="Штыбко">Штыбко</option>
                        <option value="Кулиев">Кулиев</option>
-                       <option value="Кверти">Кверти</option>
                        <option value="Лобов">Лобов</option>
               </select>
   </p>

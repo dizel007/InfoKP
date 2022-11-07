@@ -1,31 +1,26 @@
 
-
-  <div class='window'>
-    <div class='overlay'></div> 
-    <div class='content'>
-
-      <div class='input-fields'>
-        <form enctype="multipart/form-data" action="?transition=1" method="get">
+ <div class="flex_container flex_center"> 
+   <div class="flex_1_container"> 
+          <form enctype="multipart/form-data" action="?transition=1" method="get">
             <div class="subtitle">
               <input type="hidden" name="user_login" value="{$userdata['user_login']}">
               <input type="hidden" name="transition" value="1">   
                     {if isset($input_inn)}
-                       ИНН Заказчика : <input class="input-line full-width" type="number" name="InnCustomer" value ="{$input_inn}">
+                       ИНН Заказчика : <input class="input-line full-width" type="text" name="InnCustomer" value ="{$input_inn}">
                     {else} 
-                       ИНН Заказчика : <input class="input-line full-width" type="number" name="InnCustomer" value ="">
+                       ИНН Заказчика : <input class="input-line full-width" type="text" name="InnCustomer" value ="">
                     {/if}
             </div>
-            <div class="input_form_left">
+            <div class="flex_center">
               <input class ="ghost-round full-width" type="submit" value="Запросить ИНН">
             </div>
    
     
            <div class="red_string">
-              <p>
-           {if isset($input_inn)}    
+               {if isset($input_inn)}    
                   {if !isset($arr_inn_comp.0.inn)}          
-                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
-                    <a href="?transition=3&back_transition=1&user={$userdata['user_login']}&InnCustomer={$input_inn}" > Добавить?</a>
+                    Данный ИНН отсутствует в Базе &nbsp
+                    <a class="input-line ghost-round" href="?transition=3&back_transition=1&user={$userdata['user_login']}&InnCustomer={$input_inn}" >Добавить?</a>
                   {else}
                     &nbsp
                   {/if}
@@ -34,136 +29,62 @@
           {/if}                            
               </p>
             </div>
-
         </form>
 
-      </div>
     </div>
-  </div>
+</div>
 
 
+{************************************* Основная форма     *********************************************}
+{************************************* Основная форма     *********************************************}
+{************************************* Основная форма     *********************************************}
 
-
-<div class="zagolovok"> Создание нового КП </div>
- {*    ********************** ИНН Заказчика   ********************} 
-<div class="block">
- <p class="zagolovok">Проверка наличия ИНН в Базе</p>
-        <form enctype="multipart/form-data" action="?transition=1" method="get">
-            <div class="input_form_left zhir">
-              <input type="hidden" name="user_login" value="{$userdata['user_login']}">
-              <input type="hidden" name="transition" value="1">   
-                    {if isset($input_inn)}
-                       ИНН Заказчика : <input type="number" name="InnCustomer" value ="{$input_inn}">
-                    {else} 
-                       ИНН Заказчика : <input type="number" name="InnCustomer" value ="">
-                    {/if}
-            </div>
-            <div class="input_form_left">
-              <input type="submit" value="Запросить ИНН">
-            </div>
+<div class="flex_container flex_center">
    
-    
-           <div class="red_string">
-              <p>
-           {if isset($input_inn)}    
-                  {if !isset($arr_inn_comp.0.inn)}          
-                    Данный ИНН отсутствует в НАШЕЙ(!!!!!!!) Базе    &nbsp&nbsp&nbsp
-                    <a href="?transition=3&back_transition=1&user={$userdata['user_login']}&InnCustomer={$input_inn}" > Добавить?</a>
-                  {else}
-                    &nbsp
-                  {/if}
-          {else} 
-               &nbsp
-          {/if}                            
-              </p>
-            </div>
+     <form class ="form_class" enctype="multipart/form-data" action="pdo_connect_db/insert_new_kp_in_reestr.php" method="post">
+       <div class="flex_2_container">
+              {*    ********************** Прячем тут ИНН если он был введен  ***************}    
+              {if isset($arr_inn_comp.0.inn)}
+                  <input type="hidden" name="InnCustomer" value="{$arr_inn_comp.0.inn}">  
+              {else} 
+                  <input type="hidden" name="InnCustomer" value="">  
+              {/if}
+                   {*    ********************** Тип КП   ***************}    
+   <div id="type_kp_manual" class="">  
+{* Источник КП *}
+       <div class = "wd50">
+                   Источник КП :
+                    <select size="1" name="type_kp">
+                      <option selected value="2">почта INFO</option>
+                      <option value="3">Входящий звонок</option>
+                      <option value="4">Старый клиент</option>
+                      <option value="">Нет данных</option>
+                    </select>
+         </div>
+     
 
-        </form>
-</div>
-
-<form enctype="multipart/form-data" action="pdo_connect_db/insert_new_kp_in_reestr.php" method="post">
-
-
-{*    ********************** Прячем тут ИНН если он был введен  ***************}    
-{if isset($arr_inn_comp.0.inn)}
-    <input type="hidden" name="InnCustomer" value="{$arr_inn_comp.0.inn}">  
-{else} 
-    <input type="hidden" name="InnCustomer" value="">  
-{/if}
- {*    ********************** Тип КП   ***************}    
-<div class="block"> 
-
-    <p class = "zhir">Источник КП :
-        <select size="1" name="type_kp">
-          <option selected value="2">почта INFO</option>
-          <option value="3">Входящий звонок</option>
-          <option value="4">Старый клиент</option>
-          <option value="5">Нет данных</option>
-        </select>
-    </p>
- </div>
-
- {*    ********************** НОМЕР КП  для КП при ручном вводе ********************} 
-<div id="type_kp_manual" class="block">
-  <div class="input_form_left">
-    <p class = "zhir">Номер КП из 1С: <input type="text" name="KpNumber" value =""></p>
-  </div>
- 
- 
- 
-     {*    ********************** Дата  КП   ********************} 
+       
+        <div class="wd50">
+           <p>Номер КП из 1С: <input type="text" name="KpNumber" value =""></p>
+        </div>
+      {* Дата КП *}
        <div>
-        <p class ="zhir"> Дата КП : <input type="date" name="KpDate" value =""></p>
+        <p class =""> Дата КП : <input type="date" name="KpDate" value =""></p>
        </div>
-         <div> 
-        *если окно пустое, то номер будет порядковый
-   </div>
-</div>
+{********* важность КП *}
+         <div class="">
+        <p>Важность :
+            <select size="1" name="KpImportance">
+              <option id="js-new-modal-KpImportance" selected value=""></option>  
+              <option value="Нейтрально">Нейтрально</option>
+              <option value="Важно">Важно</option>
+              <option on value="Очень важно">Очень важно</option>
+            </select>
+        </p>
+        </div>
 
-<div class="block green_bgc">
- {*    ********************** Наименование Заказчика   ********************} 
-{if isset($arr_inn_comp.0.inn)}
- <p class="pad5px width15 zhir">Наименование Заказчика : <input disabled type="text"  value ="{$arr_inn_comp.0.name}" size="70">
- <input hidden type="text" name="NameCustomer" value ="{$arr_inn_comp.0.name}" size="70">
- </p>
-{else}
- <p class="pad5px width15 zhir">Наименование Заказчика : <input required type="text" name="NameCustomer" value ="" size="70"></p>
-{/if}
-
-
- {*    ********************** Телефон Заказчика   ********************} 
-{if isset($tel_comp)}
- <p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="{$tel_comp}" size="70"></p>
- 
-{else}
-<p class="pad5px width15 zhir">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="" size="70" data-phone-pattern></p>
-{/if}
- {*    ********************** Почта Заказчика   ********************} 
- {if isset($email_comp)}
- <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="text" name="EmailCustomer" value ="{$email_comp}" size="70"></p>
- {else}
- <p class="pad5px width15 zhir">Эл. Почта Заказчика : <input type="email" name="EmailCustomer" value ="" size="70"></p>
-
- {/if}
- {*    ********************** Контактное лицо Заказчика   ********************} 
-   <p class="pad5px width15 zhir">Контактное лицо   : <input type="text" name="ContactCustomer" value ="" size="70"></p>
-</div>
-
-
- {*    ********************** ВАЖНОСТЬ КП   ***************}    
-<div class="block">
-    <div class="pad5px zhir">
-    <p>Важность :
-        <select size="1" name="KpImportance">
-          <option id="js-new-modal-KpImportance" selected value=""></option>  
-          <option value="Нейтрально">Нейтрально</option>
-          <option value="Важно">Важно</option>
-          <option on value="Очень важно">Очень важно</option>
-        </select>
-    </p>
-    </div>
-{*       **************** ОТВЕТСТВЕННЫЙ КП  ***************}    
-    <div class="pad5px zhir">
+{*** Ответственный за КП *}
+    <div class="">
 
     Ответственный :
         <select style="width:150px;" name="responsible" size="1">
@@ -175,39 +96,82 @@
              {/if}
             <option value="{$active_user_names_arr_smarty[$i]}">{$active_user_names_arr_smarty[$i]}</option>
          {/for}
-         
-          
         </select>
     </div>
-
-
 {*  ********************************** Адрес поставки ***************}
-      <div class="pad5px zhir"> 
+      <div class=""> 
         <p>Адрес поставки : </p> 
         <textarea name="Adress" rows="2" cols="50"></textarea>
       </div>
-      <div class="pad5px zhir"> 
-      <p> <b>Сумма доставки: <input required type="number" name="DostCost" value =""></b></p>
+      <div class=""> 
+         <p> <b>Сумма доставки: <input required type="number" name="DostCost" value =""></b></p>
       </div>
 
+
+
+
+    </div>
 </div>
-{*  ********************************** Цепляем файл  ***************}
- <div class="block">              
+{*-***************************************** Правый блок фломы **************************************************}
+<div class="flex_2_container">
+ {*    ********************** Наименование Заказчика   ********************} 
+{if isset($arr_inn_comp.0.inn)}
+ <div class="">Наименование Заказчика : <input disabled type="text"  value ="{$arr_inn_comp.0.name}" size="70">
+ <input hidden type="text" name="NameCustomer" value ="{$arr_inn_comp.0.name}" size="70">
+ </div>
+{else}
+ <p class="">Наименование Заказчика : <input required type="text" name="NameCustomer" value ="" size="70"></p>
+{/if}
+
+
+ {*    ********************** Телефон Заказчика   ********************} 
+{if isset($tel_comp)}
+ <p class="">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="{$tel_comp}" size="70"></p>
+ 
+{else}
+<p class="">Телефон Заказчика : <input type="tel" name="TelCustomer" value ="" size="70" data-phone-pattern></p>
+{/if}
+ {*    ********************** Почта Заказчика   ********************} 
+ {if isset($email_comp)}
+ <p class="">Эл. Почта Заказчика : <input type="text" name="EmailCustomer" value ="{$email_comp}" size="70"></p>
+ {else}
+ <p class="">Эл. Почта Заказчика : <input type="email" name="EmailCustomer" value ="" size="70"></p>
+
+ {/if}
+ {*    ********************** Контактное лицо Заказчика   ********************} 
+   <p class="">Контактное лицо   : <input type="text" name="ContactCustomer" value ="" size="70"></p>
+
+
+
+
+ <div class="">              
                 <input type="hidden" name="MAX_FILE_SIZE" value="500000">
                 файл заполненный по шаблону: <input required name="upload_file" type="file">
  
   <div><a href="sample_files/temp_kp.xlsx" download>Скачать шаблон для КП</a></div>
  </div>
- {*  ********************************** Кнопка Создать ***************}
- <div class="block"> 
- <input class ="" type="submit" value="Создать">
+
  </div>
+
+</div>
+
+ <div class="flex_container flex_center">
+    <div class="flex_3_container"> 
+           <input class ="ghost-round full-width" type="submit" value="Создать">
+    </div>
+ </div>
+
+
  </form>
-
- {*  ******************************** Ссылка на возврат в реестр  ***************}
-  <div class="block"> 
-      <a class="zagolovok" href="index.php">Вернуться в реестр</a>
- </div>
+</div>
+      
 
 
-              
+
+
+
+
+
+
+
+         

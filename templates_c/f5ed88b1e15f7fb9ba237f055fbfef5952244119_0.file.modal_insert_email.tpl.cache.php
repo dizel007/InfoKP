@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-27 16:11:29
+/* Smarty version 4.1.0, created on 2022-11-07 15:59:34
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_insert_email.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635a83817cc513_10065649',
+  'unifunc' => 'content_63690136a033d5_98000581',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635a83817cc513_10065649 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '1229867507635a83817c8690_28831907';
+function content_63690136a033d5_98000581 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '834470342636901369ff553_37476387';
 if (($_smarty_tpl->tpl_vars['typeQuery']->value == 409)) {?>
   
   <div class="dm-overlay" id="win409">

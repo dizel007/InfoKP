@@ -1,21 +1,56 @@
-.user_menu {
-  display: flex;
-  height: 36px;
-  text-align: left;  
-  background-color: rgb(105, 139, 187); 
-  padding-top: 5px;
+nav {
+  /* margin: 0px; */
+  background: #b2dbd2;
 }
-.menu_button {
-  display: block;
-  margin: 2px;
-  min-width: 60px;
-  max-width: 200px;
-  height: 20px;
-  border : 1px solid;
-  border-radius: 3px;
-  background-color: rgb(245, 238, 149);
-  padding:4px;
-  text-align: center; 
-  box-shadow:  0.4em 0.4em 5px rgb(122 122 122 / 50%);
-   
+a {
+  text-decoration: none;
 }
+ul {
+  margin: 0;
+  padding: 0;
+
+}
+.menuItems {
+    list-style: none;
+    display: flex;
+}
+.menuItems li {
+      margin: 10px;
+      padding-left: 20px;
+}
+.menuItems li a {
+        /* text-decoration: none; */
+        color: #705b5b;
+        font-size: 16px;
+        font-weight: 400;
+        transition: all 0.1s;
+        /* position: relative; */
+ }
+
+.menuItems li a:hover { 
+background: linear-gradient(to left, #f69ec4, #f9dd94 100%);
+background-position: 0 100%;
+background-size: 100% 2px;
+background-repeat: repeat-x;
+
+
+ }
+ .menuItems li p {
+  color: #705b5b;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.1s;
+  margin: 0;
+  position: relative;
+}
+
+.menuItems li p:hover { 
+background: linear-gradient(to left, #f69ec4, #f9dd94 100%);
+background-position: 0 100%;
+background-size: 100% 2px;
+background-repeat: repeat-x;
+
+
+}
+
+    

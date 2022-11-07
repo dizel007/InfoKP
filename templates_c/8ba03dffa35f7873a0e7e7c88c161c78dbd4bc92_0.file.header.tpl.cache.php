@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-27 16:11:29
+/* Smarty version 4.1.0, created on 2022-11-07 15:59:34
   from 'C:\xampp\htdocs\InfoKP\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635a83816bec54_71672302',
+  'unifunc' => 'content_63690136845e69_99974900',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8ba03dffa35f7873a0e7e7c88c161c78dbd4bc92' => 
     array (
       0 => 'C:\\xampp\\htdocs\\InfoKP\\templates\\header.tpl',
-      1 => 1666612736,
+      1 => 1667386447,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635a83816bec54_71672302 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '431425289635a83816badd6_69598952';
+function content_63690136845e69_99974900 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '34710048463690136841fe9_01486461';
 ?>
 <html lang="ru">
 
@@ -32,9 +32,7 @@ $_smarty_tpl->compiled->nocache_hash = '431425289635a83816badd6_69598952';
     <title><?php echo $_smarty_tpl->tpl_vars['pageName']->value;?>
 </title>
     
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel = "stylesheet" href = "css/bootstrap/css/bootstrap-grid.css">
-    <link rel = "stylesheet" href = "css/style.css">
+            <link rel = "stylesheet" href = "css/style.css">
     
     
     
@@ -42,10 +40,7 @@ $_smarty_tpl->compiled->nocache_hash = '431425289635a83816badd6_69598952';
  type="text/javascript" src="js/jquery/jquery-3.6.0.min.js"><?php echo '</script'; ?>
 >
     <!-- скрипт по выбору типа Фильтра в шапке  -->
-    <?php echo '<script'; ?>
- type="text/javascript" src="js/shapka_menu.js"><?php echo '</script'; ?>
->
-    <!-- скрипт для телефоной маски -->
+        <!-- скрипт для телефоной маски -->
      </head>
 
 <body bgcolor="#ffffff">

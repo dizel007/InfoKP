@@ -1,0 +1,16 @@
+.check_date {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-content: space-between;
+
+}
+
+.check_date_item {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 5px;
+  font-size: 20px;
+
+}

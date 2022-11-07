@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-27 10:44:36
+/* Smarty version 4.1.0, created on 2022-11-03 11:10:26
   from 'C:\xampp\htdocs\InfoKP\templates\company_table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635a36e43b62a1_47636880',
+  'unifunc' => 'content_6363777278b9b8_80914287',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,9 +18,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6363777278b9b8_80914287 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="zagolovok">
-        ООО «БУБАС»
+        Григорян Мкртыч Арменович
  </div>
        <table width="100%" class="table_inn employee_table">
        <tbody>
@@ -33,11 +33,11 @@ function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl)
            
              </td>
              <td width="32">
-             <a href="?transition=10&id=3669&InnCustomer=6658533390&typeQuery=309#win309"><img src ="icons/table/plus.png"></a>
+             <a href="?transition=10&id=3424&InnCustomer=230115578748&typeQuery=309#win309"><img src ="icons/table/plus.png"></a>
              </td>
              <td>Емайл</td>
              <td width="32">
-             <a href="?transition=10&id=3669&InnCustomer=6658533390&typeQuery=409#win409"><img src ="icons/table/plus.png"></a>
+             <a href="?transition=10&id=3424&InnCustomer=230115578748&typeQuery=409#win409"><img src ="icons/table/plus.png"></a>
              </td>
              <td>Контактное лицо</td>
              <td width = "160">Адрес</td>
@@ -45,7 +45,7 @@ function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl)
              <td>Ред</td>
           </tr>
           <tr class="draw_inn">
-             <td class = "inntext" >6658533390</td>
+             <td class = "inntext" >230115578748</td>
             
              <td></td> 
              
@@ -58,13 +58,13 @@ function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl)
 
                                                        <tr>
        <td width ="20">
-       <a class="link_tel" itemprop="telephone" href="tel:++7(349) 858-98-73">
+       <a class="link_tel" itemprop="telephone" href="tel:+7 (918) 996-07-76">
        <img style = "opacity: 0.9" src="icons/table/telephone.png">
        </a>
        </td>
 
         <td width="80" title="" class ="">
-         +7(349) 858-98-73
+         7 (918) 996-07-76
          </td>
          
          <!-- Актуальность номера -->
@@ -73,7 +73,7 @@ function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl)
          <!-- WhatsApp -->
           <td width ="20"> 
                                
-          <a rel="nofollow" href="https://web.whatsapp.com/send?phone=+7(349) 858-98-73" target="_blank">
+          <a rel="nofollow" href="https://web.whatsapp.com/send?phone=7 (918) 996-07-76" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" opacity ="0.3" viewBox="0 0 20 20"
                             fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -91,7 +91,7 @@ function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl)
 
           <td width="20">
     
-    <a href="?transition=10&id=3669&id_phone=4732&typeQuery=300#win300" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png"></a>
+    <a href="?transition=10&id=3424&id_phone=4423&typeQuery=300#win300" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png"></a>
               </td>
       </tr>
 
@@ -107,7 +107,7 @@ function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl)
                      <table width ="100%" class ="telephone">
                          <tr>
                          <td width="150" class ="">
-<a class = " link_tel " href="mailto:3847@iuhf.com"> 3847@iuhf.com</a>
+<a class = " link_tel " href="mailto:grigoryan.mishs@yandex.ru"> grigoryan.mishs@yandex.ru</a>
                               
                               </td>
                               <!-- Актуальность email -->
@@ -119,7 +119,7 @@ function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl)
                                
                                </td>
                                <td width="30">
-                     <a href="?transition=10&id=3669&id_email=3496&typeQuery=400#win400" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png"></a>
+                     <a href="?transition=10&id=3424&id_email=3261&typeQuery=400#win400" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png"></a>
                                </td>
                         </tr>
  </table>
@@ -135,12 +135,12 @@ function content_635a36e43b62a1_47636880 (Smarty_Internal_Template $_smarty_tpl)
 
  <!-- *********************  ВЫВОД КОНТАКТНОЕ ЛИЦО ********************* -->
              <td width ="200"></td>
-             <td>620014, г Екатеринбург, ул Папанина, д 1, кв 13</td>
+             <td>Краснодарский край, г. Анапа, улица Крымская 264, квартира 2</td>
              <td></td>
 
 <!-- *********************  Корректировка данных компании ********************* -->
              <td width="20">
-             <a href="?transition=10&id=3669&InnCustomer=6658533390&typeQuery=200#win8" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png" alt="formatZakup"></a>
+             <a href="?transition=10&id=3424&InnCustomer=230115578748&typeQuery=200#win8" class="btn"><img style = "opacity: 0.9" src="icons/table/change.png" alt="formatZakup"></a>
              </td>
           </tr>
 

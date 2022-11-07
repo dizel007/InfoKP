@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-27 16:11:29
+/* Smarty version 4.1.0, created on 2022-11-07 15:59:34
   from 'C:\xampp\htdocs\InfoKP\templates\modal\modal_insert_phone.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635a8381786004_06111362',
+  'unifunc' => 'content_636901369a57c7_77791183',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635a8381786004_06111362 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '915446310635a8381782183_55173367';
+function content_636901369a57c7_77791183 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '77044808636901369a1949_38826217';
 ?>
   <?php if (($_smarty_tpl->tpl_vars['typeQuery']->value == 309)) {?>
   <div class="dm-overlay" id="win309">

@@ -1,23 +1,24 @@
-<div class = "user_menu">
-  <div class = "menu_button">
-   <a href="?transition=0"> РЕЕСТР КП </a>
-  </div>
 
-  <div class = "menu_button">
-   <a href="?transition=1&user_login={$userdata['user_login']}"> Создать КП </a>
-  </div>
- 
- <div class = "menu_button">
-   <a href="?transition=2&user_login={$userdata['user_login']}"> Создать объектное КП </a>
- </div>
 
-   <div class = "menu_button">
-   <a href="reports.php" target="_blank"> Аналитика </a>
-  </div>
+<div class="user_menu">
+  <nav>
+    <ul class="menuItems">
+      <li>
+        <a href="?transition=0" data-item='РЕЕСТР КП' >РЕЕСТР КП</a>
+      </li>
+      <li>
+        <a href="?transition=1&user_login={$userdata['user_login']}" data-item='Создать КП' >Создать КП</a>
+      </li>
+      <li>
+        <a href="?transition=2&user_login={$userdata['user_login']}" data-item='Создать объектное КП'>Создать объектное КП</a>
+      </li>
+      <li>
+        <a href="?transition=13&user_login={$userdata['user_login']}" target="_blank">Аналитика</a>
+      </li>
+      <li>
+        <a href="#">Пользователь: {$userdata['user_name']}</a>
+      </li>
+    </ul>
+  </nav>
 
-  <div class = "menu_button">
-    Пользователь: {$userdata['user_name']}
-  </div>
-
- 
 </div>

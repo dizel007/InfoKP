@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-27 14:58:16
+/* Smarty version 4.1.0, created on 2022-11-07 14:18:55
   from 'C:\xampp\htdocs\InfoKP\templates\info_setup_filtr.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635a725817a009_25870975',
+  'unifunc' => 'content_6368e99fe6e837_12935489',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -18,12 +18,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_635a725817a009_25870975 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6368e99fe6e837_12935489 (Smarty_Internal_Template $_smarty_tpl) {
 ?> 
 
 <div class = "filter_p">
 ФИЛЬТР : 
-<b>954</b> КП:</b>
+<b>956</b> КП:</b>
 
 
 

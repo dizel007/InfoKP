@@ -76,6 +76,31 @@ function GetAllActiveKpCondition($pdo) {
   return $arr;
 }
 
+// ******************* Получаем Все активные типы КП
+function GetAllKptype($pdo) {
+  $stmt = $pdo->prepare("SELECT type FROM type_kp WHERE active = 1");
+  $stmt->execute();
+  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
+  return $arr;
+}
+
+// ******************* Получаем Все активные value из таблицы типы КП
+function GetAllValuesKptype($pdo) {
+  $stmt = $pdo->prepare("SELECT value FROM type_kp WHERE active = 1");
+  $stmt->execute();
+  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
+  return $arr;
+}
+
+// ******************* Получаем Все активные value из таблицы типы КП
+function GetOneValueKptype($pdo,$get_type_kp) {
+  $stmt = $pdo->prepare("SELECT type FROM type_kp WHERE value = ?");
+  $stmt->execute([$get_type_kp]);
+  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
+  return $arr[0];
+}
+
+
 function GetAllParametrs($products,$param) {
   foreach ($products as $value) {
     $arr[] = (int)($value["$param"]);

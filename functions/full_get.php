@@ -69,6 +69,14 @@ if (isset($_GET['get_responsible'])) {
 }
 $smarty->assign("get_responsible", $get_responsible);
 
+// ************* получаем переменную о типе КП  **************************************
+if (isset($_GET['get_type_kp'])) {
+  $get_type_kp = $_GET['get_type_kp'];
+} else {
+  $get_type_kp = '';
+}
+$smarty->assign("get_type_kp", $get_type_kp);
+
 
 // ************* получаем переменную об Наименование Заказчика  **************************************
 if (isset($_GET['get_name_zakazchik'])) {
@@ -140,3 +148,12 @@ if (isset($_GET['id_email'])) {
 $id_email = htmlspecialchars($id_email);
 $smarty->assign("id_email", $id_email);
 
+// ******************* ВЫЧИТЫВАЕМ номер страницы  **************************
+// количество строк на странице
+
+// количество строк на странице
+if (isset($_GET['pageNumber'])) {
+  $pageNumber = $_GET['pageNumber'];
+} else {
+  $pageNumber=1;
+}

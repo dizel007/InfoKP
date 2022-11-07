@@ -1,11 +1,12 @@
+@import url('admin_panel/admin_panel.css');
 @import url('general.css');
 @import url('info_filtr.css');
 @import url('main_table.css');
 @import url('modal.css');
-@import url('admin_panel/admin_panel.css');
 @import url('make_new_kp/make_new_kp.css');
 @import url('make_new_kp/make_new_kp2.css');
 @import url('phone_tab.css');
 @import url('alarm_message.css');
+@import url('date_check_reports.css');
 
 

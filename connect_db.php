@@ -45,4 +45,7 @@ $smarty->cache_lifetime = 120;
 // **************************************
 $typeQuery ="";
 $smarty->assign('typeQuery', $typeQuery); // загружаем эту переменную чтобы в модальных окнах не было ошибок
+$get_value_type_kp='';
+$smarty->assign('get_value_type_kp', $get_value_type_kp); // загружаем эту переменную чтобы в модальных окнах не было ошибок
+
 ?>

@@ -10,7 +10,7 @@ function addWhere($where, $add, $and = true) {
 }
 $sql ="";
 $where = "";
-if ($typeQuery <> '') {
+// if ($typeQuery <> '') {
   if ($get_FinishContract  == '0') $where = addWhere($where, "FinishContract =".$get_FinishContract);
 
   if ($get_nomerKP <>'') $where = addWhere($where, "KpNumber =".$get_nomerKP);
@@ -18,6 +18,8 @@ if ($typeQuery <> '') {
   if ($get_inn <> '' ) $where = addWhere($where, "InnCustomer =".$get_inn);
 
   if ($get_responsible <>'') $where = addWhere($where, "Responsible = '".$get_responsible."'");
+  
+  if ($get_type_kp <>'') $where = addWhere($where, "type_kp = '".$get_type_kp."'");
   
   if ($get_name_zakazchik <>'') $where = addWhere($where, "NameCustomer like '%".$get_name_zakazchik."%'");
   
@@ -27,17 +29,16 @@ if ($typeQuery <> '') {
 
   if ($get_date_end<>'') $where = addWhere($where, "KpData <='".$get_date_end."'");
 
-
-  // if ($sort_value_default == 2) $where .= " ORDER BY CHAR_LENGTH(`width`), width ASC";
-  // if ($sort_value_default == 3) $where .= " ORDER BY load_class ASC";
-
-  
-}
+  // }
 if ($where) {$sql .= " WHERE $where"." ORDER BY KpData DESC , CHAR_LENGTH(`KpNumber`) DESC, KpNumber DESC";}
 else {
   $sql .= " ORDER BY KpData DESC , CHAR_LENGTH(`KpNumber`) DESC, KpNumber DESC"; 
 }
 
 // echo $sql;
+
+// die();
+
+
 
 

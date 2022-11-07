@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-10-27 10:44:36
+/* Smarty version 4.1.0, created on 2022-11-03 11:10:26
   from 'C:\xampp\htdocs\InfoKP\templates\company_table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_635a36e4393029_04980691',
+  'unifunc' => 'content_6363777277bfa9_93492268',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_635a36e4393029_04980691 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '405352206635a36e4368093_37144952';
+function content_6363777277bfa9_93492268 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '187871368463637772754ea6_50896605';
 ?>
 <div class="zagolovok">
         <?php echo $_smarty_tpl->tpl_vars['company_arr']->value[0]['name'];?>
