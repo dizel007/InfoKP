@@ -46,6 +46,7 @@ $_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел продаж': $Co
 
 $TelCustomer = $_POST['TelCustomer'];
 $EmailCustomer = $_POST['EmailCustomer'];
+$product_type = $_POST['product_type'];
 
 $idKp = date('Y').date('m').date('d').(127 + date('H')+ date('i')+date('s')*32 )*2; // неповтор
 $KpImportance = $_POST['KpImportance']; 
@@ -114,8 +115,8 @@ $LinkKp = 'EXCEL/'.$KpFileName;
 
 // **************** вставляем каждый параметр  данных  *********************
 $stmt  = $pdo->prepare("INSERT INTO `reestrkp` 
-                       (KpNumber, KpData, InnCustomer, NameCustomer, idKp, KpImportance, Responsible, KpSum, adress, date_write, LinkKp, type_kp)
-                       VALUES (:KpNumber, :KpData, :InnCustomer, :NameCustomer, :idKp, :KpImportance, :Responsible, :KpSum, :adress, :date_write, :LinkKp, :type_kp)");
+                       (KpNumber, KpData, InnCustomer, NameCustomer, idKp, KpImportance, Responsible, KpSum, adress, date_write, LinkKp, type_kp, type_product)
+                       VALUES (:KpNumber, :KpData, :InnCustomer, :NameCustomer, :idKp, :KpImportance, :Responsible, :KpSum, :adress, :date_write, :LinkKp, :type_kp, :type_product)");
 
 $stmt ->bindParam(':KpNumber', $KpNumber);
 $stmt ->bindParam(':KpData', $KpDate);
@@ -129,6 +130,7 @@ $stmt ->bindParam(':adress', $adress);
 $stmt ->bindParam(':date_write', $date_write);
 $stmt ->bindParam(':LinkKp', $LinkKp);
 $stmt ->bindParam(':type_kp', $type_kp);
+$stmt ->bindParam(':type_product', $product_type);
 
 
 if ($stmt ->execute()) {

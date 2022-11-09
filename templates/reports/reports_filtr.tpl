@@ -20,12 +20,19 @@
         
 
 {* *******************  Меня Выбора Ответственного Юзера       ************************** *}  
+  {if ($get_responsible == '')}
+          {$count_users = $count_users-1}
+  {else}        
+          {$count_users = $count_users-2}
+  {/if}
+
+
  <div id="g_responsible" class="mobile_web" >
 Ответственный :
     <select style="width:120px;" id="get_responsible" class="form-select data-windows" name="get_responsible" size="1">
  
-         <option  selected value="{$get_responsible}">{$get_responsible}</option>
-         {for  $i=0 to $count_users-1}
+         <option  selected value="{$get_responsible}">{$get_name_responsible}</option>
+         {for  $i=0 to $count_users}
               {* Удаляем повтор активного польвателя*}
              {if $active_user_logins_arr_smarty[$i] == $get_responsible}
                 {$i = $i + 1}

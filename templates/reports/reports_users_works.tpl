@@ -1,11 +1,11 @@
 <div>
 <table class="drawtable employee_table">
 <tr>
-    <th>Юзер</th>
-    <th>изменений в КП</th>
-    <th>отправленных email</th>
-    <th>изменений в данных о компании</th>
-    <th>КП с изменениями</th>
+    <td>Юзер</td>
+    <td>изменений в КП</td>
+    <td>отправленных email</td>
+    <td>изменений в данных о компании</td>
+    <td>КП с изменениями</td>
     
 </tr>
 
@@ -29,7 +29,7 @@
             <td>{$change_comp}</td>
         {/if}
         {/foreach}
-
+{* КП с изменениями *}
         {foreach from=$kol_change_unique_kp key=user item=kp_unique_change}
             {if ($user == $value)}
                 <td>{$kp_unique_change}</td>

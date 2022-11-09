@@ -4,49 +4,104 @@
 <div>
 <table class="drawtable employee_table">
 <tr>
-    <th>Юзер</th>
-    <th>Новых КП назначено</th>
-    <th>Новых КП ожидает</th>
-    <th>КП "НЕ в работе" всего</th>    
-    <th>КП "в работе" за период</th>
-    <th>КП "в работе" всего</th>
-    <th>КП проданы за период</th>
-    <th>Сумма продаж за период</th>
-    <th>Просроченные КП за период</th>
-    <th>Закрытые КП за период</th>
-    <th>Закрытые КП всего</th>
+    <td>Юзер</е>
+    <td>Новых КП назначено</td>
+    <td>Новых КП ожидает</td>
+    <td>КП "НЕ в работе" всего</td>    
+    <td>взято "в работу" за период</td>
+    <td>КП "в работе" всего</td>
+    <td>КП проданы за период</td>
+    <td>Сумма продаж за период</td>
+    <td>Просроченные КП за период</td>
+    <td>Закрытые КП за период</td>
+    <td>Закрытые КП всего</td>
 
     
 </tr>
 
-{foreach from=$arr_users item=value}
+{foreach from=$active_user_names_arr_smarty item=value}
     <tr>
     <td>{$value}</td>
-        {foreach from=$kol_change_kp key=user item=kp_change}
+
+{**************** новых КП назначено  **************}
+        {foreach from=$kol_new_kp key=user item=kp_change}
+            {if ($user == $value)}
+                <td>
+                    <a href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_FinishContract=1">{$kp_change}</a>
+                </td>
+            {/if}
+        {/foreach}
+
+{**************** Новых КП ожидает чтобы взяли в работу  **************}
+        {foreach from=$kol_new_kp_need_work key=user item=kp_change}
+            {if ($user == $value)}
+                <td>
+                    <a href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_KpCondition=">{$kp_change}</a>
+                </td>
+            {/if}
+        {/foreach}
+
+        {*  КП "НЕ в работе" всего      *}
+        {foreach from=$kol_new_kp_work key=user item=kp_change}
+            {if ($user == $value)}
+                <td>
+               NOT
+                </td>
+            {/if}
+        {/foreach}
+
+
+
+{*  взято "в работу" за период      *}
+        {foreach from=$kol_new_kp_work key=user item=kp_change}
+            {if ($user == $value)}
+                <td>
+                <a href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_KpCondition=В работе">{$kp_change}</a>
+                </td>
+            {/if}
+        {/foreach}
+
+{*  ВСЕГО КП В РАБОТЕ ОВ/В/Н      *}
+        {foreach from=$kol_new_kp_work key=user item=kp_change}
+            {if ($user == $value)}
+                <td>NET</td>
+            {/if}
+        {/foreach}
+{*  КП проданные за период       *}
+        {foreach from=$kol_sold_kp key=user item=kp_change}
+            {if ($user == $value)}
+                <td>
+                    <a href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_KpCondition='В работе'">{$kp_change}</a>
+                </td>
+            {/if}
+        {/foreach}
+{*  Сумма продаж за период       *}
+        {foreach from=$sum_sold_kp key=user item=kp_change}
             {if ($user == $value)}
                 <td>{$kp_change}</td>
             {/if}
         {/foreach}
+{*  Просроченные КП за период       *}
+        {foreach from=$kol_needcall_kp key=user item=kp_change}
+            {if ($user == $value)}
+                <td>{$kp_change}</td>
+            {/if}
+        {/foreach}
+{*  Закрытые КП за период       *}
+        {foreach from=$kol_close_kp_period key=user item=kp_change}
+            {if ($user == $value)}
+                <td>{$kp_change}</td>
+            {/if}
+        {/foreach}
+ {*  Закрытые КП за все время        *}
+        {foreach from=$kol_close_kp_period key=user item=kp_change}
+            {if ($user == $value)}
+                <td>ALL</td>
+            {/if}
+        {/foreach}
+
         
-        {foreach from=$kol_send_mail key=user item=send_mail}
-            {if ($user == $value)}
-                <td>{$send_mail}</td>
-            {/if}
-        {/foreach}
-
-        {foreach from=$kol_change_comp key=user item=change_comp}
-        {if ($user == $value)}
-            <td>{$change_comp}</td>
-        {/if}
-        {/foreach}
-
-        {foreach from=$kol_change_unique_kp key=user item=kp_unique_change}
-            {if ($user == $value)}
-                <td>{$kp_unique_change}</td>
-            {/if}
-        {/foreach}
-              
-      </tr>
+    </tr>
         
 {/foreach}
 

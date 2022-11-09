@@ -64,10 +64,15 @@ $smarty->assign("get_id_kp", $get_id_kp);
 // ************* получаем переменную об Ответственном  **************************************
 if (isset($_GET['get_responsible'])) {
   $get_responsible = $_GET['get_responsible'];
+
+  $temp = GetUserByUser_login($pdo,$get_responsible);// получаем руское имя ответственного
+  @$get_name_responsible = $temp[0]['user_name']; // получаем руское имя ответственного
+
 } else {
   $get_responsible = '';
 }
 $smarty->assign("get_responsible", $get_responsible);
+$smarty->assign("get_name_responsible", @$get_name_responsible);
 
 // ************* получаем переменную о типе КП  **************************************
 if (isset($_GET['get_type_kp'])) {
@@ -157,3 +162,23 @@ if (isset($_GET['pageNumber'])) {
 } else {
   $pageNumber=1;
 }
+
+// Для аналитики выведем GET о состоянии КП ***
+if (isset($_GET['get_KpCondition'])) {
+  $get_KpCondition = $_GET['get_KpCondition'];
+} else {
+  $get_KpCondition='';
+}
+$smarty->assign("get_KpCondition", $get_KpCondition);
+
+// ************* получаем переменную о типа продукции **************************************
+if (isset($_GET['get_product_type'])) {
+  $get_product_type = $_GET['get_product_type'];
+  $temp = GetTypeProductByValue ($pdo,$get_product_type);// получаем наименование типа товара по 
+  @$get_product_type_name = $temp[0]; // получаем руское имя ответственного
+} else {
+  $get_product_type = '';
+  $get_product_type_name = '';
+}
+$smarty->assign("get_product_type", $get_product_type);
+$smarty->assign("get_product_type_name", $get_product_type_name);

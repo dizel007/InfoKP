@@ -8,7 +8,7 @@
     
     {* <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> *}
     {* <link rel = "stylesheet" href = "css/bootstrap/css/bootstrap-grid.css"> *}
-    <link rel = "stylesheet" href = "css/style.css">
+       <link rel = "stylesheet" href = "css/style.css">
     
     
     

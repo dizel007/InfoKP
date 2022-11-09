@@ -15,9 +15,11 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])) // Проверяем з�
 {   
     $stmt = $pdo->prepare("SELECT * FROM users WHERE user_hash='" . $_COOKIE['hash'] . "' LIMIT 1");
     $stmt->execute([]);
-    $userdata = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $userdata = call_user_func_array('array_merge', $userdata); // Уменьшаем уровень вложенности массива          
-    
+    $userdata_temp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // $userdata = call_user_func_array('array_merge', $userdata); // Уменьшаем уровень вложенности массива  
+$userdata =  $userdata_temp[0];       
+
+
 // ***************   проверяем введеный хэш пароля с тем, что храниться в БД  ***************************
     if(($userdata['user_hash'] !== $_COOKIE['hash']) or ($userdata['user_id'] !== $_COOKIE['id']))
     {

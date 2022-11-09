@@ -34,7 +34,13 @@
            
 
         </div>
-
+ {* *******************  Меня ввода Наименование Заказчика     ************************** *}
+    
+        <div id="g_name_zakazchik" class="mobile_web">
+            <label for="param">Заказчик : </label>
+            <input size="10" type="text" id="get_name_zakazchik" name="get_name_zakazchik" value = "{$get_name_zakazchik}">
+   
+        </div>
  {* *******************  Меня ввода ID КП     ************************** *}
     
         <div id="g_id_kp" class="mobile_web">
@@ -60,7 +66,7 @@
  </div>
 
 {* *******************  Выбора типа КП        ************************** *}  
- <div id="g_type_kp" class="mobile_web" >
+ <div class="mobile_web" >
 Тип КП :
     <select style="width:100px;" id="get_type_kp" class="form-select data-windows" name="get_type_kp" size="1">
  
@@ -78,14 +84,42 @@
      </select>
  </div>
 
+ {* *******************  Выбора типа Продукции   ************************** *}  
+ <div class="mobile_web" >
+Тип прод :
+    <select class="form-select data-windows" name="get_product_type" size="1">
+ 
+         <option selected value="{$get_product_type}">{$get_product_type_name}</option>
+        
+         {for  $i=0 to (count($AllProductTypesName)-2)}
+              {* Удаляем повтор типа КП*}
+             {if $AllProductTypesValue[$i] == $get_product_type}
+                {$i = $i + 1}
+             {/if}
+            <option value="{$AllProductTypesValue[$i]}">{$AllProductTypesName[$i]}</option>
+         {/for}
+        
+     </select>
+ </div>
+ {* *******************  Выбора состояния КП    ************************** *}  
+ <div class="mobile_web" >
+Сост. КП :
+    <select name="get_KpCondition" size="1">
+ 
+         <option selected value="{$get_KpCondition}">{$get_KpCondition}</option>
+        
+         {for  $i=0 to (count($AllKpConditions)-2)}
+              {* Удаляем повтор типа КП*}
+             {if $AllKpConditions[$i] == $get_KpCondition}
+                {$i = $i + 1}
+             {/if}
+            <option value="{$AllKpConditions[$i]}">{$AllKpConditions[$i]}</option>
+         {/for}
+        
+     </select>
+ </div>
 
- {* *******************  Меня ввода Наименование Заказчика     ************************** *}
-    
-        <div id="g_name_zakazchik" class="mobile_web">
-            <label for="param">Заказчик : </label>
-            <input size="10" type="text" id="get_name_zakazchik" name="get_name_zakazchik" value = "{$get_name_zakazchik}">
-   
-        </div>
+
 
  {* *******************  Меня ввода Адрес поставки     ************************** *}
     

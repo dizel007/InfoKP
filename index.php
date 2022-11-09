@@ -3,17 +3,11 @@ require_once ("connect_db.php"); // подключение к БД
 // Находим всех активных пользоватлей и суем их в шаблоны
 include_once 'functions/find_users.php';
 //  подключение функций 
+include_once 'functions/make_sql_query.php'; // функция для создания SQL запроса
 include_once 'pdo_connect_db/select_functions.php';
 include_once 'functions/setup_url_for_maintable.php'; // функции для настройки количества вывода страниц и КП на 
+include_once 'functions/get_data_from_db.php'; // функции подгрузки в шаблоны выпадающих списков 
 
-// получаем все активные состояния КП
-$AllKpConditions = GetAllActiveKpCondition($pdo);
-$smarty->assign('AllKpConditions', $AllKpConditions);
-// получаем все активные типы КП (объектные , почта звонок ....)
-$AllKptype = GetAllKptype($pdo);
-$smarty->assign('AllKptype', $AllKptype);
-$AllValuesKptype = GetAllValuesKptype($pdo);
-$smarty->assign('AllValuesKptype', $AllValuesKptype);
 
 // *******************  шапка с меню пользователя **********************************
 $smarty->assign('userdata', $userdata);
@@ -48,7 +42,7 @@ switch ($transition) {
         $pageName = "Реестр с фильтром  КП";
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
-        echo "основная таблица с фильтром  КП <br>";
+        echo "основная таблица с фильтром  КП(**** DELETE ****)";
         include_once "sub_programs/main_filtr_table.php";
     break;
     
@@ -56,14 +50,14 @@ switch ($transition) {
         $pageName = "выводим КП по ID";
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
-        echo "выводим КП по ID";
+        echo "выводим КП по ID(**** DELETE ****)";
         include_once "sub_programs/one_kp_by_id.php";
     break;
     case 13: // выводим Аналитику
         $pageName = "выводим Аналитику";
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
-        echo "выводим Аналитику";
+        echo "выводим Аналитику(**** DELETE ****)";
         include_once "sub_programs/reports.php";
     break;
 
@@ -73,7 +67,7 @@ switch ($transition) {
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
         // echo "Основная таблица со всеми КП <br>";
-        echo "FUUUUUUL";
+        echo "Выводим все КП без фильтра(**** DELETE ****)";
         include_once "sub_programs/main_table.php";
     break;
 
@@ -85,5 +79,4 @@ switch ($transition) {
 
 //  FOOOOOOOTER **************************************************************************
 include_once 'parts_site/footer.php';
-
 ?>

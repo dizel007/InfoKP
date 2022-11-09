@@ -13,6 +13,7 @@
                <td width ="70" class="hidden_class_column">ИНН</td>
                <td>PDF</td>
                <td>Тип</td>
+               <td>ТП</td>
                <td>Наименование</td>
                <td>Кон</td>
                <td>EM</td>
@@ -71,10 +72,10 @@
                                       <!--   --> 
 <!-- ***************************  ИНН покупателя  ********************************************* -->        
        <td class="{$second_sell_cl.$i} hidden_class_column">
+            
             {if $array_with_all_kp.$i.InnCustomer <> 0}
-            <a href="show_comp_by_inn.php?inn={$array_with_all_kp.$i.InnCustomer}" target="_blank">
+            
                   {$array_with_all_kp.$i.InnCustomer}
-            </a>
             {else}
                   &nbsp
             {/if}
@@ -95,7 +96,14 @@
            {else}  
            <td></td>
           {/if}
-
+<!-- ***************************  Тип Продукции в КП  ***************************************** -->
+         {if ({$array_with_all_kp.$i.type_product} > 0)  } 
+            <td>
+            {$array_with_all_kp.$i.type_product}
+               </td>
+           {else}  
+           <td>нд</td>
+          {/if}
 <!-- ***************************  Наименование покупателя  ***************************************** -->
           <td width ="150">{$array_with_all_kp.$i.NameCustomer}</td>
           

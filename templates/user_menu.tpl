@@ -4,7 +4,7 @@
   <nav>
     <ul class="menuItems">
       <li>
-        <a href="?transition=0" data-item='РЕЕСТР КП' >РЕЕСТР КП</a>
+        <a href="?" data-item='РЕЕСТР КП' >РЕЕСТР КП</a>
       </li>
       <li>
         <a href="?transition=1&user_login={$userdata['user_login']}" data-item='Создать КП' >Создать КП</a>

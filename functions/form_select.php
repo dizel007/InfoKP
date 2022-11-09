@@ -1,13 +1,5 @@
 <?php
-//  формируем SQL запрос в зависимости от предыдущего запроса  ******************************
-function addWhere($where, $add, $and = true) {
-  if ($where) {
-    if ($and) $where .= " AND $add";
-    else $where .= " OR $add";
-  }
-  else $where = $add;
-  return $where;
-}
+
 $sql ="";
 $where = "";
 // if ($typeQuery <> '') {
@@ -20,6 +12,10 @@ $where = "";
   if ($get_responsible <>'') $where = addWhere($where, "Responsible = '".$get_responsible."'");
   
   if ($get_type_kp <>'') $where = addWhere($where, "type_kp = '".$get_type_kp."'");
+  
+  if ($get_product_type <>'') $where = addWhere($where, "type_product = '".$get_product_type."'");
+
+  if ($get_KpCondition <>'') $where = addWhere($where, "KpCondition = '".$get_KpCondition."'");
   
   if ($get_name_zakazchik <>'') $where = addWhere($where, "NameCustomer like '%".$get_name_zakazchik."%'");
   
@@ -35,7 +31,7 @@ else {
   $sql .= " ORDER BY KpData DESC , CHAR_LENGTH(`KpNumber`) DESC, KpNumber DESC"; 
 }
 
-// echo $sql;
+echo "<br>".$sql."(**** DELETE ****)<br>";
 
 // die();
 

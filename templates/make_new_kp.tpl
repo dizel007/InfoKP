@@ -61,9 +61,18 @@
                       <option value="">Нет данных</option>
                     </select>
          </div>
-     
+ {* Тип продукции *}
+       <div class = "wd50">
+                   Тип продукции :
+                    <select size="1" name="product_type">
+                 
+                      {for $i=0 to  (count($AllProductTypesName)-1)}
+                        <option value="{$AllProductTypesValue.$i}">{$AllProductTypesName.$i}</option>
+                      {/for}
+                    </select>
+         </div>    
 
-       
+{********* номер и дата КП *}       
         <div class="wd50">
            <p>Номер КП из 1С: <input type="text" name="KpNumber" value =""></p>
         </div>

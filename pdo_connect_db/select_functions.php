@@ -68,38 +68,6 @@ function GetEmailByInn($pdo,$inn) {
   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $arr;
 }
-// ******************* Получаем Все активные состояния КП
-function GetAllActiveKpCondition($pdo) {
-  $stmt = $pdo->prepare("SELECT conditionkp FROM condition_kp WHERE active = 1");
-  $stmt->execute();
-  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
-  return $arr;
-}
-
-// ******************* Получаем Все активные типы КП
-function GetAllKptype($pdo) {
-  $stmt = $pdo->prepare("SELECT type FROM type_kp WHERE active = 1");
-  $stmt->execute();
-  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
-  return $arr;
-}
-
-// ******************* Получаем Все активные value из таблицы типы КП
-function GetAllValuesKptype($pdo) {
-  $stmt = $pdo->prepare("SELECT value FROM type_kp WHERE active = 1");
-  $stmt->execute();
-  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
-  return $arr;
-}
-
-// ******************* Получаем Все активные value из таблицы типы КП
-function GetOneValueKptype($pdo,$get_type_kp) {
-  $stmt = $pdo->prepare("SELECT type FROM type_kp WHERE value = ?");
-  $stmt->execute([$get_type_kp]);
-  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
-  return $arr[0];
-}
-
 
 function GetAllParametrs($products,$param) {
   foreach ($products as $value) {
@@ -127,19 +95,20 @@ function GetOneItem($pdo,$id) {
   return $arr;
 }
 
-// Получаем все активные состояния КП из БД
-// function GetAll_Condition_kp($pdo) {
-//   $stmt = $pdo->prepare("SELECT * FROM condition_kp WHERE `active` = ?");
-//   $stmt->execute([
-//     1,
-//       ]);
-//   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//   return $arr;
-// }
+// ******************* (SMARTY)Получаем Тип продукции по VALUE
+function GetTypeProductByValue($pdo, $get_product_type) {
+  $stmt = $pdo->prepare("SELECT name FROM type_product WHERE value = ?");
+  $stmt->execute([$get_product_type]);
+  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
+}
 
 
-
-
-
+// ******************* (SMARTY)Получаем Все активные value из таблицы типы КП
+function GetOneValueKptype($pdo,$get_type_kp) {
+  $stmt = $pdo->prepare("SELECT type FROM type_kp WHERE value = ?");
+  $stmt->execute([$get_type_kp]);
+  $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
+  return $arr[0];
+}
 
 ?>
