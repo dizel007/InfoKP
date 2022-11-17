@@ -89,6 +89,9 @@ if (move_uploaded_file($_FILES['upload_file']['tmp_name'], $temp)) {
 // ***************Выбираем список товаров из файла *************************************
 $products = analiz_kp($temp);
 // **************************************************************************************
+
+
+// ****************************************
 $temp_array = format_new_kp($products, $comparr); // Формируем КП и получаем сумму КП 
 unlink($temp);  // удаляем загружаемый файл, Нах их копить
 
@@ -96,7 +99,18 @@ $KpSum = $temp_array['total'];
 $KpFileName= $temp_array['KpFileName'];
 $LinkKp = 'EXCEL/'.$KpFileName;
 
+// *************** Формируем ПДФ *************************************
 
+// echo "<pre>";
+// print_r($products);
+// echo "<pre>";
+
+require_once '../new_kp_info/make_pdf.php';
+//output the result
+// $pdf->Output('test.pdf', 'F');
+
+
+die('FORMAT PDF FILE');
 
 
 

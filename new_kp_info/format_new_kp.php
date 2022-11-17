@@ -303,6 +303,24 @@ $KpFileName= "№".$comparr['KpNumber']." от ".$comparr['KpDate']." ".$NameCus
 $objWriter->save('../EXCEL/'.$KpFileName);
 // $file_name_schet = "../SCHET/"."Счет на оплату № ТО-".$nomer_schet." от ".$schet_date."(".$arr_inn[0]['name'].").xlsx";
 
+// Write PDF
+// $xls = PHPExcel_IOFactory::load('../new_kp_info/new_kp_shablon.xlsx');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $back_arr = array('total' => $total, 
 									'KpFileName' => $KpFileName);
 return $back_arr;

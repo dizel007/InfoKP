@@ -1,0 +1,141 @@
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500); */
+ body, html {
+  margin: 0;
+  height: 100%;
+} 
+
+/* input {
+  border: none;
+} */
+
+/* button:focus {
+  outline: none;
+} */
+/* .input-fields {
+  margin-top: 5px;
+} */
+
+.input-line {
+  background: none;
+  color: #fff;
+  font-family: roboto;
+  font-weight: 300;
+  letter-spacing: 0px;
+  letter-spacing: 0.02rem;
+  font-size: 16px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.65);
+  transition: all .2s ease;
+}
+
+.input-line:focus {
+  outline: none;
+  border-color: rgb(236, 156, 156);
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.ghost-round {
+  /* display: flex; */
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 16px;
+  font-family: roboto;
+  font-weight: 300;
+  line-height: 1.5em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: all .2s ease;
+}
+
+.ghost-round:hover {
+  background: rgba(175, 189, 169, 0.75);
+  color: rgb(146, 8, 8);
+  border: 1px solid rgba(10, 9, 9, 0.65);
+  transition: all .2s ease;
+}
+
+
+
+.full-width {
+  width: 100%;
+}
+
+.content {
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-flow: column;
+  z-index: 5;
+}
+
+/* надпись под заголовком */
+.subtitle {
+  padding: 10px;
+  text-align: center;
+  /* line-height: 0.5em; */
+  font-weight: 300;
+  /* letter-spacing: 0px;
+  letter-spacing: 0.02rem; */
+}
+.main_container {
+  height: 100%;
+}
+.flex_container {
+ 
+  display: flex;
+  width: 100%;
+  /* background: linear-gradient(#8CA6DB, #B993D6); */
+  background: rgb(208, 220, 194);
+  opacity: 0.85;
+  flex-direction: row;
+  
+}
+.flex_1_container {
+  display: flex;
+  min-height: 20px;
+  opacity: 0.85;
+  padding: 5px;
+  width: 25%;
+}
+.flex_2_container {
+  display: flex;
+  min-height: 120px;
+  opacity: 0.85;
+  width: 30%;
+  justify-content: end;
+  padding: 20px; 
+  flex-direction: column;
+}
+.flex_3_container {
+    display: flex;
+    min-height: 20px;
+    opacity: 0.85;
+    width: 20%;
+}
+.flex_center {
+  justify-content: center;
+}
+.flex_end {
+  justify-content: end;
+}
+.wd50 {
+  width: 50%;
+}
+.form_class {
+  display: flex;
+  min-height: 120px;
+  opacity: 0.85;
+  width: 100%;
+  background: linear-gradient(#B993D6, #91eaa0);
+  flex-direction: row;
+  justify-content: space-around;
+}
+.flex_button{
+  display: flex;
+  justify-content: space-around;
+
+}

@@ -100,6 +100,7 @@ function GetTypeProductByValue($pdo, $get_product_type) {
   $stmt = $pdo->prepare("SELECT name FROM type_product WHERE value = ?");
   $stmt->execute([$get_product_type]);
   $arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
+  return $arr;
 }
 
 

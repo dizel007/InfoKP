@@ -173,6 +173,9 @@ $smarty->assign("get_KpCondition", $get_KpCondition);
 
 // ************* получаем переменную о типа продукции **************************************
 if (isset($_GET['get_product_type'])) {
+  if ($_GET['get_product_type'] == 0) {
+    $_GET['get_product_type']=''; // сбрысываем это параметр
+  }
   $get_product_type = $_GET['get_product_type'];
   $temp = GetTypeProductByValue ($pdo,$get_product_type);// получаем наименование типа товара по 
   @$get_product_type_name = $temp[0]; // получаем руское имя ответственного

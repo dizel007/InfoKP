@@ -32,6 +32,10 @@
   $AllProductTypesName = $stmt->fetchAll(PDO::FETCH_COLUMN);
   $smarty->assign('AllProductTypesName', $AllProductTypesName);
 
+  // echo "<pre>";
+  // print_r($AllProductTypesValue);
+  // echo "<pre>";
+
 
 
 

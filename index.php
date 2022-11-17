@@ -1,4 +1,5 @@
 <?php
+// session_start();
 require_once ("connect_db.php"); // подключение к БД
 // Находим всех активных пользоватлей и суем их в шаблоны
 include_once 'functions/find_users.php';
@@ -77,6 +78,26 @@ switch ($transition) {
 // print_r ($userdata);
 // echo "</pre>";
 
+/*session is started if you don't write this line can't use $_Session  global variable*/
+
+// $_SESSION["newsession"]='22444422';
+// $_SESSION["newsession1"]='222df444422';
+// $_SESSION["newsession2"]='22sdfgdfgsdfgh444422';
+
+// echo "<pre>";
+// print_r ($_SESSION);
+// echo "<pre>";
+// if (!isset($_SESSION['count']))
+// {
+//   $_SESSION['count'] = 1;
+// }
+// else
+// {
+//   ++$_SESSION['count'];
+// }
+ 
+
+// echo session_id();
 //  FOOOOOOOTER **************************************************************************
 include_once 'parts_site/footer.php';
 ?>
