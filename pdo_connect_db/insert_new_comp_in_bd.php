@@ -40,7 +40,8 @@ if ($char == '«') {
 // контактного лица
 $ContactCustomer = $_POST['ContactCustomer'];
 
-$TelCustomer = $_POST['TelCustomer'];
+$TelCustomer = str_replace('+' , '',$_POST['TelCustomer']); // 
+
 $EmailCustomer = $_POST['EmailCustomer'];
 $adress = $_POST['Adress'];
 $date_write = date('Y-m-d');

@@ -23,6 +23,6 @@ else {
   $sql .= " ORDER BY date_change DESC"; 
 }
 
-echo $sql;
+// echo $sql;
 
 // die();

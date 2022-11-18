@@ -31,7 +31,7 @@ else {
   $sql .= " ORDER BY KpData DESC , CHAR_LENGTH(`KpNumber`) DESC, KpNumber DESC"; 
 }
 
-echo "<br>".$sql."(**** DELETE ****)<br>";
+// echo "<br>".$sql."(**** DELETE ****)<br>";
 
 // die();
 

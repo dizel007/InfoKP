@@ -86,7 +86,7 @@
 
  {* *******************  Выбора типа Продукции   ************************** *}  
  <div class="mobile_web" >
-Тип прод :*{$get_product_type}*{$get_product_type_name}*
+Тип прод :
     <select class="form-select data-windows" name="get_product_type" size="1">
  
          <option selected value="{$get_product_type}">{$get_product_type_name}</option>
@@ -95,7 +95,6 @@
               {* Удаляем повтор типа КП*}
              {if $AllProductTypesValue[$i] == $get_product_type}
                 {$i = $i + 1}
-                HIIIIIIIIII
              {/if}
             <option value="{$AllProductTypesValue[$i]}">{$AllProductTypesName[$i]}</option>
          {/for}

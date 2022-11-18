@@ -29,7 +29,7 @@ function GetKPById($pdo,$id) {
     $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $arr;
   }
-  //  Получаем пользователя по user_login по id
+  //  Получаем пользователя по user_login
 function GetUserByUser_login($pdo,$user_login) {
   $stmt = $pdo->prepare("SELECT * FROM users WHERE user_login = ?");
   $stmt->execute([$user_login]);

@@ -6,6 +6,9 @@ require_once ("../connect_db.php");
 require_once ("../new_kp_info/test_file_name.php"); // если имя файла занято, то добавится индекс
 require_once ("../new_kp_info/analiz_siroy_kp.php");
 require_once ("../new_kp_info/format_new_kp.php");
+require_once ("../functions/telephone_make.php"); // наложить маску на телефонные номера
+
+ 
 
 // считваем все данные из ПОСТ формы
 $KpNumber =  $_POST['KpNumber'];
@@ -45,6 +48,25 @@ $NameCustomer = $_POST['NameCustomer'];
 $_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел продаж': $ContactCustomer = $_POST['ContactCustomer'];
 
 $TelCustomer = $_POST['TelCustomer'];
+$TelCustomer = str_replace(' ', '', $TelCustomer); // убрали все пробелы
+$arr_TelCustomer = (explode(',', $TelCustomer)); // Берем 0 и 1 телефон из ПОСТ запрсоа
+
+$i1=0; // счетчик телефонов
+if (strlen($arr_TelCustomer[0]) > 6) { // если есть хоть один номер длинее 6 цифр
+foreach ($arr_TelCustomer as &$value) {
+  $value = telephoneMake($value); // приводим у общему виду
+  $value = DeleteFirstSymbol($value); // меняем 8 на 7 (первыую цифру)
+  $i1++;
+}
+}
+
+for ($i=0; $i<=$i1; $i++) {
+ if ($i<2) { // оставляем не более двух телефонов
+  @$new_TelCustomer.="\n".$arr_TelCustomer[$i];
+  }
+}
+$new_TelCustomer = substr($new_TelCustomer,1,strlen($new_TelCustomer)); // удаояем первый символ
+
 $EmailCustomer = $_POST['EmailCustomer'];
 $product_type = $_POST['product_type'];
 
@@ -97,20 +119,21 @@ unlink($temp);  // удаляем загружаемый файл, Нах их �
 
 $KpSum = $temp_array['total'];
 $KpFileName= $temp_array['KpFileName'];
-$LinkKp = 'EXCEL/'.$KpFileName;
+$LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 
-// *************** Формируем ПДФ *************************************
-
-// echo "<pre>";
-// print_r($products);
-// echo "<pre>";
+/* 
+*************** Формируем ПДФ *************************************
+*/
+//  вычитаваем данные про ответственного
+$stmt = $pdo->prepare("SELECT * FROM `users` WHERE `user_name` = ?");
+$stmt->execute([$Responsible]);
+$user_responsible_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 require_once '../new_kp_info/make_pdf.php';
-//output the result
-// $pdf->Output('test.pdf', 'F');
 
 
-die('FORMAT PDF FILE');
+
+// die('FORMAT PDF FILE');
 
 
 

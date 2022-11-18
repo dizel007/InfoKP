@@ -99,8 +99,9 @@
 <!-- ***************************  Тип Продукции в КП  ***************************************** -->
          {if ({$array_with_all_kp.$i.type_product} > 0)  } 
             <td>
-            {$array_with_all_kp.$i.type_product}
-               </td>
+               <img class="scale11" style = "opacity:0.6" src="icons/type_product/{$array_with_all_kp.$i.type_product}.png" alt="{$array_with_all_kp.$i.type_product}">
+
+                         </td>
            {else}  
            <td>нд</td>
           {/if}

@@ -3,8 +3,12 @@ include_once 'functions/full_get.php'; // считваем все GET данны
 include_once 'functions/form_select.php'; // Настраиваем SQL запрос
 $smarty->display('info_filtr.tpl');
 include_once 'functions/setup_param_main_table.php'; // настраиваем всек данные для шаблона
-$smarty->display('info_setup_filtr.tpl');
+// $smarty->display('info_setup_filtr.tpl');
 
+
+
+$smarty->assign('text', 'Информация о КП');
+$smarty->display('title_razdel.tpl');
 
 $smarty->display('main_table.tpl'); // выводим данные о выбранном КП
 
@@ -32,6 +36,9 @@ if (isset($company_arr[0])) {
   }
 
     if (isset($KpByInn)) {
+   $smarty->assign('text', 'Остальные КП высланные в эту компанию');
+   $smarty->display('title_razdel.tpl');
+
       SetParametrsTable($smarty, $KpByInn);
       $KpCount = count($KpByInn); // количество выводимых КП
       $end_item_on_page =   $KpCount-1; // вывод неачинается с 0 
