@@ -125,7 +125,7 @@ $pdf->Cell(190 ,7, MakeUtf8Font('Добрый день!'),0,1,'C');
 // текст о предложении
 $contact_font_size = 9;
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст 
-$pdf->MultiCell(190 ,4.5, MakeUtf8Font('   В ответ на Ваш запрос предлагаем рассмотреть приобретение продукции на следующих условиях:'), 0,'C',0);
+$pdf->MultiCell(190 ,4.5, MakeUtf8Font(TEXT_KP_INFO), 0,'C',0);
 // ************************ таблица товаров
 // шапка
 $contact_font_size = 9;
@@ -200,7 +200,7 @@ $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->Cell(30 , $h_cell , MakeUtf8Font('Условия оплаты:'),0,0,'R');
 $pdf->SetTextColor(0,0,0); // черный цвет
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
-$pdf->Cell(140 , $h_cell , MakeUtf8Font("По согласованию сторон-$real_Y_position"),0,1,'L');
+$pdf->Cell(140 , $h_cell , MakeUtf8Font("По согласованию сторон"),0,1,'L');
 $pdf->Cell(20 , $h_cell , '',0,0,'C');
 $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
@@ -255,11 +255,11 @@ $contact_font_size = 7;
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['ful_name']),'0',1,'L');
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['user_phone']),'0',1,'L');
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['user_mobile_phone']),'0',1,'L');
-  $temp = "email:". $user_responsible_arr[0]['user_email'];
+  $temp = "e-mail: ". $user_responsible_arr[0]['user_email'];
   $temp_2 = "mailto:".$user_responsible_arr[0]['user_email'];
   $pdf->SetTextColor(5,99,193); // синий цвет
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($temp),'0',1,'L','',  $temp_2);
-  $pdf->Cell(25 ,$h_cell, MakeUtf8Font("сайт ANMAKS.RU"),'0',1,'L','',  "https://www.anmaks.ru/");
+  $pdf->Cell(25 ,$h_cell, MakeUtf8Font("www.anmaks.ru"),'0',1,'L','',  "https://www.anmaks.ru/");
 
   
 

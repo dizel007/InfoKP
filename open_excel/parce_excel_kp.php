@@ -18,6 +18,7 @@ $Phone = $sheet->getCellByColumnAndRow(9, 10)->getValue();
 $Email = $sheet->getCellByColumnAndRow(9, 11)->getValue();
 $ZakupName = $sheet->getCellByColumnAndRow(2, 16)->getValue();
 
+
 echo "<b>Заказчик :".$Zakazchik;"</b><br>";
 echo "<br><br>";
 echo "<b>Телефон :".$Phone;"</b><br>";

@@ -1,0 +1,30 @@
+
+<?php 
+date_default_timezone_set('Europe/Moscow');
+
+$date_change = date('Y-m-d');
+
+// Проверяем если ли какой нибуль комментарий, если нет, то не добавляем строку
+
+
+
+$stmt  = $pdo->prepare("INSERT INTO `reports` 
+                      (date_change, id_item, what_change, comment_change, author)
+                       VALUES (:date_change, :id_item, :what_change, :comment_change, :author)");
+
+$stmt ->bindParam(':date_change', $date_change);
+$stmt ->bindParam(':id_item', $id_item);
+$stmt ->bindParam(':what_change', $what_change);
+$stmt ->bindParam(':comment_change', $comment_change);
+$stmt ->bindParam(':author', $author);
+
+
+if ($stmt ->execute()) {
+  $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
+  // echo "Запись УДАЧНО добавлена successfully";
+} else {
+  die ("Какой то облом, с записью в таблицу reports()");
+}
+
+
+?>

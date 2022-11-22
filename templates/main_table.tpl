@@ -17,6 +17,7 @@
                <td>Наименование</td>
                <td>Кон</td>
                <td>EM</td>
+               <td>SEm</td>
                <td class="hidden_class_column">Важность</td>
           
                <td class="hidden_class_column">Ответственный</td>
@@ -118,8 +119,10 @@
 
 
 <!-- ******************************  Icons Email  *********************************************** -->
-      <td><a href= "mailer/login_mail.php?id={$array_with_all_kp.$i.id}&InnCustomer={$array_with_all_kp.$i.InnCustomer}" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/table/email.png" alt="SeeKp"></a></td>
-  <!-- ********************************** ВАЖНОСТЬ КП ************************************************ -->
+      <td><a href= "?transition=23&id={$array_with_all_kp.$i.id}&InnCustomer={$array_with_all_kp.$i.InnCustomer}" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/table/email.png" alt="SeeKp"></a></td>
+ <!-- ******************************  Количество высланных Email  *********************************************** -->
+      <td>{$array_with_all_kp.$i.email_count}</td>
+ <!-- ********************************** ВАЖНОСТЬ КП ************************************************ -->
       <td  class="hidden_class_column" id = "js-KpImportance{$array_with_all_kp.$i.id}" width ="50" class="hidden_class_column">{$array_with_all_kp.$i.KpImportance}</td>     
 
  <!-- ********************************** ОТветственный  ************************************************ -->

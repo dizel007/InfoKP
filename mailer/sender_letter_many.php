@@ -5,11 +5,14 @@ require 'phpmailer/SMTP.php';
 require 'phpmailer/Exception.php';
 require_once("modul/get_data.php"); // Заполняем наши переменные
 require_once("../connect_db.php"); // Заполняем наши переменные
+require_once("../pdo_connect_db/select_functions.php"); // Подлючачем функции для работы с БД
+
 
 
 $Files_count = 0;
 $i=0;
 
+$active_user = GetUserByUser_login($pdo,$user_mail);
 
 // Если у нас НЕ БЫЛ подгружен файл то загружаем файлы на сервер и добавим дальше их в письмо
 if ($_FILES['upload_file']['name'][0] <> "") {
@@ -36,31 +39,35 @@ if ($_FILES['upload_file']['name'][0] <> "") {
 
 // Настройки PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
+
+
 try {
 
 $mail->CharSet = 'utf-8';
 // $mail->SMTPDebug = 3;                               // Enable verbose debug output
 $mail->isSMTP(); 
-require_once("data_post.php");
+$mail->Host = 'mail.netangels.ru';  // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = $active_user[0]['user_online_email'];                 // Наш логин
+$mail->Password = $active_user[0]['pass_online'];                 // Наш пароль от ящика
+$mail->Port = 25; 
+$mail->setFrom($active_user[0]['user_online_email'], 'Торговый дом АНМАКС');   // От кого письмо 
+
+
 $mail->addAddress($email_from_kp);     // Add a recipient
-//$mail->addAddress('ellen@example.com');               // Name is optional
-//$mail->addReplyTo('info@example.com', 'Information');
-//$mail->addCC('cc@example.com');
-//$mail->addBCC('bcc@example.com');
-// Здесь делаем вилку, один ранее загруженный файл высылаем, или новые только что загруженные
+
 if ($_FILES['upload_file']['name'][0] <> "") { 
         for ($i=0; $i < count($link_pppdf); $i++) {
         $mail->addAttachment($link_pppdf[$i]);         // Add attachments
         }
     } else { // если файл уже был на сервере
-        if (isset($link_pdf)) {$mail->addAttachment($link_pdf);}
+        if (isset($link_pdf)) {$mail->addAttachment("../".$link_pdf);}
     }
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
 $mail->Subject = $subject_theme; // тема письма
 $mail->Body    = $body_post;
-
 
 
     if ($mail->send()) 
@@ -75,7 +82,9 @@ $mail->Body    = $body_post;
             $comment_change = "Отправлено сообщение с сайта на адрес : ". $email_from_kp; 
             $author = $user_mail;
               
-            require "../changedb/update_reports.php";
+            require "../pdo_connect_db/insert_reports.php"; 
+            require "../pdo_connect_db/update_email_count_in_reestr.php";
+
 
         } else {
             $result = "ОШИБКА!!!!";
@@ -87,7 +96,7 @@ $mail->Body    = $body_post;
             $comment_change = "ОШИБКА отправки на адрес : ". $email_from_kp; 
             $author = $user_mail;
               
-            require "../changedb/update_reports.php";
+            require "../pdo_connect_db/insert_reports.php";
         }
   
 

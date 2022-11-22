@@ -1,6 +1,14 @@
 <?php
 
 include_once 'functions/full_get.php'; // считваем все GET данные
+// костыль для вывода закрытых КП
+if (($get_KpCondition == 'Купили у нас') OR
+   ($get_KpCondition == 'Не требуется')  OR 
+   ($get_KpCondition == 'Уже купили')  ) 
+   {
+  $get_FinishContract = 1;
+  }
+  
 include_once 'functions/form_select.php'; // Настраиваем SQL запрос
 
 
@@ -14,6 +22,8 @@ $smarty->display('info_filtr.tpl');
 
 include_once 'functions/setup_param_main_table.php'; // настраиваем всек данные для шаблона
 include_once 'sub_programs/page_number.php'; // выводим номера страниц на таблице
+
+
 
 $smarty->display('info_setup_filtr.tpl');
 if ($kpCount == 0) { // Если нет КП по фильтру по выводим ошибку

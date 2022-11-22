@@ -48,7 +48,4 @@ if (!empty($email_from_kp_new)) {
   $email_from_kp = $email_from_kp_new;
 }
 
-
-require_once "valid_email.php";
-
 ?>
