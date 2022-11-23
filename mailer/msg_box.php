@@ -4,24 +4,30 @@ require_once 'PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php';
 require_once 'PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 
 $ZakupName="";
-if (!empty($_GET['InnCustomer'])) {
-  $InnCustomer = $_GET['InnCustomer'];
-}
+(!empty($_GET['InnCustomer']))? $InnCustomer = $_GET['InnCustomer']: $InnCustomer = '';
+
 if (!empty($_GET['id'])) {
   $id = $_GET['id'];
 }
 
 $arr_emails = GetEmailByInn($pdo,$InnCustomer);
-$smarty->assign('arr_emails', $arr_emails);
+
+
+  $smarty->assign('arr_emails', $arr_emails);
+// количетво емайло в БД
+  $smarty->assign('count_arr_emails', count($arr_emails));
+
 
 // находим по ID закупки наименование файла, который будем отправлять
 $arr_kp = GetKPById($pdo,$id);
 
+// echo count($arr_emails);
 // echo "<pre>";
-// print_r($arr_kp[0]['type_kp']);
+// print_r($arr_emails);
 // echo "<pre>";
 
-
+// die();
+if (file_exists($arr_kp[0]['LinkKp'])) {
 // получаем данные из ексель файла
 $xls = PHPExcel_IOFactory::load($arr_kp[0]['LinkKp']);
 $xls->setActiveSheetIndex(0);
@@ -55,6 +61,7 @@ $ZakupName = substr($ZakupName,$pos_N);
 
 $smarty->assign('kp_name', $kp_name);
 $smarty->assign('Zakazchik', $Zakazchik);
+$smarty->assign('InnCustomer', $InnCustomer);
 $smarty->assign('Email', $Email);
 $smarty->assign('ZakupName', $ZakupName);
 $smarty->assign('link_pdf', $link_pdf);
@@ -66,9 +73,14 @@ $smarty->assign('real_file', $real_file); // ПризнакЮ что есть П
 $smarty->assign('type_kp', $arr_kp[0]['type_kp']); // отправляем тип КП, чтобы понять что в письме писать
 
 
-// Форма Для отправки, Если МЫ нашли в каталоге файл
-$smarty->display('send_mail.tpl');
 
+$smarty->display('send_mail.tpl');
+} else {
+  // При отсутствии ЕКСЕЛЬ файла
+  $smarty->assign('alarm_message', 'Нет EXCEL файла c КП');
+  $smarty->assign('back_adress', $_SERVER['HTTP_REFERER']);
+  $smarty->display('alarm_message.tpl');
+}
 // echo "<pre>";
 // print_r($arr_kp);
 // echo "<pre>";

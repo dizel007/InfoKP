@@ -67,14 +67,14 @@
 
 {* *******************  Выбора типа КП        ************************** *}  
  <div class="mobile_web" >
-Тип КП :
+Тип КП : 1-{$get_type_kp}
     <select style="width:100px;" id="get_type_kp" class="form-select data-windows" name="get_type_kp" size="1">
- 
+
          <option selected value="{$get_type_kp}">{$get_value_type_kp}</option>
          {$count_AllKptype = count($AllKptype)-2}
          
-         {for  $i=0 to (count($AllKptype)-2)}
-              {* Удаляем повтор типа КП*}
+         {for  $i=0 to $count_AllKptype}
+              {* Удаляем повтор типа КП *}
              {if $AllValuesKptype[$i] == $get_type_kp}
                 {$i = $i + 1}
              {/if}

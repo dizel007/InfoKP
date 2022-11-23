@@ -255,7 +255,7 @@ $contact_font_size = 7;
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['ful_name']),'0',1,'L');
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['user_phone']),'0',1,'L');
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['user_mobile_phone']),'0',1,'L');
-  $temp = "e-mail: ". $user_responsible_arr[0]['user_email'];
+  $temp = $user_responsible_arr[0]['user_email'];
   $temp_2 = "mailto:".$user_responsible_arr[0]['user_email'];
   $pdf->SetTextColor(5,99,193); // синий цвет
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($temp),'0',1,'L','',  $temp_2);

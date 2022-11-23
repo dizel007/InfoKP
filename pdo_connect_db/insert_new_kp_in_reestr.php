@@ -112,9 +112,13 @@ if (move_uploaded_file($_FILES['upload_file']['tmp_name'], $temp)) {
 $products = analiz_kp($temp);
 // **************************************************************************************
 
+//  вычитаваем данные про ответственного
+$stmt = $pdo->prepare("SELECT * FROM `users` WHERE `user_name` = ?");
+$stmt->execute([$Responsible]);
+$user_responsible_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // ****************************************
-$temp_array = format_new_kp($products, $comparr); // Формируем КП и получаем сумму КП 
+$temp_array = format_new_kp($products, $comparr, $user_responsible_arr); // Формируем КП и получаем сумму КП 
 unlink($temp);  // удаляем загружаемый файл, Нах их копить
 
 $KpSum = $temp_array['total'];
@@ -124,10 +128,7 @@ $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 /* 
 *************** Формируем ПДФ *************************************
 */
-//  вычитаваем данные про ответственного
-$stmt = $pdo->prepare("SELECT * FROM `users` WHERE `user_name` = ?");
-$stmt->execute([$Responsible]);
-$user_responsible_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 require_once '../new_kp_info/make_pdf.php';
 

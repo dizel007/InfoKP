@@ -32,6 +32,7 @@ if ($_FILES['upload_file']['name'][0] <> "") {
                     echo "Некоторая отладочная информация:\n";
                     print_r($_FILES);
                 echo "</pre>";
+              
             }
 
         }
@@ -73,10 +74,8 @@ $mail->Body    = $body_post;
     if ($mail->send()) 
         {
             $result = "НОРМА";
-            echo "СООБЩЕНИЕ ОТПРАВЛЕНО на адрес : ". $email_from_kp;
+            // echo "СООБЩЕНИЕ ОТПРАВЛЕНО на адрес : ". $email_from_kp;
             $status ="OK";
-
-
             $id_item = $id;
             $what_change = 7;  // 7 - значит отправка почты
             $comment_change = "Отправлено сообщение с сайта на адрес : ". $email_from_kp; 
@@ -84,6 +83,7 @@ $mail->Body    = $body_post;
               
             require "../pdo_connect_db/insert_reports.php"; 
             require "../pdo_connect_db/update_email_count_in_reestr.php";
+            header('Location: ../index.php?transition=24&id='.$id);
 
 
         } else {

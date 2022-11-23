@@ -101,14 +101,18 @@
  
 {* Источник КП *}
        <li>
-        <label>Источник КП :</label>
+         <label>Источник КП :</label>
             <select size="1" name="type_kp">
-              <option selected value="2">почта INFO</option>
-              <option value="3">Входящий звонок</option>
-              <option value="4">Старый клиент</option>
-              <option value="">Нет данных</option>
+               {for $i=0 to  (count($AllKptype)-2)}
+                   {* Убираем отсюда объектные КП  *}
+                   {if $AllValuesKptype.$i == 6}
+                      {$i=$i+1}
+                   {/if}
+                  <option value="{$AllValuesKptype.$i}">{$AllKptype.$i}</option>
+               {/for}
             </select>
-         </li>
+       </li>   
+
  {* Тип продукции *}
        <li>
          <label>Тип продукции :</label>

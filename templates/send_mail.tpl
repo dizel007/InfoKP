@@ -1,18 +1,20 @@
-<div class=\"col-12 shadow-lg up-page\">
-<h5 class=\"center\"> ФОРМА ДЛЯ ОТПРАВКИ ПИСЬМА КЛИЕНТУ</h5>
-{if ($link_pdf_excel <>'') } 
-{*   если есть Ексель файл, то выводим данне с него *}
-     <b>{$ZakupName}</b><br>
-		 <b>Заказчик : {$Zakazchik} </b><br>
-		 <b>EMAIL из КП : {$Email}</b>
-{else} {* Если ексель файла нет *}
-  <h5 class ="text-danger">КП в формате EXCEL отсутствует на сервере </h5>
-{/if}
-<br><br>
-</div>
+<div class="mail_about_company">
+<p class="mail-center"> ФОРМА ДЛЯ ОТПРАВКИ ПИСЬМА КЛИЕНТУ</p>
+    {if ($link_pdf_excel <> '') } 
+    {*   если есть Ексель файл, то выводим данне с него *}
+        <i>Вводный текст:</i> <b>{$ZakupName}</b><br>
+        <i>Заказчик :</i> <b>{$Zakazchik}</b><br>
+        <i>ИНН :</i><b> {$InnCustomer} </b><br>
+        <i>EMAIL из КП :</i> <b>{$Email}</b>
+    {else} {* Если ексель файла нет *}
+      <h5 class ="alarm_font">КП в формате EXCEL отсутствует на сервере </h5>
+    {/if}
 
+
+<hr>
 <form enctype="multipart/form-data" action="mailer/sender_letter_many.php"  method="post">
     <!-- передаем ID  закупки -->
+    
     <input hidden name="id" value={$id}>
     <!-- передаем Наименование Заказчика -->
     <input hidden name="Zakazchik" value={$Zakazchik}>
@@ -22,36 +24,58 @@
     <input hidden name="ZakupName" value = {$ZakupNameTemp}>
 
 
-<div class="">
 
-{if (isset($arr_emails))} 
-    <h5>Email из Базы Данных: (Выберите один EMAIL , либо введите новый)</h5>
-            <table>
-            {foreach from=$arr_emails item=$value }
-            <tr>
-              <td>
-              <input type="radio" name="email_from_kp" value="{$value['email']}">{$value['email']}
-              </td>
-              <td>{$value['actual']}</td>
-              <td>{$value['comment']}</td>
-              <td>{$value['date_write']}</td>
+<div class="container">
+{********************* Блок с выводм емайлов ************************************}
+<div class="emails_from_db">
 
-            </tr>
-            {/foreach} 
-            </table>
-    {else}
-     <b class="text-danger">В базе данных отсутствует EMAIL!!!</b>
-     <br>
+{if ($InnCustomer <>'')} 
+
+       {if ($count_arr_emails > 0)} 
+            Email из Базы Данных: (Выберите один EMAIL , либо введите новый)
+            <br><br>
+              <table>
+                <tr>
+                  <td class="emails_table_db email_table_shapka">email</td>
+                  <td class="emails_table_db email_table_shapka">Состояние</td>
+                  <td class="emails_table_db email_table_shapka">Коммент</td>
+                  <td class="emails_table_db email_table_shapka">Дата создания</td>
+                </tr>
+
+                {foreach from=$arr_emails item=$value }
+                <tr>
+                  <td class="emails_table_db">
+                  <input type="radio" name="email_from_kp" value="{$value['email']}">{$value['email']}
+                  </td>
+                  <td class="emails_table_db">{$value['actual']}</td>
+                  <td class="emails_table_db">{$value['comment']}</td>
+                  <td class="emails_table_db">{$value['date_write']}</td>
+                </tr>
+                {/foreach} 
+         </table>
+     {else}
+      <b class="alarm_font">В базе данных отсутствует EMAIL!!!</b>
+      <br><br>
+       <label for="email_from_kp">Email из КП </label>
+    <input type="radio" name="email_from_kp" value="{$Email}">{$Email}
+    <br><br>
+  {/if}
+        {else}
+      <b class="alarm_font">В базе данных отсутствует EMAIL!!!</b>
+      <br><br>
+       <label for="email_from_kp">Email из КП </label>
+    <input type="radio" name="email_from_kp" value="{$Email}">{$Email}
+    <br><br>
+   
 {/if}
 
 <b>Новый EMAIL для отправки КП</b><br>  
 <input type="email"  name="email_from_kp_new" value=""><Br>
-</div>
 
-  <br>    <br>    
+</div> {* конец блок с выводом емайлов*}
 
-<div class ="">
-
+{********************* Вложение в письмо ************************************}
+<div class="add_post_file">
 {* Когда нужно отправить файл загруженный на сервер *}
 {if $real_file == 1 }
 
@@ -68,45 +92,51 @@
 {else}
 {* Когда нужно отправить файл новый файл *}
 
-  <b class="text-danger">файл {$link_pdf_text} на сервере отсутствует.</b> <br><br> подгрузите файл(ы) для отправки :
+  <b class="alarm_font">файл {$link_pdf_text} на сервере отсутствует.</b> <br><br> подгрузите файл(ы) для отправки :
  <input type="hidden" name="MAX_FILE_SIZE" value="500000" multiple>   
  <input name="upload_file[]" type="file" multiple>
 
 {/if}
-</div>
 
-<div></div>
-<div class = "col-12 post-data">
+</div> {* конец блока с вложением письма*}
+</div> {* конец контейнера *}
+
+
+
+{********************* ТЕКСТ ПИСЬМА ************************************}
+<div class="container">
+
+<div class = "post_text">
 
 <h4>Предмет письма</h4>
 <p>
-<input type="text"  name="subject_theme"  size="150" value = "КП от ТД АНМАКС" placeholder="КП от ТД АНМАКС">
+<input type="text"  name="subject_theme"  size="50" value = "КП от ТД АНМАКС" placeholder="КП от ТД АНМАКС">
 </p>
 <h5>ТЕКСТ ПИСЬМА (Можно править все, что угодно, только следить за стилистическими тэгами)</h5>
+Добрый день!<br>
+<textarea name="bodypost" cols="100" rows="4">
+{if $type_kp == 6 }
+Предлагаем рассмотреть приобретение следующей продукции, для гос.закупки
+{/if}
+{$ZakupName}
+</textarea>
+<br>
+<input type="checkbox"  name="certifikat" checked value="На всю предлагаемую продукцию имеются сертификаты."> 
+<label for="certifikat">На всю предлагаемую продукцию имеются сертификаты.</label> <br>
 
-   <textarea name="bodypost" cols="150" rows="14">
-   <b>Добрый день!</b> <br>
-    {if $type_kp == 6 }
-     Предлагаем рассмотреть приобретение следующей продукции, для гос.закупки
-    {/if}  
-    <br>
+<input type="checkbox"  name="better_offer" checked value="Если у Вас есть более интересное предложение, сообщите нам, пожалуйста, мы постараемся улучшить условия нашего КП.">
+<label for="better_offer">Если у Вас есть более интересное предложение, сообщите нам, пожалуйста, мы постараемся улучшить условия нашего КП.</label> <br>
 
-    <b>
-       {$ZakupName}
-    </b>  <br><br>
-    На всю предлагаемую продукцию имеются сертификаты. <br><br>
-    Если у Вас есть более интересное предложение, сообщите нам, пожалуйста, мы постараемся улучшить условия нашего КП.<br><br>
-    <br><br>
+  <br>
     С уважением<br>
     ООО ТД АНМАКС<br>
     по всем вопросам можете получить консультацию<br>
-    по телефону 8 (495) 787-24-05<br>
-    <img border=0 src="https://tradestorm.ru/images/tovar.jpg" useMap=#FPMap0>
-    <img border=0 src="https://tradestorm.ru/images/logo.jpg" useMap=#FPMap0>
-    </textarea>
-    <p><button class="submit" type="submit">Отправить</button></p>
+    по телефону 8 (495) 787-24-05
+  </div> {* конец текста пиьсма post_text *}
+  </div> {* конец контейнера *}
+<div class="mail_button">
+    <button class="submit" type="submit">Отправить</button>
+</div> {* конец mail_button *}
 </form>
+</div> {* конец класса mail_about_company*}
 
-</div> <!--  конец post-data- -->
-</div>
-</div>

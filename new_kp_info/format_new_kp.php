@@ -1,5 +1,5 @@
 <?php
-function format_new_kp($products,$comparr) {
+function format_new_kp($products,$comparr,$user_responsible_arr) {
 require_once '../PHPExcel-1.8/Classes/PHPExcel.php';
 require_once '../PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php';
 require_once '../PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
@@ -251,7 +251,10 @@ $line2= $line - 9;
 	$objDrawing->setWorksheet($sheet);
 
 
-// Исполнитель 
+/* *********************
+*****  Исполнитель  
+************************/
+
 $line = $line+4;
 
 $sheet->setCellValue("C{$line}", 'Исполнитель:');
@@ -259,28 +262,35 @@ $sheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Align
 $sheet->getStyle("C{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("C{$line}")->getFont()->setSize(10);
 $line++;
-$sheet->setCellValue("C{$line}", 'Артем Гуц');
+$sheet->setCellValue("C{$line}", $user_responsible_arr[0]['ful_name']);
 $sheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $sheet->getStyle("C{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("C{$line}")->getFont()->setSize(10);
 $line++;
-$sheet->setCellValue("C{$line}", '8-495-787-24-05 (доб. 103)');
+$sheet->setCellValue("C{$line}", $user_responsible_arr[0]['user_phone']);
 $sheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $sheet->getStyle("C{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("C{$line}")->getFont()->setSize(10);
 $line++;
-$sheet->setCellValue("C{$line}", '8-916-259-42-00');
+$sheet->setCellValue("C{$line}", $user_responsible_arr[0]['user_mobile_phone']);
 $sheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $sheet->getStyle("C{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("C{$line}")->getFont()->setSize(10);
 $line++;
-$sheet->setCellValue("C{$line}", 'a.guts@anmaks.ru');
-$sheet->getCell("C{$line}")->getHyperlink()->setUrl("mailto:a.guts@anmaks.ru");
+$temp = $user_responsible_arr[0]['user_email'];
+$sheet->setCellValue("C{$line}", $user_responsible_arr[0]['user_email']);
+$sheet->getCell("C{$line}")->getHyperlink()->setUrl("mailto:$temp");
 $sheet->getStyle("C{$line}")->getFont()->getColor()->setRGB('0000FF');
 $sheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $sheet->getStyle("C{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("C{$line}")->getFont()->setSize(10);
-
+$line++;
+$sheet->setCellValue("C{$line}", 'www.anmaks.ru');
+$sheet->getCell("C{$line}")->getHyperlink()->setUrl("https://www.anmaks.ru/");
+$sheet->getStyle("C{$line}")->getFont()->getColor()->setRGB('0000FF');
+$sheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+$sheet->getStyle("C{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+$sheet->getStyle("C{$line}")->getFont()->setSize(10);
 
 
 // Здесь используется функция num2str() для получение суммы прописью, взято с https://habrahabr.ru/post/53210/.

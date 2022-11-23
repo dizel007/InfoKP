@@ -42,6 +42,24 @@ if (!empty($_POST['ZakupName'])) {
 // текст письма
 if (!empty($_POST['bodypost'])) {
     $body_post = $_POST['bodypost'];
+
+
+(isset($_POST['certifikat']))?$certifikat='<br><br>'.$_POST['certifikat']:$certifikat='';
+(isset($_POST['better_offer']))?$better_offer= '<br><br>'.$_POST['better_offer']:$better_offer='';
+
+
+
+
+    $dop_2_last='</b>'.$certifikat. $better_offer.
+    '<br><br>
+    С уважением<br>
+    ООО ТД АНМАКС<br>
+    по всем вопросам можете получить консультацию<br>
+    по телефону 8 (495) 787-24-05<br>
+    <img border=0 src="https://tradestorm.ru/images/tovar.jpg" useMap=#FPMap0>
+    <img border=0 src="https://tradestorm.ru/images/logo.jpg" useMap=#FPMap0>';
+    
+    $body_post='<b>Добрый день!</b><br><br><b>'.$_POST['bodypost'].$dop_2_last;
   }
  
 if (!empty($email_from_kp_new)) {

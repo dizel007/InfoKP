@@ -68,7 +68,15 @@ switch ($transition) {
         include_once 'parts_site/header.php';
         // echo "выводим Аналитику(**** DELETE ****)";
         include_once "mailer/msg_box.php";
-    break;    
+    break;
+    case 24: // ОТправка Почты
+        $pageName = "Успешная отправка Емайла";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        $smarty->assign('alarm_message', 'УСПЕШНО ОТПРАВИЛИ');
+        $smarty->assign('back_adress', "?id=".$_GET['id']);
+        $smarty->display('alarm_message.tpl');
+    break;      
 
     case 0: // основная таблица со всеми КП
         $pageName = "Реестр со всеми КП";
