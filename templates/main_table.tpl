@@ -92,7 +92,7 @@
 <!-- ***************************  Тип Прихода КП  ***************************************** -->
          {if ({$array_with_all_kp.$i.type_kp} > 0)  } 
             <td>
-            <img class="scale11" style = "opacity:0.6" src="icons/type_kp/{$array_with_all_kp.$i.type_kp}.png" alt="{$array_with_all_kp.$i.type_kp}">
+            <img class="" style = "opacity:0.6" src="icons/type_kp/{$array_with_all_kp.$i.type_kp}.png" alt="{$array_with_all_kp.$i.type_kp}">
              </td>
            {else}  
            <td></td>
@@ -100,7 +100,7 @@
 <!-- ***************************  Тип Продукции в КП  ***************************************** -->
          {if ({$array_with_all_kp.$i.type_product} > 0)  } 
             <td>
-               <img class="scale11" style = "opacity:0.6" src="icons/type_product/{$array_with_all_kp.$i.type_product}.png" alt="{$array_with_all_kp.$i.type_product}">
+               <img class="" style = "opacity:0.6" src="icons/type_product/{$array_with_all_kp.$i.type_product}.png" alt="{$array_with_all_kp.$i.type_product}">
 
                          </td>
            {else}  
@@ -119,9 +119,11 @@
 
 
 <!-- ******************************  Icons Email  *********************************************** -->
-      <td><a href= "?transition=23&id={$array_with_all_kp.$i.id}&InnCustomer={$array_with_all_kp.$i.InnCustomer}" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/table/email.png" alt="SeeKp"></a></td>
+      <td><a href= "?transition=23&id={$array_with_all_kp.$i.id}&InnCustomer={$array_with_all_kp.$i.InnCustomer}" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/table/email.png" alt="SeeKp" title="{$array_with_all_kp.$i.date_last_email}"></a></td>
+      
  <!-- ******************************  Количество высланных Email  *********************************************** -->
       <td>{$array_with_all_kp.$i.email_count}</td>
+
  <!-- ********************************** ВАЖНОСТЬ КП ************************************************ -->
       <td  class="hidden_class_column" id = "js-KpImportance{$array_with_all_kp.$i.id}" width ="50" class="hidden_class_column">{$array_with_all_kp.$i.KpImportance}</td>     
 

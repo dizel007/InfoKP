@@ -17,6 +17,8 @@
       <tr> 
         <td> 
              <input type="hidden" name="id_phone_cor" value="{$id_phone}">
+             <input type="hidden" name="real_phone" value="{$tel_value['telephone']}">
+             
         </td>
         <td> 
           <!-- передаем id  чтобы знать куда вернуться -->

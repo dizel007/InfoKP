@@ -10,7 +10,7 @@ require_once "../connect_db.php";
   $commentPhone=htmlspecialchars($_POST["commentPhone"]);
   $contactName=htmlspecialchars($_POST["contactName"]);
   $today = date("Y-m-d H:i:s");       
-
+  $real_phone = $_POST["real_phone"];
   
 
  
@@ -33,29 +33,22 @@ $sql = "UPDATE telephone SET  comment=:comment,
   $stmt= $pdo->prepare($sql);
   $stmt->execute($data_arr);
 
-    // $info = $stmt->errorInfo();
-    //  print_r($info);
-    
-// $sql = "SELECT * FROM users WHERE user_hash = '$_COOKIE[hash]'";
-// $user = $mysqli->query($sql);
-// while ($row = $user -> fetch_assoc()) 
-// {
-//        $user_login = $row["user_login"];
-//    }
-
+ 
   
-// $db_comment="Изм. тел. :$tel_phone :";
-// $db_comment.="контакт :".$contactName.";";
-// $db_comment.=" коммент :".$commentPhone.";";
-// $db_comment.=" актуал :".$actual.";";
+$db_comment="Изм. тел. :$real_phone :";
+$db_comment.="контакт :".$contactName.";";
+$db_comment.=" коммент :".$commentPhone.";";
+$db_comment.=" актуал :".$actual.";";
      
+$date_change = date('Y-m-d');
+$id_item = $InnCustomer;
+$what_change = 3;  // 3 -  изменение телефона
+$comment_change = $db_comment; 
+$author = $userdata['user_login'];
 
-// $id_item = $inn;
-// $what_change = 3; 
-// $comment_change = $db_comment; 
-// $author = $user_login;
+
   
-// require "update_reports.php";
+require "insert_reports.php";
         
 
       

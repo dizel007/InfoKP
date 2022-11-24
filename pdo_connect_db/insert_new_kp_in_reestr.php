@@ -185,11 +185,16 @@ $stmt->execute(array('KpNumber' => $KpNumber));
 }
 
 
-// ******************* делаем запрос, чтобы получить ID этого КП ********
-
+// ******************* Добавляем строчку в отчеты  ********
+$date_change = date("Y-m-d");
+$id_item = $last_id;
+$what_change = 8;
+$comment_change = "Нов. КП№".$KpNumber." ".$NameCustomer; 
+$author = $userdata['user_login'];
+require "insert_reports.php";
 
 // header("Location: ../".$LinkKp);
-header("Location: ../index.php?transition=10&id=".$last_id);
+header("Location: ../index.php?transition=10&id=".$id_item);
 
 echo "ID= ", $last_id,"<br>";
 die('POOOH');

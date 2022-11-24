@@ -16,8 +16,15 @@
         <a href="?transition=13&user_login={$userdata['user_login']}" target="_blank">Аналитика</a>
       </li>
       <li>
-        <a href="#">Пользователь: {$userdata['user_name']}</a>
+        <a href="?transition=97">Пользователь: {$userdata['user_name']}</a>
       </li>
+      {* Ввод нового Юзера *}
+      {if $userdata['userType'] == 1}
+      <li>
+        <a href="?transition=5&user_login={$userdata['user_login']}" data-item='Новый пользователь' >Новый пользователь</a>
+      </li>
+      {/if}
+
     </ul>
   </nav>
 

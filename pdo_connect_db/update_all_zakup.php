@@ -173,11 +173,14 @@ if ($my_id_arr[0]['adress']  != $Adress) {
 }
 
 /// добавляем запись в реестр изменени КП
+$date_change = date("Y-m-d");
 $id_item = $id;
 $what_change = 1;
 $comment_change = $db_comment; 
-$author = $user_login;
-// require "update_reports.php";
+$author = $userdata['user_login'];
+require "insert_reports.php";
+
+
 /// ТУТ БУДЕТ ПРОВЕРКА КОМПАНИЙ, которые у нас покупали ранне,
 // если признак купили у нас снимается, то и ранее подсвеченне 
 $InnCustomer = $my_id_arr[0]['InnCustomer'];

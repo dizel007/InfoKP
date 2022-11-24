@@ -71,9 +71,9 @@ function SetParametrsTable ($smarty, $array_with_all_kp) {
         $array_with_all_kp[$i]['DateNextCall'] = '';
         }
         // *************    Убираем нули , если не задана дата Окончания контакта **************************
-        if ($array_with_all_kp[$i]['dateFinishContract'] == "0000-00-00") {
-          $array_with_all_kp[$i]['dateFinishContract'] = '';
-          }
+        // if ($array_with_all_kp[$i]['dateFinishContract'] == "0000-00-00") {
+        //   $array_with_all_kp[$i]['dateFinishContract'] = '';
+        //   }
 
         // *************    Форматируем суммы  **************************
         $array_with_all_kp[$i]['KpSum'] = number_format($array_with_all_kp[$i]['KpSum']);

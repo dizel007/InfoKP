@@ -38,6 +38,20 @@ switch ($transition) {
         include_once 'parts_site/header.php';
         include_once "sub_programs/make_new_comp.php";
         break;
+    
+    case 5: // уходим на ввод нового пользователя 
+        $pageName = "Ввод нвого пользователя";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        $smarty ->display('register_new_user.tpl');
+        break;
+    case 97: // Выход из Реестра
+            $pageName = "Выход/Смена пользователя";
+            $smarty->assign('pageName', $pageName);
+            include_once 'parts_site/header.php';
+            $smarty->assign('back_adress', $_SERVER['HTTP_REFERER']);
+            $smarty ->display('need_action.tpl');
+            break;
 
     case 7: // основная таблица с фильтром  КП
         $pageName = "Реестр с фильтром  КП";

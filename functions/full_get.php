@@ -78,7 +78,7 @@ $smarty->assign("get_name_responsible", @$get_name_responsible);
 if (isset($_GET['get_type_kp'])) {
   $get_type_kp = $_GET['get_type_kp'];
 } else {
-  $get_type_kp = 0;
+  $get_type_kp = '';
 }
 $smarty->assign("get_type_kp", $get_type_kp);
 

@@ -34,20 +34,20 @@ InsertOurTelephoneInDB ($pdo, $new_telephone_arr);
 // $user_login_arr = $stmt->fetchAll(PDO::FETCH_COLUMN);
 // $user_login = $user_login_arr[0];
 
-// $now_date = date('Y-m-d');
-  
-// $db_comment="Нов. тел. :$new_telephone :";
-// $db_comment.="контакт :".$contactName.";";
-// $db_comment.=" коммент :".$commentPhone.";";
-// $db_comment.=" актуал :".$actual.";";
+ 
+$db_comment="Нов. тел. :$new_telephone :";
+$db_comment.="контакт :".$contactName.";";
+$db_comment.=" коммент :".$commentPhone.";";
+$db_comment.=" актуал :".$actual.";";
  
 
-//   $date_change = $now_date;
-//   $id_item = $inn;
-//   $what_change = 4; 
-//   $comment_change = $db_comment; 
-//   $author = $user_login;
-//   //    require "update_reports.php";
+  $date_change = date('Y-m-d');
+  $id_item = $InnCustomer;
+  $what_change = 4;  // 4 - ввод нового телефона
+  $comment_change = $db_comment; 
+  $author = $userdata['user_login'];
+
+require "insert_reports.php";
     
 //   $sql = "INSERT INTO `reports`(`id`, `date_change`, `id_item`, `what_change`, `comment_change`, `author`)
 //     VALUES ('', '$date_change', '$id_item', '$what_change', '$comment_change', '$author')";

@@ -71,9 +71,9 @@
  <li>
   <label>Эл. Почта Заказчика :</label>
     {if isset($email_comp)}
-    <input type="text" name="EmailCustomer" value ="{$email_comp}" size="70">
+    <input required type="text" name="EmailCustomer" value ="{$email_comp}" size="70">
     {else}
-    <input type="email" name="EmailCustomer" value ="" size="70">
+    <input required type="email" name="EmailCustomer" value ="" size="70">
     {/if}
  </li>
  {*    ********************** Контактное лицо Заказчика   ********************} 

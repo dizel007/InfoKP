@@ -86,30 +86,41 @@ if ($stmt ->execute()) {
 }
 
 // Добавляем новый телефонв БД телефонов
-$stmt  = $pdo->prepare("INSERT INTO `telephone` 
-                       (inn, telephone, date_write)
-                       VALUES (:inn, :telephone, :date_write)");
-$stmt ->bindParam(':inn', $InnCustomer);
-$stmt ->bindParam(':telephone', $TelCustomer);
-$stmt ->bindParam(':date_write', $date_write);
-if ($stmt ->execute()) {
-    // echo "Запись УДАЧНО добавлена successfully";
-} else {
-  die (" ** DIE ** Не получилось добавить телефонный номер в БД");
+if ($TelCustomer <> '') {
+      $stmt  = $pdo->prepare("INSERT INTO `telephone` 
+                            (inn, telephone, date_write)
+                            VALUES (:inn, :telephone, :date_write)");
+      $stmt ->bindParam(':inn', $InnCustomer);
+      $stmt ->bindParam(':telephone', $TelCustomer);
+      $stmt ->bindParam(':date_write', $date_write);
+      if ($stmt ->execute()) {
+          // echo "Запись УДАЧНО добавлена successfully";
+      } else {
+        die (" ** DIE ** Не получилось добавить телефонный номер в БД");
+      }
 }
 // Добавляем новый EMAIL БД email
-$stmt  = $pdo->prepare("INSERT INTO `email` 
-                       (inn, email, date_write)
-                       VALUES (:inn, :email, :date_write)");
-$stmt ->bindParam(':inn', $InnCustomer);
-$stmt ->bindParam(':email', $EmailCustomer);
-$stmt ->bindParam(':date_write', $date_write);
-if ($stmt ->execute()) {
-    // echo "Запись УДАЧНО добавлена successfully";
-} else {
-  die (" ** DIE ** Не получилось добавить email в БД email");
+if ($EmailCustomer <> '') {
+    $stmt  = $pdo->prepare("INSERT INTO `email` 
+                          (inn, email, date_write)
+                          VALUES (:inn, :email, :date_write)");
+    $stmt ->bindParam(':inn', $InnCustomer);
+    $stmt ->bindParam(':email', $EmailCustomer);
+    $stmt ->bindParam(':date_write', $date_write);
+    if ($stmt ->execute()) {
+        // echo "Запись УДАЧНО добавлена successfully";
+    } else {
+      die (" ** DIE ** Не получилось добавить email в БД email");
+    }
 }
 
+// ******************* Добавляем строчку в отчеты  ********
+$date_change = date("Y-m-d");
+$id_item =  $InnCustomer;
+$what_change = 9;
+$comment_change = "Нов. Компания: ".$NameCustomer; 
+$author = $userdata['user_login'];
+require "insert_reports.php";
 
 
 // ******************* делаем перенаправление на создание нового КП ********

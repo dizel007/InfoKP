@@ -67,7 +67,7 @@
 
 {* *******************  Выбора типа КП        ************************** *}  
  <div class="mobile_web" >
-Тип КП : 1-{$get_type_kp}
+Тип КП : 
     <select style="width:100px;" id="get_type_kp" class="form-select data-windows" name="get_type_kp" size="1">
 
          <option selected value="{$get_type_kp}">{$get_value_type_kp}</option>

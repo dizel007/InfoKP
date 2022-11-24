@@ -61,7 +61,23 @@
         
      </select>
  </div>
-
+ {* *******************  Выбора типа Продукции   ************************** *}  
+ <div class="mobile_web" >
+Тип прод :
+    <select class="form-select data-windows" name="get_product_type" size="1">
+ 
+         <option selected value="{$get_product_type}">{$get_product_type_name}</option>
+        
+         {for  $i=0 to (count($AllProductTypesValue)-2)}
+              {* Удаляем повтор типа КП*}
+             {if $AllProductTypesValue[$i] == $get_product_type}
+                {$i = $i + 1}
+             {/if}
+            <option value="{$AllProductTypesValue[$i]}">{$AllProductTypesName[$i]}</option>
+         {/for}
+        
+     </select>
+ </div>
  <button  type="submit">ОБНОВИТЬ</button>
    </div>
              

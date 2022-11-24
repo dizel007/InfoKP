@@ -18,6 +18,8 @@
       <tr> 
         <td> 
              <input type="hidden" name="id_email_cor" value="{$id_email}">
+             <input type="hidden" name="real_email" value="{$email_value['email']}">
+     
         </td>
         <td> 
           <!-- передаем id  чтобы знать куда вернуться -->

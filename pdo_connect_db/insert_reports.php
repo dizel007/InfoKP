@@ -23,7 +23,7 @@ if ($stmt ->execute()) {
   $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
   // echo "Запись УДАЧНО добавлена successfully";
 } else {
-  die ("Какой то облом, с записью в таблицу reports()");
+  die ("Какой то облом, со вставкой записи в таблицу reports()");
 }
 
 
