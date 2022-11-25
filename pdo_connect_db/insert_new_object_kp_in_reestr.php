@@ -69,17 +69,25 @@ if (move_uploaded_file($_FILES['upload_file']['tmp_name'], $temp)) {
 // ***************Выбираем список товаров из файла *************************************
 $products = analiz_kp($temp);
 // **************************************************************************************
-$temp_array = format_new_kp($products, $comparr); // Формируем КП и получаем сумму КП 
+
+
+//  вычитаваем данные про ответственного
+$stmt = $pdo->prepare("SELECT * FROM `users` WHERE `user_name` = ?");
+$stmt->execute([$Responsible]);
+$user_responsible_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// ****************************************
+$temp_array = format_new_kp($products, $comparr, $user_responsible_arr); // Формируем КП и получаем сумму КП 
 unlink($temp);  // удаляем загружаемый файл, Нах их копить
 
 $KpSum = $temp_array['total'];
 $KpFileName= $temp_array['KpFileName'];
-$LinkKp = 'EXCEL/'.$KpFileName;
+$LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 
-// echo "<pre>";
-// print_r($comparr);
-// echo "<pre>";
-// die();
+/* 
+*************** Формируем ПДФ *************************************
+*/
+require_once '../new_kp_info/make_pdf.php';
 
 
 // echo ':KpNumber=', $KpNumber."<br>";

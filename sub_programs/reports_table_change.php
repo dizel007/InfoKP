@@ -26,7 +26,7 @@ foreach ($arr_users as $value){
 // создаем массив с новыми КП   
             if ($temp['what_change'] == 8) {
               $array_new_kp[] = $temp['id_item'];
-               }
+                 }
 // создаем массив с новыми Компаниями   
                 if ($temp['what_change'] == 9) {
                   $array_new_comp[] = $temp['id_item'];
@@ -51,19 +51,25 @@ foreach ($arr_users as $value){
    if (isset ($array_change_kp))  {
     $kol_change_kp[$value] = count($array_change_kp);
     $kol_change_unique_kp[$value] = count(array_unique($array_change_kp, SORT_STRING));
+
+    $arr_change_kp_user[$value] = implode(";",array_unique($array_change_kp, SORT_STRING)); // массив с ИД КП
+
     unset($array_change_kp); // удаляем для каждого пользователя
    }  else {
     $kol_change_kp[$value]=0;
     $kol_change_unique_kp[$value] =0;
    }
-// если есть данные, что юзер создавал новые КП
+
+   // если есть данные, что юзер создавал новые КП
 if (isset ($array_new_kp))  {
   $kol_new_kp[$value] = count($array_new_kp);
+  $arr_new_kp_user[$value] = implode(";",$array_new_kp); // массив с ИД КП
   unset($array_new_kp); // удаляем для каждого пользователя
  } else {
   $kol_new_kp[$value]=0;
  }
-// если есть данные, что юзер создавал новые компании
+
+ // если есть данные, что юзер создавал новые компании
 if (isset ($array_new_comp))  {
   $kol_new_comp[$value] = count($array_new_comp);
   unset($array_new_comp); // удаляем для каждого пользователя
@@ -88,8 +94,14 @@ if (isset ($array_change_comp))  {
 
 // отправляем количество КП с изменениями индекс сотрудник 
 $smarty->assign('kol_change_kp', @$kol_change_kp);
+$smarty->assign('arr_change_kp_user', @$arr_change_kp_user);
+
+
+
 // отправляем количество новых КП индекс сотрудник 
 $smarty->assign('kol_new_kp', @$kol_new_kp);
+$smarty->assign('arr_new_kp_user', @$arr_new_kp_user);
+
 
 // отправляем количество созданных новых компаний индекс сотрудник 
 $smarty->assign('kol_new_comp', @$kol_new_comp);
@@ -105,5 +117,6 @@ $smarty->assign('kol_send_mail', @$kol_send_mail);
 $smarty->assign('kol_change_comp', @$kol_change_comp);
 
 // echo "<pre>";
-// print_r($kol_new_comp);
+// print_r($arr_new_kp_user);
 // echo "<pre>";
+// die();

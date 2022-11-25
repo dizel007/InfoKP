@@ -1,7 +1,7 @@
 <div>
-<table class="drawtable employee_table">
+<table class="styled-table drawtable employee_table">
 <tr>
-    <td>Юзер</td>
+    <td>Пользователь</td>
     <td>новых КП</td>
     <td>новых Компаний</td>
     <td>изменений в КП</td>
@@ -19,7 +19,11 @@
     {* новые КП *}
     {foreach from=$kol_new_kp key=user item=new_kp}
             {if ($user == $value)}
-                <td>{$new_kp}</td>
+                <td>
+                <a href="?transition=11&ids={$arr_new_kp_user["$value"]}">
+                    {$new_kp}
+                </td>
+                </a>
             {/if}
     {/foreach}
 
@@ -51,7 +55,11 @@
 {* КП с изменениями *}
         {foreach from=$kol_change_unique_kp key=user item=kp_unique_change}
             {if ($user == $value)}
-                <td>{$kp_unique_change}</td>
+                <td>
+                <a href="??transition=11&ids={$arr_change_kp_user["$value"]}">
+                {$kp_unique_change}
+                </a>
+                </td>
             {/if}
         {/foreach}
               

@@ -3,6 +3,10 @@
 $sql ="";
 $where = "";
 // if ($typeQuery <> '') {
+  if ($get_date_sell_start <>'') $where = addWhere($where, "date_sell >='".$get_date_sell_start."'");
+  if ($get_date_sell_end <>'') $where = addWhere($where, "date_sell <='".$get_date_sell_end."'");
+
+
   if ($get_FinishContract  == '0') $where = addWhere($where, "FinishContract =".$get_FinishContract);
 
   if ($get_nomerKP <>'') $where = addWhere($where, "KpNumber =".$get_nomerKP);

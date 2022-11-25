@@ -2,9 +2,9 @@
 
 
 <div>
-<table class="drawtable employee_table">
+<table class="styled-table drawtable employee_table">
 <tr>
-    <td>Юзер</е>
+    <td>Пользователь</е>
     <td>Новых КП назначено</td>
     <td>Новых КП ожидает</td>
     <td>КП "НЕ в работе" всего</td>    
@@ -27,8 +27,17 @@
         {foreach from=$kol_new_kp key=user item=kp_change}
             {if ($user == $value)}
                 <td>
-                    <a href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_FinishContract=1">{$kp_change}</a>
+    
+    <a class="report_link"  href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_FinishContract=1">
+                
+                    {$kp_change}
+                 
+                 </a>
+    
+
+
                 </td>
+                
             {/if}
         {/foreach}
 
@@ -36,7 +45,9 @@
         {foreach from=$kol_new_kp_need_work key=user item=kp_change}
             {if ($user == $value)}
                 <td>
-                    <a href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_KpCondition=">{$kp_change}</a>
+                
+                    <a class="report_link" href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_KpCondition=%20">{$kp_change}</a>
+                
                 </td>
             {/if}
         {/foreach}
@@ -56,7 +67,7 @@
         {foreach from=$kol_new_kp_work key=user item=kp_change}
             {if ($user == $value)}
                 <td>
-                <a href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_KpCondition=В работе">{$kp_change}</a>
+                <a class="report_link" href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_KpCondition=В работе">{$kp_change}</a>
                 </td>
             {/if}
         {/foreach}
@@ -71,7 +82,7 @@
         {foreach from=$kol_sold_kp key=user item=kp_change}
             {if ($user == $value)}
                 <td>
-                    <a href="?transition=7&get_date_start={$get_date_start}&get_date_end={$get_date_end}&get_responsible={$value}&get_KpCondition='В работе'">{$kp_change}</a>
+                    <a class="report_link" href="?transition=7&get_date_sell_start={$get_date_start}&get_date_sell_end={$get_date_end}&get_responsible={$value}&get_KpCondition=Купили у нас">{$kp_change}</a>
                 </td>
             {/if}
         {/foreach}

@@ -185,3 +185,21 @@ if (isset($_GET['get_product_type'])) {
 }
 $smarty->assign("get_product_type", $get_product_type);
 $smarty->assign("get_product_type_name", $get_product_type_name);
+
+
+// ************* получаем дану КП когда они были проданы **************************************
+
+if (isset($_GET['get_date_sell_start'])) {
+  $get_date_sell_start = $_GET['get_date_sell_start'];
+}else {
+  $get_date_sell_start='';
+}
+
+
+if (isset($_GET['get_date_sell_end'])) {
+  $get_date_sell_end = $_GET['get_date_sell_end'];
+}else {
+  $get_date_sell_end='';
+}
+$smarty->assign("get_date_sell_start", $get_date_sell_start);
+$smarty->assign("get_date_sell_end", $get_date_sell_end);

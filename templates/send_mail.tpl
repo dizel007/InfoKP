@@ -112,7 +112,7 @@
 <p>
 <input type="text"  name="subject_theme"  size="50" value = "КП от ТД АНМАКС" placeholder="КП от ТД АНМАКС">
 </p>
-<h5>ТЕКСТ ПИСЬМА (Можно править все, что угодно, только следить за стилистическими тэгами)</h5>
+<h5>ТЕКСТ ПИСЬМА</h5>
 Добрый день!<br>
 <textarea name="bodypost" cols="100" rows="4">
 {if $type_kp == 6 }

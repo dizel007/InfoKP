@@ -10,6 +10,12 @@ $smarty->assign('last_month' , $last_month);
 
 include_once 'functions/full_get.php'; // считваем все GET данные
 
+/* Данные для ввода даты в шаблинизатор  */
+($get_date_start=='')?$get_date_start=$now: $get_date_start=$get_date_start;
+($get_date_end=='')?$get_date_end=$now: $get_date_end=$get_date_end;
+$smarty->assign('get_date_start', $get_date_start);
+$smarty->assign('get_date_end', $get_date_end);
+
 // echo "<pre>";
 // print_r($arr_users);
 // echo "<pre>";

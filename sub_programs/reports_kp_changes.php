@@ -40,6 +40,9 @@ foreach ($active_user_names_arr_smarty as $value){
       }  else {
       $kol_new_kp[$value]=0;
       }
+
+    
+
 // новые КП, которые не взялив работу для каждого пользователя
     if (isset ($array_new_kp_need_wowk))  {
       $kol_new_kp_need_work[$value] = count($array_new_kp_need_wowk);
@@ -71,6 +74,12 @@ if (isset ($array_needcall_kp))  {
     }
 
 }
+
+// echo "<pre>";
+// print_r($array_new_kp_need_wowk);
+// echo "<pre>";
+// die();
+
 
 
 
@@ -113,6 +122,7 @@ $arr_all_reports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // echo "<pre>";
 // print_r($arr_all_reports);
 // echo "<pre>";
+// die();
 
 foreach ($active_user_names_arr_smarty as $value){
   foreach ($arr_all_reports as $temp) {
@@ -141,7 +151,6 @@ foreach ($active_user_names_arr_smarty as $value){
   }
 // Сумма проданных КП для  каждого пользователя за период
   if (isset ($perem_sum_sold_kp))  {
-    echo $perem_sum_sold_kp;
     $sum_sold_kp[$value] = $perem_sum_sold_kp;
     unset($perem_sum_sold_kp); // удаляем для каждого пользователя
   }  else {

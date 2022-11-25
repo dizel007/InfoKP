@@ -68,6 +68,15 @@ switch ($transition) {
         // echo "выводим КП по ID(**** DELETE ****)";
         include_once "sub_programs/one_kp_by_id.php";
     break;
+    
+    case 11: // выводим несколько КП по ID
+        $pageName = "выводим несколько КП по ID";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        // echo "выводим КП по ID(**** DELETE ****)";
+        include_once "sub_programs/many_kp_by_id.php";
+    break;
+
     case 13: // выводим Аналитику
         $pageName = "выводим Аналитику";
         $smarty->assign('pageName', $pageName);
