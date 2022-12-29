@@ -1,11 +1,9 @@
-
 <?php 
 date_default_timezone_set('Europe/Moscow');
 
 $date_change = date('Y-m-d');
 
 // Проверяем если ли какой нибуль комментарий, если нет, то не добавляем строку
-
 
 
 $stmt  = $pdo->prepare("INSERT INTO `reports` 
@@ -23,8 +21,6 @@ if ($stmt ->execute()) {
   $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
   // echo "Запись УДАЧНО добавлена successfully";
 } else {
-  die ("Какой то облом, со вставкой записи в таблицу reports()");
+  die ("Какой то облом, со вставкой записи в таблицу reports");
 }
-
-
 ?>

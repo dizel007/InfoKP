@@ -85,6 +85,15 @@ switch ($transition) {
         include_once "sub_programs/reports.php";
     break;
 
+    case 15: // выводим Аналитику
+        $pageName = "выводим Аналитику";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        // echo "выводим Аналитику(**** DELETE ****)";
+        include_once "sub_programs/reports_show_changes.php";
+    break;
+
+
     case 23: // ОТправка Почты
         $pageName = "Форма для отправки письма";
         $smarty->assign('pageName', $pageName);

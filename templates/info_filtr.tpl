@@ -51,13 +51,26 @@
 {* *******************  Меня Выбора Ответственного Юзера       ************************** *}  
  <div id="g_responsible" class="mobile_web" >
 Ответственный :
-    <select style="width:120px;" id="get_responsible" class="form-select data-windows" name="get_responsible" size="1">
+
+{* Изменяем количество пользователей*}
+   {$count_users1 = $count_users}
+   {for  $i=0 to $count_users-1}
+              
+             {if $active_user_names_arr_smarty[$i] == $get_responsible}
+                 {$count_users1 = $count_users-1}
+             {/if}
+    {/for}
+
+<select style="width:120px;" id="get_responsible" class="form-select data-windows" name="get_responsible" size="1">
+   
+  
  
-         <option  selected value="{$get_responsible}">{$get_responsible}</option>
-         {for  $i=0 to $count_users-1}
+         <option selected value="{$get_responsible}">{$get_responsible}</option>
+         {for  $i=0 to $count_users1-1}
               {* Удаляем повтор активного польвателя*}
-             {if $active_user_logins_arr_smarty[$i] == $get_responsible}
-                {$i = $i + 1}
+             {if $active_user_names_arr_smarty[$i] == $get_responsible}
+                 {$i = $i + 1}
+                 {$count_users = $count_users-1}
              {/if}
             <option value="{$active_user_names_arr_smarty[$i]}">{$active_user_names_arr_smarty[$i]}</option>
          {/for}

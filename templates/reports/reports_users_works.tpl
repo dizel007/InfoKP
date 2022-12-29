@@ -36,7 +36,13 @@
 {* Изменений в КП  *}
           {foreach from=$kol_change_kp key=user item=kp_change}
             {if ($user == $value)}
-                <td>{$kp_change}</td>
+                <td>
+                <a href="?transition=15&author={$value}&date_start={$get_date_start}&date_end={$get_date_end}&what_change=1">
+                {$kp_change}
+                </a>
+                </td>
+            
+            
             {/if}
         {/foreach}
 
@@ -56,7 +62,7 @@
         {foreach from=$kol_change_unique_kp key=user item=kp_unique_change}
             {if ($user == $value)}
                 <td>
-                <a href="??transition=11&ids={$arr_change_kp_user["$value"]}">
+                <a href="?transition=11&ids={$arr_change_kp_user["$value"]}">
                 {$kp_unique_change}
                 </a>
                 </td>

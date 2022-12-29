@@ -5,8 +5,6 @@ $smarty->display('info_filtr.tpl');
 include_once 'functions/setup_param_main_table.php'; // настраиваем всек данные для шаблона
 // $smarty->display('info_setup_filtr.tpl');
 
-
-
 $smarty->assign('text', 'Информация о КП');
 $smarty->display('title_razdel.tpl');
 

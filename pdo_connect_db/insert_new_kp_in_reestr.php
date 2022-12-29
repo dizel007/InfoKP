@@ -196,5 +196,5 @@ require "insert_reports.php";
 // header("Location: ../".$LinkKp);
 header("Location: ../index.php?transition=10&id=".$id_item);
 
-echo "ID= ", $last_id,"<br>";
-die('POOOH');
+// echo "ID= ", $last_id,"<br>";
+// die('POOOH');
