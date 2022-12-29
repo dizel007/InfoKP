@@ -27,7 +27,7 @@ include_once 'sub_programs/page_number.php'; // выводим номера ст
 
 $smarty->display('info_setup_filtr.tpl');
 if ($kpCount == 0) { // Если нет КП по фильтру по выводим ошибку
-  $smarty->assign('alarm_message', 'Нет КП по выбранным параметрам');
+  $smarty->assign('alarm_message', 'Нет КП по выбранным параметрам, возможно КП уже закрыто');
       $smarty->assign('back_adress', $_SERVER['HTTP_REFERER']);
       $smarty->display('alarm_message.tpl');
 } else { // если есть хоть 1 КП, то выводим его

@@ -1,6 +1,5 @@
 <?php
-// Передаем наименование старницы
-
+// *************************  Выбор несколько КП по ID
 if (@$_GET['ids'] <> ''){
 $id_arr = explode(";", $_GET['ids']);
  
@@ -10,18 +9,19 @@ foreach ($id_arr as $id_value) {
   $array_with_all_kp_temp1 = GetKPById($pdo,$id_value);
   $array_with_all_kp_temp[] = $array_with_all_kp_temp1[0];
 }
-
-
-//     echo "<pre>";
-//   print_r($array_with_all_kp_temp);
-//   echo "<pre>";
-// die();
-
     $get_FinishContract = 1; //   когда выводим по ID  то выводим и закрытые КП
     if (count($array_with_all_kp_temp) == '') {
     die (' НЕТ ДАННЫХ ДЛЯ ВЫВОДА КП по ID');
-}
-} else {
+     }
+// Выбор одного  КП по ID   
+} elseif ($id <> '') {
+
+  $array_with_all_kp_temp1 = GetKPById($pdo,$id);
+  $array_with_all_kp_temp[] = $array_with_all_kp_temp1[0];
+
+} 
+
+else {
 // выбираем все КП по фильтру
 
     $array_with_all_kp_temp = GetSelectedKP($pdo,$sql);

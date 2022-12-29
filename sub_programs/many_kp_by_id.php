@@ -4,6 +4,7 @@ include_once 'functions/form_select.php'; // Настраиваем SQL запр
 $smarty->display('info_filtr.tpl');
 include_once 'functions/setup_param_main_table.php'; // настраиваем всек данные для шаблона
 // $smarty->display('info_setup_filtr.tpl');
+include_once 'sub_programs/page_number.php'; // выводим номера страниц на таблице
 
 
 
@@ -12,5 +13,6 @@ $smarty->display('title_razdel.tpl');
 
 $smarty->display('main_table.tpl'); // выводим данные о выбранном КП
 
+include 'sub_programs/page_number.php'; // выводим номера страниц на таблице
 
 
