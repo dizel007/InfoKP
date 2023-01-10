@@ -23,6 +23,10 @@
       <li>
         <a href="?transition=5&user_login={$userdata['user_login']}" data-item='Новый пользователь' >Новый пользователь</a>
       </li>
+      <li>
+        <a href="parce_kp/index.php" data-item='Поиск по номенклатуре'>Поиск по номенклатуре</a>
+      </li>
+
       {/if}
 
     </ul>
