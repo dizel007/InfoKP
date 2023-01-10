@@ -13,7 +13,7 @@ require_once '../connect_db.php';
 
 
 echo <<<HTML
-<form action="index.php" method="get">
+<form action="nomenclatura.php" method="get">
 <label for="words">слова для поиска</label>
 <input required type="text" name="words" value="$words">
 
@@ -63,24 +63,14 @@ $where = "";
       
   }
   
-
-  // $stmt = $pdo->prepare("SELECT id, KpNumber, KpData, LinkKp  FROM reestrkp 
-  //             WHERE `KpData` >=:dateStart AND `KpData` <=:dateStop AND `FinishContract` =:FinishContract",
-  //             );
-
-  
-    
+   
   $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  // var_dump($arr);
-  // die('ssssssssssssssss');
-  // 'closeContract' => $closeContract,
 foreach ($arr as $value ){
   $LinkKp = "../".$value['LinkKp'];
-if ($LinkKp == "../excel/") {
-  $LinkKp ='';
-}
-  if (file_exists($LinkKp)) {
+  if ($LinkKp == "../excel/") { $LinkKp ='';} // костыль чтобы не парсил папку
+
+  if (file_exists($LinkKp)) { // если по ссылке есть файл с КП, то парсим его
       $xls = PHPExcel_IOFactory::load($LinkKp );
       $xls->setActiveSheetIndex(0);
       $sheet = $xls->getActiveSheet();
@@ -97,7 +87,7 @@ while ($stop <> 1 ) {
     $stop =1;
     break;
   }
-  $name = "*".$name;// 
+  $name = "*".$name; //  костыль из-за кодирвки, почему то в рус языке первый символ игнориться в поиске строка в строке
   $ed_izm = $sheet->getCellByColumnAndRow(8, $i)->getValue();
   $kolvo = $sheet->getCellByColumnAndRow(10, $i)->getValue();
   $kolvo = str_replace(' ','',$kolvo);
@@ -107,9 +97,9 @@ while ($stop <> 1 ) {
   if ($words != '') {
     if (find_words_in_nomenclature($words, $name, $kolvo_find, $kolvo))  {
       $LinkKp = $value['LinkKp'];
-        $priz_name_kp=1;
-        
-
+      $priz_name_kp=1;
+      
+      // массив для вывода на экран
       $prods[$value['id']][] = 
         array(
           'name'  => $name,
@@ -117,6 +107,8 @@ while ($stop <> 1 ) {
           'ed_izm' => $ed_izm,
           'LinkKp' => $value['LinkKp'],
         );
+  
+  // массив для шаблонизатора
         $prods_all[$value['id']][] = 
         array(
           'name'  => $name,
@@ -126,6 +118,7 @@ while ($stop <> 1 ) {
           'KpNumber' => $value['KpNumber'],
           'KpData' => $value['KpData'],
           'adress' => $value['adress'],
+          'id' => $value['id'],
         );
 
         
@@ -138,41 +131,43 @@ while ($stop <> 1 ) {
 
 $i++;
 }
-if ($priz_name_kp) {
-  $KpNumber = "<b>КП№".$value['KpNumber']." от ".$value['KpData']." (".$value['adress'].")</b>";
-  $link_to_kp_by_id="?transition=10&id=".$value['id'];
-  $open_kp_by_id="open_excel/parce_excel_kp.php?LinkKp=".$LinkKp;
+// if ($priz_name_kp) { // если было вхождение, то выводим эту строку
 
-  echo <<<HTML
-    <!--<a href="../$LinkKp"><b>$KpNumber</b></a> -->
-    <a href="../$open_kp_by_id" target="_blank"><b>$KpNumber</b></a>
-    <a href="../$link_to_kp_by_id"><b>**Перейти к КП*</b></a>
-    <a href="../$LinkKp"><b>*Скачать КП**</b></a>
+//   $KpNumber = "<b>КП№".$value['KpNumber']." от ".$value['KpData']." (".$value['adress'].")</b>";  // скачать КП
+//   $link_to_kp_by_id="?transition=10&id=".$value['id']; // выход в реестр к этому КП
+//   $open_kp_by_id="open_excel/parce_excel_kp.php?LinkKp=".$LinkKp; // посмотреть КП
+
+//   echo <<<HTML
+  
+//     <a href="../$open_kp_by_id" target="_blank"><b>$KpNumber</b></a>
+//     <a href="../$link_to_kp_by_id"><b>**Перейти к КП*</b></a>
+//     <a href="../$LinkKp"><b>*Скачать КП**</b></a>
 
 
-HTML;
-echo "<table>";
-foreach ($prods as $value1) {
-    foreach ($value1 as $item) {
-      $name_temp= $item["name"];
-      $ed_izm_temp= $item["ed_izm"];
-      $kolvo_temp= $item["kol"];
+// HTML;
+// // Рисуем таблицу  УП
+// echo "<table>";
+// foreach ($prods as $value1) {
+//     foreach ($value1 as $item) {
+//       $name_temp= $item["name"];
+//       $ed_izm_temp= $item["ed_izm"];
+//       $kolvo_temp= $item["kol"];
 
-echo <<<HTML
+// echo <<<HTML
     
-    <tr>
-        <td>$name_temp<td>
-        <td>$ed_izm_temp<td>
-        <td>$kolvo_temp<td>
+//     <tr>
+//         <td>$name_temp<td>
+//         <td>$ed_izm_temp<td>
+//         <td>$kolvo_temp<td>
 
-    </tr>
+//     </tr>
     
-HTML;
+// HTML;
 
-    }
-  }
-  echo "</table><br>";
-}
+//     }
+//   }
+//   echo "</table><br>";
+// }
   unset($prods);
 
 } 
@@ -219,3 +214,7 @@ echo "Количество найденных КП :".count(@$prods_all);
 //   echo "<pre>";
 //  print_r($prods_all);
 //  echo "<pre>";
+$smarty->assign('prods_all', $prods_all);
+$smarty->assign('pageName', 'Поиск продукции по номенклатуре');
+
+$smarty ->display('../templates/find_nomeclaturu.tpl');
