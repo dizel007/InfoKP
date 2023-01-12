@@ -1,6 +1,10 @@
 <?php
 // ************************************** PDO ***********************************
 require_once ("main_info.php");
+require_once 'PHPExcel-1.8/Classes/PHPExcel.php';
+require_once 'PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php';
+require_once 'PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
+
  
       try {  
         $pdo = new PDO('mysql:host='.$host.';dbname='.$db.';charset=utf8', $user, $password);

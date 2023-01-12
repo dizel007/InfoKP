@@ -13,8 +13,9 @@ $TempInnComp = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
+var_dump($InnCustomer);
 // если ИНН существет, то уходим на создание КП
-if ($TempInnComp[0]['inn'] == $InnCustomer) {
+if (@$TempInnComp[0]['inn'] == $InnCustomer) {
   
   header("Location: ../index.php?transition=$back_transition&&InnCustomer=".$InnCustomer);
   die('Компания с таким ИНН уже вуществует');
@@ -55,6 +56,15 @@ $CommentCustomer='';
 // print_r($date_write);
 // echo "<pre>";
 
+// echo $InnCustomer."<br>";
+// echo $KppCustomer."<br>";
+// echo $NameCustomer."<br>";
+// echo $TelCustomer."<br>";
+// echo $EmailCustomer."<br>";
+// echo $adress."<br>";
+// echo $CommentCustomer."<br>";
+// echo $ContactCustomer."<br>";
+// echo $date_write."<br>";
 
 // die('2222222');
 
