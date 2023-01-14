@@ -20,15 +20,45 @@ $xls->getProperties()->setCompany("ООО ТД АНМАКС");
 $xls->setActiveSheetIndex(0);
 $sheet = $xls->getActiveSheet();
 $sheet->setTitle('КП');
+/** массив для рисования бордюра снизу**/
+$border_down = array(
+	'borders'=>array(
+	'bottom' => array(
+	'style' => PHPExcel_Style_Border::BORDER_THIN,
+	'color' => array('rgb' => '000000')
+	),
+)
+);
 
 $sheet->setCellValue("G6", "№ ".$comparr['KpNumber']." от ".$comparr['KpDate']);
 $sheet->setCellValue("J8", $comparr['NameCustomer']);
-$sheet->setCellValue("J9", $comparr['ContactCustomer']);
+$sheet->setCellValue("J9", $comparr['ContactPerson']);
 $sheet->setCellValue("J10", $comparr['Telephone']);
 $sheet->setCellValue("J11", $comparr['Email']);
+if (isset($comparr['NomerZakupki'] ) AND (@$comparr['NomerZakupki'] != '')) {
 
+	$sheet->setCellValue("G12", 'Номер извещения на ЭТП');
+	$sheet->setCellValue("J12", $comparr['NomerZakupki']);
+	$sheet->getRowDimension("12")->setRowHeight(26.25);
+	// $sheet->getStyle("G12:M12}")->applyFromArray($border_down);
+	$limo=12;
+	$sheet->getStyle("G{$limo}:M{$limo}")->applyFromArray($border_down);
+}
 
-//Счет на оплату № ТО-772 от 4 мая 2022 г.
+$sheet->setCellValue("C16", $comparr['ZakupName']);
+	  // перенос слов в строке если выходит за ячейку
+		$sheet->getStyle("C16")->getAlignment()->setWrapText(true);
+    $sheet->getStyle("C16")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+    		//  подбираем ширину строки
+	  $len=strlen ($comparr['ZakupName']);
+
+		$high =  ((int) ($len/118));
+    if ($high >1 ) {
+		$high = ($high) * 15;
+    } else {
+      $high = 15;
+    }
+		$sheet->getRowDimension("16")->setRowHeight($high);
 
 
 //Счет на оплату № ТО-772 от 4 мая 2022 г.
@@ -38,14 +68,7 @@ $sheet->setCellValue("J11", $comparr['Email']);
 
 $line=19;
 
-$border_down = array(
-  	'borders'=>array(
-		'bottom' => array(
-		'style' => PHPExcel_Style_Border::BORDER_THIN,
-	  'color' => array('rgb' => '000000')
-		),
-	)
-);
+
 
 foreach ($products as $i => $prod) {
 // Объединяем ячейки по горизонтали.
@@ -219,6 +242,20 @@ $sheet->getStyle("M{$line}")->getFont()->setSize(14);
 $sheet->getStyle("M{$line}")->getFont()->setBold(true);
 
 
+$sheet->getStyle("M{$line}")->getAlignment()->setWrapText(true); 
+$sheet->getStyle("M{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+		//  подбираем ширину строки
+$len=strlen ($adress_dostav);
+
+$high =  ((int) ($len/90));
+if ($high >1 ) {
+$high = ($high) * 15;
+} else {
+	$high = 15;
+}
+$sheet->getRowDimension("{$line}")->setRowHeight($high);
+
+
 
 // Подписант 
 $line = $line+6;
@@ -308,7 +345,7 @@ $NameCustomer = str_replace('"', '', $NameCustomer);
 $NameCustomer = str_replace('«', '', $NameCustomer);
 $NameCustomer = str_replace('»', '', $NameCustomer);
 
-$KpFileName= "№".$comparr['KpNumber']." от ".$comparr['KpDate']." ".$NameCustomer." от ООО ТД АНМАКС";
+$KpFileName= $comparr['KpFileName'];
 
 $objWriter->save('../EXCEL/'.$KpFileName.".xlsx");
 // $file_name_schet = "../SCHET/"."Счет на оплату № ТО-".$nomer_schet." от ".$schet_date."(".$arr_inn[0]['name'].").xlsx";

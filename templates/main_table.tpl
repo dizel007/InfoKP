@@ -170,7 +170,11 @@
      <td><a name="{$array_with_all_kp.$i.id}" href="reports_show_history_kp.php?typeQuery=5&id_kp={$array_with_all_kp.$i.id}" target="_blank"><img class="scale11" src="icons/table/history_kp.png" style = "opacity: 0.6" alt="История КП" title="История КП"></a></td> 
 <!-- ****************************** Адрес поставки   ********************************************* -->
       <td class="hidden_class_column" id = "js-Adress{$array_with_all_kp.$i.id}" width ="150" class="hidden_class_column">{$array_with_all_kp.$i.adress}</td>
-               
+ <!-- ******************************  Icons konturLink   ***************************************************** -->
+
+                           <td><a href= "pdo_connect_db/update_data_in_kp.php?id={$array_with_all_kp.$i.id}" alt="777" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/kontur.png" alt="SeeLinkKontur"></a></td>
+           
+
        </tr>
     
  {/for}

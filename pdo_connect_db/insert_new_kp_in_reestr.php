@@ -76,6 +76,7 @@ $Responsible = $_POST['responsible'];
 $adress = $_POST['Adress'];
 $date_write = date('Y-m-d');
 
+$KpFileName= "№".$KpNumber." от ".$KpDate_temp." ".$NameCustomer." от ООО ТД АНМАКС";
 
 $comparr = array ('InnCustomer' => $InnCustomer,
                    'KpNumber' => $KpNumber ,
@@ -88,6 +89,7 @@ $comparr += array ('Email' => $EmailCustomer);
 $comparr += array ('Telephone' => $TelCustomer);
 $comparr += array ('responsible' => $Responsible);
 $comparr += array ('DostCost' => $DostCost);
+$comparr += array ('KpFileName' => $KpFileName); // название файла
 
 
 //  ***************************************************************************************
