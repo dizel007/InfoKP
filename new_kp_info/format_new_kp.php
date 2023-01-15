@@ -1,8 +1,8 @@
 <?php
 function format_new_kp($products,$comparr,$user_responsible_arr) {
-require_once '../PHPExcel-1.8/Classes/PHPExcel.php';
-require_once '../PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php';
-require_once '../PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
+// require_once '../PHPExcel-1.8/Classes/PHPExcel.php';
+// require_once '../PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php';
+// require_once '../PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 
 $xls = PHPExcel_IOFactory::load('../new_kp_info/new_kp_shablon.xlsx');
 
@@ -32,7 +32,7 @@ $border_down = array(
 
 $sheet->setCellValue("G6", "№ ".$comparr['KpNumber']." от ".$comparr['KpDate']);
 $sheet->setCellValue("J8", $comparr['NameCustomer']);
-$sheet->setCellValue("J9", $comparr['ContactPerson']);
+$sheet->setCellValue("J9", $comparr['ContactCustomer']);
 $sheet->setCellValue("J10", $comparr['Telephone']);
 $sheet->setCellValue("J11", $comparr['Email']);
 if (isset($comparr['NomerZakupki'] ) AND (@$comparr['NomerZakupki'] != '')) {
@@ -67,7 +67,7 @@ $sheet->setCellValue("C16", $comparr['ZakupName']);
 
 
 $line=19;
-
+$total=0;
 
 
 foreach ($products as $i => $prod) {

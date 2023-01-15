@@ -7,9 +7,10 @@
                <td class="hidden_class_column">пп</td>
                <td>№КП</td>
                <td>Ex</td> 
-               <td>sEx</td> 
+               <td>sEx</td>
+               <td>КИ</td>  
                <td>Сч</td> 
-               <td width ="60" >Дата КП</td>
+               <td width ="50" >Дата КП</td>
                <td width ="70" class="hidden_class_column">ИНН</td>
                <td>PDF</td>
                <td>Тип</td>
@@ -27,12 +28,13 @@
                <td width ="60" class="hidden_class_column">Сл.звонок</td>
                <td class="hidden_class_column">Состояние</td>
                <td>Сумма КП</td>
-               <td width ="50" class="hidden_class_column">НМЦК Закупки</td>
+               <td width ="40" class="hidden_class_column">НМЦК Закупки</td>
          {*    <td class="hidden_class_column">ДКЗ</td>      *}
              <td class="hidden_class_column">КЗ</td>       
          {*      <td width ="60" class="hidden_class_column">Финиш</td> *}
                <td>Ист</td>
                <td class="hidden_class_column">Адрес поставки</td>
+                <td class="">ККП</td>
          </tr>
          </thead>
       <tbody>
@@ -59,6 +61,11 @@
          {else} 
        <td><img style = "opacity: 0.2" src="icons/see_excel.png" alt="Excel"></td>
         {/if} 
+
+<!-- ***************************  Колчиство Изменений КП   ************************************************* -->          
+         <td><b>({$array_with_all_kp.$i.cor_kol_kp})</b></td>
+
+
 
 <! -- Проверяем есть ли файл с КП в формате ексель на сервере ************************************** -->
 <! -- Скачиваем счет -->
@@ -172,7 +179,7 @@
       <td class="hidden_class_column" id = "js-Adress{$array_with_all_kp.$i.id}" width ="150" class="hidden_class_column">{$array_with_all_kp.$i.adress}</td>
  <!-- ******************************  Icons konturLink   ***************************************************** -->
 
-                           <td><a href= "pdo_connect_db/update_data_in_kp.php?id={$array_with_all_kp.$i.id}" alt="777" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/kontur.png" alt="SeeLinkKontur"></a></td>
+                           <td><a href= "pdo_connect_db/update_data_in_kp.php?id={$array_with_all_kp.$i.id}" alt="777" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/correct_kp.png" alt="SeeLinkKontur"></a></td>
            
 
        </tr>

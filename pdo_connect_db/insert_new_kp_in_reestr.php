@@ -8,6 +8,9 @@ require_once ("../new_kp_info/analiz_siroy_kp.php");
 require_once ("../new_kp_info/format_new_kp.php");
 require_once ("../functions/telephone_make.php"); // наложить маску на телефонные номера
 
+require_once '../new_kp_info/make_pdf.php'; // фукнция создания КП в пдф формате
+
+
  
 
 // считваем все данные из ПОСТ формы
@@ -78,6 +81,9 @@ $date_write = date('Y-m-d');
 
 $KpFileName= "№".$KpNumber." от ".$KpDate_temp." ".$NameCustomer." от ООО ТД АНМАКС";
 
+
+$ZakupName = TEXT_KP_INFO;
+
 $comparr = array ('InnCustomer' => $InnCustomer,
                    'KpNumber' => $KpNumber ,
                    'KpDate' => $KpDate_temp,
@@ -86,9 +92,11 @@ $comparr = array ('InnCustomer' => $InnCustomer,
                    'Adress' => $adress );
 $comparr += array ('ContactCustomer' => $ContactCustomer);
 $comparr += array ('Email' => $EmailCustomer);
-$comparr += array ('Telephone' => $TelCustomer);
+$comparr += array ('Telephone' => $new_TelCustomer);
 $comparr += array ('responsible' => $Responsible);
 $comparr += array ('DostCost' => $DostCost);
+$comparr += array ('ZakupName' => $ZakupName);
+
 $comparr += array ('KpFileName' => $KpFileName); // название файла
 
 
@@ -128,12 +136,11 @@ $KpFileName= $temp_array['KpFileName'];
 $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 
 /* 
-*************** Формируем ПДФ *************************************
+*********************************** Формируем ПДФ *************************************
 */
 
 
-require_once '../new_kp_info/make_pdf.php';
-
+make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); // 
 
 
 // die('FORMAT PDF FILE');

@@ -15,7 +15,7 @@ function parce_kp($file_name){
  
  $kp_name = $sheet->getCellByColumnAndRow(6, 6)->getValue();
  $Zakazchik = $sheet->getCellByColumnAndRow(9, 8)->getValue();
- $ContactPerson = $sheet->getCellByColumnAndRow(9, 9)->getValue();
+ $ContactCustomer = $sheet->getCellByColumnAndRow(9, 9)->getValue();
  $Phone = $sheet->getCellByColumnAndRow(9, 10)->getValue();
  $Email = $sheet->getCellByColumnAndRow(9, 11)->getValue();
  $ZakupName = $sheet->getCellByColumnAndRow(2, 16)->getValue();
@@ -24,7 +24,7 @@ function parce_kp($file_name){
                        'Zakazchik' => $Zakazchik,
                        'Phone' => $Phone,
                        'Email' => $Email, 
-                      'ContactPerson' => $ContactPerson);
+                      'ContactCustomer' => $ContactCustomer);
 $kp_array_shapka += array (  'ZakupName' => $ZakupName);
 
   $sum_kp_array['shapka'] = $kp_array_shapka;
@@ -104,8 +104,13 @@ $kp_array_shapka += array (  'ZakupName' => $ZakupName);
  * Выводим на экран информацию из КП с возможностью редактирования
  */
 function dispay_update_kp($smarty, $sum_kp_array, $add_str, $id){
+//   echo "<pre>";
+// print_r($sum_kp_array);
+// echo "<pre>";
   $smarty->assign('prods', $sum_kp_array['prods']);
   $smarty->assign('dop_info', $sum_kp_array['dop_info']);
+  $smarty->assign('shapka', $sum_kp_array['shapka']);
+
   $smarty->assign('add_str', $add_str);
   $smarty->assign('id', $id);
   $smarty->display('../templates/update_data_in_kp.tpl');

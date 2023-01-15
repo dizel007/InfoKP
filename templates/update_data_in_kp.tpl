@@ -1,8 +1,27 @@
 
+<br>
+<b>{$shapka['kp_name']}</b>
+<br>
 
 
+<table>
+<tr>
+  <td>Заказчик :</td>
+  <td> {$shapka['Zakazchik']}</td>
+</tr>
+<tr>
+  <td>Телефон :</td>
+  <td>{$shapka['Phone']}</td>
+</tr>
+<tr>
+  <td>Эл. почта :</td>
+  <td>{$shapka['Email']}</td>
+</tr>
+</table>
+<br>
+{$shapka['ZakupName']}
+<br><br>
 {$p=0}
-
 <form action ="../update_data_in_kp/format_data_for_make_kp.php" method="POST">
 
 <table>
@@ -12,8 +31,8 @@
   <td> {$p+1}</td>
   <td><input size ="100" type="text" name = "name{$p}" value ="{$value['name']}"></td>
   <td><input size ="2"   type="text" name = "ed_izm{$p}" value ="{$value['ed_izm']}"></td>
-  <td><input size ="1"   type="number" name = "kol{$p}" value ="{$value['kol']}"></td>
-  <td><input size ="1"   type="number" name = "price{$p}" value ="{$value['price']}"></td>
+  <td><input size ="1"   type="number" step="any" name = "kol{$p}" value ="{$value['kol']}"></td>
+  <td><input size ="1"   type="number" step="any" name = "price{$p}" value ="{$value['price']}"></td>
 
 </tr>
   {$p = $p+1}

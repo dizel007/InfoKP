@@ -53,81 +53,9 @@ for($i=0;$i<$add_str;$i++) {
 
 dispay_update_kp($smarty, $sum_kp_array,$add_str, $id);  // выводим наше КП
 
-die('********************* Вывели изображение на экран и сдохли **********************');
-
-
-// **************************************************************************************
+die('********************* Вывели изображение на экран **********************');
 
 
 
 
 
-
-// ****************************************
-
-
-die('000000000000000000000000000000000');
-
-
-unlink($file_name_);  // удаляем загружаемый файл, Нах их копить
-
-$KpSum = $temp_array['total'];
-$KpFileName= $temp_array['KpFileName'];
-$LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
-
-/* 
-*************** Формируем ПДФ *************************************
-*/
-require_once '../new_kp_info/make_pdf.php';
-
-
-// echo ':KpNumber=', $KpNumber."<br>";
-// echo ':KpData=', $KpDate."<br>";
-// echo ':InnCustomer=', $InnCustomer."<br>";
-// echo ':NameCustomer=', $NameCustomer."<br>";
-// echo ':idKp=', $idKp."<br>";
-// echo ':KpImportance=', $KpImportance."<br>";
-// echo ':Responsible=', $Responsible."<br>";
-// echo ':KpSum=', $KpSum."<br>";
-// echo ':adress=', $adress."<br>";
-// echo ':date_write=', $date_write."<br>";
-// echo ':LinkKp=', $LinkKp."<br>";
-
-// Данные не заполняются при создании КП
-$KpImportance ='';  
-$Responsible ='';
-$KpSum='';
-die('PERED INsertom');
-// **************** вставляем каждый параметр  данных  *********************
-$stmt  = $pdo->prepare("INSERT INTO `reestrkp` 
-                       (KpNumber, KpData, InnCustomer, NameCustomer, idKp, KpImportance, Responsible, KpSum, adress, konturLink, date_write, LinkKp, type_kp)
-                       VALUES (:KpNumber, :KpData, :InnCustomer, :NameCustomer, :idKp, :KpImportance, :Responsible, :KpSum, :adress, :konturLink, :date_write, :LinkKp, :type_kp)");
-
-$stmt ->bindParam(':KpNumber', $KpNumber);
-$stmt ->bindParam(':KpData', $KpDate);
-$stmt ->bindParam(':InnCustomer', $InnCustomer);
-$stmt ->bindParam(':NameCustomer', $NameCustomer);
-$stmt ->bindParam(':idKp', $idKp);
-$stmt ->bindParam(':KpImportance', $KpImportance);
-$stmt ->bindParam(':Responsible', $Responsible);
-$stmt ->bindParam(':KpSum', $KpSum);
-$stmt ->bindParam(':adress', $adress);
-$stmt ->bindParam(':konturLink', $KonturLink);
-$stmt ->bindParam(':date_write', $date_write);
-$stmt ->bindParam(':LinkKp', $LinkKp);
-$stmt ->bindParam(':type_kp', $type_kp);
-
-
-if ($stmt ->execute()) {
-  $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
-  // echo "Запись УДАЧНО добавлена successfully";
-} else {
-  die (" ** DIE ** Не получилось добавить данные, INSERT нового КП с сайта");
-}
-
-
-// header("Location: ../".$LinkKp);
-header("Location: ../index.php?transition=10&id=".$last_id);
-
-// echo "ID= ", $last_id,"<br>";
-die('Умерли на вводе данных в реестр при добавлении нового КП');

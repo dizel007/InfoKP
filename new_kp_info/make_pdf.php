@@ -6,7 +6,27 @@
 *  Email      : 1dizel007@gmail.com 
 *  ======================================= 
 */  
+function make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum){
+  
 
+//   echo "<pre>";
+//   print_r($products);
+//   echo "<pre>";
+// die();
+
+  $NameCustomer=$comparr['NameCustomer'];
+  $KpNumber=$comparr['KpNumber'];
+  $KpDate_temp=$comparr['KpDate'];
+  $ContactCustomer=$comparr['ContactCustomer'];
+  $new_TelCustomer=$comparr['Telephone'];
+  $EmailCustomer=$comparr['Email'];
+  $adress=$comparr['Adress'];
+  $DostCost=$comparr['DostCost'];
+  $KpFileName=$comparr['KpFileName'];
+
+  
+
+  
 require_once '../PHPExcel-1.8/fpdf/fpdf.php';
 
 //create pdf object
@@ -16,10 +36,7 @@ $pdf->AddPage();
 
 $pdf->image('../new_kp_info/right_logo.png',10,15,57);
 //set font to arial, bold, 14pt
-function MakeUtf8Font($string) {
-  $string = iconv('utf-8', 'windows-1251', $string);
-  return $string;
-}
+
 
 // подключаем шрифты
 define('FPDF_FONTPATH',"fpdf/font/");
@@ -138,7 +155,7 @@ $pdf->Cell(15 ,8, MakeUtf8Font('Кол-во'),'B',0,'C');
 $pdf->Cell(17 ,8, MakeUtf8Font('Цена'),'B',0,'C');
 $pdf->Cell(23 ,8, MakeUtf8Font('Сумма'),'B',1,'C');
 
-// ***********************  Таблица с номенклатурой
+// ***********************  Таблица с номенклатурой **************************
 $contact_font_size = 8;
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст
 $i=1;
@@ -173,7 +190,7 @@ $pdf->Cell(33 , $h_cell , MakeUtf8Font('Итого:'),0,0,'R');
 $pdf->Cell(23 ,$h_cell, MakeUtf8Font(number_format($KpSum, 2, ',', ' ')),0,1,'C');
 $pdf->Cell(134 , $h_cell , '',0,0,'C');
 $pdf->Cell(33 , $h_cell , MakeUtf8Font('В т.ч. НДС (20%):'),0,0,'R');
-$nds20 = number_format(($KpSum / 100) * 20, 2, ',', ' ');
+$nds20 = number_format(($KpSum*0.2)/1.2, 2, ',', ' ');
 $pdf->Cell(23 ,$h_cell, MakeUtf8Font($nds20),0,1,'C');
 
 
@@ -273,4 +290,8 @@ $contact_font_size = 7;
 $pdf->Output("../EXCEL/".$KpFileName.".pdf", 'F');
 //теперь добавляем синее подчеркивание для ссылки
 
-
+}
+function MakeUtf8Font($string) {
+  $string = iconv('utf-8', 'windows-1251', $string);
+  return $string;
+}
