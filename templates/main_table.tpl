@@ -6,19 +6,19 @@
             <tr class="DrawDark">
                <td class="hidden_class_column">пп</td>
                <td>№КП</td>
-               <td>Ex</td> 
-               <td>sEx</td>
-               <td>КИ</td>  
-               <td>Сч</td> 
+               <td><p title="Скачать EXCEL файл">Ex</p></td> 
+               <td><p title="Посмотреть EXCEL файл">SEx</p></td>
+               <td><p title="Количество изменений к КП">КИ</p></td>  
+               <td><p title="Скачать счет">Сч</p></td> 
                <td width ="50" >Дата КП</td>
                <td width ="70" class="hidden_class_column">ИНН</td>
-               <td>PDF</td>
-               <td>Тип</td>
-               <td>ТП</td>
+               <td><p title="Скачать PDF файл">PDF</p></td>
+               <td><p title="Тип КП(Источник запроса)">Тип</p></td>
+               <td><p title="Основной тип продукции в КП">ТП</p></td>
                <td>Наименование</td>
-               <td>Кон</td>
-               <td>EM</td>
-               <td>SEm</td>
+               <td><p title="Ссылка на источник закупки. Только для Объектных">Кон</p></td>
+               <td><p title="Отправить КП. Время последней отправки письма">EM</p></td>
+               <td><p title="Количество отправленных писем с реестра">SEm</p></td>
                <td class="hidden_class_column">Важность</td>
           
                <td class="hidden_class_column">Ответственный</td>

@@ -19,9 +19,10 @@ if (isset($_GET['add_str_plus'])) {
 }
 
 //  Вычиитаваем все данные о КП из реестра 
-$stmt = $pdo->prepare("SELECT * FROM `reestrKP` WHERE `id` = ?");
+$stmt = $pdo->prepare("SELECT * FROM `reestrkp` WHERE `id` = ?");
 $stmt->execute([$id]);
 $arr_kp_by_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 $LinkKp = $arr_kp_by_id[0]['LinkKp'];
 $file_name_="../".$LinkKp; // получаем путь и имя файла
@@ -53,7 +54,7 @@ for($i=0;$i<$add_str;$i++) {
 
 dispay_update_kp($smarty, $sum_kp_array,$add_str, $id);  // выводим наше КП
 
-die('********************* Вывели изображение на экран **********************');
+// die('********************* Вывели изображение на экран **********************');
 
 
 

@@ -87,7 +87,7 @@ $sheet->mergeCells("I{$line}:J{$line}");
     		//  подбираем ширину строки
 	  $len=strlen ($prod['name']);
 
-		$high =  ((int) ($len/61));
+		$high =  ((int) ($len/57));
     if ($high >1 ) {
 		$high = ($high) * 15;
     } else {

@@ -14,12 +14,12 @@ GET данные
 $id = $_POST['id']; // 
 
 //  Вычиитаваем все данные о КП из реестра 
-$stmt = $pdo->prepare("SELECT * FROM `reestrKP` WHERE `id` = ?");
+$stmt = $pdo->prepare("SELECT * FROM `reestrkp` WHERE `id` = ?");
 $stmt->execute([$id]);
 $arr_kp_by_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
-echo "<pre>";
-print_r($arr_kp_by_id);
-echo "<pre>";
+// echo "<pre>";
+// print_r($arr_kp_by_id);
+// echo "<pre>";
 
 $KpNumber = $arr_kp_by_id[0]['KpNumber'];
 $KpDate = $arr_kp_by_id[0]['KpData'];
@@ -85,7 +85,6 @@ $comparr = array ( 'KpNumber' => $arr_kp_by_id[0]['KpNumber'] ,
                    'ContactCustomer' => $kp_array_shapka['ContactCustomer'],
                    'NameCustomer' => $NameCustomer,
                    'Adress' => $adress,
-                   'ContactCustomer' => $ContactCustomer, 
                    'Email' => $kp_array_shapka['Email'],
                    'Telephone' => $kp_array_shapka['Phone'],
                    'ZakupName' => $kp_array_shapka['ZakupName'],
@@ -110,7 +109,7 @@ update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp) ;
 
 header("Location: ../index.php?transition=10&id=".$id);
 
-die();
+// die();
 
 
 /**

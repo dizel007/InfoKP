@@ -159,7 +159,7 @@ $pdf->Cell(23 ,8, MakeUtf8Font('Сумма'),'B',1,'C');
 $contact_font_size = 8;
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст
 $i=1;
-$max_long_string = 110;
+$max_long_string = 124;
 foreach ($products as $value) {
   $h_cell = 4; // нормальная высота строки
   $long_str  = strlen ($value['name']);
