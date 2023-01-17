@@ -159,28 +159,53 @@ $pdf->Cell(23 ,8, MakeUtf8Font('Сумма'),'B',1,'C');
 $contact_font_size = 8;
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст
 $i=1;
-$max_long_string = 124;
-foreach ($products as $value) {
-  $h_cell = 4; // нормальная высота строки
-  $long_str  = strlen ($value['name']);
-  $kolvo_strok=1;
- 
-  if ($long_str > $max_long_string) {  // если строка превышает заданную длину, нужно расширить строку
-     $kolvo_strok =$kolvo_strok + intval($long_str/$max_long_string);
-    }
 
-$pdf->Cell(10 ,$h_cell*$kolvo_strok, $i,'B',0,'C');
-$pdf->multiCell(110 ,$h_cell, MakeUtf8Font($value['name']),'B','L');
+foreach ($products as $value) {
+$h_cell = 5; // нормальная высота строки
+ 
+$string_array = make_string_name_array($value['name']);
+$hight = count($string_array);
+$real_hight_string = $h_cell*$hight;
 $real_Y_position = $pdf->GetY();
-$pdf->setXY(130,$real_Y_position-$h_cell*$kolvo_strok);
-$pdf->Cell(15 ,$h_cell*$kolvo_strok, MakeUtf8Font($value['ed_izm']),'B',0,'C');
-$pdf->Cell(15 ,$h_cell*$kolvo_strok, MakeUtf8Font($value['kol']),'B',0,'C');
-$pdf->Cell(17 ,$h_cell*$kolvo_strok, MakeUtf8Font(number_format($value['price'], 2, ',', ' ')),'B',0,'C');
+
+// 
+$pdf->Cell(10 ,$real_hight_string, $i,'B',0,'C');
+/**
+ * Выводим наименовние товаров
+*/
+$count_name_cycle=1;
+  foreach ($string_array as $value_name) {
+if ($count_name_cycle < count($string_array)) {
+
+  $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),0,0,'L');
+  $real_Y_position = $pdf->GetY();
+  $pdf->setXY(20,$real_Y_position+$h_cell);
+  $count_name_cycle++;
+} else {
+  $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),'B',0,'L');
+  $real_Y_position = $pdf->GetY();
+  $pdf->setXY(20,$real_Y_position+$h_cell);
+  $count_name_cycle++;
+}
+
+  }
+
+$real_Y_position = $pdf->GetY();
+
+
+$pdf->setXY(130,$real_Y_position - $real_hight_string);
+
+$pdf->Cell(15 , $real_hight_string, MakeUtf8Font($value['ed_izm']),'B',0,'C');
+$pdf->Cell(15 , $real_hight_string, MakeUtf8Font($value['kol']),'B',0,'C');
+$pdf->Cell(17 , $real_hight_string, MakeUtf8Font(number_format($value['price'], 2, ',', ' ')),'B',0,'C');
 $summa_strolki = number_format($value['kol']*$value['price'], 2, ',', ' ');
 
-$pdf->Cell(23 ,$h_cell*$kolvo_strok, MakeUtf8Font($summa_strolki),'B',1,'C');
+$pdf->Cell(23 ,$h_cell*$hight, MakeUtf8Font($summa_strolki),'B',1,'C');
 $i++;
+
 }
+
+
 // *********** ВСЕГО ******* ИТОГО
 $contact_font_size = 9;
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
@@ -294,4 +319,27 @@ $pdf->Output("../EXCEL/".$KpFileName.".pdf", 'F');
 function MakeUtf8Font($string) {
   $string = iconv('utf-8', 'windows-1251', $string);
   return $string;
+}
+
+function make_string_name_array ($name) {
+  $max_long_string = 115;
+  $arr_string = explode(' ', $name);
+  $our_str = "";
+  foreach ($arr_string as $string) {
+    if ((strlen($our_str) + strlen($string))<= $max_long_string) {
+      $our_str = $our_str." ".$string;
+      // echo $our_str."=".$string."<br>";
+    } else {
+      $our_array_string[] = $our_str;
+      $our_str ='';
+      $our_str = $our_str." ".$string;
+    }
+  }
+  $our_array_string[] = $our_str;
+  // echo "<pre>";
+  // print_r($our_array_string);
+  // echo "<pre>";
+
+return $our_array_string;
+ 
 }

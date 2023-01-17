@@ -8,7 +8,7 @@
                <td>№КП</td>
                <td><p title="Скачать EXCEL файл">Ex</p></td> 
                <td><p title="Посмотреть EXCEL файл">SEx</p></td>
-               <td><p title="Количество изменений к КП">КИ</p></td>  
+               <td><p title="Количество изменений в КП">КИ</p></td>  
                <td><p title="Скачать счет">Сч</p></td> 
                <td width ="50" >Дата КП</td>
                <td width ="70" class="hidden_class_column">ИНН</td>
