@@ -82,17 +82,50 @@ $pdf->Cell(130 ,9, MakeUtf8Font($temp),0,1,'C');
 
 /* КОНТАКТЫ ЗАКАЗЧИКА */
 $contact_font_size = 8;
+$h_hight_shapka = 5;
 $pdf->Cell(190 ,5,'',0,2); // отступ сверху 1 строка
 
-// Заказчик 
+//  ***************   **Заказчик 
+
+
+
+/******************************** Наименование Заказчика ***********************/
+
+$string_array = make_string_name_array($NameCustomer , 73); // число - это длина строки
+$hight = count($string_array);
+$real_hight_string = $h_hight_shapka*$hight;
+$real_Y_position = $pdf->GetY();
+
+
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size);
 $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->Cell(60 ,9,'',0,0); // отступ
-$pdf->Cell(50 ,9, MakeUtf8Font('Заказчик'),'TB',0,'C');
+$pdf->Cell(50 ,$real_hight_string, MakeUtf8Font('Заказчик'),'TB',0,'C');
 
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size);
 $pdf->SetTextColor(0,0,0); // черный цвет
-$pdf->MultiCell(80 ,9, MakeUtf8Font($NameCustomer),'TB','C',0);
+$count_name_cycle=1;
+  foreach ($string_array as $value_name) {
+      if ($count_name_cycle < count($string_array)) {
+         if ($count_name_cycle == 1) { // чтобы нарисовать черту только над первой строкой
+          $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'T',0,'C');
+         } else { // чтобы не рисовать черту сверху на второй и далее строках
+          $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name), 0 , 0 ,'C');
+         }
+        // $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'T',0,'C');
+        $real_Y_position = $pdf->GetY();
+        $pdf->setXY(120,$real_Y_position+$h_hight_shapka);
+        $count_name_cycle++;
+
+      } else {
+        $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'B',0,'C');
+        $real_Y_position = $pdf->GetY();
+        $pdf->setXY(10,$real_Y_position+$h_hight_shapka);
+        $count_name_cycle++;
+      }
+
+  }
+
 // Контактное лицо 
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
 $pdf->SetTextColor(5,99,193); // синий цвет
@@ -166,7 +199,7 @@ $i=1;
 foreach ($products as $value) {
 $h_cell = 5; // нормальная высота строки
  
-$string_array = make_string_name_array($value['name']);
+$string_array = make_string_name_array($value['name'] , 115); // число - это длина строки
 $hight = count($string_array);
 $real_hight_string = $h_cell*$hight;
 $real_Y_position = $pdf->GetY();
@@ -178,18 +211,18 @@ $pdf->Cell(10 ,$real_hight_string, $i,'B',0,'C');
 */
 $count_name_cycle=1;
   foreach ($string_array as $value_name) {
-if ($count_name_cycle < count($string_array)) {
+      if ($count_name_cycle < count($string_array)) {
 
-  $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),0,0,'L');
-  $real_Y_position = $pdf->GetY();
-  $pdf->setXY(20,$real_Y_position+$h_cell);
-  $count_name_cycle++;
-} else {
-  $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),'B',0,'L');
-  $real_Y_position = $pdf->GetY();
-  $pdf->setXY(20,$real_Y_position+$h_cell);
-  $count_name_cycle++;
-}
+        $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),0,0,'L');
+        $real_Y_position = $pdf->GetY();
+        $pdf->setXY(20,$real_Y_position+$h_cell);
+        $count_name_cycle++;
+      } else {
+        $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),'B',0,'L');
+        $real_Y_position = $pdf->GetY();
+        $pdf->setXY(20,$real_Y_position+$h_cell);
+        $count_name_cycle++;
+      }
 
   }
 
@@ -311,9 +344,9 @@ $contact_font_size = 7;
 
 
 
-// $pdf->Output();
+$pdf->Output();
 
-// die('PDFFFFF');
+die('PDFFFFF');
 //output the result
 $pdf->Output("../EXCEL/".$KpFileName.".pdf", 'F');
 //теперь добавляем синее подчеркивание для ссылки
@@ -324,8 +357,8 @@ function MakeUtf8Font($string) {
   return $string;
 }
 
-function make_string_name_array ($name) {
-  $max_long_string = 115;
+function make_string_name_array ($name, $max_long_string) {
+  // $max_long_string = 115;
   $arr_string = explode(' ', $name);
   $our_str = "";
   foreach ($arr_string as $string) {
@@ -339,10 +372,6 @@ function make_string_name_array ($name) {
     }
   }
   $our_array_string[] = $our_str;
-  // echo "<pre>";
-  // print_r($our_array_string);
-  // echo "<pre>";
-
 return $our_array_string;
  
 }
