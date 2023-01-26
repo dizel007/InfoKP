@@ -46,7 +46,17 @@ $KpDate == '0000-00-00'?$KpDate= date('Y-m-d'): $KpDate=$KpDate;
 // Если задан ИНН то проверим его по БД, если добавляем по инн, то нужно будет его ввести в Базу
 $InnCustomer = $_POST['InnCustomer'];
 // ******************* делаем запрос, чтобы узнать есть ли у нас в БД этот ИНН ********
-$NameCustomer = $_POST['NameCustomer'];
+$NameCustomer_temp = $_POST['NameCustomer'];
+//  ********** делаем костыль чтобы убрать двойные ковычки из названий компаний ************
+$NameCustomer = str_replace('"', '«', $NameCustomer_temp, $count);
+for ($i = 0; $i < mb_strlen($NameCustomer); $i++) {
+    $char = mb_substr($NameCustomer, $i, 1);
+  }
+if ($char == '«') {
+  $NameCustomer = substr($NameCustomer,0,-2);
+  $NameCustomer .="»";
+}
+
 // Если нет контактного лица, то пишем отдел продаж
 $_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел продаж': $ContactCustomer = $_POST['ContactCustomer'];
 

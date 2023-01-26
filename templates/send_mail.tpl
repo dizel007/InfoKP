@@ -97,8 +97,16 @@
  <input name="upload_file[]" type="file" multiple>
 
 {/if}
+<br>
+
+<input type="checkbox"  name="catalog_present" value="1"> 
+<label for="catalog_present">Включить ПРЕЗЕНТАЦИЮ в письмо</label> <br>
+
+<input type="checkbox"  name="catalog_bordur"  value="1"> 
+<label for="catalog_bordur">Включить в письмо каталог с бордюрами</label> <br>
 
 </div> {* конец блока с вложением письма*}
+
 </div> {* конец контейнера *}
 
 
@@ -113,7 +121,7 @@
 <input type="text"  name="subject_theme"  size="50" value = "КП от ТД АНМАКС" placeholder="КП от ТД АНМАКС">
 </p>
 <h5>ТЕКСТ ПИСЬМА</h5>
-Добрый день!<br>
+Здравствуйте!<br>
 <textarea name="bodypost" cols="100" rows="4">
 {if $type_kp == 6 }
 Предлагаем рассмотреть приобретение следующей продукции, для гос.закупки
@@ -121,8 +129,8 @@
 {$ZakupName}
 </textarea>
 <br>
-<input type="checkbox"  name="certifikat" checked value="На всю предлагаемую продукцию имеются сертификаты."> 
-<label for="certifikat">На всю предлагаемую продукцию имеются сертификаты.</label> <br>
+<input type="checkbox"  name="certifikat" checked value="Вся продукция сертифицирована."> 
+<label for="certifikat">Вся продукция сертифицирована.</label> <br>
 
 <input type="checkbox"  name="better_offer" checked value="Если у Вас есть более интересное предложение, сообщите нам, пожалуйста, мы постараемся улучшить условия нашего КП.">
 <label for="better_offer">Если у Вас есть более интересное предложение, сообщите нам, пожалуйста, мы постараемся улучшить условия нашего КП.</label> <br>

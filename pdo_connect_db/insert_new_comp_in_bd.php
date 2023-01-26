@@ -3,6 +3,7 @@
 // инструкция по вставки через PDO
 
 require_once ("../connect_db.php");
+$id=$_POST['id'];
 $back_transition=$_POST['back_transition'];
 // Если задан ИНН то проверим его по БД, если добавляем по инн, то нужно будет его ввести в Базу
 $InnCustomer = $_POST['InnCustomer'];
@@ -13,11 +14,11 @@ $TempInnComp = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-var_dump($InnCustomer);
+// var_dump($InnCustomer);
 // если ИНН существет, то уходим на создание КП
 if (@$TempInnComp[0]['inn'] == $InnCustomer) {
   
-  header("Location: ../index.php?transition=$back_transition&&InnCustomer=".$InnCustomer);
+  header("Location: ../index.php?transition=$back_transition&InnCustomer=".$InnCustomer."&id=".$id);
   die('Компания с таким ИНН уже вуществует');
 }
 
@@ -134,6 +135,6 @@ require "insert_reports.php";
 
 
 // ******************* делаем перенаправление на создание нового КП ********
-header("Location: ../index.php?transition=$back_transition&InnCustomer=".$InnCustomer);
+header("Location: ../index.php?transition=$back_transition&InnCustomer=".$InnCustomer."&id=".$id);
 
 die('Че то померли на инсерте нового  ИНН в БД');

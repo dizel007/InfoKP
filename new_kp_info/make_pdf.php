@@ -23,7 +23,7 @@ function make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum){
   $adress=$comparr['Adress'];
   $DostCost=$comparr['DostCost'];
   $KpFileName=$comparr['KpFileName'];
-
+  $ZakupName=$comparr['ZakupName'];
   
 
   
@@ -140,9 +140,12 @@ $pdf->SetTextColor(0,0,0); // черный цвет
 $pdf->Cell(190 ,7, MakeUtf8Font('Добрый день!'),0,1,'C');
 
 // текст о предложении
+
+
+
 $contact_font_size = 9;
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст 
-$pdf->MultiCell(190 ,4.5, MakeUtf8Font(TEXT_KP_INFO), 0,'C',0);
+$pdf->MultiCell(190 ,4.5, MakeUtf8Font($ZakupName), 0,'C',0);
 // ************************ таблица товаров
 // шапка
 $contact_font_size = 9;

@@ -36,6 +36,11 @@
     <input required id="kpp" type="number" name="KppCustomer" value="">  
 </p>
 
+{*    ********************** Прячем тут ИД КП если он есть ***************}  
+{if ($id<>'')}
+         <input hidden name="id" type="text" value="{$id}">
+    
+{/if}
 
 
  {*    ********************** Наименование Заказчика   ********************} 

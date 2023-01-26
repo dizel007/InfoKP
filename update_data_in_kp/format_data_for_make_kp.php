@@ -13,6 +13,13 @@ GET данные
 */
 $id = $_POST['id']; // 
 
+// если треубется обновиь данные о Заказчике в КП
+
+
+if (isset($_POST['InnCustomer'])){
+UpdateCustomerDataInReestr($pdo,$_POST['InnCustomer'], $id);
+}
+
 //  Вычиитаваем все данные о КП из реестра 
 $stmt = $pdo->prepare("SELECT * FROM `reestrkp` WHERE `id` = ?");
 $stmt->execute([$id]);
@@ -172,4 +179,37 @@ $data_arr = [
 $stmt= $pdo->prepare($sql);
 $stmt->execute($data_arr);
 
+}
+
+function updateCustomerDataInReestr ($pdo, $InnCustomer, $id ) {
+$stmt = $pdo->prepare("SELECT * FROM `inncompany` WHERE `inn` = ?");
+$stmt->execute([$InnCustomer]);
+$arr_company_inn = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+var_dump($arr_company_inn);
+
+
+// echo "ffff--";
+// die($_POST['InnCustomer']);
+
+
+$NameCustomer = $arr_company_inn[0]['name'];
+$today = date("Y-m-d");
+// Формируем АПдейт в БД
+$data_arr = [
+'NameCustomer'=> $NameCustomer,
+'InnCustomer'=> $InnCustomer,
+'date_write'=> $today,
+'id' => $id,
+];
+
+$sql = "UPDATE reestrkp SET 
+                          NameCustomer=:NameCustomer,
+                          InnCustomer=:InnCustomer,
+                          date_write=:date_write
+                         
+                    WHERE id=:id";
+$stmt= $pdo->prepare($sql);
+$stmt->execute($data_arr);
 }

@@ -1,6 +1,7 @@
 <?php
 
 // Если Есть ИНН заходим сюда после проверки ИНН
+isset($_GET['id'])?$id=$_GET['id']:$id='';
 
 isset($_GET['back_transition'])?$back_transition=$_GET['back_transition']:$back_transition='';
 $smarty->assign("back_transition" , $back_transition);
@@ -13,8 +14,8 @@ if (isset($_GET['InnCustomer'])) {
     $arr_inn_comp = $stmt->fetchAll(PDO::FETCH_ASSOC);
      // вычитываем телефоны и почты, если существует ИНН
     if (isset($arr_inn_comp[0])) {
-      Echo "Такая компания уже существует!";
-      DIE('<br>СТОП по Вводу ИНН!!!');
+      // Echo "Такая компания уже существует!";
+      DIE('<br>***DIE ***Такая компания уже существует!СТОП по Вводу ИНН!!!');
     } else {
       // Если нет такой компании то передаем в форму шаблона ИНН
       $smarty->assign("input_inn", $input_inn); // суем введенный ИНН в шаблон
@@ -28,6 +29,7 @@ if (isset($_GET['InnCustomer'])) {
 
     $pageName='Добавление новой компании по ИНН ';
     $smarty->assign("pageName", $pageName);
+    $smarty->assign("id", $id); // ID нужно если прицепляем ИНН к КП
     
     $smarty->display('make_new_comp.tpl');
 

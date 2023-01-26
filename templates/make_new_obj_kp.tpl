@@ -68,8 +68,9 @@
 
  {*    ********************** Номер тендера   ********************} 
 {if isset($tender_data['tender_number'])}
- <p class="pad5px width15 zhir">Номер тендера : <input disabled type="text" name="tender_number" value ="{$tender_data['tender_number']}" size="70">
+ <p class="pad5px width15 zhir">Номер тендера : <input type="text" name="tender_number" value ="{$tender_data['tender_number']}" size="70">
  </p>
+ 
 {else}
  <p class="pad5px width15 zhir">Номер тендера : <input required type="text" name="tender_number" value ="" size="70"></p>
 {/if}
@@ -77,21 +78,21 @@
 
  {*    ********************** Наименование тендера  ********************} 
 {if isset($tender_data['tender_descr'])}
- <p class="pad5px width15 zhir">Наименование тендера : <textarea disabled name="tender_descr" cols="100" rows="3">{$tender_data['tender_descr']}</textarea></p>
+ <p class="pad5px width15 zhir">Наименование тендера : <textarea name="tender_descr" cols="100" rows="3">{$tender_data['tender_descr']}</textarea></p>
  
 {else}
 <p class="pad5px width15 zhir">Наименование тендера : <textarea name="tender_descr" cols="72" rows="2"></textarea></p>
 {/if}
  {*    ********************** НМЦК тендера   ********************} 
  {if isset($tender_data['tender_begin_price'])}
- <p class="pad5px width15 zhir">НМЦК тендер : <input disabled type="text" name="tender_begin_price" value ="{$tender_data['tender_begin_price']}" size="70"></p>
+ <p class="pad5px width15 zhir">НМЦК тендер : <input type="text" name="tender_begin_price" value ="{$tender_data['tender_begin_price']}" size="70"></p>
  {else}
  <p class="pad5px width15 zhir">НМЦК тендер : <input type="text" name="tender_begin_price" value ="" size="70"></p>
 
  {/if}
  {*    ********************** Ссылка в ЕИС   ********************} 
  {if isset($tender_data['tender_link_eis'])}
-  <p class="pad5px width15 zhir">Ссылка в ЕИС : <input disabled type="text" name="tender_link_eis" value ="{$tender_data['tender_link_eis']}" size="70"></p>
+  <p class="pad5px width15 zhir">Ссылка в ЕИС : <input type="text" name="tender_link_eis" value ="{$tender_data['tender_link_eis']}" size="70"></p>
  {else}
    <p class="pad5px width15 zhir">Ссылка в ЕИС : <input type="text" name="tender_link_eis" value ="" size="70"></p>
  {/if}

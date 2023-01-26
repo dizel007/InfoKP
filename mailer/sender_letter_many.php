@@ -8,6 +8,17 @@ require_once("../connect_db.php"); // Заполняем наши перемен
 require_once("../pdo_connect_db/select_functions.php"); // Подлючачем функции для работы с БД
 
 
+if (isset ($_POST['catalog_present']) )
+{$catalog_present = $_POST['catalog_present'];}
+else {
+    $catalog_present = 0;    
+}
+
+if (isset ($_POST['catalog_bordur']) )
+{$catalog_bordur = $_POST['catalog_bordur'];}
+else {
+    $catalog_bordur = 0;    
+}
 
 $Files_count = 0;
 $i=0;
@@ -57,6 +68,8 @@ $mail->setFrom($active_user[0]['user_online_email'], 'Торговый дом А
 
 $mail->addAddress($email_from_kp);     // Add a recipient
 
+
+// ************************* Цепляем файлы с КП  *************************************
 if ($_FILES['upload_file']['name'][0] <> "") { 
         for ($i=0; $i < count($link_pppdf); $i++) {
         $mail->addAttachment($link_pppdf[$i]);         // Add attachments
@@ -65,8 +78,19 @@ if ($_FILES['upload_file']['name'][0] <> "") {
         if (isset($link_pdf)) {$mail->addAttachment("../".$link_pdf);}
     }
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-$mail->isHTML(true);                                  // Set email format to HTML
 
+// ************************* Цепляем Презентацию *************************************
+    if ($catalog_present == 1) { 
+         $mail->addAttachment('../catalogs/anmaks_ 2023_compressed.pdf');         // Add attachments
+        }
+// ************************* Цепляем каталог бордюров ************************************* 
+    if ($catalog_bordur == 1) { 
+        $mail->addAttachment('../catalogs/anmaks_bord_catalog_2023_compressed.pdf');         // Add attachments
+        }
+
+
+
+$mail->isHTML(true);                                  // Set email format to HTML
 $mail->Subject = $subject_theme; // тема письма
 $mail->Body    = $body_post;
 

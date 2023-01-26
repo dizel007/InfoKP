@@ -24,7 +24,7 @@
                <td class="hidden_class_column">Ответственный</td>
                <td>id</td>
                <td>Комментарий</td>
-               <td>Ред</td>
+               <td><p title="Редактирование КП">Ред</p></td>
                <td width ="60" class="hidden_class_column">Сл.звонок</td>
                <td class="hidden_class_column">Состояние</td>
                <td>Сумма КП</td>
@@ -34,7 +34,7 @@
          {*      <td width ="60" class="hidden_class_column">Финиш</td> *}
                <td>Ист</td>
                <td class="hidden_class_column">Адрес поставки</td>
-                <td class="">ККП</td>
+                <td class=""><p title="Корректировка КП">ККП</p></td>
          </tr>
          </thead>
       <tbody>
@@ -170,16 +170,15 @@
 
 <!-- ******************************  ФИНИШ Контракта   ********************************************* -->
     <td class="hidden_class_column" id = "js-FinishContract{$array_with_all_kp.$i.id}" >{$array_with_all_kp.$i.FinishContract}</td>
-<!-- ******************************  ФИНИШ Контракта   ********************************************* -->
-{*      <td class="hidden_class_column" id = "js-dateFinishContract{$array_with_all_kp.$i.id}" width="60">{$array_with_all_kp.$i.dateFinishContract}</td>
-*}
+
 <!-- ******************************  ИСТОРИ КП  *************************************  -->
-     <td><a name="{$array_with_all_kp.$i.id}" href="reports_show_history_kp.php?typeQuery=5&id_kp={$array_with_all_kp.$i.id}" target="_blank"><img class="scale11" src="icons/table/history_kp.png" style = "opacity: 0.6" alt="История КП" title="История КП"></a></td> 
+     <td><a name="{$array_with_all_kp.$i.id}" href="?transition=17&id={$array_with_all_kp.$i.id}" target="_blank"><img class="scale11" src="icons/table/history_kp.png" style = "opacity: 0.6" alt="История КП" title="История КП"></a></td> 
 <!-- ****************************** Адрес поставки   ********************************************* -->
       <td class="hidden_class_column" id = "js-Adress{$array_with_all_kp.$i.id}" width ="150" class="hidden_class_column">{$array_with_all_kp.$i.adress}</td>
- <!-- ******************************  Icons konturLink   ***************************************************** -->
-
-                           <td><a href= "pdo_connect_db/update_data_in_kp.php?id={$array_with_all_kp.$i.id}" alt="777" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/correct_kp.png" alt="SeeLinkKontur"></a></td>
+ <!-- ******************************  Корректировака КП  ********************************************* -->
+      <td> 
+            <a href= "?transition=30&id={$array_with_all_kp.$i.id}" alt="Корректировка КП" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/correct_kp.png" alt="SeeLinkKontur"></a>
+      </td>
            
 
        </tr>

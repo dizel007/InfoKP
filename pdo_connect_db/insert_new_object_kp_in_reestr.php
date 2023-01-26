@@ -7,6 +7,8 @@ require_once ("../functions/make_new_kp_number.php");
 require_once ("../new_kp_info/test_file_name.php"); // если имя файла занято, то добавится индекс
 require_once ("../new_kp_info/analiz_siroy_kp.php");
 require_once ("../new_kp_info/format_new_kp.php");
+require_once '../new_kp_info/make_pdf.php';
+
 
 // тип КП - откуда пришел запрос
 $type_kp = $_POST['type_kp'];
@@ -24,8 +26,17 @@ $KpDate_temp = $now->format('d.m.Y'); // Для КП
 // Если задан ИНН то проверим его по БД, если добавляем по инн, то нужно будет его ввести в Базу
 $InnCustomer = $_POST['InnCustomer'];
 // ******************* делаем запрос, чтобы узнать есть ли у нас в БД этот ИНН ********
-$NameCustomer = $_POST['NameCustomer'];
-// Если нет контактного лица, то пишем отдел продаж
+$NameCustomer_temp = $_POST['NameCustomer'];
+//  ********** делаем костыль чтобы убрать двойные ковычки из названий компаний ************
+$NameCustomer = str_replace('"', '«', $NameCustomer_temp, $count);
+for ($i = 0; $i < mb_strlen($NameCustomer); $i++) {
+    $char = mb_substr($NameCustomer, $i, 1);
+  }
+if ($char == '«') {
+  $NameCustomer = substr($NameCustomer,0,-2);
+  $NameCustomer .="»";
+}
+
 $_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел продаж': $ContactCustomer = $_POST['ContactCustomer'];
 
 $TelCustomer = $_POST['TelCustomer'];
@@ -36,17 +47,34 @@ $idKp = $_POST['idKp']; // неповтор
 $adress = $_POST['Adress'];
 
 $date_write = date('Y-m-d');
+isset($_POST['tender_number'])?$tender_number = $_POST['tender_number']:$tender_number = ''; // номер закукпки
+
+
+$KpFileName = "№".$KpNumber." от ".$KpDate_temp." ". $NameCustomer." (КП к закупке№".$tender_number.") ООО ТД АНМАКС";
 $DostCost = 0; // чтобы формитирование КП не переделывать
+
+ if (isset($_POST['tender_descr'])) {
+$ZakupName = "Предлагаем рассмотреть приобретение следующих товаров, для закупки №".$tender_number. " ".$_POST['tender_descr']."победителем которой вы являетесь:";}
+else {
+  $ZakupName =TEXT_KP_INFO;
+}
+
+
 
 $comparr = array ('InnCustomer' => $InnCustomer,
                    'KpNumber' => $KpNumber ,
                    'KpDate' => $KpDate_temp,
                    'NameCustomer' => $NameCustomer,
+                   'KpImportance' => $KpImportance ,
                    'Adress' => $adress );
 $comparr += array ('ContactCustomer' => $ContactCustomer);
 $comparr += array ('Email' => $EmailCustomer);
-$comparr += array ('Telephone' => $TelCustomer);
+$comparr += array ('Telephone' => $new_TelCustomer);
+$comparr += array ('responsible' => $Responsible);
 $comparr += array ('DostCost' => $DostCost);
+$comparr += array ('ZakupName' => $ZakupName);
+
+$comparr += array ('KpFileName' => $KpFileName); // название файла
 
 //  ***************************************************************************************
 # ЗАГРУЖАЕМ НЕОБХОДИМЫЕ ФАЙЛЫ НА САЙТ
@@ -87,7 +115,8 @@ $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 /* 
 *************** Формируем ПДФ *************************************
 */
-require_once '../new_kp_info/make_pdf.php';
+make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); // 
+
 
 
 // echo ':KpNumber=', $KpNumber."<br>";

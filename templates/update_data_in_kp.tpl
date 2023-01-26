@@ -1,13 +1,33 @@
 
 <br>
-<b>{$shapka['kp_name']}</b>
+    <b>{$shapka['kp_name']}</b>
 <br>
+<table class = "shapka_kp">
 
-
-<table>
 <tr>
   <td>Заказчик :</td>
-  <td> {$shapka['Zakazchik']}</td>
+  <td> {$shapka['Zakazchik']} 
+  {if (($InnCustomer <> 0))}
+    ИНН: {$InnCustomer}
+    {/if}
+    </td>
+  {if (($InnCustomer == 0) && ($priz_update_inn == '') )}
+    <td><div>
+      <a class="link_inn" href="?transition=3&back_transition=30&user=zeld&id={$id}&InnCustomer="> 
+        Привязать к ИНН
+      </a>
+    </div>
+      </td>
+
+  {/if}
+   {if ($priz_update_inn <> '')}
+    <td>
+        <div class="major_info">
+            При сохранении формы к КП будет привязан ИНН: {$priz_update_inn} ({$NameCustomer})
+        </div>
+    </td>
+  {/if}
+
 </tr>
 <tr>
   <td>Телефон :</td>
@@ -22,28 +42,42 @@
 {$shapka['ZakupName']}
 <br><br>
 {$p=0}
-<form action ="../update_data_in_kp/format_data_for_make_kp.php" method="POST">
+<form class ="contact_form_change_kp" action ="update_data_in_kp/format_data_for_make_kp.php" method="POST">
+{* *}
+  {if ($priz_update_inn <> '')}
+    <input hidden name="InnCustomer" value="{$priz_update_inn}">
+  {/if}
 
 <table>
 {foreach from=$prods item=value}
 
 <tr>
-  <td> {$p+1}</td>
+  <td><p class ="table_p"> {$p+1}</p></td>
+
+{if $p==0}
+  <td><input required size ="100" type="text" name = "name{$p}" value ="{$value['name']}"></td>
+{else}
   <td><input size ="100" type="text" name = "name{$p}" value ="{$value['name']}"></td>
+{/if}
+
   <td><input size ="2"   type="text" name = "ed_izm{$p}" value ="{$value['ed_izm']}"></td>
   <td><input size ="1"   type="number" step="any" name = "kol{$p}" value ="{$value['kol']}"></td>
   <td><input size ="1"   type="number" step="any" name = "price{$p}" value ="{$value['price']}"></td>
-
 </tr>
   {$p = $p+1}
 {/foreach}
 
  </table>
   <input hidden type="text" name = "id" value ="{$id}"></td>
+  <input hidden type="number" name = "all_kolvo" value ="{$p}"></td>
 
- <input hidden type="number" name = "all_kolvo" value ="{$p}"></td>
+   {if ($priz_update_inn == '')}
+   <div class ="add_string">
+        <a  href="?transition=30&id={$id}&add_str_plus={$add_str+1}">добавить строку</a>
+    </div>
+  {/if}
 
- <a  href="?id={$id}&add_str_plus={$add_str+1}">добавить строку</a>
+ 
 
 
 
@@ -69,5 +103,5 @@
 
 </table>
  <br> <br>
- <input type="submit">
+ <button class="submit" type="submit">Отправить</button>
  </form>
