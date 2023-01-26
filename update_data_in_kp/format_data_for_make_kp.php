@@ -186,14 +186,6 @@ $stmt = $pdo->prepare("SELECT * FROM `inncompany` WHERE `inn` = ?");
 $stmt->execute([$InnCustomer]);
 $arr_company_inn = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-var_dump($arr_company_inn);
-
-
-// echo "ffff--";
-// die($_POST['InnCustomer']);
-
-
 $NameCustomer = $arr_company_inn[0]['name'];
 $today = date("Y-m-d");
 // Формируем АПдейт в БД

@@ -118,7 +118,14 @@ $count_name_cycle=1;
         $count_name_cycle++;
 
       } else {
-        $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'B',0,'C');
+        if ($count_name_cycle == 1) { // чтобы нарисовать черту только над первой строкой
+          $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'TB',0,'C');
+
+         } else { // чтобы не рисовать черту сверху на второй и далее строках
+          $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'B',0,'C');
+       }
+
+        // $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'B',0,'C');
         $real_Y_position = $pdf->GetY();
         $pdf->setXY(10,$real_Y_position+$h_hight_shapka);
         $count_name_cycle++;
@@ -344,9 +351,9 @@ $contact_font_size = 7;
 
 
 
-$pdf->Output();
+// $pdf->Output();
 
-die('PDFFFFF');
+// die('PDFFFFF');
 //output the result
 $pdf->Output("../EXCEL/".$KpFileName.".pdf", 'F');
 //теперь добавляем синее подчеркивание для ссылки
