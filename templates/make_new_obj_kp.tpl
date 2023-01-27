@@ -29,7 +29,21 @@
           <option selected value="6">объектное КП</option>
         </select>
     </p>
+<br>
+     {* Тип продукции *}
+       <p class = "zhir">Тип продукции :
+       
+            <select size="1" name="product_type">
+               {for $i=0 to  (count($AllProductTypesName)-1)}
+                  <option value="{$AllProductTypesValue.$i}">{$AllProductTypesName.$i}</option>
+               {/for}
+            </select>
+       </p>  
+
+
  </div>
+
+
 
 {********************************  Данные о компании ********************************************************}
 <div class="block green_bgc">

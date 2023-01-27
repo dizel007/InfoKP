@@ -160,3 +160,7 @@ hr {
   opacity: 0.9;
   border-radius: solid 5px;
  }
+ /* цветом выделяе новые КП без цен */
+ .new_kp_marker { 
+  background: rgb(114, 145, 233);
+ }

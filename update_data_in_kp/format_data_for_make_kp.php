@@ -105,10 +105,21 @@ $temp_array = format_new_kp($products, $comparr, $user_responsible_arr); // Фо
 
 
 $KpSum = $temp_array['total'];
+/*
+Делаем маркер, что КП побработанно и сумма КП >100 рубл
+*/
+
+if ($KpSum > 100) {
+  $marker=0;
+}else{
+  $marker=1;
+}
+
+//формируем ПЖФ документ
 make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); // 
 
 
-update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp) ;
+update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp, $marker) ;
 // echo "<pre>";
 // print_r($temp_array);
 // echo "<pre>";
@@ -146,7 +157,7 @@ function make_prod_array($post) {
 return @$prods;
 }
 
-function update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $cor_kol_kp) {
+function update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $cor_kol_kp, $marker) {
   $today = date("Y-m-d");
   $LinkKp = "EXCEL/".$temp_array['KpFileName'].".xlsx";
   $KpSum = $temp_array['total'];
@@ -161,7 +172,7 @@ $data_arr = [
   'Responsible'=> $Responsible,
   'date_write'=> $today,
   'cor_kol_kp'=> $cor_kol_kp, //Добавляем следующий номер
-
+  'marker'=> $marker,
 
   'id' => $id,
 ];
@@ -171,7 +182,8 @@ $data_arr = [
                             LinkKp=:LinkKp,
                             Responsible=:Responsible,
                             cor_kol_kp=:cor_kol_kp,
-                            date_write=:date_write
+                            date_write=:date_write,
+                            marker=:marker
                            
                       WHERE id=:id";
 

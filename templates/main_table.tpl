@@ -40,7 +40,12 @@
       <tbody>
 
  {for $i = $start_item_on_page to $end_item_on_page}
-          <tr class ="{$KpImportanceTable.$i}  {$statusKpClass.$i} {$StringColor.$i}">
+ {if $array_with_all_kp.$i.marker == 1}
+   {$new_kp_marker = 'new_kp_marker'}
+   {else}
+   {$new_kp_marker = ''}
+ {/if}
+          <tr class ="{$new_kp_marker} {$KpImportanceTable.$i}  {$statusKpClass.$i} {$StringColor.$i}">
 <!-- ***************************  порядковый норме  ************************************************* -->
                <td>{$i+1}</td>
  <!-- ***************************  Номер КП  ********************************************* -->              
@@ -126,7 +131,18 @@
 
 
 <!-- ******************************  Icons Email  *********************************************** -->
-      <td><a href= "?transition=23&id={$array_with_all_kp.$i.id}&InnCustomer={$array_with_all_kp.$i.InnCustomer}" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/table/email.png" alt="SeeKp" title="{$array_with_all_kp.$i.date_last_email}"></a></td>
+      
+  {if $array_with_all_kp.$i.marker == 1}
+       <td><img class="" style = "opacity: 0.8" src="icons/table/email_not.png" alt="Send_email_not" title=""></td>
+ 
+   {else}
+   
+      <td><a href= "?transition=23&id={$array_with_all_kp.$i.id}&InnCustomer={$array_with_all_kp.$i.InnCustomer}" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/table/email.png" alt="Send_email" title="{$array_with_all_kp.$i.date_last_email}"></a></td>
+   
+   {/if}
+
+      
+
       
  <!-- ******************************  Количество высланных Email  *********************************************** -->
       <td>{$array_with_all_kp.$i.email_count}</td>

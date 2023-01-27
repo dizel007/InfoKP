@@ -10,9 +10,17 @@ require_once ("../new_kp_info/format_new_kp.php");
 require_once '../new_kp_info/make_pdf.php';
 
 
+// echo "<pre>";
+// print_r($userdata['user_name']);
+// echo "<pre>";
+// die();
+$marker=1;
+
+$tender_begin_price  = $_POST['tender_begin_price']; // НМЦК тендера
 // тип КП - откуда пришел запрос
 $type_kp = $_POST['type_kp'];
-
+// тип пролукции в КП 
+$product_type = $_POST['product_type'];
 // номер КП берем последний из БД
 $KpNumber = make_new_kp_number($pdo);
 
@@ -59,7 +67,10 @@ else {
   $ZakupName =TEXT_KP_INFO;
 }
 
+// Данные не заполняются при создании КП
 
+$Responsible = $userdata['user_name'];
+$KpImportance = "";
 
 $comparr = array ('InnCustomer' => $InnCustomer,
                    'KpNumber' => $KpNumber ,
@@ -69,7 +80,7 @@ $comparr = array ('InnCustomer' => $InnCustomer,
                    'Adress' => $adress );
 $comparr += array ('ContactCustomer' => $ContactCustomer);
 $comparr += array ('Email' => $EmailCustomer);
-$comparr += array ('Telephone' => $new_TelCustomer);
+$comparr += array ('Telephone' => $TelCustomer);
 $comparr += array ('responsible' => $Responsible);
 $comparr += array ('DostCost' => $DostCost);
 $comparr += array ('ZakupName' => $ZakupName);
@@ -119,6 +130,9 @@ make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); //
 
 
 
+$KpImportance ='';  
+$Responsible = '';
+$KpSum='';
 // echo ':KpNumber=', $KpNumber."<br>";
 // echo ':KpData=', $KpDate."<br>";
 // echo ':InnCustomer=', $InnCustomer."<br>";
@@ -130,16 +144,18 @@ make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); //
 // echo ':adress=', $adress."<br>";
 // echo ':date_write=', $date_write."<br>";
 // echo ':LinkKp=', $LinkKp."<br>";
+// echo ':type_kp=', $type_kp."<br>";
+// echo ':marker=', $marker."<br>";
+// echo ':product_type=', $product_type."<br>";
+// die();
 
-// Данные не заполняются при создании КП
-$KpImportance ='';  
-$Responsible ='';
-$KpSum='';
+
 
 // **************** вставляем каждый параметр  данных  *********************
+
 $stmt  = $pdo->prepare("INSERT INTO `reestrkp` 
-                       (KpNumber, KpData, InnCustomer, NameCustomer, idKp, KpImportance, Responsible, KpSum, adress, konturLink, date_write, LinkKp, type_kp)
-                       VALUES (:KpNumber, :KpData, :InnCustomer, :NameCustomer, :idKp, :KpImportance, :Responsible, :KpSum, :adress, :konturLink, :date_write, :LinkKp, :type_kp)");
+                        (KpNumber, KpData, InnCustomer, NameCustomer, idKp, KpImportance, Responsible, KpSum, adress, konturLink, date_write, LinkKp, type_kp, type_product, marker, TenderSum)
+                        VALUES (:KpNumber, :KpData, :InnCustomer, :NameCustomer, :idKp, :KpImportance, :Responsible, :KpSum, :adress, :konturLink, :date_write, :LinkKp, :type_kp, :type_product, :marker, :TenderSum)");
 
 $stmt ->bindParam(':KpNumber', $KpNumber);
 $stmt ->bindParam(':KpData', $KpDate);
@@ -154,6 +170,11 @@ $stmt ->bindParam(':konturLink', $KonturLink);
 $stmt ->bindParam(':date_write', $date_write);
 $stmt ->bindParam(':LinkKp', $LinkKp);
 $stmt ->bindParam(':type_kp', $type_kp);
+$stmt ->bindParam(':type_product', $product_type);
+$stmt ->bindParam(':marker', $marker);
+$stmt ->bindParam(':TenderSum', $tender_begin_price);
+
+
 
 
 if ($stmt ->execute()) {
