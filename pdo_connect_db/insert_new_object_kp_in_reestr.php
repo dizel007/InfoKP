@@ -24,6 +24,9 @@ $product_type = $_POST['product_type'];
 // номер КП берем последний из БД
 $KpNumber = make_new_kp_number($pdo);
 
+$uslovia_oplati='по согласованию сторон';
+$srok_izgotovl='в наличии';
+
 
 // Дату используем в разных форматах для КП и для БД  
 $KpDate= date('Y-m-d'); // дата для БД
@@ -62,7 +65,7 @@ $KpFileName = "№".$KpNumber." от ".$KpDate_temp." ". $NameCustomer." (КП �
 $DostCost = 0; // чтобы формитирование КП не переделывать
 
  if (isset($_POST['tender_descr'])) {
-$ZakupName = "Предлагаем рассмотреть приобретение следующих товаров, для закупки №".$tender_number. " ".$_POST['tender_descr']."победителем которой вы являетесь:";}
+$ZakupName = "Предлагаем рассмотреть приобретение следующих товаров, для закупки №".$tender_number. " ".$_POST['tender_descr'].", победителем которой вы являетесь:";}
 else {
   $ZakupName =TEXT_KP_INFO;
 }
@@ -77,7 +80,9 @@ $comparr = array ('InnCustomer' => $InnCustomer,
                    'KpDate' => $KpDate_temp,
                    'NameCustomer' => $NameCustomer,
                    'KpImportance' => $KpImportance ,
-                   'Adress' => $adress );
+                   'Adress' => $adress,
+                   'uslovia_oplati' => $uslovia_oplati,
+                   'srok_izgotovl' => $srok_izgotovl);
 $comparr += array ('ContactCustomer' => $ContactCustomer);
 $comparr += array ('Email' => $EmailCustomer);
 $comparr += array ('Telephone' => $TelCustomer);
@@ -179,6 +184,14 @@ $stmt ->bindParam(':TenderSum', $tender_begin_price);
 
 if ($stmt ->execute()) {
   $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
+  // ******************* Добавляем строчку в отчеты  ********
+  $date_change = date("Y-m-d");
+  $id_item = $last_id;
+  $what_change = 8;
+  $comment_change = "Нов. КП№".$KpNumber." ".$NameCustomer; 
+  $author = $userdata['user_login'];
+  require "insert_reports.php";
+
   // echo "Запись УДАЧНО добавлена successfully";
 } else {
   die (" ** DIE ** Не получилось добавить данные, INSERT нового КП с сайта");
@@ -193,7 +206,7 @@ update_kp_number_in_db ($pdo, $KpNumber);
 
 
 // header("Location: ../".$LinkKp);
-header("Location: ../index.php?transition=10&id=".$last_id);
+header("Location: ../index.php?transition=10&id=".$id_item);
 
 // echo "ID= ", $last_id,"<br>";
 die('Умерли на вводе данных в реестр при добавлении нового КП');

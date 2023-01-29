@@ -38,16 +38,25 @@
   <td>{$shapka['Email']}</td>
 </tr>
 </table>
-<br>
-{$shapka['ZakupName']}
-<br><br>
+
 {$p=0}
+
+{******************************** Начало ФОРМЫ **************************************************}
 <form class ="contact_form_change_kp" action ="update_data_in_kp/format_data_for_make_kp.php" method="POST">
 {* *}
   {if ($priz_update_inn <> '')}
     <input hidden name="InnCustomer" value="{$priz_update_inn}">
   {/if}
-
+  
+  <div class="text_in_kp">Текст в Коммерческом предложении :</div>
+  
+          <textarea class="zonavvoda" name="ZakupName" rows="5 cols="10">
+             {$shapka['ZakupName']}
+        </textarea>
+  
+<div class="text_in_kp">
+Перечень товаров :
+</div>
 <table>
 {foreach from=$prods item=value}
 
@@ -84,16 +93,26 @@
 <table>
 <tr>
   <td><label for="uslovia_oplati">Условия оплаты :</label></td>
-  <td><input size ="30"   type="text" name = "uslovia_oplati" value ="{$dop_info['uslovia_oplati']}"></td>
+  <td><input size ="30" type="text" name = "uslovia_oplati" value ="{$dop_info['uslovia_oplati']}"></td>
 </tr>
 <tr>
   <td>  <label for="srok_izgotovl">Срок изготовления :</label></td>
   <td><input size ="30"   type="text" name = "srok_izgotovl" value ="{$dop_info['srok_izgotovl']}"></td>
 </tr>
 <tr>
-  <td>{$dop_info['adress_dostavki']}</td>
-  <td><input size ="30"   type="number" name = "price_dost" value ="{$dop_info['price_dost']}"></td>
-  <td><input hidden name = "adress_dostavki" value ="{$dop_info['adress_dostavki']}"></td>
+    <td>
+    <label for="adress_dostavki">Примерная стоимость доставки до объекта:  <label>
+   </td>
+      <td>   </td>
+</tr>
+<tr>
+   <td>
+        <input name = "adress_dostavki" value ="{$dop_info['adress_dostavki']}">
+    </td>
+    <td>
+        <input size ="30"   type="number" name = "price_dost" value ="{$dop_info['price_dost']}">
+    </td>
+  
 </tr>  
   
   <br><br>

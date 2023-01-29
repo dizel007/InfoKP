@@ -109,7 +109,7 @@ switch ($transition) {
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
         $smarty->assign('alarm_message', 'УСПЕШНО ОТПРАВИЛИ');
-        $smarty->assign('back_adress', "?id=".$_GET['id']);
+        $smarty->assign('back_adress', "?transition=10&id=".$_GET['id']);
         $smarty->display('alarm_message.tpl');
     break; 
     

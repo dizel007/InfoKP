@@ -16,7 +16,10 @@ require_once '../new_kp_info/make_pdf.php'; // фукнция создания �
 // считваем все данные из ПОСТ формы
 $KpNumber =  $_POST['KpNumber'];
 // считваем стоимость доставки 
+
 $DostCost =  $_POST['DostCost'];
+$uslovia_oplati='по согласованию сторон';
+$srok_izgotovl='в наличии';
 
 // тип КП - откуда пришел запрос
 $type_kp = $_POST['type_kp'];
@@ -99,7 +102,9 @@ $comparr = array ('InnCustomer' => $InnCustomer,
                    'KpDate' => $KpDate_temp,
                    'NameCustomer' => $NameCustomer,
                    'KpImportance' => $KpImportance ,
-                   'Adress' => $adress );
+                   'Adress' => $adress,
+                   'uslovia_oplati' => $uslovia_oplati,
+                   'srok_izgotovl' => $srok_izgotovl);
 $comparr += array ('ContactCustomer' => $ContactCustomer);
 $comparr += array ('Email' => $EmailCustomer);
 $comparr += array ('Telephone' => $new_TelCustomer);

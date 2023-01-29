@@ -8,10 +8,19 @@ require_once '../new_kp_info/make_pdf.php'; // фукнция создания �
 // echo "<pre>";
 // print_r($_POST);
 // echo "<pre>";
+
+
 /*
 GET данные
 */
 $id = $_POST['id']; // 
+
+$adress = $_POST['adress_dostavki'];
+$ZakupName = $_POST['ZakupName'];
+
+(isset($_POST['uslovia_oplati']))?$uslovia_oplati = $_POST['uslovia_oplati']:$uslovia_oplati='по согласованию сторон';
+(isset($_POST['srok_izgotovl']))?$srok_izgotovl = $_POST['srok_izgotovl']:$srok_izgotovl='в наличии';
+
 
 // если треубется обновиь данные о Заказчике в КП
 
@@ -34,7 +43,7 @@ $now = new DateTime($KpDate);
 $KpDate_temp = $now->format('d.m.Y'); // меняет отображение даты для КП 
 
 $NameCustomer = $arr_kp_by_id[0]['NameCustomer'];
-$adress = $arr_kp_by_id[0]['adress'];
+// $adress = $arr_kp_by_id[0]['adress'];
 $ContactCustomer = $arr_kp_by_id[0]['ContactCustomer'];
 
 // Формируем номер закупки из ссылки
@@ -87,6 +96,7 @@ $products = make_prod_array($_POST);
 
 $KpFileName= $FileName_temp;
 
+
 $comparr = array ( 'KpNumber' => $arr_kp_by_id[0]['KpNumber'] ,
                    'KpDate' => $KpDate_temp,
                    'ContactCustomer' => $kp_array_shapka['ContactCustomer'],
@@ -94,7 +104,9 @@ $comparr = array ( 'KpNumber' => $arr_kp_by_id[0]['KpNumber'] ,
                    'Adress' => $adress,
                    'Email' => $kp_array_shapka['Email'],
                    'Telephone' => $kp_array_shapka['Phone'],
-                   'ZakupName' => $kp_array_shapka['ZakupName'],
+                   'ZakupName' => $ZakupName,
+                   'uslovia_oplati' => $uslovia_oplati,
+                   'srok_izgotovl' => $srok_izgotovl,
 
                    'NomerZakupki' => $NomerZakupki,
                    'DostCost' => $_POST['price_dost']);
@@ -119,10 +131,17 @@ if ($KpSum > 100) {
 make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); // 
 
 
-update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp, $marker) ;
+update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp, $marker, $adress) ;
 // echo "<pre>";
 // print_r($temp_array);
 // echo "<pre>";
+
+$date_change = date("Y-m-d");
+$id_item = $id;
+$what_change = 9;
+$comment_change = "Изменение. КП№".$KpNumber." ".$NameCustomer; 
+$author = $userdata['user_login'];
+require "../pdo_connect_db/insert_reports.php";
 
 
 header("Location: ../index.php?transition=10&id=".$id);
@@ -157,12 +176,14 @@ function make_prod_array($post) {
 return @$prods;
 }
 
-function update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $cor_kol_kp, $marker) {
+function update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $cor_kol_kp, $marker, $adress) {
   $today = date("Y-m-d");
   $LinkKp = "EXCEL/".$temp_array['KpFileName'].".xlsx";
   $KpSum = $temp_array['total'];
 
 //  Вычиитаваем все данные о КП из реестра 
+// echo "ll+++lll--". $adress;
+// die();
 
 
   // Формируем АПдейт в БД
@@ -173,6 +194,7 @@ $data_arr = [
   'date_write'=> $today,
   'cor_kol_kp'=> $cor_kol_kp, //Добавляем следующий номер
   'marker'=> $marker,
+  'adress'=> $adress,
 
   'id' => $id,
 ];
@@ -183,7 +205,8 @@ $data_arr = [
                             Responsible=:Responsible,
                             cor_kol_kp=:cor_kol_kp,
                             date_write=:date_write,
-                            marker=:marker
+                            marker=:marker,
+                            adress=:adress
                            
                       WHERE id=:id";
 

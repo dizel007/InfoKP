@@ -86,7 +86,9 @@ $kp_array_shapka += array (  'ZakupName' => $ZakupName);
   $srok_izgotovl =$sheet->getCellByColumnAndRow(5, $i_1)->getValue();
   $i_1 = $i+8;
   $adress_dostavki =$sheet->getCellByColumnAndRow(5, $i_1)->getValue();
-  
+  $adress_dostavki =str_replace('Примерная стоимость доставки до объекта ','',$adress_dostavki);
+  $adress_dostavki =str_replace('(','',$adress_dostavki);
+  $adress_dostavki =str_replace(')','',$adress_dostavki);
    $kp_dop_info = 
 	array(
 		'uslovia_oplati'  => $uslovia_oplati,

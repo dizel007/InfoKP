@@ -87,10 +87,7 @@
 	width: 100%; 
 	padding:5px 8px;
 }
-.contact_form_change_kp textarea {
-  padding:8px; 
-  width:300px;
-}
+
 .contact_form_change_kp button {
   margin-left:50px;
   margin-bottom:10px;
@@ -98,14 +95,14 @@
 }
 
 	/* form element visual styles */
-	.contact_form_change_kp input, .contact_form_change_kp textarea, .contact_form_change_kp select { 
+	.contact_form_change_kp input,  .contact_form_change_kp select { 
 		border:1px solid #aaa;
 		box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
 		border-radius:2px;
 		/* padding-right:30px; */
 		transition: padding .25s;
 	}
-	.contact_focontact_form_change_kprm input:focus, .contact_form_change_kp textarea:focus, .contact_form_change_kp select:focus {
+	.contact_focontact_form_change_kprm input:focus, .contact_form_change_kp select:focus {
 		background: #fff; 
 		border:1px solid #555; 
 		box-shadow: 0 0 3px #aaa; 
@@ -113,15 +110,15 @@
 	}
 
 /* === HTML5 validation styles === */	
-.contact_form_change_kp input:required, .contact_form_change_kp textarea:required {
+.contact_form_change_kp input:required {
 	background: #fff url(../../images/invalid.png) no-repeat 98% center;
 }
-.contact_form_change_kp input:required:valid, .contact_form_change_kp textarea:required:valid {
+.contact_form_change_kp input:required:valid {
 	background: #fff url(../../images/valid.png) no-repeat 98% center;
 	box-shadow: 0 0 5px #5cd053;
 	border-color: #28921f;
 }
-.contact_form_change_kp input:focus:invalid, .contact_form_change_kp textarea:focus:invalid {
+.contact_form_change_kp input:focus:invalid {
 	background: #fff url(../../images/invalid.png) no-repeat 98% center;
 	box-shadow: 0 0 5px #d45252;
 	border-color: #b03535
@@ -158,4 +155,15 @@ button.submit:active {
 	border: 1px solid #20911e;
 	box-shadow: 0 0 10px 5px #356b0b inset; 
 
+}
+.zonavvoda {
+	margin: 10px;
+	width: 80%;
+	height: 150px;
+	font-size: 14px;
+}
+.text_in_kp {
+	margin: 5px;
+	text-align: center;
+	font-size: 18px;
 }

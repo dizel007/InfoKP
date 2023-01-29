@@ -29,7 +29,8 @@ function make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum){
   $DostCost=$comparr['DostCost'];
   $KpFileName=$comparr['KpFileName'];
   $ZakupName=$comparr['ZakupName'];
-  
+  $uslovia_oplati=$comparr['uslovia_oplati'];
+  $srok_izgotovl=$comparr['srok_izgotovl'];
 
   
 require_once '../PHPExcel-1.8/fpdf/fpdf.php';
@@ -369,14 +370,15 @@ $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->Cell(30 , $h_cell , MakeUtf8Font('Условия оплаты:'),0,0,'R');
 $pdf->SetTextColor(0,0,0); // черный цвет
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
-$pdf->Cell(140 , $h_cell , MakeUtf8Font("По согласованию сторон"),0,1,'L');
+$pdf->Cell(140 , $h_cell , MakeUtf8Font($uslovia_oplati),0,1,'L');
 $pdf->Cell(20 , $h_cell , '',0,0,'C');
 $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
 $pdf->Cell(30 , $h_cell , MakeUtf8Font('Срок изготовления:'),0,0,'R');
 $pdf->SetTextColor(0,0,0); // черный цвет
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
-$pdf->Cell(140 , $h_cell , MakeUtf8Font('В наличии'),0,1,'L');
+$pdf->Cell(140 , $h_cell , MakeUtf8Font($srok_izgotovl),0,1,'L');
+
 
 $long_str  = strlen ($adress) + 51;
 $max_long_string=110;

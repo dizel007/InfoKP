@@ -183,7 +183,7 @@ $sheet->getStyle("D{$line}")->getFont()->setSize(10);
 $sheet->getStyle("D{$line}")->getFont()->setBold(true);
 $sheet->getRowDimension("{$line}")->setRowHeight('21');
 
-$sheet->setCellValue("F{$line}", 'По согласованию сторон');
+$sheet->setCellValue("F{$line}", $comparr['uslovia_oplati']);
 $sheet->getStyle("F{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $sheet->getStyle("F{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("F{$line}")->getFont()->setSize(11);
@@ -201,7 +201,7 @@ $sheet->getStyle("D{$line}")->getFont()->setSize(10);
 $sheet->getStyle("D{$line}")->getFont()->setBold(true);
 $sheet->getRowDimension("{$line}")->setRowHeight('21');
 
-$sheet->setCellValue("F{$line}", 'В наличии');
+$sheet->setCellValue("F{$line}", $comparr['srok_izgotovl']);
 $sheet->getStyle("F{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $sheet->getStyle("F{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("F{$line}")->getFont()->setSize(11);
