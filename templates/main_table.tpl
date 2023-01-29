@@ -28,6 +28,7 @@
                <td width ="60" class="hidden_class_column">Сл.звонок</td>
                <td class="hidden_class_column">Состояние</td>
                <td>Сумма КП</td>
+               <td><p title="Создать КП в эту же Компанию">ДКП</p></td>
                <td width ="40" class="hidden_class_column">НМЦК Закупки</td>
          {*    <td class="hidden_class_column">ДКЗ</td>      *}
              <td class="hidden_class_column">КЗ</td>       
@@ -168,6 +169,24 @@
       <td class="hidden_class_column"> <div id = "js-KpCondition{$array_with_all_kp.$i.id}" class = "{$KpConditionTable.$i}">{$array_with_all_kp.$i.KpCondition}</div></td>
 <!-- ********************************** СУММА КП ********************************** -->      
       <td id = "js-KpSum{$array_with_all_kp.$i.id}" >{$array_with_all_kp.$i.KpSum}</td>
+
+<!-- ********************************** ДОбавить новое КП ********************************************* -->
+
+
+<td>
+  {if $array_with_all_kp.$i.InnCustomer <> 0}
+      <a href="?transition=1&user_login={$userdata['user_login']}&InnCustomer={$array_with_all_kp.$i.InnCustomer}">
+           <img  style = "opacity: 0.5" class="scale11" src="icons/table/red_plus.png" alt="add_KP">
+      </a>
+    {else}
+             &nbsp
+    {/if}
+      
+</td> 
+
+
+
+
  <!-- ********************************** СУММА ТЕНДЕРА  ********************************** -->      
       <td class="hidden_class_column">{$array_with_all_kp.$i.TenderSum}</td>
 
