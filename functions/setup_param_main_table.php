@@ -32,19 +32,25 @@ else {
     }
 }
 
+// echo "<pre>";
+// print_r($array_with_all_kp_temp);
+// echo "<pre>";
+
 
 
 
 $i=0;
 $i1=0;
+
 foreach ($array_with_all_kp_temp as $value) {
   // ************* Проверяем нужно ли выводить закрытые КП *********************
   $Show_close_Contracts = $get_FinishContract;
-  if (($array_with_all_kp_temp[$i1]['FinishContract'] == 1) && ($Show_close_Contracts <> 1))
+  if (($array_with_all_kp_temp[$i1]['FinishContract'] == 1) && ($Show_close_Contracts <> 1) && ($id == ''))
   { 
     $i1++;
     continue;
-    } else {
+  
+  } else {
       $array_with_all_kp[$i] = $array_with_all_kp_temp[$i1];
       $i++;
       $i1++;

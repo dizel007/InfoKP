@@ -16,7 +16,7 @@ GET данные
 $id = $_POST['id']; // 
 
 $adress = $_POST['adress_dostavki'];
-$ZakupName = $_POST['ZakupName'];
+$ZakupName = trim($_POST['ZakupName']);
 
 (isset($_POST['uslovia_oplati']))?$uslovia_oplati = $_POST['uslovia_oplati']:$uslovia_oplati='по согласованию сторон';
 (isset($_POST['srok_izgotovl']))?$srok_izgotovl = $_POST['srok_izgotovl']:$srok_izgotovl='в наличии';
