@@ -90,19 +90,19 @@
 
   {$i=0}
   <hr>
-  {if (isset($new_link_kp_by_our_id) >0)}
-  <b>Остальные сформированные КП:</b>
-    <hr>
-  {foreach from=$new_link_kp_by_our_id item=dop_kp}
-      <input type="hidden" name="count_dop_kp" value="{$count_dop_kp}">   
-      <input type="checkbox"  name="dop_kp_{$i}" value="{$dop_kp}"> 
-      <label for="dop_kp_{$i}"><a href="{$dop_kp}" target="_blank"><img src="icons/table/pdf.png"></a>
-            {$dop_kp}</label> <hr>
-  
-  {$i=$i+1}
-  {/foreach}
-{/if}
-    Либо подгрузить другие файлы с КП  <b>(макс. размер 0,5 Мб каждый)</b> <br> подгрузите файл(ы) для отправки :
+     {if (isset($new_link_kp_by_our_id) >0)}
+        <b>Остальные сформированные КП:</b>
+          <hr>
+        {foreach from=$new_link_kp_by_our_id item=dop_kp}
+            <input type="hidden" name="count_dop_kp" value="{$count_dop_kp}">   
+            <input type="checkbox"  name="dop_kp_{$i}" value="{$dop_kp}"> 
+            <label for="dop_kp_{$i}"><a href="{$dop_kp}" target="_blank"><img src="icons/table/pdf.png"></a>
+            {$dop_kp}</label>
+             <hr>        
+            {$i=$i+1}
+        {/foreach}
+      {/if}
+    Подгрузить дополнительные файлы к КП  <b>(макс. размер 0,5 Мб каждый)</b> <br> подгрузите файл(ы) для отправки :
       <input type="hidden" name="MAX_FILE_SIZE" value="500000" multiple>   
       <input name="upload_file[]" type="file" multiple>
   
@@ -118,7 +118,8 @@
 
 
 <hr>
-<b>Дополнительные файлы к КП:</b>
+<br>
+<b> Рекламные каталоги к КП:</b>
 <br>
 <input type="checkbox"  name="catalog_present" value="1"> 
 <label for="catalog_present">Включить ПРЕЗЕНТАЦИЮ в письмо</label> <br>

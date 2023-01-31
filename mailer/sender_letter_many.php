@@ -10,7 +10,12 @@ require_once("modul/get_data.php"); // Заполняем наши переме�
 
 $id=$_POST["id"];
 
-// var_dump($_POST);
+
+// echo "<pre>";
+// print_r($_POST);
+// print_r($_FILES);
+
+// echo "<pre>";
 // die();
 
 
@@ -23,14 +28,14 @@ if (isset($_POST["$index"])) {
     $new_dop_kp[]=$_POST["dop_kp_".$i1];
 }
 }
-
+// сомтрим нужно ли цеплять каталог
 
 if (isset ($_POST['catalog_present']) )
 {$catalog_present = $_POST['catalog_present'];}
 else {
     $catalog_present = 0;    
 }
-
+// сомтрим нужно ли цеплять каталог по бордам
 if (isset ($_POST['catalog_bordur']) )
 {$catalog_bordur = $_POST['catalog_bordur'];}
 else {
@@ -60,10 +65,8 @@ if ($_FILES['upload_file']['name'][0] <> "") {
                     echo "Некоторая отладочная информация:\n";
                     print_r($_FILES);
                 echo "</pre>";
-              
             }
-
-        }
+      }
 }
 
 // Настройки PHPMailer
@@ -91,10 +94,11 @@ if ($_FILES['upload_file']['name'][0] <> "") {
         for ($i=0; $i < count($link_pppdf); $i++) {
         $mail->addAttachment($link_pppdf[$i]);         // Add attachments
         }
-    } else { // если файл уже был на сервере
-        if (isset($link_pdf)) {$mail->addAttachment("../".$link_pdf);}
-    }
-    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+   } 
+    // если файл уже был на сервере
+   if (isset($link_pdf)) {$mail->addAttachment("../".$link_pdf);}
+   
+   //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
 // ************************* Цепляем Дополнительне КППрезентацию *************************************
     if ($count_dop_kp > 0) { 
