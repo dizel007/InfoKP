@@ -21,12 +21,27 @@ $arr_emails = GetEmailByInn($pdo,$InnCustomer);
 // находим по ID закупки наименование файла, который будем отправлять
 $arr_kp = GetKPById($pdo,$id);
 
-// echo count($arr_emails);
+ // находим все КП к этому адресату 
+if ($InnCustomer <>'') {
+    $all_kp_by_our_id= GetKPByInn($pdo,$InnCustomer);
+    // убираем наше КП
+    foreach ($all_kp_by_our_id as $value) {
+      if (($value['id'] <> $id) && ($value['FinishContract'] == 0)) {
+        $temp = substr($value['LinkKp'] , 6,-4)."pdf";
+        // echo $temp."<br>";
+        if (file_exists('EXCEL/'.$temp)) { 
+        $new_link_kp_by_our_id[]=$temp;
+      }
+      }
+    }
+}
+// echo count($new_link_kp_by_our_id);
 // echo "<pre>";
-// print_r($arr_emails);
+// print_r($new_link_kp_by_our_id);
 // echo "<pre>";
 
 // die();
+
 if (file_exists($arr_kp[0]['LinkKp'])) {
 // получаем данные из ексель файла
 $xls = PHPExcel_IOFactory::load($arr_kp[0]['LinkKp']);
@@ -72,7 +87,10 @@ $smarty->assign('ZakupNameTemp', $ZakupNameTemp);
 $smarty->assign('real_file', $real_file); // ПризнакЮ что есть ПДФ файл
 $smarty->assign('type_kp', $arr_kp[0]['type_kp']); // отправляем тип КП, чтобы понять что в письме писать
 
-
+if (isset($new_link_kp_by_our_id)) {
+$smarty->assign('new_link_kp_by_our_id', $new_link_kp_by_our_id); // отправляем массив с другими КП
+$smarty->assign('count_dop_kp', count($new_link_kp_by_our_id)); // отправляем массив с другими КПcount_dop_kp
+}
 
 $smarty->display('send_mail.tpl');
 } else {

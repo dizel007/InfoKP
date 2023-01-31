@@ -3,9 +3,26 @@
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
 require 'phpmailer/Exception.php';
-require_once("modul/get_data.php"); // Заполняем наши переменные
 require_once("../connect_db.php"); // Заполняем наши переменные
 require_once("../pdo_connect_db/select_functions.php"); // Подлючачем функции для работы с БД
+require_once("modul/get_data.php"); // Заполняем наши переменные
+
+
+$id=$_POST["id"];
+
+// var_dump($_POST);
+// die();
+
+
+$count_dop_kp =  $_POST["count_dop_kp"];
+
+// формируем список дополнительных КП
+for ($i1 = 0; $i1 < $count_dop_kp; $i1++) {
+    $index = "dop_kp_".$i1;
+if (isset($_POST["$index"])) {
+    $new_dop_kp[]=$_POST["dop_kp_".$i1];
+}
+}
 
 
 if (isset ($_POST['catalog_present']) )
@@ -78,6 +95,14 @@ if ($_FILES['upload_file']['name'][0] <> "") {
         if (isset($link_pdf)) {$mail->addAttachment("../".$link_pdf);}
     }
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+// ************************* Цепляем Дополнительне КППрезентацию *************************************
+    if ($count_dop_kp > 0) { 
+        foreach ($new_dop_kp as $dop_kp) {
+            $mail->addAttachment('../EXCEL/'.$dop_kp);         // Add attachments
+        }
+      }
+
 
 // ************************* Цепляем Презентацию *************************************
     if ($catalog_present == 1) { 

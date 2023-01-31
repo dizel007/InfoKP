@@ -52,14 +52,15 @@ if (!empty($_POST['bodypost'])) {
 
     $dop_2_last='</b>'.$certifikat. $better_offer.
     '<br><br>
-    С уважением<br>
-    ООО ТД АНМАКС<br>
-    по всем вопросам можете получить консультацию<br>
-    по телефону 8 (495) 787-24-05<br>
+    С уважением<br>'.$userdata['ful_name'].'<br>'.$userdata['user_phone'].'<br>'.
+    $userdata['user_mobile_phone'].'<br>'.$userdata['user_email'].'<br>'.
+    '<a href="anmaks.ru">anmaks.ru</a><br>
     <img border=0 src="https://tradestorm.ru/images/tovar.jpg" useMap=#FPMap0>
     <img border=0 src="https://tradestorm.ru/images/logo.jpg" useMap=#FPMap0>';
     
-    $body_post='<b>Добрый день!</b><br><br><b>'.$_POST['bodypost'].$dop_2_last;
+    // $body_post='<b>Добрый день!</b><br><br><b>'.$_POST['bodypost'].$dop_2_last;
+    $body_post=$_POST['bodypost'].$dop_2_last;
+
   }
  
 if (!empty($email_from_kp_new)) {

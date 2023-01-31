@@ -1,6 +1,9 @@
 .mail_about_company {
   margin: 20px;
+  margin-top: 5px;
   padding: 20px;
+  padding-top: 5px;
+
   padding-bottom: 0;
 }
 .mail-center {
@@ -33,8 +36,9 @@ table {
 
 .emails_table_db {
   border: 1px solid rgba(96, 96, 96, 0.5);
+  font-size: 14px;
+  padding: 5px;
   
-  font-size: 12px;
 }
 .email_table_shapka {  
 text-align:center;

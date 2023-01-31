@@ -50,7 +50,7 @@
   
   <div class="text_in_kp">Текст в Коммерческом предложении :</div>
   
-          <textarea class="zonavvoda" name="ZakupName" rows="5 cols="10">
+          <textarea class="zonavvoda" name="ZakupName" rows="5" cols="10">
              {$shapka['ZakupName']}
         </textarea>
   

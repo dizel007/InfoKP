@@ -32,7 +32,7 @@
 {if ($InnCustomer <>'')} 
 
        {if ($count_arr_emails > 0)} 
-            Email из Базы Данных: (Выберите один EMAIL , либо введите новый)
+            <b>Email из Базы Данных: (Выберите один EMAIL , либо введите новый)</b>
             <br><br>
               <table>
                 <tr>
@@ -68,8 +68,8 @@
     <br><br>
    
 {/if}
-
-<b>Новый EMAIL для отправки КП</b><br>  
+<br>
+<b>Новый EMAIL для отправки КП :</b>
 <input type="email"  name="email_from_kp_new" value=""><Br>
 
 </div> {* конец блок с выводом емайлов*}
@@ -79,12 +79,30 @@
 {* Когда нужно отправить файл загруженный на сервер *}
 {if $real_file == 1 }
 
-  <h5>Подгрузиться либо предложенный файл с сервера, либо подцепите новые файлы</h5>
-      к письму подгрузиться файл: 
+  <b>Подгрузиться либо предложенный файл с сервера, либо подцепите новые файлы к письму подгрузиться файл:</b> 
+      <br>
+      <input checked type="checkbox"  name="link_pdf" value="{$link_pdf}">
       <a href="{$link_pdf}" target="_blank"><img src="icons/table/pdf.png"></a>
-      <b>{$link_pdf_text}</b>
-      <input type="hidden" name="link_pdf" value={$link_pdf}>
-       <br><br>Либо подгрузить другие файлы с КП  <b>(макс. размер 0,5 Мб каждый)</b> <br> подгрузите файл(ы) для отправки :
+      {$link_pdf_text}
+      
+   {*   <input type="hidden" name="link_pdf" value={$link_pdf}> *}
+
+
+  {$i=0}
+  <hr>
+  {if (isset($new_link_kp_by_our_id) >0)}
+  <b>Остальные сформированные КП:</b>
+    <hr>
+  {foreach from=$new_link_kp_by_our_id item=dop_kp}
+      <input type="hidden" name="count_dop_kp" value="{$count_dop_kp}">   
+      <input type="checkbox"  name="dop_kp_{$i}" value="{$dop_kp}"> 
+      <label for="dop_kp_{$i}"><a href="{$dop_kp}" target="_blank"><img src="icons/table/pdf.png"></a>
+            {$dop_kp}</label> <hr>
+  
+  {$i=$i+1}
+  {/foreach}
+{/if}
+    Либо подгрузить другие файлы с КП  <b>(макс. размер 0,5 Мб каждый)</b> <br> подгрузите файл(ы) для отправки :
       <input type="hidden" name="MAX_FILE_SIZE" value="500000" multiple>   
       <input name="upload_file[]" type="file" multiple>
   
@@ -97,8 +115,11 @@
  <input name="upload_file[]" type="file" multiple>
 
 {/if}
-<br>
 
+
+<hr>
+<b>Дополнительные файлы к КП:</b>
+<br>
 <input type="checkbox"  name="catalog_present" value="1"> 
 <label for="catalog_present">Включить ПРЕЗЕНТАЦИЮ в письмо</label> <br>
 
@@ -121,8 +142,9 @@
 <input type="text"  name="subject_theme"  size="50" value = "КП от ТД АНМАКС" placeholder="КП от ТД АНМАКС">
 </p>
 <h5>ТЕКСТ ПИСЬМА</h5>
-Здравствуйте!<br>
+
 <textarea name="bodypost" cols="100" rows="4">
+Здравствуйте!<br>
 {if $type_kp == 6 }
 Предлагаем рассмотреть приобретение следующей продукции, для гос.закупки
 {/if}
@@ -137,9 +159,11 @@
 
   <br>
     С уважением<br>
-    ООО ТД АНМАКС<br>
-    по всем вопросам можете получить консультацию<br>
-    по телефону 8 (495) 787-24-05
+    {$userdata['ful_name']}<br>
+    {$userdata['user_phone']}<br>
+    {$userdata['user_mobile_phone']}<br>
+    {$userdata['user_email']}<br>
+    <a href="anmaks.ru">anmaks.ru</a>
   </div> {* конец текста пиьсма post_text *}
   </div> {* конец контейнера *}
 <div class="mail_button">
