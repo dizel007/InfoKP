@@ -101,7 +101,13 @@
 </tr>
 <tr>
     <td>
-    <label for="adress_dostavki">Примерная стоимость доставки до объекта:  <label>
+      {if ($type_kp <> 6)}
+         <label for="adress_dostavki">Условия отгрузки :  <label>
+       {else}
+         <label for="adress_dostavki">Примерная стоимость доставки до объекта :<label>
+      {/if}
+
+    
    </td>
       <td>   </td>
 </tr>

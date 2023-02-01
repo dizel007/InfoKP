@@ -389,15 +389,52 @@ if ($long_str > $max_long_string) {  // если строка превышает
   $pdf->Cell(20 , $h_cell*$kolvo_strok , "",0,0,'C');
   $pdf->SetTextColor(5,99,193); // синий цвет
   $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
-  $pdf->Cell(30 , $h_cell*$kolvo_strok , MakeUtf8Font('Условия отгрузки:'),0,0,'R');
-  $pdf->SetTextColor(0,0,0); // черный цвет
-  $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
-  $pdf->multiCell(110 ,$h_cell, MakeUtf8Font("Примерная стоимость доставки до объекта Заказчика ($adress)"),'0','L');
+
+
+
+/***************************************** СЧИТАЕ ДЛИНЕ == ДОСТАВКИ  */
+
+$h_cell = 5; // нормальная высота строки
+
+$string_array = make_string_name_array($adress , 125); // число - это длина строки
+$hight = count($string_array);
+$real_hight_string = $h_cell*$hight;
 $real_Y_position = $pdf->GetY();
+
+
+$pdf->Cell(30 , $real_hight_string , MakeUtf8Font('Условия отгрузки:'),0,0,'R');
+$pdf->SetTextColor(0,0,0); // черный цвет
+$pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
+// $pdf->multiCell(110 ,$real_hight_string, MakeUtf8Font($adress),'0','L');
+$real_Y_position = $pdf->GetY();
+
+
+$count_name_cycle=1;
+  foreach ($string_array as $value_name) {
+     
+        $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),0,0,'L');
+        $real_Y_position = $pdf->GetY();
+        $pdf->setXY(60,$real_Y_position+$h_cell);
+        $count_name_cycle++;
+  }
+
+$real_Y_position = $pdf->GetY();
+
+
+  // $pdf->Cell(30 , $h_cell*$kolvo_strok , MakeUtf8Font('Условия отгрузки:'),0,0,'R');
+  // $pdf->SetTextColor(0,0,0); // черный цвет
+  // $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
+  // $pdf->multiCell(110 ,$h_cell, MakeUtf8Font($adress),'0','L');
+  // $real_Y_position = $pdf->GetY();
   $pdf->setXY(170,$real_Y_position-$h_cell*$kolvo_strok);
   $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
-  $pdf->Cell(30 ,$h_cell*$kolvo_strok, MakeUtf8Font(number_format($DostCost, 2, ',', ' ')),0,1,'C');
-
+  // // убираем ноль, если нет стоимости
+  if ($DostCost == 0) 
+  {
+    $pdf->Cell(30 ,$h_cell*$kolvo_strok, MakeUtf8Font('', 2, ',', ' '),0,1,'C');
+  } else {
+    $pdf->Cell(30 ,$h_cell*$kolvo_strok, MakeUtf8Font(number_format($DostCost, 2, ',', ' ')),0,1,'C');
+  }
 
 $pdf->Cell(190 ,8, MakeUtf8Font(''),'0',1,'C'); // Пустая строкв
 $real_Y_position = $pdf->GetY();
@@ -408,7 +445,6 @@ $pdf->Cell(50 ,8, MakeUtf8Font('С.И. Зелизко'),'0',0,'C');
 /*
 * ***************************   ПЕЧАТЬ
 */
-
 
   $pdf->image('../new_kp_info/stamp.png',103,$real_Y_position-30,65);
 

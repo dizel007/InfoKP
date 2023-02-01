@@ -100,6 +100,7 @@ if ($_FILES['upload_file']['name'][0] <> "") {
    
    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
+
 // ************************* Цепляем Дополнительне КППрезентацию *************************************
     if ($count_dop_kp > 0) { 
         foreach ($new_dop_kp as $dop_kp) {
@@ -131,7 +132,26 @@ $mail->Body    = $body_post;
             $status ="OK";
             $id_item = $id;
             $what_change = 7;  // 7 - значит отправка почты
-            $comment_change = "Отправлено сообщение с сайта на адрес : ". $email_from_kp; 
+            $comment_change = "Отправлен Email на адрес : ". $email_from_kp."<br>"; 
+            // Цепляем, что отправили
+            // если файл уже был на сервере
+            $comment_change = $comment_change.'Файлы в составе письма :'."<br>";
+
+
+            if (isset($link_pdf)) {
+                $comment_change = $comment_change.(substr($link_pdf ,6))."<br>";
+            }
+            if ($count_dop_kp > 0) { 
+                foreach ($new_dop_kp as $dop_kp) {
+                    $comment_change = $comment_change.$dop_kp."<br>";
+                }
+              }
+              if ($_FILES['upload_file']['name'][0] <> "") { 
+                for ($i=0; $i < count($link_pppdf); $i++) {
+                    $comment_change = $comment_change.substr($link_pppdf[$i] , 9)."<br>";         // Add attachments
+                }
+           }
+
             $author = $user_mail;
               
             require "../pdo_connect_db/insert_reports.php"; 
@@ -146,7 +166,8 @@ $mail->Body    = $body_post;
 
             $id_item = $id;
             $what_change = 7;  // 7 - значит отправка почты
-            $comment_change = "ОШИБКА отправки на адрес : ". $email_from_kp; 
+            $comment_change = "ОШИБКА отправки на адрес : ". $email_from_kp;
+            
             $author = $user_mail;
               
             require "../pdo_connect_db/insert_reports.php";

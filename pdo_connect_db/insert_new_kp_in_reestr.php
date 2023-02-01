@@ -18,8 +18,8 @@ $KpNumber =  $_POST['KpNumber'];
 // считваем стоимость доставки 
 
 $DostCost =  $_POST['DostCost'];
-$uslovia_oplati='по согласованию сторон';
-$srok_izgotovl='в наличии';
+$uslovia_oplati=TEXT_USLOVIA_OPLATI_DEFAULT;
+$srok_izgotovl=TEXT_USLOVIA_IZGOTOVLEBIA_DEFAULT;
 
 // тип КП - откуда пришел запрос
 $type_kp = $_POST['type_kp'];
@@ -89,7 +89,12 @@ $product_type = $_POST['product_type'];
 $idKp = date('Y').date('m').date('d').(127 + date('H')+ date('i')+date('s')*32 )*2; // неповтор
 $KpImportance = $_POST['KpImportance']; 
 $Responsible = $_POST['responsible'];
-$adress = $_POST['Adress'];
+$adress = trim($_POST['Adress']);
+ 
+
+
+$adress_in_kp = $adress;
+
 $date_write = date('Y-m-d');
 
 $KpFileName= "№".$KpNumber." от ".$KpDate_temp." ".$NameCustomer." от ООО ТД АНМАКС";
@@ -102,7 +107,7 @@ $comparr = array ('InnCustomer' => $InnCustomer,
                    'KpDate' => $KpDate_temp,
                    'NameCustomer' => $NameCustomer,
                    'KpImportance' => $KpImportance ,
-                   'Adress' => $adress,
+                   'Adress' => $adress_in_kp,
                    'uslovia_oplati' => $uslovia_oplati,
                    'srok_izgotovl' => $srok_izgotovl);
 $comparr += array ('ContactCustomer' => $ContactCustomer);

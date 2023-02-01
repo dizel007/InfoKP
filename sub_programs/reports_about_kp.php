@@ -41,7 +41,7 @@ foreach ($arr_with_all_changes as $value) {
  
   // информация об отправленных письмах 
   if ($value['what_change'] == 7) {
-    $value['comment_change'] = str_replace('Отправлено сообщение с сайта на адрес : ', '' ,$value['comment_change']);
+    // $value['comment_change'] = str_replace('Отправлено сообщение с сайта на адрес : ', '' ,$value['comment_change']);
     $start_emales[] = $value;
   }
 

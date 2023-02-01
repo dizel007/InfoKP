@@ -28,9 +28,11 @@ if ($InnCustomer <>'') {
     foreach ($all_kp_by_our_id as $value) {
       if (($value['id'] <> $id) && ($value['FinishContract'] == 0)) {
         $temp = substr($value['LinkKp'] , 6,-4)."pdf";
+        $temp_id = $value['id'];
         // echo $temp."<br>";
         if (file_exists('EXCEL/'.$temp)) { 
         $new_link_kp_by_our_id[]=$temp;
+        $arr_id_dop_kp[]=$temp_id; // массив с ID  дополнительных КП которые выводидись
       }
       }
     }
@@ -89,7 +91,9 @@ $smarty->assign('type_kp', $arr_kp[0]['type_kp']); // отправляем ти�
 
 if (isset($new_link_kp_by_our_id)) {
 $smarty->assign('new_link_kp_by_our_id', $new_link_kp_by_our_id); // отправляем массив с другими КП
+$smarty->assign('arr_id_dop_kp', $new_linarr_id_dop_kpk_kp_by_our_id); // отправляем массив id с другими КП
 $smarty->assign('count_dop_kp', count($new_link_kp_by_our_id)); // отправляем массив с другими КПcount_dop_kp
+
 }
 
 $smarty->display('send_mail.tpl');

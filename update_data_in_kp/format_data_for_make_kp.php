@@ -15,7 +15,7 @@ GET данные
 */
 $id = $_POST['id']; // 
 
-$adress = $_POST['adress_dostavki'];
+$adress = trim($_POST['adress_dostavki']);
 $ZakupName = trim($_POST['ZakupName']);
 
 (isset($_POST['uslovia_oplati']))?$uslovia_oplati = $_POST['uslovia_oplati']:$uslovia_oplati='по согласованию сторон';
@@ -33,9 +33,11 @@ UpdateCustomerDataInReestr($pdo,$_POST['InnCustomer'], $id);
 $stmt = $pdo->prepare("SELECT * FROM `reestrkp` WHERE `id` = ?");
 $stmt->execute([$id]);
 $arr_kp_by_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$type_kp = $arr_kp_by_id[0]['type_kp'];
 // echo "<pre>";
 // print_r($arr_kp_by_id);
 // echo "<pre>";
+// die('222222');
 
 $KpNumber = $arr_kp_by_id[0]['KpNumber'];
 $KpDate = $arr_kp_by_id[0]['KpData'];
@@ -96,12 +98,17 @@ $products = make_prod_array($_POST);
 
 $KpFileName= $FileName_temp;
 
+if ($type_kp <> 6) {
+  $adress_in_kp = $adress;
+} else {
+  $adress_in_kp = TEXT_PERED_ADRESOM_DOSTAVKI.$adress;  
+}
 
 $comparr = array ( 'KpNumber' => $arr_kp_by_id[0]['KpNumber'] ,
                    'KpDate' => $KpDate_temp,
                    'ContactCustomer' => $kp_array_shapka['ContactCustomer'],
                    'NameCustomer' => $NameCustomer,
-                   'Adress' => $adress,
+                   'Adress' => $adress_in_kp,
                    'Email' => $kp_array_shapka['Email'],
                    'Telephone' => $kp_array_shapka['Phone'],
                    'ZakupName' => $ZakupName,

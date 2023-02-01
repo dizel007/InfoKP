@@ -8,7 +8,11 @@ if (($get_KpCondition == 'Купили у нас') OR
    {
   $get_FinishContract = 1;
   }
-  
+
+// костыль чтобы через фильтр выводились и закрытые КП при выводе черещ ИНН компании
+if (($get_inn <>'' ) OR ($get_nomerKP <>'') or ($get_name_zakazchik<>'')){
+  $get_FinishContract = 1;
+}
 include_once 'functions/form_select.php'; // Настраиваем SQL запрос
 
 

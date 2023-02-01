@@ -222,19 +222,24 @@ $sheet->getRowDimension("{$line}")->setRowHeight('21');
 
 
 
-if ($comparr['Adress'] == '') {
-	$adress_dostav = 'Примерная стоимость доставки :';
-} else {
-$adress_dostav = 'Примерная стоимость доставки до объекта ('.$comparr['Adress'].')';
-}
+// if ($comparr['Adress'] == '') {
+// 	$adress_dostav = TEXT_ADRESS_IF_NO_ADRESS;
+// } else {
+// $adress_dostav = 'Примерная стоимость доставки до объекта ('.$comparr['Adress'].')';
+// }
 
-$sheet->setCellValue("F{$line}", $adress_dostav);
+$sheet->setCellValue("F{$line}", $comparr['Adress']);
 $sheet->getStyle("F{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $sheet->getStyle("F{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("F{$line}")->getFont()->setSize(11);
 
 
-$sheet->setCellValue("M{$line}", number_format($comparr['DostCost'], 2, ',', ' '));
+if ($comparr['DostCost'] == 0) {
+$sheet->setCellValue("M{$line}", '', 2, ',', ' ');
+} else {
+	$sheet->setCellValue("M{$line}", number_format($comparr['DostCost'], 2, ',', ' '));
+}
+
 $sheet->getStyle("M{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
 // Размер шрифта 18
 $sheet->getStyle("M{$line}")->getFont()->setSize(14);
@@ -245,7 +250,7 @@ $sheet->getStyle("M{$line}")->getFont()->setBold(true);
 $sheet->getStyle("M{$line}")->getAlignment()->setWrapText(true); 
 $sheet->getStyle("M{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 		//  подбираем ширину строки
-$len=strlen ($adress_dostav);
+$len=strlen ($comparr['Adress']);
 
 $high =  ((int) ($len/90));
 if ($high >1 ) {
