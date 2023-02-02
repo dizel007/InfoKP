@@ -11,7 +11,7 @@ $InnCustomer = $_POST['InnCustomer'];
 $stmt = $pdo->prepare("SELECT * FROM inncompany WHERE inn = ?");
 $stmt->execute([$InnCustomer]);
 $TempInnComp = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+$user_write = $userdata['user_login'];
 
 
 // var_dump($InnCustomer);
@@ -72,8 +72,8 @@ $CommentCustomer='';
 
 // **************** вставляем каждый параметр  данных  *********************
 $stmt  = $pdo->prepare("INSERT INTO `inncompany` 
-                       (inn, kpp, name, telefon, email, adress, contactFace, comment, date_write)
-                       VALUES (:inn, :kpp, :name, :telefon, :email, :adress, :contactFace, :comment, :date_write)");
+                       (inn, kpp, name, telefon, email, adress, contactFace, comment, date_write, user_write)
+                       VALUES (:inn, :kpp, :name, :telefon, :email, :adress, :contactFace, :comment, :date_write, :user_write)");
 
 
 $stmt ->bindParam(':inn', $InnCustomer);
@@ -85,6 +85,7 @@ $stmt ->bindParam(':adress', $adress);
 $stmt ->bindParam(':comment', $CommentCustomer);
 $stmt ->bindParam(':contactFace', $ContactCustomer);
 $stmt ->bindParam(':date_write', $date_write);
+$stmt ->bindParam(':user_write', $user_write);
 
 if ($stmt ->execute()) {
   $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 

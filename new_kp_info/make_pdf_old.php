@@ -38,11 +38,9 @@ require_once '../PHPExcel-1.8/fpdf/fpdf.php';
 //create pdf object
 $pdf = new FPDF('P','mm','A4');
 //add new page
-$pdf->AliasNbPages();
-
 $pdf->AddPage();
 
-$pdf->image('../new_kp_info/right_logo.png',0,0,75);
+$pdf->image('../new_kp_info/right_logo.png',10,15,57);
 //set font to arial, bold, 14pt
 
 
@@ -59,11 +57,8 @@ $pdf->AddFont('TimesNRCyrMT-Bold','','timesnrcyrmt_bold.php');
 */
 $contact_font_size = 7;
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size);
-// $pdf->Cell(190 ,4,'',0,2); // отступ сверху 1 строка
-
-$pdf->setXY(0,2);
-
-$pdf->Cell(80 ,4,'',0,0); // отступ
+$pdf->Cell(190 ,4,'',0,2); // отступ сверху 1 строка
+$pdf->Cell(70 ,4,'',0,0); // отступ
 $pdf->Cell(60 ,4, MakeUtf8Font('ООО «Торговый дом «АНМАКС»'),0,0,'C');
 $pdf->Cell(60 ,4, MakeUtf8Font('Tел. / факс: +7 (495) 787-24-05'),0,1,'C');
 
@@ -93,8 +88,12 @@ $pdf->Cell(130 ,9, MakeUtf8Font($temp),0,1,'C');
 
 /* КОНТАКТЫ ЗАКАЗЧИКА */
 $contact_font_size = 8;
-$h_hight_shapka = 6;
+$h_hight_shapka = 5;
 $pdf->Cell(190 ,5,'',0,2); // отступ сверху 1 строка
+
+//  ***************   **Заказчик 
+
+
 
 /******************************** Наименование Заказчика ***********************/
 
@@ -139,18 +138,18 @@ $count_name_cycle=1;
       }
 
   }
+
 // Контактное лицо 
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
 $pdf->SetTextColor(5,99,193); // синий цвет
-$pdf->Cell(60 ,$h_hight_shapka,'',0,0); // отступ
-$pdf->Cell(50 ,$h_hight_shapka, MakeUtf8Font('Контактное лицо'),'B',0,'C');
+$pdf->Cell(60 ,6,'',0,0); // отступ
+$pdf->Cell(50 ,6, MakeUtf8Font('Контактное лицо'),'B',0,'C');
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст 
 $pdf->SetTextColor(0,0,0); // черный цвет
-$pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($ContactCustomer),'B',1,'C');
+$pdf->Cell(80 ,6, MakeUtf8Font($ContactCustomer),'B',1,'C');
 
-
-// ******************************  Телефон  ****************    
-$h_tel_cell = 5; // нормальная высота строки
+// ******************************    ****************   Телефон 
+$h_tel_cell = 4.5; // нормальная высота строки
 
 
 $string_array = make_string_name_array($new_TelCustomer , 18); // число - это длина строки
@@ -195,7 +194,11 @@ foreach ($string_array as $value_name) {
 }
 
 
-// ************************************************ email ***********************************
+
+// ************************************************ email 
+
+$h_tel_cell = 4.5; // нормальная высота строки
+
 
 $string_array = make_string_name_array($EmailCustomer , 40); // число - это длина строки
 $hight = count($string_array);
@@ -237,7 +240,17 @@ foreach ($string_array as $value_name) {
 
 }
 
-// ************************************** Номер извещения на ЭТП  *****************************
+
+
+// $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
+// $pdf->SetTextColor(5,99,193); // синий цвет
+// $pdf->Cell(60 ,6,'',0,0); // отступ
+// $pdf->Cell(50 ,6, MakeUtf8Font('e-mail'),'B',0,'C');
+// $pdf->SetFont('','U'); // подчеркивание
+// $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст 
+// $pdf->Cell(80 ,6, MakeUtf8Font($EmailCustomer),'B',1,'C','', "mailto:$EmailCustomer");
+
+// ************************************** Номер извещения на ЭТП 
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
 $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->Cell(60 ,6,'',0,0); // отступ
@@ -247,14 +260,25 @@ $pdf->Cell(80 ,6, MakeUtf8Font(''),'0',1,'C');
 
 
 
+
+
+
+
+
+
+
+
+
+
 //  Добрый день!
 $pdf->Cell(190 ,5,'',0,2); // отступ сверху 1 строка
 $pdf->SetFont('TimesNRCyrMT-Bold','',11); // жирный текст 11
 $pdf->SetTextColor(0,0,0); // черный цвет
 $pdf->Cell(190 ,7, MakeUtf8Font('Добрый день!'),0,1,'C');
 
-
 // текст о предложении
+
+
 
 $contact_font_size = 9;
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст 
@@ -262,15 +286,7 @@ $pdf->MultiCell(190 ,4.5, MakeUtf8Font($ZakupName), 0,'C',0);
 // ************************ таблица товаров
 // шапка
 $contact_font_size = 9;
-
 $pdf->Cell(190 ,3,'',0,2); // отступ сверху 1 строка
-
-$real_Y_position = $pdf->GetY();
-
-// Если мало вводного текста, то таблицу принудительно вниз уводим
-if ($real_Y_position < 100) {
-  $pdf->setXY(10,100);
-}
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
 $pdf->Cell(10 ,8, MakeUtf8Font('№п/п'),'B',0,'C');
 $pdf->Cell(110 ,8, MakeUtf8Font('Наименование'),'B',0,'C');
@@ -432,12 +448,6 @@ $real_Y_position = $pdf->GetY();
     $pdf->Cell(30 ,$h_cell*$kolvo_strok, MakeUtf8Font(number_format($DostCost, 2, ',', ' ')),0,1,'C');
   }
 
-// уводим вних Ген дира и печать, если мало товара
-$real_Y_position = $pdf->GetY();
-if ($real_Y_position < 224) {
-$pdf->setXY(0,224);
-}
-
 $pdf->Cell(190 ,8, MakeUtf8Font(''),'0',1,'C'); // Пустая строкв
 $real_Y_position = $pdf->GetY();
 $pdf->Cell(80 ,8, MakeUtf8Font('Генеральный директор ООО "ТД "АНМАКС"'),'0',0,'C');
@@ -458,7 +468,7 @@ $contact_font_size = 7;
   $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
   
   $pdf->setXY(170,$real_Y_position+10);
-  $pdf->Cell(190 ,9, MakeUtf8Font(''),'0',1,'C'); // Пустая строкв
+  $pdf->Cell(190 ,6, MakeUtf8Font(''),'0',1,'C'); // Пустая строкв
   $h_cell=4;
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font('Исполнитель:'),'0',1,'L');
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['ful_name']),'0',1,'L');
@@ -471,6 +481,9 @@ $contact_font_size = 7;
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font("www.anmaks.ru"),'0',1,'L','',  "https://www.anmaks.ru/");
 
   
+
+
+
 
 // $pdf->Output();
 

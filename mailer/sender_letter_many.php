@@ -101,8 +101,8 @@ if ($_FILES['upload_file']['name'][0] <> "") {
    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
 
-// ************************* Цепляем Дополнительне КППрезентацию *************************************
-    if ($count_dop_kp > 0) { 
+// ************************* Цепляем Дополнительне КП  *************************************
+   if (isset($new_dop_kp)) { 
         foreach ($new_dop_kp as $dop_kp) {
             $mail->addAttachment('../EXCEL/'.$dop_kp);         // Add attachments
         }
@@ -141,7 +141,7 @@ $mail->Body    = $body_post;
             if (isset($link_pdf)) {
                 $comment_change = $comment_change.(substr($link_pdf ,6))."<br>";
             }
-            if ($count_dop_kp > 0) { 
+            if (isset($new_dop_kp)) { 
                 foreach ($new_dop_kp as $dop_kp) {
                     $comment_change = $comment_change.$dop_kp."<br>";
                 }
