@@ -470,7 +470,12 @@ $contact_font_size = 7;
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($temp),'0',1,'L','',  $temp_2);
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font("www.anmaks.ru"),'0',1,'L','',  "https://www.anmaks.ru/");
 
-  
+ 
+// колонтитул внизу  
+$pdf->line(10, 281, 200, 281);
+  $pdf->image('../new_kp_info/bottom_col.png',40,285,130);
+
+
 
 // $pdf->Output();
 
