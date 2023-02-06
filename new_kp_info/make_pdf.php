@@ -388,7 +388,7 @@ $string_array = make_string_name_array($uslovia_oplati , 170); // число - �
 $hight = count($string_array);
 $real_hight_string = $h_cell*$hight;
 $real_Y_position = $pdf->GetY();
-$pdf->Cell(30 , $real_hight_string , MakeUtf8Font($high_all.'Условия оплаты:'),'0',0,'R');
+$pdf->Cell(30 , $real_hight_string , MakeUtf8Font('Условия оплаты:'),'0',0,'R');
 
 $pdf->SetTextColor(0,0,0); // черный цвет
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 

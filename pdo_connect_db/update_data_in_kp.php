@@ -38,10 +38,11 @@ $type_kp = $arr_kp_by_id[0]['type_kp'];
 $LinkKp = $arr_kp_by_id[0]['LinkKp'];
 $file_name_="".$LinkKp; // получаем путь и имя файла
 $sum_kp_array= parce_kp($file_name_); // получили все данные из КП (шапку, продуцию, доп инфу)
-
+$type_product = $arr_kp_by_id[0]['type_product'];
 // echo "<pre>";
-// print_r($sum_kp_array);
+// print_r($arr_kp_by_id);
 // echo "<pre>";
+// die();
 
 /*
  * Увеличиваем количество строк в массиве в товарами, если нужно
@@ -66,6 +67,7 @@ $smarty->assign('priz_update_inn' , $priz_update_inn);
 $smarty->assign('NameCustomer' , @$NameCustomer);
 $smarty->assign('id' , $id);
 $smarty->assign('type_kp' , $type_kp);
+$smarty->assign('type_product' , $type_product);
 
 dispay_update_kp($smarty, $sum_kp_array,$add_str, $id);  // выводим наше КП
 

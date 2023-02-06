@@ -23,15 +23,16 @@
  }
 
  .add_string{
-  width: 100px;
+	width: 100px;
   margin: 15px;
   border: 1px solid;
   border-radius: 3px;
   padding: 5px;
-  background: linear-gradient(180deg, rgb(221, 240, 145) 0%, rgb(185, 206, 143) 35%, rgb(125, 184, 88) 100%);
+  background: linear-gradient(180deg, rgb(250, 103, 86) 0%, rgb(204, 136, 107) 35%, rgb(216, 138, 74) 100%);
   color: rgb(0, 0, 0);
   font-size: 14px;
   font-weight: 500;
+	
  }
 .add_string:hover{
   transition: 1s;
@@ -166,4 +167,17 @@ button.submit:active {
 	margin: 5px;
 	text-align: center;
 	font-size: 18px;
+}
+
+.table_bgc {
+	background-color: rgb(216, 213, 213);
+}
+
+.update_type_kp {
+	margin: 5px;
+	padding: 3px;
+
+}
+.dop_table_cs {
+	border:none;
 }

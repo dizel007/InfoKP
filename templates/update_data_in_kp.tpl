@@ -43,6 +43,55 @@
 
 {******************************** Начало ФОРМЫ **************************************************}
 <form class ="contact_form_change_kp" action ="update_data_in_kp/format_data_for_make_kp.php" method="POST">
+
+<table class ="dop_table_cs">
+
+<tr>
+    <td>
+    {* Источник КП *}
+                  <label for="type_kp">Источник КП</label>
+                <select class="update_type_kp" size="1" name="type_kp">
+                  {for $i=0 to  (count($AllKptype)-2)}
+                    {if ($type_kp == $AllValuesKptype.$i)}
+                        <option selected value="{$AllValuesKptype.$i}">{$AllKptype.$i}</option>
+                      {/if} 
+                  {/for}
+
+                    {for $i=0 to  (count($AllKptype)-2)}
+                      {if ($type_kp == $AllValuesKptype.$i)}
+                        {continue}
+                      {/if} 
+                    <option value="{$AllValuesKptype.$i}">{$AllKptype.$i}</option>
+                  {/for}
+                </select>
+            
+
+    </td>
+</tr>
+ <tr>
+  <td>
+   {* Тип продукции *}
+        <label for="product_type">Тип продукции в КП</label> 
+          <select class="update_type_kp" size="1" name="product_type">
+             {for $i=0 to  (count($AllProductTypesName)-1)}
+                {if ($type_product == $AllProductTypesValue.$i)}
+                   <option selected value="{$AllProductTypesValue.$i}">{$AllProductTypesName.$i}</option>
+                 {/if} 
+             {/for}
+
+
+             {for $i=0 to  (count($AllProductTypesValue)-1)}
+                 {if ($type_product == $AllProductTypesValue.$i)}
+                         {continue}
+                 {/if}
+                  <option value="{$AllProductTypesValue.$i}">{$AllProductTypesName.$i}</option>
+               {/for}
+          </select>
+    
+  </td>
+</tr>
+
+</table>
 {* *}
   {if ($priz_update_inn <> '')}
     <input hidden name="InnCustomer" value="{$priz_update_inn}">
@@ -58,6 +107,15 @@
 Перечень товаров :
 </div>
 <table>
+<tr>
+  <td><p class ="table_p table_bgc">пп</p></td>
+  <td><p class ="table_p table_bgc">Наименование</p></td>
+  <td><p class ="table_p table_bgc">Ед.изм</p></td> 
+  <td><p class ="table_p table_bgc">Кол-во</p></td> 
+  <td><p class ="table_p table_bgc">Цена за ед.</p></td>  
+  </tr>
+
+
 {foreach from=$prods item=value}
 
 <tr>
@@ -93,11 +151,11 @@
 <table>
 <tr>
   <td><label for="uslovia_oplati">Условия оплаты :</label></td>
-  <td><input size ="30" type="text" name = "uslovia_oplati" value ="{$dop_info['uslovia_oplati']}"></td>
+  <td><input size ="70" type="text" name = "uslovia_oplati" value ="{$dop_info['uslovia_oplati']}"></td>
 </tr>
 <tr>
   <td>  <label for="srok_izgotovl">Срок изготовления :</label></td>
-  <td><input size ="30"   type="text" name = "srok_izgotovl" value ="{$dop_info['srok_izgotovl']}"></td>
+  <td><input size ="70"   type="text" name = "srok_izgotovl" value ="{$dop_info['srok_izgotovl']}"></td>
 </tr>
 <tr>
     <td>
@@ -109,14 +167,14 @@
 
     
    </td>
-      <td>   </td>
+      <td>    <label for="adress_dostavki">Цена доставки :  <label>  </td>
 </tr>
 <tr>
    <td>
-        <input name = "adress_dostavki" value ="{$dop_info['adress_dostavki']}">
+        <input size="70" name = "adress_dostavki" value ="{$dop_info['adress_dostavki']}">
     </td>
     <td>
-        <input size ="30"   type="number" name = "price_dost" value ="{$dop_info['price_dost']}">
+        <input size ="30" type="number" name = "price_dost" value ="{$dop_info['price_dost']}">
     </td>
   
 </tr>  
@@ -128,5 +186,5 @@
 
 </table>
  <br> <br>
- <button class="submit" type="submit">Отправить</button>
+ <button class="submit" type="submit">Сформировать КП с новыми данными</button>
  </form>

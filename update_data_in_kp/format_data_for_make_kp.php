@@ -14,7 +14,10 @@ require_once '../new_kp_info/make_pdf.php'; // фукнция создания �
 GET данные
 */
 $id = $_POST['id']; // 
-
+$type_kp_new = $_POST['type_kp'];
+$product_type_new = $_POST['product_type'];
+$param_arr['type_kp'] = $type_kp_new;
+$param_arr['type_product'] = $product_type_new;
 $adress = trim($_POST['adress_dostavki']);
 $ZakupName = trim($_POST['ZakupName']);
 
@@ -138,7 +141,7 @@ if ($KpSum > 100) {
 make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); // 
 
 
-update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp, $marker, $adress) ;
+update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp, $marker, $adress, $param_arr) ;
 // echo "<pre>";
 // print_r($temp_array);
 // echo "<pre>";
@@ -183,7 +186,7 @@ function make_prod_array($post) {
 return @$prods;
 }
 
-function update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $cor_kol_kp, $marker, $adress) {
+function update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $cor_kol_kp, $marker, $adress, $param_arr) {
   $today = date("Y-m-d");
   $LinkKp = "EXCEL/".$temp_array['KpFileName'].".xlsx";
   $KpSum = $temp_array['total'];
@@ -202,9 +205,13 @@ $data_arr = [
   'cor_kol_kp'=> $cor_kol_kp, //Добавляем следующий номер
   'marker'=> $marker,
   'adress'=> $adress,
+  'type_kp' => $param_arr['type_kp'],
+  'type_product' => $param_arr['type_product'],
 
   'id' => $id,
 ];
+
+
 
   $sql = "UPDATE reestrkp SET 
                             KpSum=:KpSum,
@@ -213,7 +220,9 @@ $data_arr = [
                             cor_kol_kp=:cor_kol_kp,
                             date_write=:date_write,
                             marker=:marker,
-                            adress=:adress
+                            adress=:adress,
+                            type_kp=:type_kp,
+                            type_product=:type_product
                            
                       WHERE id=:id";
 
