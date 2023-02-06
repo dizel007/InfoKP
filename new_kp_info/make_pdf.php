@@ -61,7 +61,7 @@ $contact_font_size = 7;
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size);
 // $pdf->Cell(190 ,4,'',0,2); // отступ сверху 1 строка
 
-$pdf->setXY(0,2);
+$pdf->setXY(0,5);
 
 $pdf->Cell(80 ,4,'',0,0); // отступ
 $pdf->Cell(60 ,4, MakeUtf8Font('ООО «Торговый дом «АНМАКС»'),0,0,'C');
@@ -84,7 +84,7 @@ $pdf->SetTextColor(0,0,0); // черный цвет
 
 /* КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ */
 $pdf->SetFont('TimesNRCyrMT','',15);
-$pdf->Cell(190 ,5,'',0,2); // отступ сверху 1 строка
+$pdf->Cell(190 ,3,'',0,2); // отступ сверху 1 строка
 $pdf->Cell(60 ,9,'',0,0); // отступ
 $pdf->Cell(130 ,9, MakeUtf8Font('КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ'),0,1,'C');
 $pdf->Cell(60 ,9,'',0,0); // отступ
@@ -351,54 +351,42 @@ $pdf->Cell(190 ,5,MakeUtf8Font('Цены указаны в рублях с уч�
 * УСЛОВИЯ ПОСТАВКИ
 */
 
+
+/***************** делаем перенос на след страницу, доп таблица сочень большая */
+$str_count1 = make_string_name_array($uslovia_oplati , 170); // число - это длина строки
+$highhh1 = count($str_count1);
+$str_count2 = make_string_name_array($srok_izgotovl , 170); // число - это длина строки
+$highhh2 = count($str_count2);
+$str_count3 = make_string_name_array($adress , 125); // число - это длина строки
+$highhh3 = count($str_count3);
+$high_all = $highhh1 +$highhh2+ $highhh3;
+if (($real_Y_position <= 200) AND ($high_all >6)){
+  $pdf->AddPage('P');
+}
+/***************** делаем перенос на след страницу, если большая таблица с товарами */
 $real_Y_position = $pdf->GetY(); //------------------------------------------------------------
 if ($real_Y_position > 200) {
   $pdf->AddPage('P');
 }
 
+/********************************************************************************** */
 $contact_font_size = 8;
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
 $pdf->Cell(190 , 10 , '',0,1,'C'); // пустая тсрока
 
-$h_cell = 5.5;
+
+/***************************************   УСЛОВИЯ ОПЛАТЫ *******************************/
+
+$h_cell = 5;
 $pdf->Cell(20 , $h_cell , '',0,0,'C');
 $pdf->SetTextColor(5,99,193); // синий цвет
-$pdf->Cell(30 , $h_cell , MakeUtf8Font('Условия оплаты:'),0,0,'R');
-$pdf->SetTextColor(0,0,0); // черный цвет
-$pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
-$pdf->Cell(140 , $h_cell , MakeUtf8Font($uslovia_oplati),0,1,'L');
-$pdf->Cell(20 , $h_cell , '',0,0,'C');
-$pdf->SetTextColor(5,99,193); // синий цвет
-$pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
-$pdf->Cell(30 , $h_cell , MakeUtf8Font('Срок изготовления:'),0,0,'R');
-$pdf->SetTextColor(0,0,0); // черный цвет
-$pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
-$pdf->Cell(140 , $h_cell , MakeUtf8Font($srok_izgotovl),0,1,'L');
 
-
-$long_str  = strlen ($adress) + 51;
-$max_long_string=110;
-$kolvo_strok=1;
-if ($long_str > $max_long_string) {  // если строка превышает заданную длину, нужно расширить строку
-   $kolvo_strok =$kolvo_strok + intval($long_str/$max_long_string);
-  }
-  $pdf->Cell(20 , $h_cell*$kolvo_strok , "",0,0,'C');
-  $pdf->SetTextColor(5,99,193); // синий цвет
-  $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
-
-
-
-/***************************************** СЧИТАЕ ДЛИНЕ == ДОСТАВКИ  */
-
-$h_cell = 5; // нормальная высота строки
-
-$string_array = make_string_name_array($adress , 125); // число - это длина строки
+$string_array = make_string_name_array($uslovia_oplati , 170); // число - это длина строки
 $hight = count($string_array);
 $real_hight_string = $h_cell*$hight;
 $real_Y_position = $pdf->GetY();
+$pdf->Cell(30 , $real_hight_string , MakeUtf8Font('Условия оплаты:'),'0',0,'R');
 
-
-$pdf->Cell(30 , $real_hight_string , MakeUtf8Font('Условия отгрузки:'),0,0,'R');
 $pdf->SetTextColor(0,0,0); // черный цвет
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
 // $pdf->multiCell(110 ,$real_hight_string, MakeUtf8Font($adress),'0','L');
@@ -414,25 +402,87 @@ $count_name_cycle=1;
         $count_name_cycle++;
   }
 
+
+// $pdf->SetTextColor(0,0,0); // черный цвет
+// $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
+// $pdf->Cell(140 , $h_cell , MakeUtf8Font($uslovia_oplati),0,1,'L');
+// $pdf->Cell(20 , $h_cell , '',0,0,'C');
+
+
+$pdf->setXY(30,$real_Y_position+$h_cell);
+
+/*******************************   СРОК ИЗГОТОВЛЕНИЯ ************************************/
+
+$pdf->SetTextColor(5,99,193); // синий цвет
+$pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
+
+$string_array = make_string_name_array($srok_izgotovl , 170); // число - это длина строки
+$hight = count($string_array);
+$real_hight_string = $h_cell*$hight;
 $real_Y_position = $pdf->GetY();
+$pdf->Cell(30 , $real_hight_string , MakeUtf8Font('Срок изготовления:'),0,0,'R');
+$pdf->SetTextColor(0,0,0); // черный цвет
+$pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
 
+$real_Y_position = $pdf->GetY();
+$pdf->line(33, $real_Y_position, 200, $real_Y_position); //*******************************линия под у */
 
-  // $pdf->Cell(30 , $h_cell*$kolvo_strok , MakeUtf8Font('Условия отгрузки:'),0,0,'R');
-  // $pdf->SetTextColor(0,0,0); // черный цвет
-  // $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
-  // $pdf->multiCell(110 ,$h_cell, MakeUtf8Font($adress),'0','L');
-  // $real_Y_position = $pdf->GetY();
-  $pdf->setXY(170,$real_Y_position-$h_cell*$kolvo_strok);
-  $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
-  // // убираем ноль, если нет стоимости
-  if ($DostCost == 0) 
-  {
-    $pdf->Cell(30 ,$h_cell*$kolvo_strok, MakeUtf8Font('', 2, ',', ' '),0,1,'C');
-  } else {
-    $pdf->Cell(30 ,$h_cell*$kolvo_strok, MakeUtf8Font(number_format($DostCost, 2, ',', ' ')),0,1,'C');
+$count_name_cycle=1;
+  foreach ($string_array as $value_name) {
+     
+        $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),0,0,'L');
+        $real_Y_position = $pdf->GetY();
+        $pdf->setXY(60,$real_Y_position+$h_cell);
+        $count_name_cycle++;
   }
 
-// уводим вних Ген дира и печать, если мало товара
+
+
+
+$pdf->setXY(30,$real_Y_position+$h_cell);
+
+$pdf->line(33, $real_Y_position+$h_cell, 200, $real_Y_position+$h_cell);
+/***************************************   УСЛОВИЯ ОТГРУЗКИ *******************************/
+
+$pdf->SetTextColor(5,99,193); // синий цвет
+$pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
+
+
+$string_array = make_string_name_array($adress , 125); // число - это длина строки
+$hight = count($string_array);
+$real_hight_string = $h_cell*$hight;
+$real_Y_position = $pdf->GetY();
+$real_Y_position_for_dost = $pdf->GetY();
+
+$pdf->Cell(30 , $real_hight_string , MakeUtf8Font('Условия отгрузки:'),0,0,'R');
+
+$pdf->SetTextColor(0,0,0); // черный цвет
+$pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
+$real_Y_position = $pdf->GetY();
+
+$count_name_cycle=1;
+  foreach ($string_array as $value_name) {
+     
+        $pdf->Cell(110 ,$h_cell, MakeUtf8Font($value_name),'0',0,'L');
+        $real_Y_position = $pdf->GetY();
+        $pdf->setXY(60,$real_Y_position+$h_cell);
+        $count_name_cycle++;
+  }
+
+  $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
+  // // убираем ноль, если нет стоимости
+  $pdf->setY($real_Y_position_for_dost);
+  $pdf->setX(180);
+  if ($DostCost == 0) 
+  {
+    $pdf->Cell(20 ,$real_hight_string, MakeUtf8Font('', 2, ',', ' '),0,1,'C');
+  } else {
+    $pdf->Cell(20 ,$real_hight_string, MakeUtf8Font(number_format($DostCost, 2, ',', ' ')),'0',1,'C');
+  }
+  $real_Y_position = $pdf->GetY();
+  // $pdf->line(33, $real_Y_position, 200, $real_Y_position);
+/**************  уводим вних Ген дира и печать, если мало товара **********************/
+
 $real_Y_position = $pdf->GetY();
 if ($real_Y_position < 224) {
 $pdf->setXY(0,224);
@@ -443,6 +493,8 @@ $real_Y_position = $pdf->GetY();
 $pdf->Cell(80 ,8, MakeUtf8Font('Генеральный директор ООО "ТД "АНМАКС"'),'0',0,'C');
 $pdf->Cell(60 ,8, MakeUtf8Font(''),'0',0,'C');
 $pdf->Cell(50 ,8, MakeUtf8Font('С.И. Зелизко'),'0',0,'C');
+
+
 
 /*
 * ***************************   ПЕЧАТЬ
@@ -477,9 +529,9 @@ $pdf->line(10, 281, 200, 281);
 
 
 
-// $pdf->Output();
+$pdf->Output();
 
-// die('PDFFFFF');
+die('PDFFFFF');
 //output the result
 $pdf->Output("../EXCEL/".$KpFileName.".pdf", 'F');
 //теперь добавляем синее подчеркивание для ссылки

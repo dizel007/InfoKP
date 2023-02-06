@@ -16,6 +16,10 @@ $company_arr = GetCompanyByInn($pdo, $InnCustomer); // Получили все �
 $smarty->assign("company_arr",$company_arr);
 
 $telephons_company = GetTelephoneByInn($pdo,$InnCustomer); //Получили все телефоны о компании с таким ИНН
+
+foreach ($telephons_company as &$valueZZ) {
+ $valueZZ['whatsapp_tel'] = preg_replace("/[^,.0-9]/", '', $valueZZ['telephone']);
+}
 $smarty->assign("telephons_company",$telephons_company);
 
 $emails_company = GetEmailByInn($pdo,$InnCustomer); //Получили все email о компании с таким ИНН

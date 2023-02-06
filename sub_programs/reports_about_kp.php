@@ -56,7 +56,7 @@ foreach ($arr_with_all_changes as $value) {
 $smarty->assign('start_info_kp' , @$start_info_kp);
 
 
-$change_in_kp = array_reverse(@$change_in_kp);
+@$change_in_kp = array_reverse(@$change_in_kp);
 $smarty->assign('change_in_kp' , @$change_in_kp); // Изменния в КП
 $smarty->assign('change_data_kp' , @$change_data_kp); // Изменния в КП
 
