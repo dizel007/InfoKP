@@ -345,12 +345,18 @@ $pdf->Cell(23 ,$h_cell, MakeUtf8Font($nds20),0,1,'C');
 
 $contact_font_size = 8;
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // жирный текст 
+
+
+$real_Y_position = $pdf->GetY();
+
+
+
 $pdf->Cell(190 ,5,MakeUtf8Font('Цены указаны в рублях с учетом НДС.'),0,2); // отступ сверху 1 строка
 
 /*
 * УСЛОВИЯ ПОСТАВКИ
 */
-
+/***************** делаем перенос на след страницу, если большая таблица с товарами */
 
 /***************** делаем перенос на след страницу, доп таблица сочень большая */
 $str_count1 = make_string_name_array($uslovia_oplati , 170); // число - это длина строки
@@ -359,20 +365,17 @@ $str_count2 = make_string_name_array($srok_izgotovl , 170); // число - эт
 $highhh2 = count($str_count2);
 $str_count3 = make_string_name_array($adress , 125); // число - это длина строки
 $highhh3 = count($str_count3);
-$high_all = $highhh1 +$highhh2+ $highhh3;
-if (($real_Y_position <= 200) AND ($high_all >6)){
+$high_all = $h_cell*($highhh1 +$highhh2+ $highhh3)+$real_Y_position + 51.5;
+
+if (($high_all) > 270){
   $pdf->AddPage('P');
 }
-/***************** делаем перенос на след страницу, если большая таблица с товарами */
-$real_Y_position = $pdf->GetY(); //------------------------------------------------------------
-if ($real_Y_position > 200) {
-  $pdf->AddPage('P');
-}
+
 
 /********************************************************************************** */
 $contact_font_size = 8;
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
-$pdf->Cell(190 , 10 , '',0,1,'C'); // пустая тсрока
+$pdf->Cell(190 , 3 , '',0,1,'C'); // пустая тсрока
 
 
 /***************************************   УСЛОВИЯ ОПЛАТЫ *******************************/
@@ -385,7 +388,7 @@ $string_array = make_string_name_array($uslovia_oplati , 170); // число - �
 $hight = count($string_array);
 $real_hight_string = $h_cell*$hight;
 $real_Y_position = $pdf->GetY();
-$pdf->Cell(30 , $real_hight_string , MakeUtf8Font('Условия оплаты:'),'0',0,'R');
+$pdf->Cell(30 , $real_hight_string , MakeUtf8Font($high_all.'Условия оплаты:'),'0',0,'R');
 
 $pdf->SetTextColor(0,0,0); // черный цвет
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
@@ -401,13 +404,6 @@ $count_name_cycle=1;
         $pdf->setXY(60,$real_Y_position+$h_cell);
         $count_name_cycle++;
   }
-
-
-// $pdf->SetTextColor(0,0,0); // черный цвет
-// $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальнй текст 
-// $pdf->Cell(140 , $h_cell , MakeUtf8Font($uslovia_oplati),0,1,'L');
-// $pdf->Cell(20 , $h_cell , '',0,0,'C');
-
 
 $pdf->setXY(30,$real_Y_position+$h_cell);
 
@@ -488,7 +484,7 @@ if ($real_Y_position < 224) {
 $pdf->setXY(0,224);
 }
 
-$pdf->Cell(190 ,8, MakeUtf8Font(''),'0',1,'C'); // Пустая строкв
+$pdf->Cell(190 ,6, MakeUtf8Font(''),'0',1,'C'); // Пустая строкв
 $real_Y_position = $pdf->GetY();
 $pdf->Cell(80 ,8, MakeUtf8Font('Генеральный директор ООО "ТД "АНМАКС"'),'0',0,'C');
 $pdf->Cell(60 ,8, MakeUtf8Font(''),'0',0,'C');
@@ -520,18 +516,18 @@ $contact_font_size = 7;
   $temp_2 = "mailto:".$user_responsible_arr[0]['user_email'];
   $pdf->SetTextColor(5,99,193); // синий цвет
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($temp),'0',1,'L','',  $temp_2);
+ 
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font("www.anmaks.ru"),'0',1,'L','',  "https://www.anmaks.ru/");
 
- 
 // колонтитул внизу  
 $pdf->line(10, 281, 200, 281);
   $pdf->image('../new_kp_info/bottom_col.png',40,285,130);
 
 
 
-$pdf->Output();
+// $pdf->Output();
 
-die('PDFFFFF');
+// die('PDFFFFF');
 //output the result
 $pdf->Output("../EXCEL/".$KpFileName.".pdf", 'F');
 //теперь добавляем синее подчеркивание для ссылки
