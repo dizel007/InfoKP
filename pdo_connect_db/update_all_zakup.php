@@ -17,7 +17,7 @@ $Responsible = $_POST['Responsible'];
 $Comment = htmlspecialchars($_POST['Comment']);
 $Comment = trim($Comment, $character_mask = " \t\n\r\0\x0B");  // убипаем все лишние пробелы и переносы
 
-// $Comment_for_reports = $Comment; // Этот коммент пойдет в логи
+$Comment_for_reports = $Comment; // Этот коммент пойдет в логи
 
 if ($Comment != '') {
   $dateForComment = date('Y-m-d') . "(" . $user_login . "): "; // добавление в виде даты и логина пользователя
@@ -26,7 +26,6 @@ if ($Comment != '') {
 } else {
   $Comment = $my_id_arr[0]['Comment'];
 }
-
 // $Comment=htmlspecialchars($Comment);
 
 $DateNextCall = $_POST['DateNextCall'];
@@ -138,7 +137,7 @@ $backArr = array(
 //// Формируем комментарий в таблицу reports
 $db_comment = "";
 if ($my_id_arr[0]['Comment']  != $Comment) {
-  $db_comment .= " коммент :" . $Comment . ";";
+  $db_comment .= " коммент :" . $Comment_for_reports . ";";
 }
 if ($my_id_arr[0]['KpImportance'] != $KpImportance) {
   $db_comment .= "@! важность :" . $KpImportance . "||+";

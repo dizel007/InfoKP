@@ -91,7 +91,7 @@ $smarty->assign('type_kp', $arr_kp[0]['type_kp']); // отправляем ти�
 
 if (isset($new_link_kp_by_our_id)) {
 $smarty->assign('new_link_kp_by_our_id', $new_link_kp_by_our_id); // отправляем массив с другими КП
-$smarty->assign('arr_id_dop_kp', $new_linarr_id_dop_kpk_kp_by_our_id); // отправляем массив id с другими КП
+$smarty->assign('arr_id_dop_kp', $arr_id_dop_kp); // отправляем массив id с другими КП
 $smarty->assign('count_dop_kp', count($new_link_kp_by_our_id)); // отправляем массив с другими КПcount_dop_kp
 } 
 

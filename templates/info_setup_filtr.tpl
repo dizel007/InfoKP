@@ -18,9 +18,15 @@
 {if $get_date_end<>'' }
 <i>Дата окончания :<b>{$get_date_end}</b></i>
 {/if}
+
 {if $get_inn<>'' }
 <i>ИНН :<b>{$get_inn}</b></i>
 {/if}
+
+{if $get_id_kp<>'' }
+<i>ID_KP :<b>{$get_id_kp}</b></i>
+{/if}
+
 
 {if $get_name_zakazchik<>'' }
 <i>Заказчик :<b>{$get_name_zakazchik}</b></i>

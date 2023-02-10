@@ -5,7 +5,7 @@ require_once "../functions/email_make.php";
 
 $id = $_GET["id"];
 $InnCustomer = $_GET["InnCustomer"];
-$new_email=htmlspecialchars($_GET["new_email"]);
+$new_email=trim(htmlspecialchars($_GET["new_email"]));
 $actual_email = $_GET["actual_email"];
 $commentEmail=htmlspecialchars($_GET["commentEmail"]);
 $today = date("Y-m-d H:i:s"); 

@@ -167,7 +167,7 @@
     {$userdata['user_phone']}<br>
     {$userdata['user_mobile_phone']}<br>
     {$userdata['user_email']}<br>
-    <a href="anmaks.ru">anmaks.ru</a>
+    <a href="https://anmaks.ru">anmaks.ru</a>
   </div> {* конец текста пиьсма post_text *}
   </div> {* конец контейнера *}
 <div class="mail_button">

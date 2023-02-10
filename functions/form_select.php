@@ -14,7 +14,9 @@ $where = "";
   if ($get_inn <> '' ) $where = addWhere($where, "InnCustomer =".$get_inn);
 
   if ($get_responsible <>'') $where = addWhere($where, "Responsible = '".$get_responsible."'");
-  
+
+  if ($get_id_kp <>'') $where = addWhere($where, "idKp = '".$get_id_kp."'");
+ 
   if ($get_type_kp <>'') $where = addWhere($where, "type_kp = '".$get_type_kp."'");
   
   if ($get_product_type <>'') $where = addWhere($where, "type_product = '".$get_product_type."'");

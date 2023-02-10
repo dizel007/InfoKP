@@ -3,7 +3,6 @@
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
 require 'phpmailer/Exception.php';
-
 require_once("../connect_db.php"); // Заполняем наши переменные
 require_once("../pdo_connect_db/select_functions.php"); // Подлючачем функции для работы с БД
 require_once("modul/get_data.php"); // Заполняем наши переменные
@@ -71,44 +70,20 @@ if ($_FILES['upload_file']['name'][0] <> "") {
 }
 
 // Настройки PHPMailer
-
 $mail = new PHPMailer\PHPMailer\PHPMailer();
 
 
 try {
 
-
-
-
-
-
 $mail->CharSet = 'utf-8';
 // $mail->SMTPDebug = 3;                               // Enable verbose debug output
 $mail->isSMTP(); 
-
-
-
-if (strpos($active_user[0]['user_online_email'], 'anmaks.ru' ))
-{
-        // $mail->Port = 25;  // TIMEWeb
-        // $mail->Host = 'smtp.timeweb.ru';  // TimeWeb
-        $mail->Host = 'ssl://smtp.timeweb.ru';
-        $mail->Port = 465;
-        $imap_setup=777; // Признак, что на почту нужно положить отправленное письмо
-} else {
-        $mail->Port = 25;  // NETANGELS
-        $mail->Host = 'mail.netangels.ru';  // Specify main and backup SMTP servers
-        $imap_setup=0; // Признак, что на почту нужно положить отправленное письмо
-    
-}
-
+$mail->Host = 'mail.netangels.ru';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
 $mail->Username = $active_user[0]['user_online_email'];                 // Наш логин
 $mail->Password = $active_user[0]['pass_online'];                 // Наш пароль от ящика
 //
-// $mail->Port = 25;  // TIMEWeb
-// $mail->Port = 25;  // NETANGELS
-
+$mail->Port = 25; 
 $mail->setFrom($active_user[0]['user_online_email'], 'Торговый дом АНМАКС');   // От кого письмо 
 
 $mail->isHTML(true);                                  // Set email format to HTML
@@ -116,35 +91,26 @@ $mail->Subject = $subject_theme; // тема письма
 $mail->Body    = $body_post;
 $mail->addAddress($email_from_kp);     // Add a recipient
 
-
+$mail->ConfirmReadingTo = 'dizel007@yandex.ru';  // Просьба о подтверждении письма ************************
 
 $mail->AltBody = $body_post; // не HTML Письма *****************************************
 
-$comment_change_temp = '';
-// ******************************** если файл уже был на сервере
-if (isset($link_pdf)) {
-    $mail->addAttachment("../".$link_pdf);
-    $comment_change_temp = (substr($link_pdf ,6))."<br>";
-    $files_arr[]=substr($link_pdf ,6); // список файлов отправленных
-
-}
 // ************************* Цепляем файлы с КП  *************************************
 if ($_FILES['upload_file']['name'][0] <> "") { 
-   for ($i=0; $i < count($link_pppdf); $i++) {
-      $mail->addAttachment($link_pppdf[$i]);
-      $comment_change_temp = $comment_change_temp.substr($link_pppdf[$i] , 9)."<br>";         // Add ttachments
-      $files_arr[]=substr($link_pppdf[$i] , 9); // список файлов отправленных
-                 // Add attachments
-     }
+        for ($i=0; $i < count($link_pppdf); $i++) {
+        $mail->addAttachment($link_pppdf[$i]);         // Add attachments
+        }
    } 
- 
+    // если файл уже был на сервере
+   if (isset($link_pdf)) {$mail->addAttachment("../".$link_pdf);}
+   
+   //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+
 // ************************* Цепляем Дополнительне КП  *************************************
    if (isset($new_dop_kp)) { 
         foreach ($new_dop_kp as $dop_kp) {
-            $mail->addAttachment('../EXCEL/'.$dop_kp);
-            $files_arr[]=$dop_kp; // список файлов отправленных         
-            $comment_change_temp = $comment_change_temp.$dop_kp."<br>";
-            
+            $mail->addAttachment('../EXCEL/'.$dop_kp);         // Add attachments
         }
       }
 
@@ -160,6 +126,9 @@ if ($_FILES['upload_file']['name'][0] <> "") {
 
 
 
+
+
+
     if ($mail->send()) 
         {
             $result = "НОРМА";
@@ -171,19 +140,26 @@ if ($_FILES['upload_file']['name'][0] <> "") {
             // Цепляем, что отправили
             // если файл уже был на сервере
             $comment_change = $comment_change.'Файлы в составе письма :'."<br>";
-            $comment_change = $comment_change.$comment_change_temp;
+
+
+            if (isset($link_pdf)) {
+                $comment_change = $comment_change.(substr($link_pdf ,6))."<br>";
+            }
+            if (isset($new_dop_kp)) { 
+                foreach ($new_dop_kp as $dop_kp) {
+                    $comment_change = $comment_change.$dop_kp."<br>";
+                }
+              }
+              if ($_FILES['upload_file']['name'][0] <> "") { 
+                for ($i=0; $i < count($link_pppdf); $i++) {
+                    $comment_change = $comment_change.substr($link_pppdf[$i] , 9)."<br>";         // Add attachments
+                }
+           }
 
             $author = $user_mail;
               
             require "../pdo_connect_db/insert_reports.php"; 
             require "../pdo_connect_db/update_email_count_in_reestr.php";
-
-
-            if ($imap_setup == 777) {
-                require_once 'imap.php'; // делаем вставку пиьсма в почтовый ящик для Imap
-            }
-
-
             header('Location: ../index.php?transition=24&id='.$id);
 
 

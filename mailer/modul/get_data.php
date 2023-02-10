@@ -54,12 +54,11 @@ if (!empty($_POST['bodypost'])) {
     '<br><br>
     С уважением<br>'.$userdata['ful_name'].'<br>'.$userdata['user_phone'].'<br>'.
     $userdata['user_mobile_phone'].'<br>'.$userdata['user_email'].'<br>'.
-    '<a href="anmaks.ru">anmaks.ru</a><br>
-    <img border=0 src="https://tradestorm.ru/images/tovar.jpg" useMap=#FPMap0>
-    <img border=0 src="https://tradestorm.ru/images/logo.jpg" useMap=#FPMap0>';
+    '<a href="https://anmaks.ru">https://anmaks.ru</a><br>'.
+    '<img border=0 src="https://tradestorm.ru/images/tovarlogo.jpg" alt="products_and_logo" useMap=#FPMap0>';
     
     // $body_post='<b>Добрый день!</b><br><br><b>'.$_POST['bodypost'].$dop_2_last;
-    $body_post=$_POST['bodypost'].$dop_2_last;
+    $body_post="<html>".$_POST['bodypost'].$dop_2_last."</html>";
 
   }
  
