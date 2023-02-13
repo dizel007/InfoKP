@@ -4,10 +4,12 @@ require_once ("connect_db.php"); // подключение к БД
 // Находим всех активных пользоватлей и суем их в шаблоны
 include_once 'functions/find_users.php';
 //  подключение функций 
+require_once "functions/setup_to_show_main_table.php"; // подготавливает массив для вывод а в главной таблице
 include_once 'functions/make_sql_query.php'; // функция для создания SQL запроса
 include_once 'pdo_connect_db/select_functions.php';
 include_once 'functions/setup_url_for_maintable.php'; // функции для настройки количества вывода страниц и КП на 
 include_once 'functions/get_data_from_db.php'; // функции подгрузки в шаблоны выпадающих списков 
+include_once 'functions/overdeu_kp_for_shapka.php'; // функции подгрузки в шаблоны выпадающих списков 
 
 
 // *******************  шапка с меню пользователя **********************************
@@ -120,6 +122,14 @@ switch ($transition) {
         include_once 'parts_site/header.php';
         include_once "pdo_connect_db/update_data_in_kp.php";
     break;
+
+    case 41: // Перечень просроченных КП на сегодня
+        $pageName = "Перечень просроченных КП";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        include_once "sub_programs/show_overdue_kp.php";
+    break;
+
 
 
 

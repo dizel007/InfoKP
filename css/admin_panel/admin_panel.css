@@ -53,4 +53,14 @@ background-repeat: repeat-x;
 
 }
 
-    
+.overdue_kp_now {
+  padding: 2px;
+  width: 100%; 
+  background: #d6a286;
+  border-radius: 20%;
+  }
+  .overdue_kp_all {
+    padding: 2px;
+    width: 100%; 
+    background: #f57474;
+}

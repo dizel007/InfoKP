@@ -17,7 +17,19 @@
       </li>
       <li>
         <a href="?transition=97">Пользователь: {$userdata['user_name']}</a>
-      </li>
+        {if count($arr_overdue_now) >0}
+        <a class="overdue_kp_now" href="?transition=41&overdue_type=1">{count($arr_overdue_now)}</a>
+        {else}
+        <a class="overdue_kp_now" href="#">{count($arr_overdue_now)}</a>
+        {/if}
+        {if count($arr_overdue_all) >0}
+        <a class="overdue_kp_all" href="?transition=41&overdue_type=2">{count($arr_overdue_all)}</a>
+          {else}
+        <a class="overdue_kp_all" href="#">{count($arr_overdue_all)}</a>
+           {/if}
+
+        
+  
       {* Ввод нового Юзера *}
       {if $userdata['userType'] == 1}
       <li>

@@ -17,8 +17,14 @@ $cor_kol_kp = $arr_with_info_kp[0]['cor_kol_kp'];
 
 $LinkKp = substr($LinkKp,0, -5);
 
+if ($cor_kol_kp >0 ) {
 $LinkKp = substr($LinkKp, 0,-strlen($cor_kol_kp));
+}
+
+
+
 $LinkKp_first = $LinkKp.".pdf"; // самое первое КП
+
 
 if (!file_exists($LinkKp_first)) 
 {
