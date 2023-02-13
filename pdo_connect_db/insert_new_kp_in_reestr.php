@@ -61,7 +61,7 @@ if ($char == '«') {
 }
 
 // Если нет контактного лица, то пишем отдел продаж
-$_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел продаж': $ContactCustomer = $_POST['ContactCustomer'];
+$_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел снабжения': $ContactCustomer = $_POST['ContactCustomer'];
 
 $TelCustomer = $_POST['TelCustomer'];
 $TelCustomer = str_replace(' ', '', $TelCustomer); // убрали все пробелы

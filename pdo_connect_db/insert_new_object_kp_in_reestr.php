@@ -48,7 +48,7 @@ if ($char == '«') {
   $NameCustomer .="»";
 }
 
-$_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел продаж': $ContactCustomer = $_POST['ContactCustomer'];
+$_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел снабжения': $ContactCustomer = $_POST['ContactCustomer'];
 
 $TelCustomer = $_POST['TelCustomer'];
 $EmailCustomer = $_POST['EmailCustomer'];

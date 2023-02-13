@@ -16,7 +16,8 @@ $i=2;
 $stop =0;
 while ($stop <> 1 ) {
 $name = $sheet->getCellByColumnAndRow(1, $i)->getValue();
-
+$name = str_replace(array("\n","\r"), '', $name);
+// echo $name."<br>";
 if ($name == '') {
 	$stop =1;
 	break;
@@ -36,5 +37,9 @@ $prods[] =
 $i++;
 }
 
+
+
+
+// die('SIROY ANALIZ');
 return $prods;
 }
