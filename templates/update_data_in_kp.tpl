@@ -29,14 +29,14 @@
   {/if}
 
 </tr>
-<tr>
+{*<tr>
   <td>Телефон :</td>
   <td>{$shapka['Phone']}</td>
 </tr>
 <tr>
   <td>Эл. почта :</td>
   <td>{$shapka['Email']}</td>
-</tr>
+</tr>*}
 </table>
 
 {$p=0}
@@ -45,6 +45,19 @@
 <form class ="contact_form_change_kp" action ="update_data_in_kp/format_data_for_make_kp.php" method="POST">
 
 <table class ="dop_table_cs">
+<tr>
+  <td>Телефон :
+    <input size ="" type="text" name = "telefon_zakaz" value ="{$shapka['Phone']}">
+  </td>
+</tr>
+<tr>
+  <td>Email :
+  <input size ="" type="text" name = "email_zakaz" value ="{$shapka['Email']}"></td>
+</tr>
+<tr>
+  <td>Контактное лицо :
+  <input size ="" type="text" name = "contact_face_zakaz" value ="{$shapka['ContactCustomer']}"></td>
+</tr>
 
 <tr>
     <td>
@@ -97,12 +110,9 @@
     <input hidden name="InnCustomer" value="{$priz_update_inn}">
   {/if}
   
-  <div class="text_in_kp">Текст в Коммерческом предложении :</div>
-  
-          <textarea class="zonavvoda" name="ZakupName" rows="5" cols="10">
-             {$shapka['ZakupName']}
-        </textarea>
-  
+<div class="text_in_kp">Текст в Коммерческом предложении :</div>
+     <textarea class="zonavvoda" name="ZakupName" rows="5" cols="10">{$shapka['ZakupName']}</textarea>
+
 <div class="text_in_kp">
 Перечень товаров :
 </div>

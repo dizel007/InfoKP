@@ -139,18 +139,63 @@ $count_name_cycle=1;
       }
 
   }
-// Контактное лицо 
-$pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
+//********************************************** Контактное лицо ******************************
+$h_tel_cell = 5; // нормальная высота строки
+$string_array = make_string_name_array($ContactCustomer , 90); // число - это длина строки
+
+$hight = count($string_array);
+$real_hight_string = $h_tel_cell*$hight;
+$real_Y_position = $pdf->GetY();
+
+$pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size);
 $pdf->SetTextColor(5,99,193); // синий цвет
-$pdf->Cell(60 ,$h_hight_shapka,'',0,0); // отступ
-$pdf->Cell(50 ,$h_hight_shapka, MakeUtf8Font('Контактное лицо'),'B',0,'C');
-$pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст 
+$pdf->Cell(60 ,9,'',0,0); // отступ
+$pdf->Cell(50 ,$real_hight_string, MakeUtf8Font('Контактное лицо'),'TB',0,'C');
+
+$pdf->SetFont('TimesNRCyrMT','',$contact_font_size);
 $pdf->SetTextColor(0,0,0); // черный цвет
-$pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($ContactCustomer),'B',1,'C');
+$count_name_cycle=1;
+
+foreach ($string_array as $value_name) {
+  if ($count_name_cycle < count($string_array)) {
+     if ($count_name_cycle == 1) { // чтобы нарисовать черту только над первой строкой
+      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'T',0,'C');
+     } else { // чтобы не рисовать черту сверху на второй и далее строках
+      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name), 0 , 0 ,'C');
+     }
+    $real_Y_position = $pdf->GetY();
+    $pdf->setXY(120,$real_Y_position+$h_tel_cell);
+    $count_name_cycle++;
+
+  } else {
+    if ($count_name_cycle == 1) { // чтобы нарисовать черту только над первой строкой
+      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'TB',0,'C');
+
+     } else { // чтобы не рисовать черту сверху на второй и далее строках
+      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'B',0,'C');
+   }
+
+    $real_Y_position = $pdf->GetY();
+    $pdf->setXY(10,$real_Y_position+$h_tel_cell);
+    $count_name_cycle++;
+  }
+
+}
+
+
+
+
+// $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
+// $pdf->SetTextColor(5,99,193); // синий цвет
+// $pdf->Cell(60 ,$h_hight_shapka,'',0,0); // отступ
+// $pdf->Cell(50 ,$h_hight_shapka, MakeUtf8Font('Контактное лицо'),'B',0,'C');
+// $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст 
+// $pdf->SetTextColor(0,0,0); // черный цвет
+// $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($ContactCustomer),'B',1,'C');
 
 
 // ******************************  Телефон  ****************    
-$h_tel_cell = 5; // нормальная высота строки
+
 
 
 $string_array = make_string_name_array($new_TelCustomer , 18); // число - это длина строки

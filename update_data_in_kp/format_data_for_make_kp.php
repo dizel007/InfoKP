@@ -21,6 +21,11 @@ $param_arr['type_product'] = $product_type_new;
 $adress = trim($_POST['adress_dostavki']);
 $ZakupName = trim($_POST['ZakupName']);
 
+$telefon_zakaz = trim($_POST['telefon_zakaz']);
+$email_zakaz = trim($_POST['email_zakaz']);
+$contact_face_zakaz = trim($_POST['contact_face_zakaz']);
+
+
 (isset($_POST['uslovia_oplati']))?$uslovia_oplati = $_POST['uslovia_oplati']:$uslovia_oplati='по согласованию сторон';
 (isset($_POST['srok_izgotovl']))?$srok_izgotovl = $_POST['srok_izgotovl']:$srok_izgotovl='в наличии';
 
@@ -109,11 +114,11 @@ if ($type_kp <> 6) {
 
 $comparr = array ( 'KpNumber' => $arr_kp_by_id[0]['KpNumber'] ,
                    'KpDate' => $KpDate_temp,
-                   'ContactCustomer' => $kp_array_shapka['ContactCustomer'],
+                   'ContactCustomer' => $contact_face_zakaz,
                    'NameCustomer' => $NameCustomer,
                    'Adress' => $adress_in_kp,
-                   'Email' => $kp_array_shapka['Email'],
-                   'Telephone' => $kp_array_shapka['Phone'],
+                   'Email' => $email_zakaz ,
+                   'Telephone' => $telefon_zakaz,
                    'ZakupName' => $ZakupName,
                    'uslovia_oplati' => $uslovia_oplati,
                    'srok_izgotovl' => $srok_izgotovl,

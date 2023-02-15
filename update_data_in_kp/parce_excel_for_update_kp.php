@@ -20,7 +20,7 @@ function parce_kp($file_name){
  $Phone = $sheet->getCellByColumnAndRow(9, 10)->getValue();
  $Email = $sheet->getCellByColumnAndRow(9, 11)->getValue();
  $ZakupName = $sheet->getCellByColumnAndRow(2, 16)->getValue();
-
+$ZakupName=trim( $ZakupName);
  $kp_array_shapka = array ( 'kp_name' => $kp_name ,
                        'Zakazchik' => $Zakazchik,
                        'Phone' => $Phone,
