@@ -119,49 +119,49 @@
 
 {***************************** Перечень товаров : ********************************************}
 
-<table id="Table_products">
-<tbody>
-<tr id="num_col_zero">
+<table>
+<tr>
   <td><p class ="table_p table_bgc">пп</p></td>
   <td><p class ="table_p table_bgc">Наименование</p></td>
   <td><p class ="table_p table_bgc">Ед.изм</p></td> 
   <td><p class ="table_p table_bgc">Кол-во</p></td> 
   <td><p class ="table_p table_bgc">Цена за ед.</p></td>  
-  
-    <td></td>
-  <td></td>
   </tr>
 
 
 {foreach from=$prods item=value}
 
-<tr id="num_col_{$p}">
+<tr>
   <td><p class ="table_p"> {$p+1}</p></td>
 
 {if $p==0}
   <td><input required size ="100" type="text" name = "name{$p}" value ="{$value['name']}"></td>
 {else}
-  <td><input required size ="100" type="text" name = "name{$p}" value ="{$value['name']}"></td>
+  <td><input size ="100" type="text" name = "name{$p}" value ="{$value['name']}"></td>
 {/if}
 
   <td><input size ="2"   type="text" name = "ed_izm{$p}" value ="{$value['ed_izm']}"></td>
-  <td><input size ="1"   type="number" name = "kol{$p}" value ="{$value['kol']}"></td>
-  <td><input size ="1"   type="number" name = "price{$p}" value ="{$value['price']}"></td>
-  <td><input size ="1" type="button" value="+" onclick="add_row('num_col_{$p}')"></td>
-  <td><input size ="1" type="button" value="-" onclick="delete_row('num_col_{$p}')"></td>
+  <td><input size ="1"   type="number" step="any" name = "kol{$p}" value ="{$value['kol']}"></td>
+  <td><input size ="1"   type="number" step="any" name = "price{$p}" value ="{$value['price']}"></td>
 </tr>
   {$p = $p+1}
 {/foreach}
-</tbody>
- </table>
 
+ </table>
 {************************************                    **************************************}
 
 
   <input hidden type="text" name = "id" value ="{$id}"></td>
- <td><input hidden id ="all_kolvo" type="number" name = "all_kolvo" value ="{$p}"></td> 
+  <input hidden type="number" name = "all_kolvo" value ="{$p}"></td>
+
+   {if ($priz_update_inn == '')}
+   <div class ="add_string">
+        <a  href="?transition=30&id={$id}&add_str_plus={$add_str+1}">добавить строку</a>
+    </div>
+  {/if}
 
  
+
 
 
 <table>

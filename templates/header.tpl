@@ -13,6 +13,7 @@
     
     
     <script type="text/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/add_del_rows_in_table.js"></script>
     <!-- скрипт по выбору типа Фильтра в шапке  -->
     {*<script type="text/javascript" src="js/shapka_menu.js"></script>*}
     <!-- скрипт для телефоной маски -->

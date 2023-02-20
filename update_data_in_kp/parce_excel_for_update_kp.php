@@ -64,8 +64,17 @@ $kp_array_shapka += array (  'ZakupName' => $ZakupName);
   
   $i++;
   }
-
+if (isset($prods)) {
   $sum_kp_array['prods'] = $prods;
+} else {
+  $prods['prods'] =  array( 'name'  => '',
+    'kol' =>  '',
+    'ed_izm' => '',
+    'price' => '',
+    'sum_price' => '',
+  );
+  $sum_kp_array['prods'] = $prods;
+}
   // echo "<pre>";
   // print_r($prods);
   // echo "<pre>";

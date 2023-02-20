@@ -14,15 +14,15 @@ require_once '../new_kp_info/make_pdf.php'; // фукнция создания �
  
 
 // считваем все данные из ПОСТ формы
-$KpNumber =  $_POST['KpNumber'];
+$KpNumber =  trim(htmlspecialchars($_POST['KpNumber']));
 // считваем стоимость доставки 
 
-$DostCost =  $_POST['DostCost'];
+$DostCost =  trim(htmlspecialchars($_POST['DostCost']));
 $uslovia_oplati=TEXT_USLOVIA_OPLATI_DEFAULT;
 $srok_izgotovl=TEXT_USLOVIA_IZGOTOVLEBIA_DEFAULT;
 
 // тип КП - откуда пришел запрос
-$type_kp = $_POST['type_kp'];
+$type_kp = trim(htmlspecialchars($_POST['type_kp']));
 
 // если нет номера КП то берем последний мы БД
 if ($KpNumber == ''){ 
@@ -47,10 +47,14 @@ $KpDate == '1970-01-01'?$KpDate= date('Y-m-d'): $KpDate=$KpDate;
 $KpDate == '0000-00-00'?$KpDate= date('Y-m-d'): $KpDate=$KpDate;
 
 // Если задан ИНН то проверим его по БД, если добавляем по инн, то нужно будет его ввести в Базу
-$InnCustomer = $_POST['InnCustomer'];
+$InnCustomer = trim(htmlspecialchars($_POST['InnCustomer']));
+
 // ******************* делаем запрос, чтобы узнать есть ли у нас в БД этот ИНН ********
-$NameCustomer_temp = $_POST['NameCustomer'];
+$NameCustomer_temp = trim(htmlspecialchars($_POST['NameCustomer']));
 //  ********** делаем костыль чтобы убрать двойные ковычки из названий компаний ************
+
+// echo $NameCustomer_temp,"<br>";
+
 $NameCustomer = str_replace('"', '«', $NameCustomer_temp, $count);
 for ($i = 0; $i < mb_strlen($NameCustomer); $i++) {
     $char = mb_substr($NameCustomer, $i, 1);
@@ -59,11 +63,14 @@ if ($char == '«') {
   $NameCustomer = substr($NameCustomer,0,-2);
   $NameCustomer .="»";
 }
+// **************убираем всякие проьелы и переносы **********************
+$NameCustomer = str_replace(array("\n","\r"), '', $NameCustomer);
+
 
 // Если нет контактного лица, то пишем отдел продаж
-$_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел снабжения': $ContactCustomer = $_POST['ContactCustomer'];
+trim(htmlspecialchars($_POST['ContactCustomer'])) ==''?$ContactCustomer = 'Отдел снабжения': $ContactCustomer = trim(htmlspecialchars($_POST['ContactCustomer']));
 
-$TelCustomer = $_POST['TelCustomer'];
+$TelCustomer = trim(htmlspecialchars($_POST['TelCustomer']));
 $TelCustomer = str_replace(' ', '', $TelCustomer); // убрали все пробелы
 $arr_TelCustomer = (explode(',', $TelCustomer)); // Берем 0 и 1 телефон из ПОСТ запрсоа
 
@@ -83,8 +90,8 @@ for ($i=0; $i<=$i1; $i++) {
 }
 $new_TelCustomer = substr($new_TelCustomer,1,strlen($new_TelCustomer)); // удаояем первый символ
 
-$EmailCustomer = $_POST['EmailCustomer'];
-$product_type = $_POST['product_type'];
+$EmailCustomer = trim(htmlspecialchars($_POST['EmailCustomer']));
+$product_type = trim(htmlspecialchars($_POST['product_type']));
 
 $idKp = date('Y').date('m').date('d').(127 + date('H')+ date('i')+date('s')*32 )*2; // неповтор
 $KpImportance = $_POST['KpImportance']; 

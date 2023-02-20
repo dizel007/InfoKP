@@ -8,26 +8,28 @@ require_once '../new_kp_info/make_pdf.php'; // фукнция создания �
 // echo "<pre>";
 // print_r($_POST);
 // echo "<pre>";
-
+// die();
 
 /*
 GET данные
 */
-$id = $_POST['id']; // 
-$type_kp_new = $_POST['type_kp'];
-$product_type_new = $_POST['product_type'];
+$id = htmlspecialchars($_POST['id']); // 
+$type_kp_new = htmlspecialchars($_POST['type_kp']);
+$product_type_new = htmlspecialchars($_POST['product_type']);
 $param_arr['type_kp'] = $type_kp_new;
 $param_arr['type_product'] = $product_type_new;
-$adress = trim($_POST['adress_dostavki']);
-$ZakupName = trim($_POST['ZakupName']);
 
-$telefon_zakaz = trim($_POST['telefon_zakaz']);
-$email_zakaz = trim($_POST['email_zakaz']);
-$contact_face_zakaz = trim($_POST['contact_face_zakaz']);
+$adress = trim(htmlspecialchars($_POST['adress_dostavki']));
+$ZakupName = trim(htmlspecialchars($_POST['ZakupName']));
+
+$telefon_zakaz = trim(htmlspecialchars($_POST['telefon_zakaz']));
+$email_zakaz = trim(htmlspecialchars($_POST['email_zakaz']));
+$contact_face_zakaz = trim(htmlspecialchars($_POST['contact_face_zakaz']));
 
 
-(isset($_POST['uslovia_oplati']))?$uslovia_oplati = $_POST['uslovia_oplati']:$uslovia_oplati='по согласованию сторон';
-(isset($_POST['srok_izgotovl']))?$srok_izgotovl = $_POST['srok_izgotovl']:$srok_izgotovl='в наличии';
+(isset($_POST['uslovia_oplati']))?$uslovia_oplati = htmlspecialchars($_POST['uslovia_oplati']):$uslovia_oplati='по согласованию сторон';
+
+(isset($_POST['srok_izgotovl']))?$srok_izgotovl = htmlspecialchars($_POST['srok_izgotovl']):$srok_izgotovl='в наличии';
 
 
 // если треубется обновиь данные о Заказчике в КП
