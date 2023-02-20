@@ -20,7 +20,7 @@ $param_arr['type_kp'] = $type_kp_new;
 $param_arr['type_product'] = $product_type_new;
 
 $adress = trim(htmlspecialchars($_POST['adress_dostavki']));
-$ZakupName = trim(htmlspecialchars($_POST['ZakupName']));
+$ZakupName = trim($_POST['ZakupName']);
 
 $telefon_zakaz = trim(htmlspecialchars($_POST['telefon_zakaz']));
 $email_zakaz = trim(htmlspecialchars($_POST['email_zakaz']));

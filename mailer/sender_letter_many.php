@@ -94,11 +94,11 @@ if (strpos($active_user[0]['user_online_email'], 'anmaks.ru' ))
         // $mail->Host = 'smtp.timeweb.ru';  // TimeWeb
         $mail->Host = 'ssl://smtp.timeweb.ru';
         $mail->Port = 465;
-        $imap_setup=777; // Признак, что на почту нужно положить отправленное письмо
+        // $imap_setup=777; // Признак, что на почту нужно положить отправленное письмо
 } else {
         $mail->Port = 25;  // NETANGELS
         $mail->Host = 'mail.netangels.ru';  // Specify main and backup SMTP servers
-        $imap_setup=0; // Признак, что на почту нужно положить отправленное письмо
+        // $imap_setup=0; // Признак, что на почту нужно положить отправленное письмо
     
 }
 
@@ -151,7 +151,7 @@ if ($_FILES['upload_file']['name'][0] <> "") {
 
 // ************************* Цепляем Презентацию *************************************
     if ($catalog_present == 1) { 
-         $mail->addAttachment('../catalogs/anmaks_ 2023_compressed.pdf');         // Add attachments
+         $mail->addAttachment('../catalogs/ANMAKS_2023_business_card.pdf');         // Add attachments
         }
 // ************************* Цепляем каталог бордюров ************************************* 
     if ($catalog_bordur == 1) { 
@@ -179,9 +179,9 @@ if ($_FILES['upload_file']['name'][0] <> "") {
             require "../pdo_connect_db/update_email_count_in_reestr.php";
 
 
-            if ($imap_setup == 777) {
-                require_once 'imap.php'; // делаем вставку пиьсма в почтовый ящик для Imap
-            }
+            // if ($imap_setup == 777) {
+            //     require_once 'imap.php'; // делаем вставку пиьсма в почтовый ящик для Imap
+            // }
 
 
             header('Location: ../index.php?transition=24&id='.$id);
