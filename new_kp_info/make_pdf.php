@@ -7,10 +7,10 @@
 *  ======================================= 
 */  
 function make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum){
-  
+require_once ('../new_kp_info/make_qr_code.php');
 
 //   echo "<pre>";
-//   print_r($products);
+  // print_r($qr_code);
 //   echo "<pre>";
 // die();
 
@@ -562,11 +562,35 @@ $contact_font_size = 7;
   $pdf->SetTextColor(5,99,193); // синий цвет
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($temp),'0',1,'L','',  $temp_2);
  
-  $pdf->Cell(25 ,$h_cell, MakeUtf8Font("www.anmaks.ru"),'0',1,'L','',  "https://www.anmaks.ru/");
+  // $pdf->Cell(25 ,$h_cell, MakeUtf8Font("www.anmaks.ru"),'0',1,'L','',  "https://www.anmaks.ru/");
+  $pdf->Cell(25 ,$h_cell, MakeUtf8Font("www.anmaks.ru"),'0',0,'L','',  "https://www.anmaks.ru/");
+// 
+$pdf->SetTextColor(0,0,0); // черный цвет
+$pdf->Cell(144 ,$h_cell, MakeUtf8Font(""),'0',0,'L','');
+$pdf->Cell(45 ,$h_cell, MakeUtf8Font("Связаться с нами"),'0',0,'L','');
+// QR code 
+$pdf->image('../NEW_KP/'.$qr_file_name,180,250,20);
+// $text1 = 'text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C%20%D0%B4%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%83%D1%8E%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8E%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D0%9A%D0%9F%E2%84%96%20';
+// $text2= '%20%D0%BE%D1%82%20';
+// $whatsapp_message  = urlencode("$text1.$KpNumber.$text2 .$KpDate_temp");
 
-// колонтитул внизу  
+$whatsapp_link = "https://api.whatsapp.com/send?phone=$qr_telephon";
+
+// echo $whatsapp_link;
+// die();
+// .'&text=Здравствуйте, хочу получить дополнительную информацию по поводу КП№'. $KpNumber. ' от ' .$KpDate_temp.'&type=phone_number&app_absent=0';
+
+// **************************/ https://whatsaps.ru/ генератор ссылок
+
+// $whatsapp_link ='https://api.whatsapp.com/send/?phone=79122020299&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21+%EF%BF%BD+%D0%9C%D0%B5%D0%BD%D1%8F+%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82...%D0%BA%D0%B5%D0%BA%D0%B5%D0%BD%D0%BA%D0%B5%D0%BD&type=phone_number&app_absent=0';
+// $pdf->image('../images/whatsapp_click.png',156,250,20,0,'', $whatsapp_link);
+
+$pdf->image('../images/link_whatsapp.png',179,273,20,0,'', $whatsapp_link);
+
+
+  // колонтитул внизу  
 $pdf->line(10, 281, 200, 281);
-  $pdf->image('../new_kp_info/bottom_col.png',40,285,130);
+$pdf->image('../new_kp_info/bottom_col.png',35,285,130);
 
 
 
@@ -575,7 +599,7 @@ $pdf->line(10, 281, 200, 281);
 // die('PDFFFFF');
 //output the result
 $pdf->Output("../EXCEL/".$KpFileName.".pdf", 'F');
-//теперь добавляем синее подчеркивание для ссылки
+unlink("../NEW_KP/".$qr_file_name);
 
 }
 function MakeUtf8Font($string) {

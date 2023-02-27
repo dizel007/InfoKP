@@ -42,6 +42,33 @@ prod_array  = [];
                 zzz1=zzz.setAttribute("name","name" + i);
               }
             }
+        /// изменяем значение NAME  в Ед.Изм товар
+                if ( j == 2 ) {
+                  name_number = +i -1;
+                  if (insert_array_string > i) {
+                  zzz1=zzz.setAttribute("name","ed_izm" + name_number);
+                  } else {
+                    zzz1=zzz.setAttribute("name","ed_izm" + i);
+                  }
+                }
+      /// изменяем значение NAME  в Кол-во
+              if ( j == 3 ) {
+                  name_number = +i -1;
+                  if (insert_array_string > i) {
+                  zzz1=zzz.setAttribute("name","kol" + name_number);
+                  } else {
+                    zzz1=zzz.setAttribute("name","kol" + i);
+                  }
+                }
+      /// изменяем значение NAME  в Цена
+      if ( j == 4 ) {
+        name_number = +i -1;
+        if (insert_array_string > i) {
+        zzz1=zzz.setAttribute("name","price" + name_number);
+        } else {
+          zzz1=zzz.setAttribute("name","price" + i);
+        }
+      }
         /// изменяет номер я кнопке добавления строки
               if (j == 5)       {
                 place_str = 'num_col_' + i;
@@ -109,6 +136,9 @@ var newRow=table.insertRow(Str_Number);
 
 place_str = 'num_col_' + real_string;
 new_name ='name' + real_string;
+new_ed_izm = 'ed_izm' + real_string;
+new_kol = 'kol' + real_string;
+new_price = 'price' + real_string;
 // alert("place_str=" + place_str);
 
 var newCell = newRow.insertCell(0);
@@ -119,13 +149,13 @@ newCell.innerHTML="<input required size =\"100\" name=\"" + new_name + "\"  type
 newCell = newRow.setAttribute("id",place_str);
 
 newCell = newRow.insertCell(2);
-newCell.innerHTML="<input size =\"2\"   type=\"text\">";
+newCell.innerHTML="<input size =\"2\"   type=\"text\" name=\"" + new_ed_izm + "\">";
 
 newCell = newRow.insertCell(3);
-newCell.innerHTML="<input size =\"2\"   type=\"number\">";
+newCell.innerHTML="<input size =\"2\"   type=\"number\" name=\"" + new_kol + "\">";
 
 newCell = newRow.insertCell(4);
-newCell.innerHTML="<input size =\"2\"   type=\"number\">";
+newCell.innerHTML="<input size =\"2\"   type=\"number\" name=\"" + new_price + "\">";
 
 newCell = newRow.insertCell(5);
 newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"+\" onclick=\"add_row('"+ place_str+  "')\">";
@@ -138,6 +168,12 @@ newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"-\" onclick=\"dele
 
 function delete_row(StrNumber)
 {
+  // ******************************  обновляем количество строк в КП  
+  all_kolvo = document.getElementById('all_kolvo').value;
+  all_kolvo= +all_kolvo - 1;
+  net = document.getElementById('all_kolvo').value;
+  document.getElementById('all_kolvo').value = all_kolvo; 
+
   Str_Number = StrNumber.replace(/[^0-9]/g,"");
   Str_to_del = +Str_Number +1;  
   // alert ('DEL Str_to_del = ' + Str_to_del);
@@ -178,7 +214,19 @@ prod_array  = [];
           if ( j == 1 ) {
                 zzz.setAttribute("name","name" + name_number);
               }
-            
+         /// изменяем значение NAME  в Ед.Изм товар
+                if ( j == 2 ) {
+                  zzz.setAttribute("name","ed_izm" + name_number);
+                }
+      /// изменяем значение NAME  в Кол-во
+              if ( j == 3 ) {
+             zzz.setAttribute("name","kol" + name_number);
+                   }
+      /// изменяем значение NAME  в Цена
+      if ( j == 4 ) {
+       zzz.setAttribute("name","price" + name_number);
+        }
+          
         /// изменяет номер я кнопке добавления строки
           if (j == 5)       {
             place_str = 'num_col_' + name_number;

@@ -47,10 +47,10 @@ $KpDate == '1970-01-01'?$KpDate= date('Y-m-d'): $KpDate=$KpDate;
 $KpDate == '0000-00-00'?$KpDate= date('Y-m-d'): $KpDate=$KpDate;
 
 // Если задан ИНН то проверим его по БД, если добавляем по инн, то нужно будет его ввести в Базу
-$InnCustomer = trim(htmlspecialchars($_POST['InnCustomer']));
+$InnCustomer = trim($_POST['InnCustomer']);
 
 // ******************* делаем запрос, чтобы узнать есть ли у нас в БД этот ИНН ********
-$NameCustomer_temp = trim(htmlspecialchars($_POST['NameCustomer']));
+$NameCustomer_temp = trim($_POST['NameCustomer']);
 //  ********** делаем костыль чтобы убрать двойные ковычки из названий компаний ************
 
 // echo $NameCustomer_temp,"<br>";
@@ -68,9 +68,9 @@ $NameCustomer = str_replace(array("\n","\r"), '', $NameCustomer);
 
 
 // Если нет контактного лица, то пишем отдел продаж
-trim(htmlspecialchars($_POST['ContactCustomer'])) ==''?$ContactCustomer = 'Отдел снабжения': $ContactCustomer = trim(htmlspecialchars($_POST['ContactCustomer']));
+trim($_POST['ContactCustomer']) ==''?$ContactCustomer = 'Отдел снабжения': $ContactCustomer = trim($_POST['ContactCustomer']);
 
-$TelCustomer = trim(htmlspecialchars($_POST['TelCustomer']));
+$TelCustomer = trim($_POST['TelCustomer']);
 $TelCustomer = str_replace(' ', '', $TelCustomer); // убрали все пробелы
 $arr_TelCustomer = (explode(',', $TelCustomer)); // Берем 0 и 1 телефон из ПОСТ запрсоа
 
