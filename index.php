@@ -130,6 +130,13 @@ switch ($transition) {
         include_once "sub_programs/show_overdue_kp.php";
     break;
 
+    case 70: // Новая аналитика с отчетами 
+        $pageName = "овая аналитика с отчетами";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        include_once "sub_programs/analitika.php";
+    break;
+    
 
 
 

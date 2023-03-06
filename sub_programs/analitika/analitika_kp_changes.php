@@ -6,13 +6,6 @@ $stmt = $pdo->prepare("SELECT * FROM `reestrkp` $sql");
 $stmt->execute([]);
 $arr_all_reports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-echo "<pre>";
-print_r($arr_all_reports);
-echo "<pre>";
-
-
-
 // ****************** Тут делаем выборку КП по дате созжания  ***************
 
 foreach ($active_user_names_arr_smarty as $value){

@@ -13,7 +13,20 @@ require_once '../new_kp_info/make_pdf.php'; // фукнция создания �
 /*
 GET данные
 */
+
+$pdf_visota_prod_stroki = $_POST['pdf_visota_prod_stroki'];
 $id = htmlspecialchars($_POST['id']); // 
+/* СРАЗУ ОБНОВИМ ВЫСОТА СТРОКИ ТОВАРОВ в ПДФ Документе*/
+$data_arr_ = [
+   'visota_str_pdf_doc'=> $pdf_visota_prod_stroki,
+  'id' => $id,
+  ];
+ 
+  $sql = "UPDATE reestrkp SET visota_str_pdf_doc=:visota_str_pdf_doc WHERE id=:id";
+  $stmt= $pdo->prepare($sql);
+  $stmt->execute($data_arr_);
+
+
 $type_kp_new = htmlspecialchars($_POST['type_kp']);
 $product_type_new = htmlspecialchars($_POST['product_type']);
 $param_arr['type_kp'] = $type_kp_new;
@@ -145,7 +158,7 @@ if ($KpSum > 100) {
 }
 
 //формируем ПЖФ документ
-make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); // 
+make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum, $pdf_visota_prod_stroki); // 
 
 
 update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp, $marker, $adress, $param_arr) ;
@@ -155,7 +168,7 @@ update_db_reestr_kp($id, $temp_array, $pdo, $Responsible, $next_cor_kol_kp, $mar
 
 $date_change = date("Y-m-d");
 $id_item = $id;
-$what_change = 9;
+$what_change = 12;
 $comment_change = "Изменение. КП№".$KpNumber." ".$NameCustomer; 
 $author = $userdata['user_login'];
 require "../pdo_connect_db/insert_reports.php";

@@ -1,6 +1,6 @@
 <?php
-
-$sql ="";
+function setup_SQL_query_analitika ($get_responsible, $get_date_start, $get_date_end){
+ $sql ="";
 $where = "";
 // Если нет никаких дат, то ставим дату сегодняшняя
 if (($get_date_start == '') &&  ($get_date_end =='')) {
@@ -21,6 +21,5 @@ else {
   $sql .= " ORDER BY date_change DESC"; 
 }
 
-// echo $sql;
-
-// die();
+return $sql;
+}

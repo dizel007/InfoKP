@@ -6,14 +6,14 @@
 *  Email      : 1dizel007@gmail.com 
 *  ======================================= 
 */  
-function make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum){
+function make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum, $pdf_visota_prod_stroki){
 require_once ('../new_kp_info/make_qr_code.php');
 
 //   echo "<pre>";
   // print_r($qr_code);
 //   echo "<pre>";
 // die();
-
+  // $pdf_visota_prod_striki  =  5;
   $NameCustomer=$comparr['NameCustomer'];
   $KpNumber=$comparr['KpNumber'];
   $KpDate_temp=$comparr['KpDate'];
@@ -107,7 +107,7 @@ $real_Y_position = $pdf->GetY();
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size);
 $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->Cell(60 ,9,'',0,0); // отступ
-$pdf->Cell(50 ,$real_hight_string, MakeUtf8Font('Заказчик'),'TB',0,'C');
+$pdf->Cell(50 ,$real_hight_string, MakeUtf8Font('Заказчик'),'T',0,'C');
 
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size);
 $pdf->SetTextColor(0,0,0); // черный цвет
@@ -126,10 +126,10 @@ $count_name_cycle=1;
 
       } else {
         if ($count_name_cycle == 1) { // чтобы нарисовать черту только над первой строкой
-          $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'TB',0,'C');
+          $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'T',0,'C');
 
          } else { // чтобы не рисовать черту сверху на второй и далее строках
-          $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'B',0,'C');
+          $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'0',0,'C');
        }
 
         // $pdf->Cell(80 ,$h_hight_shapka, MakeUtf8Font($value_name),'B',0,'C');
@@ -150,7 +150,7 @@ $real_Y_position = $pdf->GetY();
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size);
 $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->Cell(60 ,9,'',0,0); // отступ
-$pdf->Cell(50 ,$real_hight_string, MakeUtf8Font('Контактное лицо'),'TB',0,'C');
+$pdf->Cell(50 ,$real_hight_string, MakeUtf8Font('Контактное лицо'),'T',0,'C');
 
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size);
 $pdf->SetTextColor(0,0,0); // черный цвет
@@ -169,10 +169,10 @@ foreach ($string_array as $value_name) {
 
   } else {
     if ($count_name_cycle == 1) { // чтобы нарисовать черту только над первой строкой
-      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'TB',0,'C');
+      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'T',0,'C');
 
      } else { // чтобы не рисовать черту сверху на второй и далее строках
-      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'B',0,'C');
+      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'0',0,'C');
    }
 
     $real_Y_position = $pdf->GetY();
@@ -207,7 +207,7 @@ $real_Y_position = $pdf->GetY();
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size);
 $pdf->SetTextColor(5,99,193); // синий цвет
 $pdf->Cell(60 ,9,'',0,0); // отступ
-$pdf->Cell(50 ,$real_hight_string, MakeUtf8Font('Телефон'),'TB',0,'C');
+$pdf->Cell(50 ,$real_hight_string, MakeUtf8Font('Телефон'),'T',0,'C');
 
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size);
 $pdf->SetTextColor(0,0,0); // черный цвет
@@ -226,10 +226,10 @@ foreach ($string_array as $value_name) {
 
   } else {
     if ($count_name_cycle == 1) { // чтобы нарисовать черту только над первой строкой
-      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'TB',0,'C');
+      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'T',0,'C');
 
      } else { // чтобы не рисовать черту сверху на второй и далее строках
-      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'B',0,'C');
+      $pdf->Cell(80 ,$h_tel_cell, MakeUtf8Font($value_name),'0',0,'C');
    }
 
     $real_Y_position = $pdf->GetY();
@@ -282,6 +282,12 @@ foreach ($string_array as $value_name) {
 
 }
 
+
+// $pdf->Output();
+// die();
+
+
+
 // ************************************** Номер извещения на ЭТП  *****************************
 $pdf->SetFont('TimesNRCyrMT-Bold','',$contact_font_size); // жирный текст 
 $pdf->SetTextColor(5,99,193); // синий цвет
@@ -330,7 +336,7 @@ $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный т�
 $i=1;
 
 foreach ($products as $value) {
-$h_cell = 5; // нормальная высота строки
+$h_cell = $pdf_visota_prod_stroki; // нормальная высота строки
  
 $string_array = make_string_name_array($value['name'] , 115); // число - это длина строки
 $hight = count($string_array);
@@ -556,7 +562,11 @@ $contact_font_size = 7;
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font('Исполнитель:'),'0',1,'L');
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['ful_name']),'0',1,'L');
   $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['user_phone']),'0',1,'L');
-  $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['user_mobile_phone']),'0',1,'L');
+  $pdf->Cell(25 ,$h_cell, MakeUtf8Font($user_responsible_arr[0]['user_mobile_phone']),'0',1,'L','',  "tel:$qr_telephon");
+  
+  // $pdf->image('../icons/table/telephone.png',33,260,4,0,'', "tel:$qr_telephon");
+  // $pdf->image('../icons/table/whatsapp_icon.png',38,260,4,0,'', "https://api.whatsapp.com/send?phone=$qr_telephon");
+
   $temp = $user_responsible_arr[0]['user_email'];
   $temp_2 = "mailto:".$user_responsible_arr[0]['user_email'];
   $pdf->SetTextColor(5,99,193); // синий цвет
@@ -570,20 +580,17 @@ $pdf->Cell(144 ,$h_cell, MakeUtf8Font(""),'0',0,'L','');
 $pdf->Cell(45 ,$h_cell, MakeUtf8Font("Связаться с нами"),'0',0,'L','');
 // QR code 
 $pdf->image('../NEW_KP/'.$qr_file_name,180,250,20);
-// $text1 = 'text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C%20%D0%B4%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%83%D1%8E%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8E%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D0%9A%D0%9F%E2%84%96%20';
-// $text2= '%20%D0%BE%D1%82%20';
-// $whatsapp_message  = urlencode("$text1.$KpNumber.$text2 .$KpDate_temp");
+$text1 = '%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!'; // Здравствуйте
+$text1 .= '%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C'; // хочу получить
+$text1 .= '%20%D0%B4%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%83%D1%8E%20%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8E'; // дополнительную информацию
+$text1 .= '%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D0%9A%D0%9F%E2%84%96'; //  по поводу КП№
+$text1 .= $KpNumber; //  номер КП
+$text1 .= '%20%D0%BE%D1%82%20'; // от
+$text1 .= $KpDate_temp; //  дата КП
 
-$whatsapp_link = "https://api.whatsapp.com/send?phone=$qr_telephon";
-
-// echo $whatsapp_link;
-// die();
-// .'&text=Здравствуйте, хочу получить дополнительную информацию по поводу КП№'. $KpNumber. ' от ' .$KpDate_temp.'&type=phone_number&app_absent=0';
+$whatsapp_link = "https://api.whatsapp.com/send?phone=$qr_telephon&text=$text1";
 
 // **************************/ https://whatsaps.ru/ генератор ссылок
-
-// $whatsapp_link ='https://api.whatsapp.com/send/?phone=79122020299&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21+%EF%BF%BD+%D0%9C%D0%B5%D0%BD%D1%8F+%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82...%D0%BA%D0%B5%D0%BA%D0%B5%D0%BD%D0%BA%D0%B5%D0%BD&type=phone_number&app_absent=0';
-// $pdf->image('../images/whatsapp_click.png',156,250,20,0,'', $whatsapp_link);
 
 $pdf->image('../images/link_whatsapp.png',179,273,20,0,'', $whatsapp_link);
 

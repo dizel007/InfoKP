@@ -181,3 +181,9 @@ button.submit:active {
 .dop_table_cs {
 	border:none;
 }
+.pdf_visota_stroki{
+	width:200px;
+	margin: 10px;
+	padding: 10px;
+	border:2px solid rgb(143, 94, 2)
+}

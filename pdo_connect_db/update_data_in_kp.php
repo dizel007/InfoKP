@@ -39,6 +39,9 @@ $LinkKp = $arr_kp_by_id[0]['LinkKp'];
 $file_name_="".$LinkKp; // получаем путь и имя файла
 $sum_kp_array= parce_kp($file_name_); // получили все данные из КП (шапку, продуцию, доп инфу)
 $type_product = $arr_kp_by_id[0]['type_product'];
+$pdf_visota_prod_stroki = $arr_kp_by_id[0]['visota_str_pdf_doc'];
+$pdf_visota_prod_stroki < 2?$pdf_visota_prod_stroki=5:$pdf_visota_prod_stroki=$arr_kp_by_id[0]['visota_str_pdf_doc'];
+
 // echo "<pre>";
 // print_r($arr_kp_by_id);
 // echo "<pre>";
@@ -62,6 +65,7 @@ for($i=0;$i<$add_str;$i++) {
 // echo "<pre>";
 // print_r($sum_kp_array);
 // echo "<pre>";
+$smarty->assign('pdf_visota_prod_stroki' , $pdf_visota_prod_stroki); 
 $smarty->assign('InnCustomer' , $InnCustomer);
 $smarty->assign('priz_update_inn' , $priz_update_inn);
 $smarty->assign('NameCustomer' , @$NameCustomer);

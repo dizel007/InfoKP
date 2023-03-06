@@ -167,7 +167,7 @@ $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 */
 
 
-make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); // 
+make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum,5); // 5 - высота строки по умолчанию
 
 
 // die('FORMAT PDF FILE');

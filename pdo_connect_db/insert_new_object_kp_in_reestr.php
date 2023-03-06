@@ -132,7 +132,7 @@ $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 /* 
 *************** Формируем ПДФ *************************************
 */
-make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum); // 
+make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum,5); // 5- высота строки товаров
 
 
 

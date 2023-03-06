@@ -48,7 +48,7 @@ foreach ($arr_with_all_changes as $value) {
     
   }
 
-  if ($value['what_change'] == 12) {
+  if ($value['what_change'] == 9) {
     $change_data_kp[] = $value;
   }
 

@@ -38,6 +38,11 @@
       <li>
         <a href="parce_kp/nomenclatura.php" data-item='Поиск по номенклатуре'>Поиск по номенклатуре</a>
       </li>
+      
+       <li>
+        <a href="?transition=70&user_login={$userdata['user_login']}" target="_blank">НьюАн</a>
+      </li>
+
 
       {/if}
 

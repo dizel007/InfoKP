@@ -155,6 +155,11 @@
 </tbody>
  </table>
 
+{************************высота строки *********************************}
+<div class="pdf_visota_stroki">
+<label for ="pdf_visota_prod_stroki">Высота строки товаров в PDF </label>
+<input type="number" step="0.5" min="3" max="8" name = "pdf_visota_prod_stroki" value ="{$pdf_visota_prod_stroki}"></td>
+</div>
 {************************************                    **************************************}
 
 
