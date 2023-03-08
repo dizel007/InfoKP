@@ -145,8 +145,8 @@
 {/if}
 
   <td><input size ="2"   type="text" name = "ed_izm{$p}" value ="{$value['ed_izm']}"></td>
-  <td><input size ="1"   type="number" name = "kol{$p}" value ="{$value['kol']}"></td>
-  <td><input size ="1"   type="number" name = "price{$p}" value ="{$value['price']}"></td>
+  <td><input size ="1" step="0.01"  type="number" name = "kol{$p}" value ="{$value['kol']}"></td>
+  <td><input size ="1" step="0.01"  type="number" name = "price{$p}" value ="{$value['price']}"></td>
   <td><input size ="1" type="button" value="+" onclick="add_row('num_col_{$p}')"></td>
   <td><input size ="1" type="button" value="-" onclick="delete_row('num_col_{$p}')"></td>
 </tr>

@@ -152,10 +152,10 @@ newCell = newRow.insertCell(2);
 newCell.innerHTML="<input size =\"2\"   type=\"text\" name=\"" + new_ed_izm + "\">";
 
 newCell = newRow.insertCell(3);
-newCell.innerHTML="<input size =\"2\"   type=\"number\" name=\"" + new_kol + "\">";
+newCell.innerHTML="<input size =\"2\" step=\"0.01\"  type=\"number\" name=\"" + new_kol + "\">";
 
 newCell = newRow.insertCell(4);
-newCell.innerHTML="<input size =\"2\"   type=\"number\" name=\"" + new_price + "\">";
+newCell.innerHTML="<input size =\"2\"  step=\"0.01\"  type=\"number\" name=\"" + new_price + "\">";
 
 newCell = newRow.insertCell(5);
 newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"+\" onclick=\"add_row('"+ place_str+  "')\">";
