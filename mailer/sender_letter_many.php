@@ -14,13 +14,13 @@ $id=$_POST["id"];
 
 // echo "<pre>";
 // print_r($_POST);
-// print_r($_FILES);
+// // print_r($_FILES);
 
 // echo "<pre>";
 // die();
 
 
-$count_dop_kp =  $_POST["count_dop_kp"];
+@$count_dop_kp =  $_POST["count_dop_kp"];
 
 // формируем список дополнительных КП
 for ($i1 = 0; $i1 < $count_dop_kp; $i1++) {
@@ -30,18 +30,25 @@ if (isset($_POST["$index"])) {
 }
 }
 // сомтрим нужно ли цеплять каталог
+// if (isset ($_POST['catalog_present']) )
+// {$catalog_present = $_POST['catalog_present'];}
+// else {
+//     $catalog_present = 0;    
+// }
+// // сомтрим нужно ли цеплять каталог по бордам
+// if (isset ($_POST['catalog_bordur']) )
+// {$catalog_bordur = $_POST['catalog_bordur'];}
+// else {
+//     $catalog_bordur = 0;    
+// }
+// // сомтрим нужно ли цеплять каталог по бордам
+// if (isset ($_POST['catalog_inox']) )
+// {$catalog_inox = $_POST['catalog_inox'];}
+// else {
+//     $catalog_inox = 0;    
+// }
 
-if (isset ($_POST['catalog_present']) )
-{$catalog_present = $_POST['catalog_present'];}
-else {
-    $catalog_present = 0;    
-}
-// сомтрим нужно ли цеплять каталог по бордам
-if (isset ($_POST['catalog_bordur']) )
-{$catalog_bordur = $_POST['catalog_bordur'];}
-else {
-    $catalog_bordur = 0;    
-}
+
 
 $Files_count = 0;
 $i=0;
@@ -92,8 +99,12 @@ if (strpos($active_user[0]['user_online_email'], 'anmaks.ru' ))
 {
         // $mail->Port = 25;  // TIMEWeb
         // $mail->Host = 'smtp.timeweb.ru';  // TimeWeb
-        $mail->Host = 'ssl://smtp.timeweb.ru';
+        // $mail->Host = 'ssl://smtp.timeweb.ru';
+        $mail->Host = 'ssl://smtp.yandex.ru';
+
         $mail->Port = 465;
+
+        // die('ddd');
         // $imap_setup=777; // Признак, что на почту нужно положить отправленное письмо
 } else {
         $mail->Port = 25;  // NETANGELS
@@ -150,14 +161,35 @@ if ($_FILES['upload_file']['name'][0] <> "") {
 
 
 // ************************* Цепляем Презентацию *************************************
-    if ($catalog_present == 1) { 
-         $mail->addAttachment('../catalogs/ANMAKS_2023_business_card.pdf');         // Add attachments
-        }
-// ************************* Цепляем каталог бордюров ************************************* 
-    if ($catalog_bordur == 1) { 
-        $mail->addAttachment('../catalogs/anmaks_bord_catalog_2023_compressed.pdf');         // Add attachments
-        }
+if ($_POST['catalog']>0) {
+ switch($_POST['catalog']){
+ case 1: {
+    $mail->addAttachment('../catalogs/ANMAKS_2023_business_card.pdf');
+    break;
+ }
+ case 2: {
+    $mail->addAttachment('../catalogs/anmaks_bord_catalog_2023_compressed.pdf');
+    break;
+ }
+ case 3: {
+    $mail->addAttachment('../catalogs/anmaks_inox_ 2023.pdf'); 
+    break;
+ }
 
+
+ }
+}
+//     if ($catalog_present == 1) { 
+//          $mail->addAttachment('../catalogs/ANMAKS_2023_business_card.pdf');         // Add attachments
+//         }
+// // ************************* Цепляем каталог бордюров ************************************* 
+//     if ($catalog_bordur == 1) { 
+//         $mail->addAttachment('../catalogs/anmaks_bord_catalog_2023_compressed.pdf');         // Add attachments
+//         }
+// // ************************* Цепляем каталог бордюров ************************************* 
+// if ($catalog_inox == 1) { 
+//     $mail->addAttachment('../catalogs/anmaks_inox_ 2023.pdf');         // Add attachments
+//     }
 
 
     if ($mail->send()) 

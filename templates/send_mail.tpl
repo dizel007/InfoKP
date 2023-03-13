@@ -124,11 +124,28 @@
 <br>
 <b> Рекламные каталоги к КП:</b>
 <br>
+
+{*
+//Старые каталоги
 <input type="checkbox"  name="catalog_present" value="1"> 
 <label for="catalog_present">Включить ПРЕЗЕНТАЦИЮ в письмо</label> <br>
 
 <input type="checkbox"  name="catalog_bordur"  value="1"> 
 <label for="catalog_bordur">Включить в письмо каталог с бордюрами</label> <br>
+
+<input type="checkbox"  name="catalog_inox"  value="1"> 
+<label for="catalog_inox">Включить в письмо каталог нержавейки</label> <br>
+
+ *}
+
+<select name="catalog">
+  <option value="0"></option>
+  <option value="1">Презентация</option>
+  <option value="2">Бордюры</option>
+  <option value="3">Нержавейка</option>
+</select>
+
+
 
 </div> {* конец блока с вложением письма*}
 
