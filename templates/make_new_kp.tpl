@@ -103,11 +103,11 @@
        <li>
          <label>Источник КП :</label>
             <select size="1" name="type_kp">
-               {for $i=0 to  (count($AllKptype)-2)}
+               {for $i=0 to  (count($AllKptype)-1)}
                    {* Убираем отсюда объектные КП  *}
-                   {if $AllValuesKptype.$i == 6}
+               {*    {if $AllValuesKptype.$i == 6}
                       {$i=$i+1}
-                   {/if}
+                   {/if} *}
                   <option value="{$AllValuesKptype.$i}">{$AllKptype.$i}</option>
                {/for}
             </select>

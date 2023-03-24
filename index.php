@@ -88,6 +88,15 @@ switch ($transition) {
         // echo "выводим Аналитику(**** DELETE ****)";
         include_once "sub_programs/reports_show_changes.php";
     break;
+    
+    case 16: // выводим Аналитику
+        $pageName = "выводим Аналитику";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        // echo "выводим Аналитику(**** DELETE ****)";
+        include_once "sub_programs/reports_show_new_comp.php";
+    break;
+
 
     case 17: // выводим Историю изменений по КП
         $pageName = "выводим Историю по КП";

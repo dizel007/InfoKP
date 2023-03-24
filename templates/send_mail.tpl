@@ -143,6 +143,8 @@
   <option value="1">Презентация</option>
   <option value="2">Бордюры</option>
   <option value="3">Нержавейка</option>
+  <option value="4">Грязезащита</option>
+
 </select>
 
 

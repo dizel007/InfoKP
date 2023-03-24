@@ -25,7 +25,7 @@
 <td>ИНН:{$arr_select_changes.$i.InnCustomer} <br> {$arr_select_changes.$i.NameCustomer}</td>
 
 
-<td>{$arr_select_changes.$i.date_change}</td>
+<td>{$arr_select_changes.$i.time_change}</td>
 <td><a href="?transition=10&id={$arr_select_changes.$i.id_item}">КП№{$arr_select_changes.$i.KpNumber}</td>
 <td class="text_left">{$arr_select_changes.$i.comment_change}</td>
 <td>{$arr_select_changes.$i.author}</td>

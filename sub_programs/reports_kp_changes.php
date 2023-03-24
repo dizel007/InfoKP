@@ -7,9 +7,9 @@ $stmt->execute([]);
 $arr_all_reports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-echo "<pre>";
-print_r($arr_all_reports);
-echo "<pre>";
+// echo "<pre>";
+// print_r($arr_all_reports);
+// echo "<pre>";
 
 
 

@@ -120,7 +120,7 @@ $mail->Password = $active_user[0]['pass_online'];                 // Наш па
 // $mail->Port = 25;  // TIMEWeb
 // $mail->Port = 25;  // NETANGELS
 
-$mail->setFrom($active_user[0]['user_online_email'], 'Торговый дом АНМАКС');   // От кого письмо 
+$mail->setFrom($active_user[0]['user_online_email'], 'Компания АНМАКС');   // От кого письмо 
 
 $mail->isHTML(true);                                  // Set email format to HTML
 $mail->Subject = $subject_theme; // тема письма
@@ -172,10 +172,13 @@ if ($_POST['catalog']>0) {
     break;
  }
  case 3: {
-    $mail->addAttachment('../catalogs/anmaks_inox_ 2023.pdf'); 
+    $mail->addAttachment('../catalogs/anmaks_inox_2023.pdf'); 
     break;
  }
-
+ case 4: {
+    $mail->addAttachment('../catalogs/anmaks_clean.pdf'); 
+    break;
+ }
 
  }
 }

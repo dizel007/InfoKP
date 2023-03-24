@@ -24,7 +24,18 @@ $smarty->assign('get_date_end', $get_date_end);
  // Достаем все изменения за выбранный период
 include_once "analitika/analitika_table_change.php"; // тут формируются данные для таблицы с изменениями (АНАЛИТИКА)
 
-include_once "analitika/analitika_kp_changes.php"; // тут формируются данные для таблицы с изменениями п КП  (АНАЛИТИКА)
+
+// Достаем все закрытые КП за выбранный период
+include_once "analitika/analitika_close_kp.php"; // 
+
+// Достаем все проданные КП за выбранный период
+include_once "analitika/analitika_sold_kp.php"; // 
+
+
+
+
+// include_once "analitika/analitika_kp_changes.php"; // тут формируются данные для таблицы с изменениями п КП  (АНАЛИТИКА)
+
 
 $smarty->display('analitika/analitika.tpl');
 
