@@ -64,8 +64,9 @@ border: 1px dashed;
   /* position: absolute; */
   /* top: 50%; */
 
-  
-
 }
-
+.darkgreen_shapka {
+  background: rgb(23, 100, 43)   !important;
+  color:antiquewhite !important;
+}
 

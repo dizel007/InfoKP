@@ -45,6 +45,7 @@ foreach ($arr_with_all_changes as $value) {
   // информация о создании КП
   if ($value['what_change'] == 8) {
     $start_info_kp = $value;
+  
     
   }
 
@@ -78,29 +79,32 @@ foreach ($arr_with_all_changes as $value) {
 
 }
 $k1=0;
-foreach ($change_in_kp  as &$arr_value) {
+if (isset($change_in_kp)) {
+    foreach ($change_in_kp  as &$arr_value) {
 
-     foreach ($arr_value as $key=>&$value){
-    
-            if  ($key == 'comment_change'){
-              $i=0;
-                foreach ($value as &$comment) {
-                 if ((trim($comment) == ';') OR (trim($comment) =='')){
-                    unset($change_in_kp[$k1]['comment_change'][$i]);
+        foreach ($arr_value as $key=>&$value){
+        
+                if  ($key == 'comment_change'){
+                  $i=0;
+                    foreach ($value as &$comment) {
+                    if ((trim($comment) == ';') OR (trim($comment) =='')){
+                        unset($change_in_kp[$k1]['comment_change'][$i]);
+                      }
+                    $i++;   
                   }
-                 $i++;   
-               }
-      } 
-  }
-  $k1++;
+          } 
+      }
+      $k1++;
+    }
 }
-
 // echo "<pre>";
 // print_r($change_in_kp);
 // echo "<pre>";
 // die();
+$start_info_kp['KpNumberAnsDate'] =  $temp_text = str_replace('Нов. ', '' ,$start_info_kp['comment_change']);;
+
 // echo "<pre>";
-// print_r($arr_with_all_changes);
+// print_r($start_info_kp);
 // echo "<pre>";
 // die();
 
