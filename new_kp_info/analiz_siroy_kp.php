@@ -16,14 +16,19 @@ $i=2;
 $stop =0;
 while ($stop <> 1 ) {
 $name = $sheet->getCellByColumnAndRow(1, $i)->getValue();
-$name = str_replace(array("\n","\r"), '', $name);
-// echo $name."<br>";
+// заменяем переносы строк на пробел
+$name = str_replace(array("\n","\r"), ' ', $name);
+// убираем двойные пробелы 
+    if (strpos($name, '  ')) {
+			delete_two_space($name);
+		};
+// если закончились наименования в строке, то останавливаемся
 if ($name == '') {
 	$stop =1;
 	break;
 }
-$ed_izm = $sheet->getCellByColumnAndRow(2, $i)->getValue();
 
+$ed_izm = $sheet->getCellByColumnAndRow(2, $i)->getValue();
 $kolvo = $sheet->getCellByColumnAndRow(3, $i)->getValue();
 $price = $sheet->getCellByColumnAndRow(4, $i)->getValue();
 $prods[] = 
@@ -42,4 +47,13 @@ $i++;
 
 // die('SIROY ANALIZ');
 return $prods;
+}
+
+// функция чтобы убрать все двойные пробелы в тексте
+function delete_two_space(&$text) {
+	$text = str_replace('  ', ' ', $text);
+	if (strpos($text, '  ')) {
+		delete_two_space($text);
+	}
+	return $text;
 }

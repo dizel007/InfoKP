@@ -19,7 +19,7 @@ $stmt->execute([]);
 $arr_all_close = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // echo "<pre>";
-// print_r($arr_all_reports);
+// print_r($arr_all_close);
 // echo "<pre>";
 
 // die();
@@ -28,45 +28,72 @@ foreach ($active_user_login as $value){
    $key = key($active_user_login); // перебираем всех пользователей по ключу
    foreach ($arr_all_close as $temp) {
   if ($value == $temp['Responsible']) {
+    // die();
        // считаем количество закрыт  КП за период 
-      $array_close_kp[$key]['idKp'] = @$array_close_kp[$key]['idKp'].$temp['id'].";"; // количество 
-      $array_close_kp[$key]['KpCount'] = @$array_close_kp[$key]['KpCount'] + 1; // количество 
+       // делаем сортировку по типу закрытия 
+        if ($temp['KpCondition'] == 'Уже купили') {
+          $array_close_kp[$key]['idKp_alr_buy'] = @$array_close_kp[$key]['idKp_alr_buy'].$temp['id'].";"; // количество 
+          $array_close_kp[$key]['KpCount_alr_buy'] = @$array_close_kp[$key]['KpCount_alr_buy'] + 1; // количество 
+
+        } elseif ($temp['KpCondition'] == 'Не требуется'){
+          $array_close_kp[$key]['idKp_not_need'] = @$array_close_kp[$key]['idKp_not_need'].$temp['id'].";"; // количество 
+          $array_close_kp[$key]['KpCount_not_need'] = @$array_close_kp[$key]['KpCount_not_need'] + 1; // количество 
+        } else {
+            $array_close_kp[$key]['idKp_not_know'] = @$array_close_kp[$key]['idKp_not_know'].$temp['id'].";"; // количество 
+           $array_close_kp[$key]['KpCount_not_know'] = @$array_close_kp[$key]['KpCount_not_know'] + 1; // количество 
+        }
     }
   } 
 next($active_user_login);      
 }  // Конец перебора пользователей 
 
+
+
+
+
 // Формируем массив ИТОГО 
 
 if (isset($array_close_kp)){
-  foreach ($array_close_kp as &$value) {
-    @$itog_close_kp['KpCount'] = $itog_close_kp['KpCount'] + $value['KpCount'];
-    @$itog_close_kp['idKp'] = $itog_close_kp['idKp'].$value['idKp'];
+  foreach ($array_close_kp as $value) {
+    @$itog_close_kp['KpCount_alr_buy'] = $itog_close_kp['KpCount_alr_buy'] + $value['KpCount_alr_buy'];
+    @$itog_close_kp['KpCount_not_need'] = $itog_close_kp['KpCount_not_need'] + $value['KpCount_not_need'];
+    @$itog_close_kp['KpCount_not_know'] = $itog_close_kp['KpCount_not_know'] + $value['KpCount_not_know'];
+
+    @$itog_close_kp['idKp_alr_buy'] = $itog_close_kp['idKp_alr_buy'].$value['idKp_alr_buy'];
+    @$itog_close_kp['idKp_not_need'] = $itog_close_kp['idKp_not_need'].$value['idKp_not_need'];
+    @$itog_close_kp['idKp_not_know'] = $itog_close_kp['idKp_not_know'].$value['idKp_not_know'];
    }
-   $itog_close_kp['idKp'] = rtrim($itog_close_kp['idKp'],';');
+   $itog_close_kp['idKp_alr_buy']  = rtrim($itog_close_kp['idKp_alr_buy'],';');
+   $itog_close_kp['idKp_not_need'] = rtrim($itog_close_kp['idKp_not_need'],';');
+   $itog_close_kp['idKp_not_know'] = rtrim($itog_close_kp['idKp_not_know'],';');
    
 
   }
-
+  // echo "<pre>";
+  // var_dump($array_close_kp);
+  // echo "<pre>";
+  // die();
 
 
   // echo ($itog_sold_kp['idKp']);
-// echo "<pre>";
-// print_r($array_close_kp);
-// echo "<pre>";
+
 // die();
 //  if (isset($array_sold_kp_text))
 
 // Удаляем последний ";" из перечня КП
 if (isset($array_close_kp)){
-foreach ($array_close_kp as &$value1) {
-  $value1['idKp'] = rtrim(@$value1['idKp'],';');
+foreach ($array_close_kp as $value1) {
+  $value1['idKp_alr_buy'] = rtrim(@$value1['idKp_alr_buy'],';');
+  $value1['idKp_not_need'] = rtrim(@$value1['idKp_not_need'],';');
+  $value1['idKp_not_know'] = rtrim(@$value1['idKp_not_know'],';');
   
  }
 }
  
+// echo "<pre>";
+// var_dump($array_close_kp);
+// echo "<pre>";
     
 $smarty->assign('array_close_kp', @$array_close_kp);   
 $smarty->assign('itog_close_kp', @$itog_close_kp);       
-       
-
+      
