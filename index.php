@@ -1,7 +1,5 @@
 <?php
 // session_start();
-echo "@222";
-
 require_once ("connect_db.php"); // подключение к БД
 // Находим всех активных пользоватлей и суем их в шаблоны
 include_once 'functions/find_users.php';
@@ -13,9 +11,11 @@ include_once 'functions/setup_url_for_maintable.php'; // функции для �
 include_once 'functions/get_data_from_db.php'; // функции подгрузки в шаблоны выпадающих списков 
 include_once 'functions/overdeu_kp_for_shapka.php'; // функции подгрузки в шаблоны выпадающих списков 
 
-
 // *******************  шапка с меню пользователя **********************************
 $smarty->assign('userdata', $userdata);
+
+
+
 $smarty->display('user_menu.tpl');
 
 // Формируем тип перехода (Все переходы должны быть через index.php)
@@ -148,6 +148,20 @@ switch ($transition) {
         include_once "sub_programs/analitika.php";
     break;
     
+    case 80: // ПОИСКОВИКИ (по телефону, емайлу , по номенклатуре)
+        $pageName = "Поисковик";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        include_once "sub_programs/find_menu.php";
+    break;
+    
+    case 81: // ПОИСК по телефону
+        $pageName = "Поисковик";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        include_once "poiski/poisk_telephone.php";
+    break;
+
 
 
 
@@ -170,30 +184,7 @@ switch ($transition) {
 
 }
 
-// echo "<pre>";
-// print_r ($userdata);
-// echo "</pre>";
 
-/*session is started if you don't write this line can't use $_Session  global variable*/
-
-// $_SESSION["newsession"]='22444422';
-// $_SESSION["newsession1"]='222df444422';
-// $_SESSION["newsession2"]='22sdfgdfgsdfgh444422';
-
-// echo "<pre>";
-// print_r ($_SESSION);
-// echo "<pre>";
-// if (!isset($_SESSION['count']))
-// {
-//   $_SESSION['count'] = 1;
-// }
-// else
-// {
-//   ++$_SESSION['count'];
-// }
- 
-
-// echo session_id();
 //  FOOOOOOOTER **************************************************************************
 include_once 'parts_site/footer.php';
 ?>

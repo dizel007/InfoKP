@@ -1,11 +1,14 @@
 
-
 <div class="user_menu">
   <nav>
     <ul class="menuItems">
+ {*  ********************************************   Реестр КП     ***************************************************** *}      
+   
       <li>
         <a href="?" data-item='РЕЕСТР КП' >РЕЕСТР КП</a>
       </li>
+
+{*  ********************************************   Создание КП     ***************************************************** *}      
       <li>
         <a href="?transition=1&user_login={$userdata['user_login']}" data-item='Создать КП' >Создать КП</a>
       </li>
@@ -13,7 +16,7 @@
         <a href="?transition=2&user_login={$userdata['user_login']}" data-item='Создать объектное КП'>Создать объектное КП</a>
       </li>
       
-      
+{*  ********************************************   Аналитика    ************************************************ *}      
 
       <li>
         <a href="?transition=70&user_login={$userdata['user_login']}" target="_blank">Аналитика</a>
@@ -24,7 +27,7 @@
         <a href="?transition=13&user_login={$userdata['user_login']}" target="_blank">Аналитика</a>
       </li>
 *}
-
+{*  ********************************************   Наименование пользователя ************************************************ *}
       <li>
         <a href="?transition=97">Пользователь: {$userdata['user_name']}</a>
         {if count($arr_overdue_now) >0}
@@ -39,14 +42,14 @@
            {/if}
 
         
-  bvbvbvb
-      {* Ввод нового Юзера *}
+{* Ввод нового Юзера *}
       {if $userdata['userType'] == 1}
       <li>
         <a href="?transition=5&user_login={$userdata['user_login']}" data-item='Новый пользователь' >Новый пользователь</a>
       </li>
+{*  ********************************************   Поисковики ************************************************ *}
       <li>
-      <a href="?transition=80&user_login={$userdata['user_login']}" target="_blank">Поиск по номенклатуре</a>
+      <a href="?transition=80&user_login={$userdata['user_login']}" target="_blank">Поиск</a>
       </li>
      
 

@@ -1,7 +1,10 @@
 <?php
 
 
-$smarty->display('find_menu');
+$smarty->display('find_menu.tpl');
+
+
+
 
 
 
