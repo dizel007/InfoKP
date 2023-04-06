@@ -1,5 +1,7 @@
 <?php
 // session_start();
+echo "@222";
+
 require_once ("connect_db.php"); // подключение к БД
 // Находим всех активных пользоватлей и суем их в шаблоны
 include_once 'functions/find_users.php';
@@ -140,7 +142,7 @@ switch ($transition) {
     break;
 
     case 70: // Новая аналитика с отчетами 
-        $pageName = "овая аналитика с отчетами";
+        $pageName = "Новая аналитика с отчетами";
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
         include_once "sub_programs/analitika.php";

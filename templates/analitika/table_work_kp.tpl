@@ -1,13 +1,14 @@
-<p class="center"> Отчет о работе сотрудников </p>
+
 <table class="table_work_kp">
+<th  colspan="7" class="darkblue_shapka">Информация о работе сотрудников</th>
   <tr class="">
-      <th class="">Пользователь</th>
-      <th class="">Новых КП</th>
-      <th class="">Создано Компаний</th>
-      <th class="">Изменений в КП</th>
-      <th class="">Отправленных писем</th>
-      <th class="">Изменения в компаниях</th>
-      <th class="">КП с изменениями</th>
+      <th class="light_blue">Пользователь</th>
+      <th class="light_blue">Новых КП</th>
+      <th class="light_blue">Создано Компаний</th>
+      <th class="light_blue">Изменений в КП</th>
+      <th class="light_blue">Отправленных писем</th>
+      <th class="light_blue">Изменения в компаниях</th>
+      <th class="light_blue">КП с изменениями</th>
 </tr>
 
 {foreach from=$arr_users item=value}
