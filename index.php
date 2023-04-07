@@ -156,12 +156,18 @@ switch ($transition) {
     break;
     
     case 81: // ПОИСК по телефону
-        $pageName = "Поисковик";
+        $pageName = "ПОИСК по телефону";
         $smarty->assign('pageName', $pageName);
         include_once 'parts_site/header.php';
         include_once "poiski/poisk_telephone.php";
     break;
 
+    case 82: // ПОИСК по email
+        $pageName = "ПОИСК по email";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        include_once "poiski/poisk_email.php";
+    break;
 
 
 

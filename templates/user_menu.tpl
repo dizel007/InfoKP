@@ -40,17 +40,17 @@
           {else}
         <a class="overdue_kp_all" href="#">{count($arr_overdue_all)}</a>
            {/if}
-
-        
+{*  ********************************************   Поисковики ************************************************ *}
+ <li>
+     <a href="?transition=80&user_login={$userdata['user_login']}" target="_blank">Поиск</a>
+  </li>        
 {* Ввод нового Юзера *}
       {if $userdata['userType'] == 1}
       <li>
         <a href="?transition=5&user_login={$userdata['user_login']}" data-item='Новый пользователь' >Новый пользователь</a>
       </li>
-{*  ********************************************   Поисковики ************************************************ *}
-      <li>
-      <a href="?transition=80&user_login={$userdata['user_login']}" target="_blank">Поиск</a>
-      </li>
+
+
      
 
       {/if}
