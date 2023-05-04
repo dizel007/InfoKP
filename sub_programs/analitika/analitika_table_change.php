@@ -79,7 +79,23 @@ foreach ($arr_users as $value){
     $kol_change_unique_kp[$value] =0;
    }
 
-   // если есть данные, что юзер создавал новые КП
+// если есть КП где **ИЗМЕНЯЛИСЬ ДАННЫЕ В КП**  то пишем сколько КП изменилось для каждого пользователя
+if (isset ($array_change_data_kp))  {
+  $kol_change_kp_data[$value] = count($array_change_data_kp);
+  $kol_change_unique_kp_data[$value] = count(array_unique($array_change_data_kp, SORT_STRING));
+
+  $arr_change_data_kp_user[$value] = implode(";",array_unique($array_change_data_kp, SORT_STRING)); // массив с ИД КП
+
+  unset($array_change_data_kp); // удаляем для каждого пользователя
+ }  else {
+  $kol_change_kp_data[$value]=0;
+  $kol_change_unique_kp_data[$value] =0;
+ }
+
+
+
+
+// если есть данные, что юзер создавал новые КП
 if (isset ($array_new_kp))  {
   $kol_new_kp[$value] = count($array_new_kp);
   $arr_new_kp_user[$value] = implode(";",$array_new_kp); // массив с ИД КП
@@ -119,6 +135,9 @@ if (isset ($array_change_comp))  {
 $smarty->assign('kol_change_kp', @$kol_change_kp);
 $smarty->assign('arr_change_kp_user', @$arr_change_kp_user);
 
+// отправляем количество КП в которых были ИЗМЕНЕНЫ ДАННЫЕ индекс сотрудник 
+$smarty->assign('kol_change_unique_kp_data', @$kol_change_unique_kp_data);
+$smarty->assign('arr_change_data_kp_user', @$arr_change_data_kp_user);
 
 
 // отправляем количество новых КП индекс сотрудник 
@@ -136,13 +155,11 @@ $smarty->assign('kol_new_comp', @$kol_new_comp);
 $smarty->assign('kol_change_unique_kp', @$kol_change_unique_kp);
 // отправляем количество отправленных емацлов  индекс сотрудник 
 $smarty->assign('kol_send_mail', @$kol_send_mail);
-
-
 // отправляем количество изменений данных о компаний с изменениями индекс сотрудник 
 $smarty->assign('kol_change_comp', @$kol_change_comp);
 $smarty->assign('array_change_comp_user', @$array_change_comp_user);
 
 // echo "<pre>";
-// print_r($arr_new_kp_user);
+// print_r($kol_change_unique_kp_data);
 // echo "<pre>";
 // die();

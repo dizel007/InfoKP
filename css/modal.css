@@ -121,3 +121,13 @@
   box-shadow: 0 0 10px rgba(5,5,3,1);
   
 }
+.modal_change_all_zakup {
+  border: none;
+
+}
+.modal_change_all_zakup_tr {
+  margin: 5px;
+}
+.modal_change_all_zakup_td {
+  padding: 5px;
+}

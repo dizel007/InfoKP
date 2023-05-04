@@ -8,6 +8,7 @@
 */  
 function make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum, $pdf_visota_prod_stroki){
 require_once ('../new_kp_info/make_qr_code.php');
+require_once '../PHPExcel-1.8/fpdf/fpdf.php';
 
 //   echo "<pre>";
   // print_r($qr_code);
@@ -33,7 +34,7 @@ require_once ('../new_kp_info/make_qr_code.php');
   $srok_izgotovl=$comparr['srok_izgotovl'];
 
   
-require_once '../PHPExcel-1.8/fpdf/fpdf.php';
+
 
 //create pdf object
 $pdf = new FPDF('P','mm','A4');

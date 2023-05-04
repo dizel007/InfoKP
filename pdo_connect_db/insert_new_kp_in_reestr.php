@@ -9,7 +9,9 @@ require_once ("../new_kp_info/format_new_kp.php");
 require_once ("../functions/telephone_make.php"); // наложить маску на телефонные номера
 
 require_once '../new_kp_info/make_pdf.php'; // фукнция создания КП в пдф формате
+require_once '../functions/check_by_sell.php'; // функции проверки были ли продажи в компании 
 
+require_once '../new_kp_info/make_json_file.php'; // фукнция создания КП в пдф формате
 
  
 
@@ -162,11 +164,20 @@ $KpSum = $temp_array['total'];
 $KpFileName= $temp_array['KpFileName'];
 $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 
+
+
+
+/* 
+*********************************** Формируем JSON *************************************
+*/
+make_json_kp_file($products, $comparr,$user_responsible_arr, $KpSum,5);
+
+
+
+die('JSON');
 /* 
 *********************************** Формируем ПДФ *************************************
 */
-
-
 make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum,5); // 5 - высота строки по умолчанию
 
 
@@ -185,6 +196,7 @@ make_pdf_kp($products, $comparr,$user_responsible_arr, $KpSum,5); // 5 - выс�
 // echo ':adress=', $adress."<br>";
 // echo ':date_write=', $date_write."<br>";
 // echo ':LinkKp=', $LinkKp."<br>";
+
 
 
 // **************** вставляем каждый параметр  данных  *********************
@@ -210,6 +222,7 @@ $stmt ->bindParam(':type_product', $product_type);
 if ($stmt ->execute()) {
   $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
   // echo "Запись УДАЧНО добавлена successfully";
+  check_by_sell($pdo, $InnCustomer); // обновляем признак продадив эту комапнию
 } else {
   die (" ** DIE ** Не получилось добавить данные, INSERT нового КП с сайта");
 }

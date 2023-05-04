@@ -8,7 +8,7 @@
                <td>№КП</td>
                <td><p title="Скачать EXCEL файл">Ex</p></td> 
                <td><p title="Посмотреть EXCEL файл">SEx</p></td>
-               <td><p title="Количество изменений в КП">КИ</p></td>  
+               {* <td><p title="Количество изменений в КП">КИ</p></td>  *}
                <td><p title="Скачать счет">Сч</p></td> 
                <td width ="50" >Дата КП</td>
                <td width ="70" class="hidden_class_column">ИНН</td>
@@ -18,7 +18,7 @@
                <td>Наименование</td>
                <td><p title="Ссылка на источник закупки. Только для Объектных">Кон</p></td>
                <td><p title="Отправить КП. Время последней отправки письма">EM</p></td>
-               <td><p title="Количество отправленных писем с реестра">SEm</p></td>
+               {*<td><p title="Количество отправленных писем с реестра">SEm</p></td>*}
                <td class="hidden_class_column">Важность</td>
           
                <td class="hidden_class_column">Ответственный</td>
@@ -69,7 +69,7 @@
         {/if} 
 
 {*<!-- ****************  Колчиство Изменений КП   **************************************** -->   *}
-         <td><b>({$array_with_all_kp.$i.cor_kol_kp})</b></td>
+   {*<!--      <td><b>({$array_with_all_kp.$i.cor_kol_kp})</b></td> --> *}
 
 
 
@@ -137,7 +137,14 @@
  
    {else}
    
-      <td><a href= "?transition=23&id={$array_with_all_kp.$i.id}&InnCustomer={$array_with_all_kp.$i.InnCustomer}" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/table/email.png" alt="Send_email" title="{$array_with_all_kp.$i.date_last_email}"></a></td>
+      <td class="">
+      <a href= "?transition=23&id={$array_with_all_kp.$i.id}&InnCustomer={$array_with_all_kp.$i.InnCustomer}" target="_blank">
+      <div class="scale11 container_link_img">
+      <img class="" style = "opacity: 0.8" src="icons/table/email.png" alt="Send_email" >
+      <div class="text_center_img" title="{$array_with_all_kp.$i.date_last_email}">{$array_with_all_kp.$i.email_count}</div>
+      </div>
+      
+      </a></td>
    
    {/if}
 
@@ -145,7 +152,7 @@
 
       
  {*<!-- ******************************  Количество высланных Email  *********************************** -->*}
-      <td>{$array_with_all_kp.$i.email_count}</td>
+      {* <!-- <td>{$array_with_all_kp.$i.email_count}</td>  -->*}
 
  {*<!-- ********************************** ВАЖНОСТЬ КП ************************************************ -->*}
       <td  class="hidden_class_column" id = "js-KpImportance{$array_with_all_kp.$i.id}" width ="50" class="hidden_class_column">{$array_with_all_kp.$i.KpImportance}</td>     
@@ -209,10 +216,34 @@
 {* ****************************** Адрес поставки   ********************************************* -->*}
       <td class="hidden_class_column" id = "js-Adress{$array_with_all_kp.$i.id}" width ="150" class="hidden_class_column">{$array_with_all_kp.$i.adress}</td>
  {* <!-- ******************************  Корректировака КП  ********************************************* -->*}
-      <td> 
+  {*    <td> 
             <a href= "?transition=30&id={$array_with_all_kp.$i.id}" alt="Корректировка КП" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/correct_kp.png" alt="SeeLinkKontur"></a>
       </td>
-           
+           *}
+ <td>
+ {*<!-- ***************************  EXCEL файл  ********************************************** --> *}  
+
+ {if ({$exist_excel_file.$i} == 1) }
+  <a href= "?transition=30&id={$array_with_all_kp.$i.id}" alt="Корректировка КП" target="_blank">
+    <div class="scale11 container_link_img">
+        <img class="scale11" style = "opacity: 0.8" src="icons/correct_kp.png" alt="Изменение КП">
+        <div class="text_center_img" title="Изменение КП">{$array_with_all_kp.$i.cor_kol_kp}</div>
+    </div>
+  </a>
+{else} 
+  <img style = "opacity: 0.2" src="icons/correct_kp.png" alt="Изменение запрещено">
+{/if} 
+ 
+ 
+  </td>
+
+
+
+
+
+
+
+
 
        </tr>
     

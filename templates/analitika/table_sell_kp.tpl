@@ -14,10 +14,10 @@
   </tr>
 
 
-{foreach from=$active_user_login key=key item=value_user key=key_user}
+{foreach from=$active_user_login item=value_user key=key_user}
       
       <tr>
-{foreach from=$array_sold_kp key=key item=value key=key}    
+{foreach from=$array_sold_kp item=value key=key}    
 {if ($key_user == $key)}
   {* ************************************ Сотрудник ******************************* *}    
                 <td>

@@ -1,5 +1,6 @@
 <?php
 require_once "../connect_db.php";
+
 // require_once "../functions/make_arr_from_obj.php";
 // require_once "../functions/get_user.php";
 // Обновляем данные в талиблице. $typeQuery - выбоо столбца, который будем редактировать. $id -  ИД строки которую будем редактировать
@@ -71,7 +72,6 @@ if (($KpCondition == "") && ($FinishContract == 1)) {
   $date_close = date('Y-m-d');
 }
 
-// Формируем АПдейт в БД
 
 // Формируем АПдейт в БД
 $data_arr = [

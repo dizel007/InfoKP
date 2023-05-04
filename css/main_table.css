@@ -164,3 +164,21 @@ hr {
  .new_kp_marker { 
   background: rgb(114, 145, 233);
  }
+
+ .text_center_img {
+  position: absolute;
+  left: 0px;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #050507;
+
+}
+.container_link_img {
+  position: relative;
+}
+
+

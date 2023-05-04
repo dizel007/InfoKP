@@ -8,7 +8,7 @@ require_once ("../new_kp_info/test_file_name.php"); // если имя файл�
 require_once ("../new_kp_info/analiz_siroy_kp.php");
 require_once ("../new_kp_info/format_new_kp.php");
 require_once '../new_kp_info/make_pdf.php';
-
+require_once '../functions/check_by_sell.php'; // функции проверки были ли продажи в компании 
 
 // echo "<pre>";
 // print_r($userdata['user_name']);
@@ -185,6 +185,8 @@ $stmt ->bindParam(':TenderSum', $tender_begin_price);
 
 if ($stmt ->execute()) {
   $last_id = $pdo->lastInsertId(); // получаем id - введенной строки 
+  check_by_sell($pdo, $InnCustomer); // обновляем признак продадив эту комапнию
+
   // ******************* Добавляем строчку в отчеты  ********
   $date_change = date("Y-m-d");
   $id_item = $last_id;
