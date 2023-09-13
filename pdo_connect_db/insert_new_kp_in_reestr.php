@@ -58,6 +58,8 @@ $NameCustomer_temp = trim($_POST['NameCustomer']);
 // echo $NameCustomer_temp,"<br>";
 
 $NameCustomer = str_replace('"', '«', $NameCustomer_temp, $count);
+$NameCustomer = str_replace('/', '_', $NameCustomer); // убераем слэш из наименования  файлов
+
 for ($i = 0; $i < mb_strlen($NameCustomer); $i++) {
     $char = mb_substr($NameCustomer, $i, 1);
   }

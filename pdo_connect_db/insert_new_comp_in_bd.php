@@ -44,6 +44,10 @@ $ContactCustomer = $_POST['ContactCustomer'];
 
 $TelCustomer = str_replace('+' , '',$_POST['TelCustomer']); // 
 
+$TelCustomer = mb_strstr($TelCustomer, '(', false);
+$TelCustomer = '7 '.$TelCustomer;
+
+
 $EmailCustomer = $_POST['EmailCustomer'];
 $adress = $_POST['Adress'];
 $date_write = date('Y-m-d');

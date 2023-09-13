@@ -51,6 +51,12 @@ if ($char == '«') {
 $_POST['ContactCustomer'] ==''?$ContactCustomer = 'Отдел снабжения': $ContactCustomer = $_POST['ContactCustomer'];
 
 $TelCustomer = $_POST['TelCustomer'];
+
+
+$TelCustomer = mb_strstr($TelCustomer, '(', false);
+
+$TelCustomer = '7 '.$TelCustomer;
+
 $EmailCustomer = $_POST['EmailCustomer'];
 $KonturLink = $_POST['KonturLink']; // ссылка на контур
 
