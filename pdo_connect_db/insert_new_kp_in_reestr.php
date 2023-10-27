@@ -176,7 +176,7 @@ make_json_kp_file($products, $comparr,$user_responsible_arr, $KpSum,5);
 
 
 
-die('JSON');
+// die('JSON');
 /* 
 *********************************** Формируем ПДФ *************************************
 */
