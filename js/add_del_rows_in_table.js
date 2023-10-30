@@ -19,7 +19,7 @@ Str_Number_for = +Str_Number + 1;
     net = document.getElementById('all_kolvo').value;
     document.getElementById('all_kolvo').value = all_kolvo; 
 
-// ******************************        Nf,kbwe  ************************************** 
+// ******************************        Nf,kbwe таблицу  ************************************** 
 
   var table = document.getElementById("Table_products");
 
@@ -35,7 +35,7 @@ prod_array  = [];
         zzz1 = zzz.value;
         /// изменяем значение NAME  в наименовании товар
             if ( j == 1 ) {
-              name_number = +i -1;
+              name_number = +i - 1;
               if (insert_array_string > i) {
               zzz1=zzz.setAttribute("name","name" + name_number);
               } else {
@@ -55,8 +55,10 @@ prod_array  = [];
               if ( j == 3 ) {
                   name_number = +i -1;
                   if (insert_array_string > i) {
+                    zzz1=zzz.setAttribute("id","kol" + name_number);
                   zzz1=zzz.setAttribute("name","kol" + name_number);
                   } else {
+                    zzz1=zzz.setAttribute("id","kol" + i);
                     zzz1=zzz.setAttribute("name","kol" + i);
                   }
                 }
@@ -64,13 +66,31 @@ prod_array  = [];
       if ( j == 4 ) {
         name_number = +i -1;
         if (insert_array_string > i) {
+        zzz1=zzz.setAttribute("id","price" + name_number);
         zzz1=zzz.setAttribute("name","price" + name_number);
         } else {
+          zzz1=zzz.setAttribute("id","price" + i);
           zzz1=zzz.setAttribute("name","price" + i);
         }
       }
+
+            /// изменяем значение NAME  в 
+            if ( j == 5 ) {
+              name_number = +i -1;
+              if (insert_array_string > i) {
+              zzz1=zzz.setAttribute("id","sum_price" + name_number);
+              zzz1=zzz.setAttribute("name","sum_price" + name_number);
+              
+              } else {
+                zzz1=zzz.setAttribute("id","sum_price" + i);
+                zzz1=zzz.setAttribute("name","sum_price" + i);
+              }
+            }
+
+
+
         /// изменяет номер я кнопке добавления строки
-              if (j == 5)       {
+              if (j == 6)       {
                 place_str = 'num_col_' + i;
                 name_number = +i -1;
                 if (insert_array_string > i) {
@@ -88,7 +108,7 @@ prod_array  = [];
 
             /// изменяет номер я кнопке удаления строки
           
-              if (j == 6)       {
+              if (j == 7)       {
                 place_str = 'num_col_' + i;
                 name_number = +i -1;
                 if (insert_array_string > i) {
@@ -139,6 +159,8 @@ new_name ='name' + real_string;
 new_ed_izm = 'ed_izm' + real_string;
 new_kol = 'kol' + real_string;
 new_price = 'price' + real_string;
+new_sum_price = 'sum_price' + real_string;
+
 // alert("place_str=" + place_str);
 
 var newCell = newRow.insertCell(0);
@@ -152,15 +174,18 @@ newCell = newRow.insertCell(2);
 newCell.innerHTML="<input size =\"2\"   type=\"text\" name=\"" + new_ed_izm + "\">";
 
 newCell = newRow.insertCell(3);
-newCell.innerHTML="<input size =\"2\" step=\"0.01\"  type=\"number\" name=\"" + new_kol + "\">";
+newCell.innerHTML="<input required onkeyup=\"CalculateItem();\"  onkeydown=\"CalculateItem();\" onchange=\"CalculateItem();\" onfocus=\"CalculateItem()\"; size =\"1\" step=\"0.01\"  type=\"number\" id=\"" + new_kol + "\" name=\"" + new_kol + "\">";
 
 newCell = newRow.insertCell(4);
-newCell.innerHTML="<input size =\"2\"  step=\"0.01\"  type=\"number\" name=\"" + new_price + "\">";
+newCell.innerHTML="<input required onkeyup=\"CalculateItem();\"  onkeydown=\"CalculateItem();\" onchange=\"CalculateItem();\" onfocus=\"CalculateItem()\"; size =\"1\"  step=\"0.01\"  type=\"number\" id=\"" + new_price + "\" name=\"" + new_price + "\">";
 
 newCell = newRow.insertCell(5);
-newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"+\" onclick=\"add_row('"+ place_str+  "')\">";
+newCell.innerHTML="<input readonly size =\"1\"  step=\"1\"  type=\"number\" id=\"" + new_sum_price + "\" name=\"" + new_sum_price + "\" value = \"\">";
 
 newCell = newRow.insertCell(6);
+newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"+\" onclick=\"add_row('"+ place_str+  "')\">";
+
+newCell = newRow.insertCell(7);
 newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"-\" onclick=\"delete_row('"+ place_str+  "')\">";
 
 }
@@ -226,14 +251,21 @@ prod_array  = [];
       if ( j == 4 ) {
        zzz.setAttribute("name","price" + name_number);
         }
+
+
+      /// изменяем значение NAME  в Цена
+      if ( j == 5 ) {
+        zzz.setAttribute("name","price" + name_number);
+         }
+ 
           
         /// изменяет номер я кнопке добавления строки
-          if (j == 5)       {
+          if (j == 6)       {
             place_str = 'num_col_' + name_number;
             cell.innerHTML="<input size =\"1\" type=\"button\" value=\"+\" onclick=\"add_row('"+ place_str+  "')\">";
                     }
         /// изменяет номер я кнопке удаления строки
-           if (j == 6)       {
+           if (j == 7)       {
              place_str = 'num_col_' + name_number;
              cell.innerHTML="<input size =\"1\" type=\"button\" value=\"-\" onclick=\"delete_row('"+ place_str+  "')\">";
               }

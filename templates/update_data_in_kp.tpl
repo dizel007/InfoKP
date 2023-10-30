@@ -38,7 +38,7 @@
   <td>{$shapka['Email']}</td>
 </tr>*}
 </table>
-
+{$summa_our_kp = 0}
 {$p=0}
 
 {******************************** Начало ФОРМЫ **************************************************}
@@ -127,9 +127,10 @@
   <td><p class ="table_p table_bgc">Ед.изм</p></td> 
   <td><p class ="table_p table_bgc">Кол-во</p></td> 
   <td><p class ="table_p table_bgc">Цена за ед.</p></td>  
+  <td><p class ="table_p table_bgc">ИТОГО.</p></td>  
   
-    <td></td>
-  <td></td>
+  <td><p class ="table_p table_bgc"> + </p></td>
+  <td><p class ="table_p table_bgc"> - </p></td>
   </tr>
 
 
@@ -145,15 +146,33 @@
 {/if}
 
   <td><input size ="2"   type="text" name = "ed_izm{$p}" value ="{$value['ed_izm']}"></td>
-  <td><input size ="1" step="0.01"  type="number" name = "kol{$p}" value ="{$value['kol']}"></td>
-  <td><input size ="1" step="0.01"  type="number" name = "price{$p}" value ="{$value['price']}"></td>
+
+  <td><input onkeyup="CalculateItem();"  onkeydown="CalculateItem();" onchange="CalculateItem();" onfocus="CalculateItem();"
+   type="number" step="0.01" min="0" max="9999999" id="kol{$p}" name="kol{$p}" value ="{$value['kol']}" required></td>
+
+<td><input onkeyup="CalculateItem();" onkeydown="CalculateItem();" onchange="CalculateItem();" onfocus="CalculateItem();" 
+   type="number" step="0.1" min="1" max="9999999"  id="price{$p}"  name = "price{$p}" value ="{$value['price']}" required></td>
+
+   {$summa_price = $value['price']*$value['kol']}
+   {$summa_our_kp = $summa_our_kp + $summa_price}
+
+ <td> <input readonly type="text" class="form-control" id="sum_price{$p}" name = "sum_price{$p}"  value="{$summa_price}"> </td>
+
   <td><input size ="1" type="button" value="+" onclick="add_row('num_col_{$p}')"></td>
   <td><input size ="1" type="button" value="-" onclick="delete_row('num_col_{$p}')"></td>
 </tr>
   {$p = $p+1}
 {/foreach}
+{* ИТОГО *}
+<tr> 
+<td colspan="5"></td>
+<td>
+<input readonly type="number" id = "summa_our_kp" name = "summa_our_kp" value ="{$summa_our_kp}"></td>
+</td>
+</tr>
 </tbody>
  </table>
+
 
 {************************высота строки *********************************}
 <div class="pdf_visota_stroki">
@@ -209,3 +228,46 @@
  <br> <br>
  <button class="submit" type="submit">Сформировать КП с новыми данными</button>
  </form>
+
+
+
+<script type="text/javascript">
+
+
+
+            function CalculateItem()
+            {
+              Str_Number = event.target.id
+              var Str_Number = Str_Number.replace(/\D/g, "");
+              // alert("33333=" + gggg);
+                try {
+                    inputPriceNoVat = $('#kol' + Str_Number).val() * $('#price'+ Str_Number).val();
+                    // alert("333sss33=" + inputPriceNoVat);
+                  //  console_log(inputPriceNoVat);
+                 $('#sum_price' + Str_Number).val(inputPriceNoVat);
+                 summa = 0;
+
+                 kolvo_strok = $('#all_kolvo').val();
+                
+                  for (i = 0; i<kolvo_strok; i++) { // вычисляем сумму все строк
+                    summa_stroki = $('#sum_price' + i).val();
+                    summa = summa + parseFloat(summa_stroki) ;
+                  }
+                  $('#summa_our_kp').val(summa);
+
+                } catch (e) {
+                    $('#sum_price' + Str_Number).val('cccccccccccccccccc');
+                }
+
+            }
+</script>
+
+{* СКРИПТ БЛОКИРУЕТ ОТПРАВКУ СООБЩЕНИЯ ПО НАЖАТИЯ ENTER *}
+<script type="text/javascript">
+$("input").keydown(function(event){
+   if (event.keyCode === 13) {
+      return false;
+  }
+}
+)
+</script>

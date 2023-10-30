@@ -1,8 +1,8 @@
 <?php
 require_once ("../connect_db.php");
 require_once ("../update_data_in_kp/parce_excel_for_update_kp.php");
-require_once ("../new_kp_info/format_new_kp.php");
-
+require_once ("../new_kp_info/format_new_kp.php"); // функция создания ексель файла
+require_once ("../new_kp_info/make_json_file.php"); // функция создания/ корректировка JSON  файла
 require_once '../new_kp_info/make_pdf.php'; // фукнция создания КП в пдф формате
 
 // echo "<pre>";
@@ -39,7 +39,7 @@ $telefon_zakaz = trim(htmlspecialchars($_POST['telefon_zakaz']));
 $email_zakaz = trim(htmlspecialchars($_POST['email_zakaz']));
 $contact_face_zakaz = trim(htmlspecialchars($_POST['contact_face_zakaz']));
 
-
+// Выставляем условия КП, если не пришли никакое условия
 (isset($_POST['uslovia_oplati']))?$uslovia_oplati = htmlspecialchars($_POST['uslovia_oplati']):$uslovia_oplati='по согласованию сторон';
 
 (isset($_POST['srok_izgotovl']))?$srok_izgotovl = htmlspecialchars($_POST['srok_izgotovl']):$srok_izgotovl='в наличии';
@@ -99,7 +99,7 @@ if ($arr_kp_by_id[0]['cor_kol_kp'] == 0) {
 $len_cor_kol_kp = strlen($arr_kp_by_id[0]['cor_kol_kp']);
 
 $FileName_temp =mb_substr( $FileName_temp, 0, -$len_cor_kol_kp); // Убираем прошлую версию файла без расширения
-$next_cor_kol_kp = $arr_kp_by_id[0]['cor_kol_kp'] +1;
+$next_cor_kol_kp = $arr_kp_by_id[0]['cor_kol_kp'] + 1;
 
 $FileName_temp = $FileName_temp.$next_cor_kol_kp;  // цепляем новую весрия.
 }
@@ -143,7 +143,12 @@ $comparr = array ( 'KpNumber' => $arr_kp_by_id[0]['KpNumber'] ,
  $comparr += array ('KpFileName' => $KpFileName); // наименование файла
 
 
-$temp_array = format_new_kp($products, $comparr, $user_responsible_arr); // Формируем КП и получаем сумму КП 
+
+//формируем JSON документ
+$temp_array['total'] = make_json_kp_file($products, $comparr,$user_responsible_arr, $KpSum, $hight_string);
+$temp_array['KpFileName'] = $comparr['KpFileName'];
+
+format_new_kp($products, $comparr, $user_responsible_arr); // Формируем КП и получаем сумму КП 
 
 
 $KpSum = $temp_array['total'];

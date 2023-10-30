@@ -10,6 +10,7 @@ require_once ("../new_kp_info/format_new_kp.php");
 require_once '../new_kp_info/make_pdf.php';
 require_once '../functions/check_by_sell.php'; // функции проверки были ли продажи в компании 
 
+require_once '../new_kp_info/make_json_file.php'; // фукнция создания КП в пдф формате
 // echo "<pre>";
 // print_r($userdata['user_name']);
 // echo "<pre>";
@@ -127,13 +128,25 @@ $stmt = $pdo->prepare("SELECT * FROM `users` WHERE `user_name` = ?");
 $stmt->execute([$Responsible]);
 $user_responsible_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// ****************************************
-$temp_array = format_new_kp($products, $comparr, $user_responsible_arr); // Формируем КП и получаем сумму КП 
+
+
 unlink($temp);  // удаляем загружаемый файл, Нах их копить
 
+/* 
+*********************************** Формируем JSON *************************************
+*/
+$temp_array['total'] = make_json_kp_file($products, $comparr,$user_responsible_arr, $KpSum,5);
+
 $KpSum = $temp_array['total'];
-$KpFileName= $temp_array['KpFileName'];
+$KpFileName= $comparr['KpFileName'];
 $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
+
+
+
+// ****************************************
+format_new_kp($products, $comparr, $user_responsible_arr); // Формируем КП и получаем сумму КП 
+
+
 
 /* 
 *************** Формируем ПДФ *************************************
