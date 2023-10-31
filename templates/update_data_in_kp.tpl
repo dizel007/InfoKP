@@ -1,11 +1,15 @@
 
-<br>
+{* <br>
     <b>{$shapka['kp_name']}</b>
-<br>
+<br> *}
 <table class = "shapka_kp">
-
 <tr>
+<td>{$shapka['kp_name']}</td>
+</tr>
+<tr>
+<br>
   <td>Заказчик :</td>
+
   <td> {$shapka['Zakazchik']} 
   {if (($InnCustomer <> 0))}
     ИНН: {$InnCustomer}
@@ -163,21 +167,21 @@
 </tr>
   {$p = $p+1}
 {/foreach}
-{* ИТОГО *}
-<tr> 
-<td colspan="5"></td>
-<td>
-<input readonly type="number" id = "summa_our_kp" name = "summa_our_kp" value ="{$summa_our_kp}"></td>
-</td>
-</tr>
+
 </tbody>
  </table>
+{************************ ИТОГО *********************************}
+<div class="pdf_visota_stroki">
+<label for ="pdf_visota_prod_stroki"> ИТОГО </label>
+<input readonly type="number" id = "summa_our_kp" name = "summa_our_kp" value ="{$summa_our_kp}"></td>
+</div>
+{************************************                    **************************************}
 
 
 {************************высота строки *********************************}
 <div class="pdf_visota_stroki">
 <label for ="pdf_visota_prod_stroki">Высота строки товаров в PDF </label>
-<input type="number" step="0.5" min="3" max="8" name = "pdf_visota_prod_stroki" value ="{$pdf_visota_prod_stroki}"></td>
+<input type="number" step="0.5" min="3" max="8" name = "pdf_visota_prod_stroki" value ="{$pdf_visota_prod_stroki}">
 </div>
 {************************************                    **************************************}
 
@@ -245,15 +249,7 @@
                     // alert("333sss33=" + inputPriceNoVat);
                   //  console_log(inputPriceNoVat);
                  $('#sum_price' + Str_Number).val(inputPriceNoVat);
-                 summa = 0;
-
-                 kolvo_strok = $('#all_kolvo').val();
-                
-                  for (i = 0; i<kolvo_strok; i++) { // вычисляем сумму все строк
-                    summa_stroki = $('#sum_price' + i).val();
-                    summa = summa + parseFloat(summa_stroki) ;
-                  }
-                  $('#summa_our_kp').val(summa);
+                 CalculateSummaKp();
 
                 } catch (e) {
                     $('#sum_price' + Str_Number).val('cccccccccccccccccc');
@@ -270,4 +266,22 @@ $("input").keydown(function(event){
   }
 }
 )
+</script>
+
+{* СКРИПТ считает сумму КП *}
+<script type="text/javascript">
+ function CalculateSummaKp(){
+  summa = 0;
+ kolvo_strok = $('#all_kolvo').val();
+ console.log(kolvo_strok);
+ for (i = 0; i<kolvo_strok; i++) { // вычисляем сумму все строк
+     summa_stroki = $('#sum_price' + i).val();
+     console.log(summa_stroki);
+     summa = summa + parseFloat(summa_stroki) ;
+          }
+$('#summa_our_kp').val(summa);
+
+console.log(summa);
+    }
+
 </script>

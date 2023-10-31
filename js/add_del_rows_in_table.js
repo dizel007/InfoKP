@@ -186,13 +186,14 @@ newCell = newRow.insertCell(6);
 newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"+\" onclick=\"add_row('"+ place_str+  "')\">";
 
 newCell = newRow.insertCell(7);
-newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"-\" onclick=\"delete_row('"+ place_str+  "')\">";
+newCell.innerHTML="<input size =\"1\"  type=\"button\" value=\"-\" onclick=\"delete_row('"+ place_str+  "')\">";
 
 }
 
 
 function delete_row(StrNumber)
 {
+  
   // ******************************  обновляем количество строк в КП  
   all_kolvo = document.getElementById('all_kolvo').value;
   all_kolvo= +all_kolvo - 1;
@@ -238,24 +239,29 @@ prod_array  = [];
         /// изменяем значение NAME  в наименовании товар
           if ( j == 1 ) {
                 zzz.setAttribute("name","name" + name_number);
+                zzz.setAttribute("id","name" + name_number);
               }
          /// изменяем значение NAME  в Ед.Изм товар
                 if ( j == 2 ) {
                   zzz.setAttribute("name","ed_izm" + name_number);
+                  zzz.setAttribute("id","ed_izm" + name_number);
                 }
       /// изменяем значение NAME  в Кол-во
               if ( j == 3 ) {
              zzz.setAttribute("name","kol" + name_number);
+             zzz.setAttribute("id","kol" + name_number);
                    }
       /// изменяем значение NAME  в Цена
       if ( j == 4 ) {
        zzz.setAttribute("name","price" + name_number);
+       zzz.setAttribute("id","price" + name_number);
         }
 
 
       /// изменяем значение NAME  в Цена
       if ( j == 5 ) {
-        zzz.setAttribute("name","price" + name_number);
+        zzz.setAttribute("name","sum_price" + name_number);
+        zzz.setAttribute("id","sum_price" + name_number);
          }
  
           
@@ -266,8 +272,13 @@ prod_array  = [];
                     }
         /// изменяет номер я кнопке удаления строки
            if (j == 7)       {
+             if (all_kolvo ==1) {
              place_str = 'num_col_' + name_number;
-             cell.innerHTML="<input size =\"1\" type=\"button\" value=\"-\" onclick=\"delete_row('"+ place_str+  "')\">";
+             cell.innerHTML="<input size =\"1\" type=\"button\" value=\"-\" >";
+             } else {
+              place_str = 'num_col_' + name_number;
+              cell.innerHTML="<input size =\"1\" type=\"button\" value=\"-\" onclick=\"delete_row('"+ place_str+  "')\">"; 
+             }
               }
             
         // str_array[j] = zzz1;
@@ -286,6 +297,6 @@ prod_array  = [];
     //  console.table(str_array);
    i++;
 }
-
+CalculateSummaKp();
 }
 
