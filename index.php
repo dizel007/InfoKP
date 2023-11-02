@@ -14,8 +14,6 @@ include_once 'functions/overdeu_kp_for_shapka.php'; // функции подгр
 // *******************  шапка с меню пользователя **********************************
 $smarty->assign('userdata', $userdata);
 
-
-
 $smarty->display('user_menu.tpl');
 
 // Формируем тип перехода (Все переходы должны быть через index.php)
@@ -59,6 +57,15 @@ switch ($transition) {
         include_once "sub_programs/main_filtr_table.php";
     break;
     
+    case 888888: // основная таблица с фильтром  КП
+  ;
+        $pageName = "Реестр с фильтром  КП**************************";
+        $smarty->assign('pageName', $pageName);
+        include_once 'parts_site/header.php';
+        // echo "основная таблица с фильтром  КП(**** DELETE ****)";
+         include_once "sub_programs/main_filtr_table___temp.php";
+    break;
+
     case 10: // выводим КП по ID
         $pageName = "выводим КП по ID";
         $smarty->assign('pageName', $pageName);

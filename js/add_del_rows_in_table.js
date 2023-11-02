@@ -180,7 +180,7 @@ newCell = newRow.insertCell(4);
 newCell.innerHTML="<input required onkeyup=\"CalculateItem();\"  onkeydown=\"CalculateItem();\" onchange=\"CalculateItem();\" onfocus=\"CalculateItem()\"; size =\"1\"  step=\"0.01\"  type=\"number\" id=\"" + new_price + "\" name=\"" + new_price + "\">";
 
 newCell = newRow.insertCell(5);
-newCell.innerHTML="<input readonly size =\"1\"  step=\"1\"  type=\"number\" id=\"" + new_sum_price + "\" name=\"" + new_sum_price + "\" value = \"\">";
+newCell.innerHTML="<input readonly size =\"1\"  type=\"number\" id=\"" + new_sum_price + "\" name=\"" + new_sum_price + "\" value = \"\">";
 
 newCell = newRow.insertCell(6);
 newCell.innerHTML="<input size =\"1\" type=\"button\" value=\"+\" onclick=\"add_row('"+ place_str+  "')\">";

@@ -27,6 +27,7 @@
                <td><p title="Редактирование КП">Ред</p></td>
                <td width ="60" class="hidden_class_column">Сл.звонок</td>
                <td class="hidden_class_column">Состояние</td>
+               <td>amo</td>
                <td>Сумма КП</td>
                <td><p title="Создать КП в эту же Компанию">ДКП</p></td>
                <td width ="40" class="hidden_class_column">НМЦК Закупки</td>
@@ -172,6 +173,17 @@
       <td id = "js-DateNextCall{$array_with_all_kp.$i.id}" width="60" class ="{$DateNextCallTable.$i}  hidden_class_column">{$array_with_all_kp.$i.DateNextCall}</td>
  {*<!-- ********************************** СОСТОЯНИЕ КП ********************************** -->*}
       <td class="hidden_class_column"> <div id = "js-KpCondition{$array_with_all_kp.$i.id}" class = "{$KpConditionTable.$i}">{$array_with_all_kp.$i.KpCondition}</div></td>
+  
+   {*<!-- ********************************** AMO crm ********************************** -->    *}  
+   {if $array_with_all_kp.$i.id_amo_lead <> 0}
+   <td><img style = "opacity: 0.8" src="icons/table/amo.jpg" alt="Excel"></td>
+   {else}
+
+    <td><img style = "opacity: 0.2" src="icons/table/amo.jpg" alt="Excel"></td>
+   {/if}
+
+  
+  
   {*<!-- ********************************** СУММА КП ********************************** -->    *}  
       <td id = "js-KpSum{$array_with_all_kp.$i.id}" >{$array_with_all_kp.$i.KpSum}</td>
 
