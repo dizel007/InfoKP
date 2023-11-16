@@ -141,12 +141,8 @@ $KpSum = $temp_array['total'];
 $KpFileName= $comparr['KpFileName'];
 $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
 
-
-
 // ****************************************
 format_new_kp($products, $comparr, $user_responsible_arr); // Формируем КП и получаем сумму КП 
-
-
 
 /* 
 *************** Формируем ПДФ *************************************
@@ -224,7 +220,6 @@ update_kp_number_in_db ($pdo, $KpNumber);
 
 
 
-// ******************* делаем запрос, чтобы получить ID этого КП ********
 
 
 // header("Location: ../".$LinkKp);

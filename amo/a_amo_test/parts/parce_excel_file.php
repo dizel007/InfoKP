@@ -36,3 +36,14 @@ $i++;
 
 return $arr_tovari;
 }
+
+
+
+function parce_json_kp($link_json_file) {
+  $products = json_decode( file_get_contents($link_json_file), true); // берем на Json файл с данными КП
+
+echo "<pre>";
+
+  print_r( $products);
+  return $products['products'];
+ }

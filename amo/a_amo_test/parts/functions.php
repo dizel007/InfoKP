@@ -546,8 +546,8 @@ return  $responsible_user_id;
   *************  / Функция по добавлению товаров к сделке  ************************* 
   ********************************************************************************************************************/
 
-function add_tovar_to_sdelka ($connect_data, $arr_tovari, $id_sdelka) {
-  foreach ($arr_tovari as $tovar) {
+function add_tovar_to_sdelka ($connect_data, &$arr_tovari, $id_sdelka) {
+  foreach ($arr_tovari as &$tovar) {
     $new_ed_izm = make_rigth_ed_izm($tovar['ed_izm']); // стандартизируем единицы измерения
 
     $data_tovar [] = array(
@@ -579,8 +579,9 @@ function add_tovar_to_sdelka ($connect_data, $arr_tovari, $id_sdelka) {
         $res = post_query_in_amo($connect_data['access_token'], $connect_data['subdomain'], $method , $data);
         $id_tovara = $res['_embedded']['elements'][0]['id'];
         
-        // echo "<br><br>";
-        // echo $id_tovara;
+        // echo "<br>";
+        // echo "<pre>";
+        // print_r ($res);
         // echo "<br><br>";
        unset ($data_tovar); 
      
@@ -596,10 +597,23 @@ function add_tovar_to_sdelka ($connect_data, $arr_tovari, $id_sdelka) {
         
             ));
             
-        $data_z = json_encode($data_coonect_tovar, JSON_UNESCAPED_UNICODE);
+        $data_z = json_encode($data_coonect_tovar, JSON_UNESCAPED_UNICODE); // формируем данные чтобы зацепить товар к сделке
         $method = "/api/v4/leads/".$id_sdelka."/link";
-        $res = post_query_in_amo($connect_data['access_token'], $connect_data['subdomain'], $method , $data_z);
-        }
+        $res = post_query_in_amo($connect_data['access_token'], $connect_data['subdomain'], $method , $data_z); // цепляем товар к сделке
+      // добавляем id в json файла КП
+    $tovar['id'] = $id_tovara;
+      }
+}
+
+
+/* **********************************************************************************************
+* Функция добавления ID Товара в Json формат КП 
+**************************************************************************************************/
+function add_id_tovar_in_json ($link_json_file, $products){
+  $temp = json_decode( file_get_contents($link_json_file), true); // берем на Json файл с данными КП
+  $temp['products'] = $products; // обновляем продукты с ID товарами (возможно для дальнейшей корретироваки цены)
+  file_put_contents($link_json_file, json_encode($temp, JSON_UNESCAPED_UNICODE)); // обновляем наш JSON файл с КП
+
 }
 
 function make_rigth_ed_izm($ed_izm) { // функция приведения в порядок единицы измерения
@@ -607,19 +621,32 @@ function make_rigth_ed_izm($ed_izm) { // функция приведения в 
   $temp_ed_izm =mb_eregi_replace("[^a-zа-яё0-9 ]", '', $temp_ed_izm); // убираем все кроме букв и цифр
 
 
-  if ($ed_izm == 'шт')           {$new_ed_izm = 'шт';}
-  elseif ($ed_izm == 'кт')       {$new_ed_izm = 'комплект';}
-  elseif ($ed_izm == 'к-т')      {$new_ed_izm = 'комплект';}
-  elseif ($ed_izm == 'комплект') {$new_ed_izm = 'комплект';}
-  elseif ($ed_izm == 'мп')       {$new_ed_izm = 'мп';}
-  elseif ($ed_izm == 'м2')       {$new_ed_izm = 'м2';}
-  elseif ($ed_izm == 'м3')       {$new_ed_izm = 'м3';}
-  elseif ($ed_izm == 'пм')       {$new_ed_izm = 'мп';}
-  elseif ($ed_izm == 'м')        {$new_ed_izm = 'м';}
-  elseif ($ed_izm == 'т')        {$new_ed_izm = 'т';}
-  elseif ($ed_izm == 'кг')       {$new_ed_izm = 'кг';}
-  elseif ($ed_izm == 'л')        {$new_ed_izm = 'л';}
+  if ($ed_izm == 'шт')             {$new_ed_izm = 'шт';}
+  elseif ($ed_izm == 'шт.')        {$new_ed_izm = 'шт';}
+
+  elseif ($ed_izm == 'кт')         {$new_ed_izm = 'комплект';}
+  elseif ($ed_izm == 'кт.')        {$new_ed_izm = 'комплект';}
+  elseif ($ed_izm == 'к-т')        {$new_ed_izm = 'комплект';}
+  elseif ($ed_izm == 'к-т.')       {$new_ed_izm = 'комплект';}
+  elseif ($ed_izm == 'комплект')   {$new_ed_izm = 'комплект';}
+  elseif ($ed_izm == 'комплект.')  {$new_ed_izm = 'комплект';}
+
+  elseif ($ed_izm == 'мп')         {$new_ed_izm = 'мп';}
+  elseif ($ed_izm == 'мп.')        {$new_ed_izm = 'мп';}
+  elseif ($ed_izm == 'пм.')        {$new_ed_izm = 'мп';}
+  elseif ($ed_izm == 'мп')         {$new_ed_izm = 'мп';}
+  elseif ($ed_izm == 'пм.')        {$new_ed_izm = 'мп';}
+  elseif ($ed_izm == 'м')          {$new_ed_izm = 'м';}
   
+  elseif ($ed_izm == 'м2')         {$new_ed_izm = 'м2';}
+  elseif ($ed_izm == 'м3')         {$new_ed_izm = 'м3';}
+  
+  elseif ($ed_izm == 'т')          {$new_ed_izm = 'т';}
+  elseif ($ed_izm == 'кг')         {$new_ed_izm = 'кг';}
+  elseif ($ed_izm == 'кг.')        {$new_ed_izm = 'кг';}
+  
+  elseif ($ed_izm == 'л')          {$new_ed_izm = 'л';}
+  elseif ($ed_izm == 'л.')         {$new_ed_izm = 'л';}
   else  {$new_ed_izm = 'шт';}
 
 return $new_ed_izm;

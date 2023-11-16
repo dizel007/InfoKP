@@ -176,10 +176,12 @@
   
    {*<!-- ********************************** AMO crm ********************************** -->    *}  
    {if $array_with_all_kp.$i.id_amo_lead <> 0}
-   <td><img style = "opacity: 0.8" src="icons/table/amo.jpg" alt="Excel"></td>
+   <td><img style = "opacity: 0.8" src="icons/table/amo.jpg" alt="AmoCRM"></td>
    {else}
 
-    <td><img style = "opacity: 0.2" src="icons/table/amo.jpg" alt="Excel"></td>
+    {* <td><a href= "amo/a_amo_test/insert_new_ko_in_amo.php?id={$array_with_all_kp.$i.id}"><img style = "opacity: 0.2" src="icons/table/amo.jpg" alt="Excel"></a></td> *}
+    <td><img style = "opacity: 0.2" src="icons/table/amo.jpg" alt="AmoCRM"></td>
+
    {/if}
 
   
