@@ -3,7 +3,7 @@
     echo "<br>Компания БЕЗ ИНН : $id КП Добавляем ТОЛЬКО СДЕЛКУ<br>";
 // ************************* начинае мсоздавать компанию 
 // echo "<br> Создание компании  ********************************************<br>";
-  echo  $name_company = $j_inn['NameCustomer']; // Наименование компании
+  echo  $name_company = $j_id['NameCustomer']; // Наименование компании
 
 
 // ************************* Достаем нашу сделку по ID *******************************************
@@ -31,7 +31,9 @@ $id_sdelka = make_new_sdelka_SIMPLE($connect_data, $sdelki, $pipeline_id_2);
 echo "<br> ******* СОЗДАЛИ СДЕЛКУ ID = $id_sdelka **********************<br>";
 
 // ************** цепляем ЗАДАЧА к сделке  (если она есть)
-// make_new_task($connect_data, $sdelki, $id_sdelka);
+if ($sdelki['FinishContract'] == 0)  {
+make_new_task($connect_data, $sdelki, $id_sdelka);
+}
 // ********************  Добавляем товары только в открытую сделку  ***********************************************
 
 if ($sdelki['FinishContract'] == 0)  {

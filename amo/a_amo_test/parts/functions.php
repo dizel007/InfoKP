@@ -27,7 +27,9 @@
     $responsible_user_id = get_responsible($sdelki);
     $id_kp = $sdelki['id'];
     $id_kontur_kp = $sdelki['idKp'];
-    $currentTime = strtotime($sdelki['KpData']); // переводим время с 1980 года
+    date_default_timezone_set('Europe/Moscow');
+    $time = date("h:i:s");
+    $currentTime = strtotime($sdelki['KpData'].$time); // переводим время с 1980 года
     $link_kontur_eis =  $sdelki['konturLink'];
 
 
@@ -591,7 +593,7 @@ function add_tovar_to_sdelka ($connect_data, &$arr_tovari, $id_sdelka) {
             "to_entity_id" => $id_tovara,
             "to_entity_type" => "catalog_elements",
             "metadata"=> array (
-                "quantity" => $tovar['kolvo'],
+                "quantity" => $tovar['kol'],
                 "catalog_id" => CATALOG_TOVARI
                     )       
         

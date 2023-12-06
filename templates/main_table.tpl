@@ -174,13 +174,15 @@
  {*<!-- ********************************** СОСТОЯНИЕ КП ********************************** -->*}
       <td class="hidden_class_column"> <div id = "js-KpCondition{$array_with_all_kp.$i.id}" class = "{$KpConditionTable.$i}">{$array_with_all_kp.$i.KpCondition}</div></td>
   
-   {*<!-- ********************************** AMO crm ********************************** -->    *}  
+   
+   
+   {*<!-- ********************************** AMO crm ********************************** -->    *}
    {if $array_with_all_kp.$i.id_amo_lead <> 0}
-   <td><img style = "opacity: 0.8" src="icons/table/amo.jpg" alt="AmoCRM"></td>
+   <td><a target="_blank" href= "https://anmaks.amocrm.ru/leads/detail/{$array_with_all_kp.$i.id_amo_lead}"><img style = "opacity: 0.8" src="icons/table/amo.jpg" alt="AmoCRM"></a></td>
    {else}
 
-    {* <td><a href= "amo/a_amo_test/insert_new_ko_in_amo.php?id={$array_with_all_kp.$i.id}"><img style = "opacity: 0.2" src="icons/table/amo.jpg" alt="Excel"></a></td> *}
-    <td><img style = "opacity: 0.2" src="icons/table/amo.jpg" alt="AmoCRM"></td>
+    <td><a target="_blank" href= "amo/a_amo_test/insert_new_ko_in_amo.php?id={$array_with_all_kp.$i.id}"><img style = "opacity: 0.2" src="icons/table/amo.jpg" alt="AmoCRM"></a></td>
+   {* <td><img style = "opacity: 0.2" src="icons/table/amo.jpg" alt="AmoCRM"></td>; *}
 
    {/if}
 

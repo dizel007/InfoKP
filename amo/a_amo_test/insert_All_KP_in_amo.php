@@ -19,13 +19,24 @@ $connect_data['access_token'] = $access_token ;
 $connect_data['subdomain'] = $subdomain;
 // echo "<br>";
 
-$id = $_GET['id'];
-echo "<br ID = >".$id."<br>";
 
+
+
+$stmt_all = $pdo->prepare("SELECT id,InnCustomer, NameCustomer FROM reestrkp WHERE id_amo_lead = 0");
+// $stmt = $pdo->prepare("SELECT * FROM reestrkp ORDER BY id DESC LIMIT 100");
+
+$stmt_all->execute([]);
+$arr_all_deals = $stmt_all->fetchAll(PDO::FETCH_ASSOC);
 
 echo "<pre>";
+print_r($arr_all_deals);
+
+foreach ($arr_all_deals as $arr_deal) {
+
+ $id = $arr_deal["id"];
+
   // Вычитываем все телефоны с таким ID
-  $stmt = $pdo->prepare("SELECT id,InnCustomer, NameCustomer FROM reestrkp WHERE id = $id AND id_amo_lead = 0");
+  $stmt = $pdo->prepare("SELECT id,InnCustomer, NameCustomer FROM reestrkp WHERE id = $id");
   // $stmt = $pdo->prepare("SELECT * FROM reestrkp ORDER BY id DESC LIMIT 100");
 
   $stmt->execute([]);
@@ -68,3 +79,4 @@ foreach ($arr_inn_name as $j_id) {
 }
 
 echo "<br> OYOGO=$count";
+}

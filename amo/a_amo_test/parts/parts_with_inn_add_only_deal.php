@@ -4,7 +4,7 @@ echo "<br>Компания с ИНН : $inn есть в базе. Добавля
 
 // ************************* начинае мсоздавать компанию 
 // echo "<br> Создание компании  ********************************************<br>";
-    $name_company = $j_inn['NameCustomer']; // Наименование компании
+    $name_company = $j_id['NameCustomer']; // Наименование компании
     $company_id = $inn_our_company['id'];
 echo "<br>company_id = $company_id<br>";
 echo "<br>id = $id<br>";
@@ -39,7 +39,7 @@ echo "<br>id = $id<br>";
 // ************** цепляем ЗАДАЧА к сделке  (если она есть)
 // echo "<br> цепляем задачу к сделке  (если она есть)  ********************************************<br>";
 if ($sdelki['FinishContract'] == 0)  {
-    // make_new_task($connect_data, $sdelki, $id_sdelka);
+     make_new_task($connect_data, $sdelki, $id_sdelka);
 } 
 // ********************  Добавляем товары только в открытую сделку  ***********************************************
 
