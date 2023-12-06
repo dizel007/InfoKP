@@ -155,7 +155,7 @@
    type="number" step="0.01" min="0" max="9999999" id="kol{$p}" name="kol{$p}" value ="{$value['kol']}" required></td>
 
 <td><input onkeyup="CalculateItem();" onkeydown="CalculateItem();" onchange="CalculateItem();" onfocus="CalculateItem();" 
-   type="number" step="0.01" min="1" max="9999999"  id="price{$p}"  name = "price{$p}" value ="{$value['price']}" required></td>
+   type="number" step="0.01" min="0" max="9999999"  id="price{$p}"  name = "price{$p}" value ="{$value['price']}" required></td>
 
    {$summa_price = $value['price']*$value['kol']}
    {$summa_our_kp = $summa_our_kp + $summa_price}
