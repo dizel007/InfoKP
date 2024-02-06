@@ -47,3 +47,11 @@ echo "<pre>";
   print_r( $products);
   return $products['products'];
  }
+
+
+ function parce_json_kp_return_name_object($link_json_file) {
+  $all_info  = json_decode( file_get_contents($link_json_file), true); // берем на Json файл с данными КП
+  $name_object  = str_replace('Предлагаем рассмотреть приобретение следующих товаров, для закупки', 'Закупка', $all_info['dop_info']['ZakupName']);
+  echo "<br> ИЗ ФУНКЦИИ НАИМЕНОВАНИЕ ЗАКУПКИ : $name_object<br>";
+  return   $name_object;
+ }

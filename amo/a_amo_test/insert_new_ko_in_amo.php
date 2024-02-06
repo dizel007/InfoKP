@@ -1,6 +1,7 @@
 <?php
 ob_end_clean();
 require_once 'connect_db.php';
+
 require_once 'amo_setup.php';
 require_once 'access.php';
 require_once 'parts/functions.php';
@@ -18,6 +19,7 @@ $connect_data['access_token'] = $access_token ;
 // echo "<br>";
 $connect_data['subdomain'] = $subdomain;
 // echo "<br>";
+
 
 $id = $_GET['id'];
 echo "<br ID = >".$id."<br>";

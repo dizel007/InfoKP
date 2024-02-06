@@ -81,6 +81,18 @@ if (file_exists($link_json_kp_tovar)) {
 /// Добавляем примечание к сделке
 add_note_to_sdelka ($connect_data, $sdelki, $id_sdelka);
 
+/// Добавляем название закупки (тендера) к сделке
+
+if ($type_kp == 6) { // Только для объектных КП
+    if (file_exists($link_json_kp_tovar)){
+        echo "<br> ***** ДОБАВЛЯЕМ НАИМЕНОВАНИЕ ЗАКУПКИ<br>";
+        $name_ojbect = parce_json_kp_return_name_object($link_json_kp_tovar);
+        add_object_name_in_deal ($connect_data, $id_sdelka, $name_ojbect);
+    } else {
+        echo "<br> ***** НЕ СМОГЛИ ДОБАВИТЬ НАЗВАНИЕ ЗАКУПКИ<br>";
+    }
+}
+
 // обновляем id амо сделки в реестре
 update_amo_id_in_my_reesrt ($pdo, $id_sdelka, $sdelki);
 

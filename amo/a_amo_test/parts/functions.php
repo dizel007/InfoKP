@@ -704,3 +704,30 @@ $stmt= $pdo->prepare($sql);
 $stmt->execute($data_arr);
 }
 
+
+ /******************************************************************************************************************
+  *************  Добавляем наименование объекта в сделке  ************************* 
+  ********************************************************************************************************************/
+  function add_object_name_in_deal ($connect_data, $id_sdelka, $object_name){
+    
+    
+
+
+    $data_temp[] =  array   (
+            "id" => $id_sdelka,
+            "custom_fields_values" => array(
+  /// ************************** ИНН **********************
+              array (
+                    "field_id" => 1594165,
+                    "values" => array ( array (                       
+                           "value" => $object_name
+            
+              )
+           )
+        )
+     )
+  );
+  $data = json_encode($data_temp, JSON_UNESCAPED_UNICODE);
+  $result = send_patch_in_amo($connect_data['access_token'] , $connect_data['subdomain'],"/api/v4/leads" , $data);
+  return  $result;
+  }
