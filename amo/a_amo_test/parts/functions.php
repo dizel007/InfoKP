@@ -536,6 +536,8 @@ function  get_responsible($sdelki) {
     $responsible_user_id = LOBOV_G;
   } elseif ($responsible == 'Кидалова') {
     $responsible_user_id = KIDALOVA_A;
+  } elseif ($responsible == 'Никитина') {
+    $responsible_user_id = NIKITINA_A;
   } else {
     $responsible_user_id = GUTS_A;
   }

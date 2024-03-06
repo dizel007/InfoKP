@@ -26,6 +26,7 @@ const GORIACHEV_A = 10224798;
 const LOBOV_G     = 10224802;
 const SHTIBKO_I   = 10224806;
 const KULIEV_R    = 10224810;
+const NIKITINA_A    = 10622810;
 
 ////  каталог товары
 
