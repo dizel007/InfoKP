@@ -121,11 +121,14 @@ $products = make_prod_array($_POST);
 
 $KpFileName= $FileName_temp;
 
-if ($type_kp <> 6) {
-  $adress_in_kp = $adress;
-} else {
-  $adress_in_kp = TEXT_PERED_ADRESOM_DOSTAVKI.$adress;  
-}
+// if ($type_kp <> 6) {
+//   $adress_in_kp = $adress;
+// } else {
+  // $adress_in_kp = TEXT_PERED_ADRESOM_DOSTAVKI.$adress;  
+// }
+
+$adress_in_kp = $adress;  
+
 
 $comparr = array ( 'KpNumber' => $arr_kp_by_id[0]['KpNumber'] ,
                    'KpDate' => $KpDate_temp,
