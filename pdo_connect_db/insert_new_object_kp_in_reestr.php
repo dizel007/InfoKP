@@ -132,14 +132,16 @@ $user_responsible_arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 unlink($temp);  // удаляем загружаемый файл, Нах их копить
 
+
+
 /* 
 *********************************** Формируем JSON *************************************
 */
-$temp_array['total'] = make_json_kp_file($products, $comparr,$user_responsible_arr, $KpSum,5);
-
+$temp_array['total'] = make_json_kp_file($products, $comparr,$user_responsible_arr,5);
 $KpSum = $temp_array['total'];
 $KpFileName= $comparr['KpFileName'];
 $LinkKp = 'EXCEL/'.$KpFileName.".xlsx";
+
 
 // ****************************************
 format_new_kp($products, $comparr, $user_responsible_arr); // Формируем КП и получаем сумму КП 
