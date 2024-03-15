@@ -63,7 +63,8 @@ $KonturLink = $_POST['KonturLink']; // ссылка на контур
 
 $idKp = $_POST['idKp']; // неповтор
 $adress = $_POST['Adress'];
-$adress_in_kp = TEXT_PERED_ADRESOM_DOSTAVKI.$adress;  
+
+$adress_in_kp = TEXT_PERED_ADRESOM_DOSTAVKI.'('.$adress.')';  
 
 $date_write = date('Y-m-d');
 isset($_POST['tender_number'])?$tender_number = $_POST['tender_number']:$tender_number = ''; // номер закукпки
