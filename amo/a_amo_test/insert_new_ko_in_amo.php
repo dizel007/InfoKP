@@ -1,7 +1,6 @@
 <?php
 ob_end_clean();
 require_once 'connect_db.php';
-
 require_once 'amo_setup.php';
 require_once 'access.php';
 require_once 'parts/functions.php';
@@ -16,9 +15,8 @@ echo "<br>";
 echo date('Y-m-d H:i:s');
 echo "<br>";
 $connect_data['access_token'] = $access_token ;
-// echo "<br>";
+echo "<br>";
 $connect_data['subdomain'] = $subdomain;
-// echo "<br>";
 
 
 $id = $_GET['id'];
@@ -33,7 +31,7 @@ echo "<pre>";
   $stmt->execute([]);
   $arr_inn_name = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// print_r($data_temp5);
+// print_r($arr_inn_name);
 // die();
 
 foreach ($arr_inn_name as $j_id) {
@@ -64,9 +62,9 @@ foreach ($arr_inn_name as $j_id) {
     $count++;
     echo date('Y-m-d H:i:s');
     echo "<br>";
-    echo "<br> CONUT =$count<br>";
+    echo "<br> COUNT =$count<br>";
 
     echo "<br><b>*************************************************************************************************</b><br>";
 }
 
-echo "<br> OYOGO=$count";
+echo "<br> ITOGO=$count";

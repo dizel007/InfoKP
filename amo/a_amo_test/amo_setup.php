@@ -1,7 +1,6 @@
 <?php
 
 const ID_INN_COMPANY = 475127; // ID в амо строки ИНН
-
 const OBJECT_PIPELINE_ID = 7372582; // Воронка для ОБЪЕКТНЫХ КП
 const MAIN_PIPELINE_ID = 7359890; // Простоая ВОРОНКА
 /// дополнительные поля в сделке
@@ -26,7 +25,7 @@ const GORIACHEV_A = 10224798;
 const LOBOV_G     = 10224802;
 const SHTIBKO_I   = 10224806;
 const KULIEV_R    = 10224810;
-const NIKITINA_A    = 10622810;
+const NIKITINA_A  = 10622810;
 
 ////  каталог товары
 

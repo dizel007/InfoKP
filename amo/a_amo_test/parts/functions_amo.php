@@ -64,7 +64,7 @@
  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
  curl_setopt($curl, CURLOPT_USERAGENT, 'amoCRM-API-client/1.0');
  curl_setopt($curl, CURLOPT_URL, "https://$subdomain.amocrm.ru".$method);
- curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH ');
+ curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
  curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
  curl_setopt($curl, CURLOPT_HEADER, false);
@@ -90,8 +90,8 @@
 
  if ($code < 200 || $code > 204) {
     echo "<br><br>";
-     echo "<pre>";
- print_r($arr_result);
+    echo "<pre>";
+    print_r($arr_result);
     die( "Error $code. " . (isset($errors[$code]) ? $errors[$code] : 'Undefined error') );
  }
  
@@ -136,12 +136,9 @@
     ];
     
     $arr_result = json_decode($out, true);
-    // echo "<pre>";
-    // print_r($arr_result);
     
     if ($code < 200 || $code > 204) {
        echo "<br><br>";
-    
        echo "<pre>";
        print_r($arr_result);
        die( "Error $code. " . (isset($errors[$code]) ? $errors[$code] : 'Undefined error') );

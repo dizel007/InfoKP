@@ -130,6 +130,10 @@
 );
 $data = json_encode($data_temp, JSON_UNESCAPED_UNICODE);
 $result = send_patch_in_amo($connect_data['access_token'] , $connect_data['subdomain'],"/api/v4/companies" , $data);
+
+// print_r($result);
+
+
 return  $result;
 }
 
@@ -288,9 +292,14 @@ return  $result;
   *************  Поиск компании по ИНН ************************* 
   ********************************************************************************************************************/
   function find_company_by_inn ($connect_data, $inn) {
-  $method = "/api/v4/companies?query=".$inn; 
-
+ $method = "/api/v4/companies?query=".$inn; 
+//  $method = "/api/v4/companies?query=7448245239";
 $res = get_query_in_amo($connect_data['access_token'], $connect_data['subdomain'], $method);
+
+
+// print_r($res);
+// die('ffffffffffffffffffffffffffffffffffffffff');
+
 $data_company='';
 
 if (isset($res)) { // Если есть хоть одна компания Проверям есть ли там ИНН
@@ -521,7 +530,13 @@ function make_rigth_phone_type($phone_type) {
 // Находим ответственного по сделке 
 
 function  get_responsible($sdelki) {
+ 
   $responsible = $sdelki['Responsible'];
+  
+  
+     echo "<br>eeeeeeeeeeeeeee==".$responsible."==99999999999999999999999999999<br>";
+     
+     
   if ($responsible == 'Зелизко') {
     $responsible_user_id = ZELIZKO_DI;
   } elseif ($responsible == 'Горячев') {
@@ -541,6 +556,7 @@ function  get_responsible($sdelki) {
   } else {
     $responsible_user_id = GUTS_A;
   }
+      echo "<br>eeeeeeeeeeeeeee==".$responsible_user_id."==99999999999999999999999999999<br>";
 return  $responsible_user_id;
 }
 

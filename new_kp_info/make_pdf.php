@@ -330,8 +330,9 @@ $pdf->Cell(15 ,8, MakeUtf8Font('Ед.изм'),'B',0,'C');
 $pdf->Cell(15 ,8, MakeUtf8Font('Кол-во'),'B',0,'C');
 $pdf->Cell(17 ,8, MakeUtf8Font('Цена'),'B',0,'C');
 $pdf->Cell(23 ,8, MakeUtf8Font('Сумма'),'B',1,'C');
-
-// ***********************  Таблица с номенклатурой **************************
+/****************************************************************************************************
+***********************  Таблица с номенклатурой **************************
+****************************************************************************************************/
 $contact_font_size = 8;
 $pdf->SetFont('TimesNRCyrMT','',$contact_font_size); // нормальный текст
 $i=1;
@@ -341,14 +342,15 @@ $h_cell = $pdf_visota_prod_stroki; // нормальная высота стро
  
 $string_array = make_string_name_array($value['name'] , 115); // число - это длина строки
 $hight = count($string_array);
+if ($hight != 1) {$h_cell = $h_cell - 1;}
 $real_hight_string = $h_cell*$hight;
 $real_Y_position = $pdf->GetY();
 
 // 
 $pdf->Cell(10 ,$real_hight_string, $i,'B',0,'C');
-/**
+/*********************************************************************************************
  * Выводим наименовние товаров
-*/
+****************************************************************************************************/
 $count_name_cycle=1;
   foreach ($string_array as $value_name) {
       if ($count_name_cycle < count($string_array)) {
@@ -615,6 +617,7 @@ function MakeUtf8Font($string) {
   return $string;
 }
 
+// Разбиваем длинные строки на массивы с нормальными длинами строк
 function make_string_name_array ($name, $max_long_string) {
   // $max_long_string = 115;
   $arr_string = explode(' ', $name);
