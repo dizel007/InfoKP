@@ -230,7 +230,7 @@
 {* ******************************  ИСТОРИ КП  *************************************  *}
      <td><a name="{$array_with_all_kp.$i.id}" href="?transition=17&id={$array_with_all_kp.$i.id}" target="_blank"><img class="scale11" src="icons/table/history_kp.png" style = "opacity: 0.6" alt="История КП" title="История КП"></a></td> 
 {* ****************************** Адрес поставки   ********************************************* -->*}
-      <td class="hidden_class_column" id = "js-Adress{$array_with_all_kp.$i.id}" width ="150" class="hidden_class_column">{$array_with_all_kp.$i.adress}</td>
+      <td class="hidden_class_column" id = "js-Adress{$array_with_all_kp.$i.id}" width ="150"  title="{$array_with_all_kp.$i.adress_full}" >{$array_with_all_kp.$i.adress}</td>
  {* <!-- ******************************  Корректировака КП  ********************************************* -->*}
   {*    <td> 
             <a href= "?transition=30&id={$array_with_all_kp.$i.id}" alt="Корректировка КП" target="_blank"><img class="scale11" style = "opacity: 0.8" src="icons/correct_kp.png" alt="SeeLinkKontur"></a>

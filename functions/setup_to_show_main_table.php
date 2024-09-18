@@ -89,6 +89,16 @@ function SetParametrsTable ($smarty, $array_with_all_kp) {
     $second_sell_cl[$i] = '';} 
     
   // *************
+  ///****** ограничиваем длину строки адреса ***************************************** */
+  
+  $array_with_all_kp[$i]['adress'] = str_replace("доставка до объекта Заказчика", "*", $array_with_all_kp[$i]['adress']);
+  $array_with_all_kp[$i]['adress_full'] = $array_with_all_kp[$i]['adress'] ;
+    if (mb_strlen($array_with_all_kp[$i]['adress']) > 60){
+   
+
+    $array_with_all_kp[$i]['adress'] = mb_strimwidth($array_with_all_kp[$i]['adress'], 0, 50) . '...';
+    }
+
   $i++;
   }
 
